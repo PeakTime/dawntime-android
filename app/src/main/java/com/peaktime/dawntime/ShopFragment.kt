@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.peaktime.dawntime.Shop.ShopActivity
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import kotlinx.android.synthetic.main.fragment_shop.view.*
 
@@ -17,7 +18,7 @@ class ShopFragment : Fragment() {
         if(arguments != null){
             v!!.thirdText.text = arguments.getString("title")
         }
-        startActivity(Intent(activity,ShopActivity::class.java))
+        startActivity(Intent(activity, ShopActivity::class.java))
         return v
     }
 }
