@@ -5,16 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.peaktime.dawntime.ShopActivity">
+    tools:context="com.peaktime.dawntime.Shop.ShopActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
-        android:layout_gravity="center"
-        android:id="@+id/ThirdText"
-        android:text="Shop Activity"
-        android:textSize="30sp"/>
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!---->
+    <!--</ScrollView>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/shop_list"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
 
 </LinearLayout>
