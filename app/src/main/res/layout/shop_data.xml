@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp">
+
+    <ImageView
+        android:id="@+id/goods_img"
+        android:src="@drawable/pika"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/goods_img">
+
+        <TextView
+            android:id="@+id/goods_name"
+            android:text="상품이름"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"/>
+        <TextView
+            android:id="@+id/goods_price"
+            android:text="가격"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goods_name"
+            android:paddingLeft="10dp"
+            android:paddingTop="3dp"/>
+
+        <ImageButton
+            android:id="@+id/goods_like"
+            android:src="@drawable/fire"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:paddingLeft="5dp"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
