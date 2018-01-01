@@ -5,14 +5,9 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
-import com.peaktime.dawntime.Community.Communitymain
+import com.peaktime.dawntime.Community.CommunityActivity
 import com.peaktime.dawntime.Shop.ShopActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_community.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                         val bundle = Bundle()
 //                        bundle.putString("title",secondText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        ReplaceFragment(Communitymain(),"community")
+                        ReplaceFragment(CommunityActivity(),"community")
                     }
                     2->{
                         val bundle = Bundle()

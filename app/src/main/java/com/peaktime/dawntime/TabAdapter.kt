@@ -1,9 +1,9 @@
 package com.peaktime.dawntime
 
-import android.support.v4.app.FragmentManager
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import com.peaktime.dawntime.Community.Communitymain
+import com.peaktime.dawntime.Community.CommunityActivity
 
 /**
  * Created by minhyoung on 2017. 12. 31..
@@ -11,14 +11,14 @@ import com.peaktime.dawntime.Community.Communitymain
 class TabAdapter(fm : FragmentManager?) : FragmentStatePagerAdapter(fm) {
     var tabCount : Int = 0
     var homeTab : HomeFragment? = null
-    var communityTab : Communitymain? = null
+    var communityTab : CommunityActivity? = null
     var shopTab : ShopFragment? = null
     var myPageTab : MyPageFragment? = null
 
     constructor(fm : FragmentManager?,tabCount : Int) : this(fm){
         this.tabCount = tabCount
         this.homeTab = HomeFragment()
-        this.communityTab = Communitymain()
+        this.communityTab = CommunityActivity()
         this.shopTab = ShopFragment()
         this. myPageTab = MyPageFragment()
     }
