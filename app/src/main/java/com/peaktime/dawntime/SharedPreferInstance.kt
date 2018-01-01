@@ -9,41 +9,42 @@ import android.content.SharedPreferences
 
 class SharedPreferInstance {
 
-    fun putLoginPrefer(key: String, value: Boolean) {
+    fun putPrefer(key: String, value: Boolean) {
         editor!!.putBoolean(key, value)
         editor!!.commit()
     }
 
-    fun putLockPrefer(key: String, value: Boolean) {
-        editor!!.putBoolean(key, value)
-        editor!!.commit()
-    }
-
-    fun putNoticePrefer(key: String, value: Boolean) {
-        editor!!.putBoolean(key, value)
-        editor!!.commit()
-    }
-
-    fun putBlindPreder(key: String, value: Boolean) {
-        editor!!.putBoolean(key, value)
-        editor!!.commit()
-    }
-
-    fun getLoginPrefer(key: String): Boolean? {
+    //
+//    fun putLockPrefer(key: String, value: Boolean) {
+//        editor!!.putBoolean(key, value)
+//        editor!!.commit()
+//    }
+//
+//    fun putNoticePrefer(key: String, value: Boolean) {
+//        editor!!.putBoolean(key, value)
+//        editor!!.commit()
+//    }
+//
+//    fun putBlindPreder(key: String, value: Boolean) {
+//        editor!!.putBoolean(key, value)
+//        editor!!.commit()
+//    }
+//
+    fun getPrefer(key: String): Boolean? {
         return prefer!!.getBoolean(key, false)
     }
-
-    fun getLockPrefer(key: String): Boolean? {
-        return prefer!!.getBoolean(key, false)
-    }
-
-    fun getNoticePrefer(key: String): Boolean? {
-        return prefer!!.getBoolean(key, false)
-    }
-
-    fun getBlindPrefer(key: String): Boolean? {
-        return prefer!!.getBoolean(key, false)
-    }
+//
+//    fun getLockPrefer(key: String): Boolean? {
+//        return prefer!!.getBoolean(key, false)
+//    }
+//
+//    fun getNoticePrefer(key: String): Boolean? {
+//        return prefer!!.getBoolean(key, false)
+//    }
+//
+//    fun getBlindPrefer(key: String): Boolean? {
+//        return prefer!!.getBoolean(key, false)
+//    }
 
     companion object {
 
@@ -52,6 +53,7 @@ class SharedPreferInstance {
         private var mContext: Context? = null
         private var prefer: SharedPreferences? = null
         private var editor: SharedPreferences.Editor? = null
+        private var email: String? = null
 
         fun getInstance(context: Context): SharedPreferInstance {
             mContext = context
@@ -65,5 +67,13 @@ class SharedPreferInstance {
             }
             return instance as SharedPreferInstance
         }
+    }
+
+    fun getEamil(): String? {
+        return email
+    }
+
+    fun putEmail(e: String?) {
+        email = e
     }
 }
