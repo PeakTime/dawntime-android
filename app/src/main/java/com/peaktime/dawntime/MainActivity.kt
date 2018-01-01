@@ -1,10 +1,18 @@
 package com.peaktime.dawntime
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
+import com.peaktime.dawntime.Community.Communitymain
+import com.peaktime.dawntime.Shop.ShopActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_community.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
+import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,38 +32,43 @@ class MainActivity : AppCompatActivity() {
             AddFragment(HomeFragment(),"home")
         }
 
+
+
         var tabAdapter = TabAdapter(supportFragmentManager,main_tab.tabCount)
 
         main_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
+
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab?) {
+
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when(tab!!.position){
                     0->{
                         val bundle = Bundle()
-//                        bundle.putString("title",firstText.text.toString())
-//                        AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
+     //                   bundle.putString("title",firstText.text.toString())
+                        //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
                         ReplaceFragment(HomeFragment(),"home")
                     }
                     1->{
                         val bundle = Bundle()
 //                        bundle.putString("title",secondText.text.toString())
-//                        AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        ReplaceFragment(CommunityFragment(),"community")
+                        //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
+                        ReplaceFragment(Communitymain(),"community")
                     }
                     2->{
                         val bundle = Bundle()
-//                        bundle.putString("title",thirdText.text.toString())
-//                        AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        ReplaceFragment(ShopFragment(),"shop")
+  //                      bundle.putString("title",thirdText.text.toString())
+                        //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
+                        startActivity(Intent(applicationContext,ShopActivity::class.java))
                     }
                     3->{
                         val bundle = Bundle()
-//                        bundle.putString("title",fourthText.text.toString())
-//                        AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
+    //                    bundle.putString("title",fourthText.text.toString())
+                        //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
                         ReplaceFragment(MyPageFragment(),"myPage")
                     }
                 }
