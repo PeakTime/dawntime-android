@@ -15,7 +15,7 @@ class CommunityAdapter(var dataList : ArrayList<CommunityData>?) : RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CommunityViewholder {
         //    어떤 뷰 홀더를 잡을지 결정하는 부분
-        val mainView : View = LayoutInflater.from(parent!!.context).inflate(R.layout.communityitems, parent, false)
+        val mainView : View = LayoutInflater.from(parent!!.context).inflate(R.layout.community_data, parent, false)
         mainView.setOnClickListener(getItemClick)
         return CommunityViewholder(mainView)
     }
@@ -30,7 +30,7 @@ class CommunityAdapter(var dataList : ArrayList<CommunityData>?) : RecyclerView.
     override fun getItemCount(): Int = dataList!!.size
 //    몇개인지 리턴 별다른 함수 없이 리턴 있을때랑 똑같은 역할 (즉, return dataList!!.size)
 
-    fun setOnItenClickListener(l: View.OnClickListener) {
+    fun setOnItemClickListener(l: View.OnClickListener) {
         getItemClick = l
     }
 }
