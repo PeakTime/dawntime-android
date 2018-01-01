@@ -32,7 +32,7 @@
             android:paddingTop="3dp"/>
 
         <ImageButton
-            android:id="@+id/goods_like"
+            android:id="@+id/shopLikeBtn"
             android:src="@drawable/fire"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
