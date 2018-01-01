@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.peaktime.dawntime.Shop.ShopDetailActivity">
 
     <RelativeLayout
@@ -38,33 +37,100 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/shopDetailLayout"
+        android:id="@+id/shopContentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/shopTabLayout">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="제품상세페이지"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/photos_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" >
 
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:id="@+id/pager"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="10dp"-->
-        <!--android:layout_weight="1"-->
-        <!--/>-->
-    <!--<com.viewpagerindicator.CirclePageIndicator-->
-        <!--android:id="@+id/indicator"-->
-        <!--android:padding="10dip"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--/>-->
+        </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#5dd93a89"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"/>
 
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/shopDetailBrandTextView"
+                android:textColor="#000"
+                android:textSize="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="브랜드"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"
+                />
+            <TextView
+                android:id="@+id/shopDetailNameTextView"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제품이름"
+                android:layout_below="@+id/shopDetailBrandTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"
+                />
+            <TextView
+                android:id="@+id/shopDetailPriceTextView"
+                android:textColor="#ca4585"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제품가격"
+                android:layout_below="@+id/shopDetailNameTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="1dp"/>
+
+            <RelativeLayout
+                android:id="@+id/line"
+                android:background="#000"
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/shopDetailPriceTextView"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shop"
+                android:layout_below="@+id/line"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="2dp"
+                />
+
+            <TextView
+                android:id="@+id/shopDetailContentTextView"
+                android:textColor="#000"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image"
+                android:layout_centerHorizontal="true"
+                android:text="설명"
+                />
+
+        </RelativeLayout>
 
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_alignParentBottom="true"

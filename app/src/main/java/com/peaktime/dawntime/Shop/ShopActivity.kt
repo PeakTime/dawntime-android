@@ -9,6 +9,7 @@ import android.view.View
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.activity_shop.*
 
+
 class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
     private  var shopList : RecyclerView?=null
@@ -18,7 +19,6 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
-
 
         shopList = findViewById(R.id.shopList)
         shopList!!.layoutManager = GridLayoutManager(this, 2)
@@ -38,8 +38,7 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         shopList!!.adapter = shopAdapter
 
 
-        shopSearchBtn!!.setOnClickListener(ClickListener)
-
+        shopSearchBtn!!.setOnClickListener(clickListener)
     }
 
     override fun onClick(v : View?) {
@@ -57,7 +56,7 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
     }
 
 
-    private var ClickListener = View.OnClickListener { v ->
+    private var clickListener = View.OnClickListener { v ->
         when (v.id) {
 
             R.id.shopSearchBtn -> {
