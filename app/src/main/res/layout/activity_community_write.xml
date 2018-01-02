@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="15dp"
-            android:background="#FFC4B7	"
+            android:background="#FFC4B7"
             android:hint="제목"
             android:text="title" />
 
