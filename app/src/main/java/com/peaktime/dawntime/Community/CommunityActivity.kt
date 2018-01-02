@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import com.peaktime.dawntime.R
 
 
@@ -21,12 +22,16 @@ class CommunityActivity : Fragment(), View.OnClickListener {
     private var communityList: RecyclerView? = null
     private var communityDatas: ArrayList<CommunityData>? = null
     private var adapter: CommunityAdapter? = null
+    private var community_write: ImageButton? =null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.activity_community, container, false)
 
         communityList = v.findViewById(R.id.main_list)
+        community_write = v.findViewById(R.id.community_write)
+
         communityList!!.layoutManager = LinearLayoutManager(activity)
 
         communityDatas = ArrayList<CommunityData>()
@@ -38,16 +43,35 @@ class CommunityActivity : Fragment(), View.OnClickListener {
 
         adapter = CommunityAdapter(communityDatas)
 
-
         adapter!!.setOnItemClickListener(this)
         communityList!!.adapter = adapter
 
+        //community_write!!.setOnClickListener(clickListener)
+
+
+       community_write!!.setOnClickListener {
+            val intent = Intent(activity, CommunityWriteActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
         return v
+
 
     }
     override fun onClick(p0: View?) {
         startActivity(Intent(activity,CommunityDetailActivity::class.java))
     }
+//    private var clickListener = View.OnClickListener { v ->
+//        when (v.id) {
+//
+//            R.id.community_write -> {
+//                var intent = Intent(getActivity(), CommunityWriteActivity::class.java)
+//                startActivity(intent)
+//            }
+//        }
+//    }
 
 
 /*    override fun onCreate(savedInstanceState: Bundle?) {

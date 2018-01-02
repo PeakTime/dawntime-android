@@ -18,12 +18,12 @@
             android:id="@+id/community_backbtn"
             android:layout_alignParentLeft="true"
             android:src="@drawable/ic_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="37dp"
+            android:layout_height="29dp"
             android:layout_toRightOf="@+id/community_backbtn"
             android:layout_centerVertical="true"
             android:text="글쓰기"
@@ -32,8 +32,8 @@
             android:id="@+id/community_gitar"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
 
     </RelativeLayout>
 
@@ -46,14 +46,16 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="322dp"
+            android:layout_height="132dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="22dp">
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:text="title" />
 
             <TextView
@@ -64,19 +66,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true">
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="18dp"
                 android:text="날짜" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="100dp"
-            android:layout_height="30dp"
+            android:layout_height="18dp"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="9.34dp"
+            android:layout_marginBottom="8dp"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
@@ -101,31 +107,31 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="360dp"
             android:layout_height="match_parent"
             android:src="@drawable/selly"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:orientation="horizontal">
 
         <EditText
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="28dp" />
+
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="쓰기"
-           />
+            android:layout_height="28dp"
+            android:text="게시"
+            android:textSize="10dp"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
 
