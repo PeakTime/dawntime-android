@@ -8,42 +8,40 @@
     <RelativeLayout
         android:id="@+id/community_tab"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="71dp"
         android:layout_centerHorizontal="true"
-        android:background="#2068DF">
+        android:background="#FFFFFF">
 
-        <ImageButton
-            android:id="@+id/community_backbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_shop" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:id="@+id/communityTxt"
             android:text="커뮤니티"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
 
             <ImageButton
                 android:id="@+id/community_write"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="null"
                 android:layout_alignLeft="@+id/community_search"
-                android:src="@drawable/ic_home"/>
+                android:src="@drawable/navi_write_navy" />
 
             <ImageButton
                 android:id="@+id/community_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="null"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_home" />
+                android:src="@drawable/navi_search_navy" />
         </LinearLayout>
     </RelativeLayout>
 

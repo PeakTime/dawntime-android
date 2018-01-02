@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/child_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -86,7 +87,6 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:gravity="left|center_vertical"
-        android:onClick="onClick"
         android:text="내가 쓴글"
         android:textSize="30sp"/>
 
@@ -103,7 +103,6 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:gravity="left|center_vertical"
-        android:onClick="onClick"
         android:text="스크랩"
         android:textSize="30sp" />
 
@@ -120,7 +119,6 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:gravity="left|center_vertical"
-        android:onClick="onClick"
         android:text="쪽지"
         android:textSize="30sp" />
 
@@ -137,7 +135,6 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:gravity="left|center_vertical"
-        android:onClick="onClick"
         android:text="장바구니"
         android:textSize="30sp" />
 
@@ -154,7 +151,6 @@
         android:layout_weight="1"
         android:background="#ffffff"
         android:gravity="left|center_vertical"
-        android:onClick="onClick"
         android:text="설정"
         android:textSize="30sp" />
 

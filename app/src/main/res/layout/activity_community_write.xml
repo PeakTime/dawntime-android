@@ -12,21 +12,22 @@
         android:id="@+id/community_tab"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="56dp"
         android:background="#2068DF">
 
         <ImageButton
-            android:id="@+id/community_backbtn"
+            android:id="@+id/community_backbtn1"
             android:layout_alignParentLeft="true"
             android:src="@drawable/ic_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="29dp"
             android:text="글쓰기"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:layout_centerInParent="true"/>
 
     </RelativeLayout>
@@ -34,22 +35,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="328dp"
+            android:layout_height="33dp"
             android:layout_marginBottom="15dp"
-            android:background="#FFC4B7	"
+            android:background="#FFC4B7"
             android:hint="제목"
             android:text="title" />
 
         <TextView
             android:id="@+id/contents"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="328dp"
+            android:layout_height="240dp"
             android:background="#90D133"
             android:text="contents" />
     </LinearLayout>
