@@ -2,33 +2,38 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp">
+    android:layout_margin="15.8dp">
 
     <ImageView
         android:id="@+id/goods_img"
         android:src="@drawable/pika"
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_width="157dp"
+        android:layout_height="157dp" />
 
     <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="157dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/goods_img">
 
         <TextView
             android:id="@+id/goods_name"
             android:text="상품이름"
+            android:textColor="#ED508E"
+            android:textSize="13dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="3dp"/>
+            android:layout_height="19dp"
+            android:paddingLeft="8.9dp"
+            android:paddingTop="4.1dp"/>
+
         <TextView
             android:id="@+id/goods_price"
             android:text="가격"
+            android:textColor="#A0A0A0"
+            android:textSize="11dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/goods_name"
-            android:paddingLeft="10dp"
+            android:paddingLeft="8.9dp"
             android:paddingTop="3dp"/>
 
         <ImageButton
@@ -36,9 +41,9 @@
             android:src="@drawable/fire"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:paddingLeft="5dp"/>
+            android:layout_width="19.1dp"
+            android:layout_height="16.7dp"
+            android:layout_marginRight="11.2dp"/>
 
     </RelativeLayout>
 
