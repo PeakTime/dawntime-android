@@ -12,7 +12,6 @@ import android.widget.ToggleButton
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.data.OAuthLoginState
 
-
 /**
  * Created by LEESANGYUN on 2018-01-01.
  */
