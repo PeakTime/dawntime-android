@@ -8,43 +8,29 @@ import android.content.SharedPreferences
  */
 
 class SharedPreferInstance {
+    //키값
+    // Boolean -> LOGIN, NOTICE, LOCK, BLIND
+    // String - > EMAIL, ID, GENDER
 
-    fun putPrefer(key: String, value: Boolean) {
+    fun putPreferString(key: String, value: String) {
+        editor!!.putString(key, value)
+        editor!!.commit()
+
+    }
+
+    fun putPreferBoolean(key: String, value: Boolean) {
         editor!!.putBoolean(key, value)
         editor!!.commit()
     }
 
-    //
-//    fun putLockPrefer(key: String, value: Boolean) {
-//        editor!!.putBoolean(key, value)
-//        editor!!.commit()
-//    }
-//
-//    fun putNoticePrefer(key: String, value: Boolean) {
-//        editor!!.putBoolean(key, value)
-//        editor!!.commit()
-//    }
-//
-//    fun putBlindPreder(key: String, value: Boolean) {
-//        editor!!.putBoolean(key, value)
-//        editor!!.commit()
-//    }
-//
-    fun getPrefer(key: String): Boolean? {
+    fun getPreferString(key: String): String? {
+        return prefer!!.getString(key, null)
+    }
+
+
+    fun getPreferBoolean(key: String): Boolean? {
         return prefer!!.getBoolean(key, false)
     }
-//
-//    fun getLockPrefer(key: String): Boolean? {
-//        return prefer!!.getBoolean(key, false)
-//    }
-//
-//    fun getNoticePrefer(key: String): Boolean? {
-//        return prefer!!.getBoolean(key, false)
-//    }
-//
-//    fun getBlindPrefer(key: String): Boolean? {
-//        return prefer!!.getBoolean(key, false)
-//    }
 
     companion object {
 
@@ -53,7 +39,6 @@ class SharedPreferInstance {
         private var mContext: Context? = null
         private var prefer: SharedPreferences? = null
         private var editor: SharedPreferences.Editor? = null
-        private var email: String? = null
 
         fun getInstance(context: Context): SharedPreferInstance {
             mContext = context
@@ -69,11 +54,11 @@ class SharedPreferInstance {
         }
     }
 
-    fun getEamil(): String? {
-        return email
-    }
-
-    fun putEmail(e: String?) {
-        email = e
-    }
+//    fun getEamil(): String? {
+//        return email
+//    }
+//
+//    fun putEmail(e: String?) {
+//        email = e
+//    }
 }

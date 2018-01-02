@@ -1,5 +1,6 @@
 package com.peaktime.dawntime
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -66,12 +67,18 @@ class LoginActivity : AppCompatActivity() {
                             // response 객체에서 원하는 값 얻어오기
                             val email = json.getJSONObject("response").getString("email")
                             val gender = json.getJSONObject("response").getString("gender")
+                            val id = json.getJSONObject("response").getString("id")
 
-                            var intent = Intent(applicationContext, MainActivity::class.java)
+                            SharedPreferInstance.getInstance(applicationContext).putPreferString("EMAIL", email)
+                            SharedPreferInstance.getInstance(applicationContext).putPreferString("GENDER", gender)
+                            SharedPreferInstance.getInstance(applicationContext).putPreferString("ID", id)
+                            SharedPreferInstance.getInstance(applicationContext).putPreferBoolean("LOGIN", true)
+
+                            var intent = Intent()
                             intent.putExtra("EMAIL", email)
-                            intent.putExtra("GENDER", gender)
-                            startActivity(intent)
+                            setResult(Activity.RESULT_OK, intent)
                             finish()
+
                         } catch (e: JSONException) {
                             e.printStackTrace()
                         }
