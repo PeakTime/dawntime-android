@@ -15,26 +15,27 @@
         <ImageButton
             android:id="@+id/shopBackBtn"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_shop"
+            android:background="@drawable/shop_navi_back"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
             />
 
         <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SHOP"
-            android:textColor="#FFFFFF"
-            android:textSize="21dp"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="15.6dp"/>
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOP"
+        android:textColor="#FFFFFF"
+        android:textSize="21dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15.6dp"/>
 
         <ImageView
-            android:src="@drawable/fire"
+            android:background="@drawable/shop_navi_moon"
             android:layout_width="14.5dp"
             android:layout_height="19.7dp"
+            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/title"
             android:layout_centerVertical="true"
             />
@@ -42,7 +43,7 @@
         <ImageButton
             android:id="@+id/shopSearchBtn"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_shop"
+            android:background="@drawable/shop_navi_search_white"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"/>
@@ -64,7 +65,7 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/photos_viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="350dp" >
+                android:layout_height="353dp" >
 
             </android.support.v4.view.ViewPager>
 
@@ -84,67 +85,71 @@
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="328dp"
+            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shop_detail_content_layout">
 
             <TextView
                 android:id="@+id/shopDetailBrandTextView"
-                android:textColor="#000"
-                android:textSize="10sp"
+                android:textColor="#000000"
+                android:textSize="9dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="브랜드"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="1dp"
+                android:layout_marginTop="5dp"
                 />
             <TextView
                 android:id="@+id/shopDetailNameTextView"
                 android:textColor="#000"
-                android:textSize="18sp"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="제품이름"
                 android:layout_below="@+id/shopDetailBrandTextView"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="1dp"
                 />
             <TextView
                 android:id="@+id/shopDetailPriceTextView"
                 android:textColor="#ca4585"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="제품가격"
                 android:layout_below="@+id/shopDetailNameTextView"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="1dp"/>
+               />
 
             <RelativeLayout
                 android:id="@+id/line"
-                android:background="#000"
-                android:layout_width="300dp"
+                android:background="#E2E5E8"
+                android:layout_width="306dp"
                 android:layout_height="1dp"
                 android:layout_below="@+id/shopDetailPriceTextView"
                 android:layout_centerHorizontal="true"/>
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_shop"
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:background="@drawable/shop_view_moon"
                 android:layout_below="@+id/line"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="2dp"
+                android:layout_marginTop="7dp"
                 />
 
             <TextView
                 android:id="@+id/shopDetailContentTextView"
                 android:textColor="#000"
-                android:textSize="13sp"
+                android:textSize="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/image"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="7dp"
                 android:text="설명"
                 />
 
@@ -163,9 +168,8 @@
         android:weightSum="10">
 
         <RelativeLayout
-            android:layout_weight="9"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="294dp"
+            android:layout_height="48dp"
             android:background="#ED508E">
 
         <Button
@@ -183,9 +187,9 @@
         <ImageButton
             android:id="@+id/shopLikeBtn"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:background="@drawable/shop_tab_heart_line"
+            android:layout_width="66dp"
+            android:layout_height="48dp" />
 
     </LinearLayout>
 

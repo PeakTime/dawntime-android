@@ -14,34 +14,34 @@
     <ImageButton
         android:id="@+id/shopBackBtn"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/ic_shop"
+        android:background="@drawable/shop_navi_back"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="7dp"
         />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SHOP"
-        android:textColor="#FFFFFF"
-        android:textSize="21dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="15.6dp"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHOP"
+            android:textColor="#FFFFFF"
+            android:textSize="21dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="15.6dp"/>
 
-    <ImageView
-        android:src="@drawable/fire"
-        android:layout_width="14.5dp"
-        android:layout_height="19.7dp"
-        android:layout_toRightOf="@+id/title"
-        android:layout_centerVertical="true"
-        />
-
+        <ImageView
+            android:background="@drawable/shop_navi_moon"
+            android:layout_width="14.5dp"
+            android:layout_height="19.7dp"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/title"
+            android:layout_centerVertical="true"
+            />
     <ImageButton
         android:id="@+id/shopSearchBtn"
         android:layout_alignParentRight="true"
-        android:src="@drawable/ic_shop"
+        android:background="@drawable/shop_navi_search_white"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="7dp"/>

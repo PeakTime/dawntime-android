@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:id="@+id/shopExitBtn"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_shop"
+            android:background="@drawable/shop_navi_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7.9dp" />
@@ -119,12 +119,12 @@
 
             <ImageView
                 android:id="@+id/img"
-                android:src="@drawable/fire"
+                android:src="@drawable/shop_view_wave"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_toRightOf="@+id/lowPriceLayout"/>
 
             <!--최고가격레이아웃-->
@@ -170,11 +170,15 @@
 
             <Button
                 android:id="@+id/resetBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="71dp"
+                android:layout_height="25dp"
                 android:text="초기화"
-                android:layout_marginLeft="10dp"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/highPriceLayout"
+                android:background="@drawable/shop_reset_button"
                 />
 
 

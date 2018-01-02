@@ -25,6 +25,15 @@
             android:paddingLeft="8.9dp"
             android:paddingTop="4.1dp"/>
 
+        <RelativeLayout
+            android:background="#ED508E"
+            android:layout_width="110.5dp"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/goods_name"
+            android:layout_marginTop="2.8dp"
+            android:layout_marginBottom="2.8dp"
+            />
+
         <TextView
             android:id="@+id/goods_price"
             android:text="가격"
@@ -38,7 +47,7 @@
 
         <ImageButton
             android:id="@+id/shopLikeBtn"
-            android:src="@drawable/fire"
+            android:src="@drawable/shop_tab_heart_line"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_width="19.1dp"

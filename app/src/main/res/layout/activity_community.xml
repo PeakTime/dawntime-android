@@ -31,7 +31,7 @@
                 android:id="@+id/community_write"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="null"
+                android:background="@android:color/transparent"
                 android:layout_alignLeft="@+id/community_search"
                 android:src="@drawable/navi_write_navy" />
 
@@ -39,7 +39,7 @@
                 android:id="@+id/community_search"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="null"
+                android:background="@android:color/transparent"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/navi_search_navy" />
         </LinearLayout>
