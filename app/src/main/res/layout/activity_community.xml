@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="71dp"
         android:layout_centerHorizontal="true"
-        android:background="#2068DF">
+        android:background="#FFFFFF">
 
 
         <TextView
@@ -31,15 +31,17 @@
                 android:id="@+id/community_write"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:background="null"
                 android:layout_alignLeft="@+id/community_search"
-                android:src="@drawable/ic_home" />
+                android:src="@drawable/navi_write_navy" />
 
             <ImageButton
                 android:id="@+id/community_search"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:background="null"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_home" />
+                android:src="@drawable/navi_search_navy" />
         </LinearLayout>
     </RelativeLayout>
 
