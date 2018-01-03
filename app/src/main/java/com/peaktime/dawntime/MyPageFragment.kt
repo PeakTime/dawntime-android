@@ -1,10 +1,12 @@
 package com.peaktime.dawntime
 
 import android.app.Activity.RESULT_OK
+
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,8 +89,15 @@ class MyPageFragment : Fragment() {
         }
 
         optionBtn!!.setOnClickListener {
+            //            val fg = ChildMyPageOption()
+//            setChildFragment(fg)
+
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
             val fg = ChildMyPageOption()
-            setChildFragment(fg)
+            transacton.add(R.id.child_container, fg, "option")
+            transacton.addToBackStack(null)
+            transacton.commit()
         }
 
         return v

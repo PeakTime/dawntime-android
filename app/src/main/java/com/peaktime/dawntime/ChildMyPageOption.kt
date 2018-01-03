@@ -2,16 +2,14 @@ package com.peaktime.dawntime
 
 
 import android.app.Activity.RESULT_OK
+import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.data.OAuthLoginState
 
@@ -28,6 +26,8 @@ class ChildMyPageOption : Fragment() {
     var lockSwitch: Switch? = null
     var blindSwitch: Switch? = null
 
+    var backBtn: Button? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -37,10 +37,19 @@ class ChildMyPageOption : Fragment() {
         noticeSwitch = v.findViewById(R.id.notice_switch)
         lockSwitch = v.findViewById(R.id.lock_switch)
         blindSwitch = v.findViewById(R.id.blind_switch)
+        backBtn = v.findViewById(R.id.back_btn)
 
         noticeSwitch!!.isChecked = SharedPreferInstance.getInstance(activity).getPreferBoolean("NOTICE")!!
         lockSwitch!!.isChecked = SharedPreferInstance.getInstance(activity).getPreferBoolean("LOCK")!!
         blindSwitch!!.isChecked = SharedPreferInstance.getInstance(activity).getPreferBoolean("BLIND")!!
+
+        backBtn!!.setOnClickListener {
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
+            val fragment = ChildMyPageOption()
+            transacton.remove(this)
+            transacton.commit()
+        }
 
         logoutBtn!!.setOnClickListener {
 
