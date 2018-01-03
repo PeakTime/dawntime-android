@@ -90,10 +90,6 @@ class CommunityFragment : Fragment(), View.OnClickListener {
                 transacton.addToBackStack(null)
                 transacton.commit()
         }
-
-
-
-
 //        val listener = object : OnMenuItemClickListener() {
 //
 //
@@ -128,8 +124,6 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             transacton.commit()
         }
         return v
-
-
     }
 
     override fun onClick(p0: View?) {
@@ -142,9 +136,6 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         transacton.add(R.id.community_container, fragment, "detial")
         transacton.addToBackStack(null)
         transacton.commit()
-
-
-
 
         //startActivity(Intent(activity,CommunityDetailActivity::class.java))
     }

@@ -28,12 +28,6 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     var unfireContents : TextView?= null
     var unstar_touch : Int ?= 0
     var unfire_touch : Int ?= 0
-//
-//    community_unstarContents = findViewById(R.id.community_unstarContents)
-//    community_unfireContents = findViewById(R.id.community_unfireContents)
-//    unstarContents = findViewById(R.id.unfireContents)
-//    unfireContents = findViewById(R.id.unstarContents)
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val v = inflater!!.inflate(R.layout.fragment_community_detail,container,false)

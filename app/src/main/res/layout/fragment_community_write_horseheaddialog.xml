@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/community_cate_tab"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="@drawable/horsehead_dialog"
+        >
+        <LinearLayout
+            android:id="@+id/cate_1"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/horsehead0"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:id="@+id/horsehead1"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="뻘글" />
+            <Button
+                android:id="@+id/horsehead2"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="엑소" />
+            <Button
+                android:id="@+id/horsehead3"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:id="@+id/horsehead4"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cate_2"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cate_1"
+            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/horsehead5"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:id="@+id/horsehead6"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:id="@+id/horsehead7"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:id="@+id/horsehead8"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:id="@+id/horsehead9"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
