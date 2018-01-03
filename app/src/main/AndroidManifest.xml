@@ -29,9 +29,9 @@
         <activity android:name=".Shop.ShopSearchActivity" />
         <activity android:name=".Community.CommunityDetailActivity" />
         <activity android:name=".Community.CommunitySearchActivity" />
-        <activity android:name=".Community.CommunityPopActivity"/>
+        <activity android:name=".Community.CommunityPopActivity" />
         <activity android:name=".Community.CommunityWriteActivity" />
-
+        <activity android:name=".LockActivity"></activity>
     </application>
 
 </manifest>
