@@ -47,11 +47,11 @@
 
         <ImageButton
             android:id="@+id/shopLikeBtn"
-            android:src="@drawable/shop_tab_heart_line"
+            android:background="@drawable/shop_tab_heart_line"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_width="19.1dp"
-            android:layout_height="16.7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginRight="11.2dp"/>
 
     </RelativeLayout>
