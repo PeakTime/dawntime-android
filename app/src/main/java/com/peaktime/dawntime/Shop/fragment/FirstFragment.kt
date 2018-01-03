@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.peaktime.dawntime.R
-import kotlinx.android.synthetic.main.fragment_community.view.*
 
 /**
  * Created by xlsdn on 2018-01-02.

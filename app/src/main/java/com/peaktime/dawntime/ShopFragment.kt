@@ -15,10 +15,7 @@ class ShopFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_shop,container,false)
-        if(arguments != null){
-            v!!.thirdText.text = arguments.getString("title")
-        }
-        startActivity(Intent(activity, ShopActivity::class.java))
+
         return v
     }
 }

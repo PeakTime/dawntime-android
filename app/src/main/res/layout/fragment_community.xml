@@ -79,7 +79,30 @@
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/horsehead"
+                    android:layout_width="55dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:paddingRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:paddingTop="3dp"
+                    android:textColor="#0E1949"
                     android:background="@drawable/horseheaddrawable_uncheck"
+                    android:textSize="13dp"
+                    android:text="리뷰" />
+                <Button
+                    android:layout_width="55dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:paddingRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:paddingTop="3dp"
+                    android:background="@drawable/horseheaddrawable_uncheck"
+                    android:textColor="#0E1949"
+                    android:textSize="13dp"
+                    android:text="리뷰" />
+                <Button
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="15dp"
@@ -89,9 +112,9 @@
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
                     android:textSize="13dp"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:text="리뷰" />
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="15dp"
@@ -100,34 +123,10 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
-                    android:layout_width="55dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight="1"
-                    android:paddingRight="13dp"
-                    android:paddingLeft="13dp"
-                    android:paddingTop="3dp"
-                    android:textColor="#0E1949"
-                    android:textSize="13dp"
-                    android:text="리뷰" />
-                <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
-                    android:layout_width="55dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight="1"
-                    android:paddingRight="13dp"
-                    android:paddingLeft="13dp"
-                    android:paddingTop="3dp"
-                    android:textColor="#0E1949"
-                    android:textSize="13dp"
-                    android:text="리뷰" />
-                <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_weight="1"
@@ -135,6 +134,7 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
             </LinearLayout>
@@ -147,7 +147,6 @@
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="15dp"
@@ -156,10 +155,10 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="15dp"
@@ -168,10 +167,10 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="15dp"
@@ -180,10 +179,10 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="15dp"
@@ -192,10 +191,10 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
                 <Button
-                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:layout_width="55dp"
                     android:layout_height="24dp"
                     android:layout_weight="1"
@@ -203,6 +202,7 @@
                     android:paddingLeft="13dp"
                     android:paddingTop="3dp"
                     android:textColor="#0E1949"
+                    android:background="@drawable/horseheaddrawable_uncheck"
                     android:textSize="13dp"
                     android:text="리뷰" />
             </LinearLayout>

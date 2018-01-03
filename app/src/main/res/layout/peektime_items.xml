@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/peektime_item_layout"
+        android:layout_width="156dp"
+        android:layout_height="191.91dp">
+
+        <TextView
+            android:id="@+id/peektime_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11.04dp"
+            android:text="title"
+            android:textSize="17dp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"/>
+
+        <TextView
+            android:id="@+id/peektime_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="77.63dp"
+            android:text="text"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/noto_sans_cjk_kr_light"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

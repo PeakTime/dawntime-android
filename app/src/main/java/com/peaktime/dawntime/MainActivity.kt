@@ -6,8 +6,12 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.peaktime.dawntime.Community.CommunityFragment
+import com.peaktime.dawntime.Home.HomeFragment
 import com.peaktime.dawntime.Shop.ShopActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
+import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,10 +19,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        main_tab.addTab(main_tab.newTab().setIcon(R.drawable.ic_home))
-        main_tab.addTab(main_tab.newTab().setIcon(R.drawable.ic_community))
-        main_tab.addTab(main_tab.newTab().setIcon(R.drawable.ic_shop))
-        main_tab.addTab(main_tab.newTab().setIcon(R.drawable.ic_mypage))
+        main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_home))
+        main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_comu))
+        main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_shop))
+        main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_my))
 
         if(savedInstanceState == null){
      //       val bundle = Bundle()

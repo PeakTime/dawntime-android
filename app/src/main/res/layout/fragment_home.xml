@@ -1,20 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.peaktime.dawntime.HomeFragment">
+    tools:context="com.peaktime.dawntime.Home.HomeFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
-        android:layout_gravity="center"
-        android:id="@+id/firstText"
-        android:text="Home Fragment"
-        android:textSize="30sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+        <ImageView
+            android:layout_marginTop="11.33dp"
+            android:layout_marginLeft="135dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/navi_dawntime_navy"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="6dp">
+
+        <RelativeLayout
+            android:layout_marginLeft="16dp"
+            android:id="@+id/shoplist_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp">
+
+            <TextView
+                android:includeFontPadding="false"
+                android:id="@+id/shoplist_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:text="Shop"
+                android:textSize="13dp"
+                android:textColor="#182E6E"
+                android:fontFamily="@font/noto_sans_cjk_kr_medium"/>
+
+            <ImageView
+                android:layout_marginLeft="3dp"
+                android:layout_width="6.3dp"
+                android:layout_height="13.35dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/shoplist_btn_text"
+                android:background="@drawable/view_next_navy" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/shop_recycler_list">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_marginTop="6dp">
+
+        <RelativeLayout
+            android:id="@+id/column_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:includeFontPadding="false"
+                android:id="@+id/column_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:background="#00ff0000"
+                android:text="Column"
+                android:textColor="#182E6E"
+                android:textSize="13dp"
+                android:fontFamily="@font/noto_sans_cjk_kr_medium"/>
+
+            <ImageView
+                android:layout_marginLeft="3dp"
+                android:layout_width="6.3dp"
+                android:layout_height="13.35dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/column_btn_text"
+                android:background="@drawable/view_next_navy" />
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/column_viewpage">
+
+        </android.support.v4.view.ViewPager>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="6dp">
+
+        <RelativeLayout
+            android:id="@+id/peektime_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:includeFontPadding="false"
+                android:id="@+id/peektime_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:background="#00ff0000"
+                android:text="Peak time"
+                android:textColor="#182E6E"
+                android:textSize="13dp"
+                android:fontFamily="@font/noto_sans_cjk_kr_medium"/>
+
+            <ImageView
+                android:layout_marginLeft="3dp"
+                android:layout_width="6.3dp"
+                android:layout_height="13.35dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/peektime_btn_text"
+                android:background="@drawable/view_next_navy" />
+
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/peektime_recycler_list">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
