@@ -24,6 +24,7 @@ class ChildMyPageOption : Fragment() {
     var lockToggle: ToggleButton? = null
     var blindToggle: ToggleButton? = null
 
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         var v = inflater!!.inflate(R.layout.child_mypage_option, container, false)

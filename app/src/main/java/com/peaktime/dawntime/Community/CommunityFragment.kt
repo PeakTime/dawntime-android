@@ -10,8 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import com.peaktime.dawntime.CommonData
+import android.widget.Button
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.CommunityDetailFragment
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import kotlinx.android.synthetic.main.fragment_community.view.*
 
 
 /**
@@ -25,6 +29,9 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     private var communityDatas: ArrayList<CommunityData>? = null
     private var adapter: CommunityAdapter? = null
     private var community_write: ImageButton? = null
+    private var communtiy_detail : Button? = null
+    private var community_search : ImageButton? =null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -32,7 +39,10 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 
         communityList = v.findViewById(R.id.main_list)
         community_write = v.findViewById(R.id.community_write)
+        community_search = v.findViewById(R.id.community_search)
 
+        val community_layout : RelativeLayout = v.findViewById(R.id.community_tab)
+        val community_detail_layout : RelativeLayout= v.findViewById(R.id.community_cate_tab)
 
         communityList!!.layoutManager = LinearLayoutManager(activity)
 
@@ -48,16 +58,33 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         CommonData.communityDatas = communityDatas!!
 
         adapter = CommunityAdapter(communityDatas)
+
+
         adapter!!.setOnItemClickListener(this)
         communityList!!.adapter = adapter
 
+        //말머리 보이기
+        communtiy_detail = v.findViewById(R.id.community_detail)
+        communtiy_detail!!.setOnClickListener{
+            communtiy_detail!!.visibility = View.GONE
+            community_search!!.visibility = View.INVISIBLE
+            community_write!!.visibility = View.INVISIBLE
+            community_detail_layout.visibility = View.VISIBLE
+            var cate_hide : Button ?= null
+            cate_hide = v.findViewById(R.id.community_cate_hide)
+            cate_hide!!.setOnClickListener {
+               community_detail_layout.visibility = View.GONE
+                communtiy_detail!!.visibility = View.VISIBLE
+                community_search!!.visibility = View.VISIBLE
+                community_write!!.visibility = View.VISIBLE
+            }
+        }
+
+        //글 작성
        community_write!!.setOnClickListener {
             val intent = Intent(activity, CommunityWriteActivity::class.java)
             startActivity(intent)
         }
-
-
-
 
 //        val listener = object : OnMenuItemClickListener() {
 //
@@ -81,9 +108,19 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 //            }
 //       }
 
+        v.community_search.setOnClickListener {
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
+            val fragment = CommunitySearchFragment()
+            //val bundle = Bundle()
+            //bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
+            //fragment.arguments = bundle
+            transacton.add(R.id.community_container, fragment, "detial")
+            transacton.addToBackStack(null)
+            transacton.commit()
+        }
+
         return v
-
-
     }
 
 

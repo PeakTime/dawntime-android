@@ -101,6 +101,19 @@
                 <!--android:layout_marginRight="15dp"-->
                 <!--android:layout_gravity="center"-->
                 <!--android:text="1112" />-->
+            <ImageView
+                android:id="@+id/community_unfireContents"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/view_unfire_navy" />
+            <TextView
+                android:id="@+id/unfireContents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center"
+                android:text="1112" />
 
             <!--<ImageView-->
                 <!--android:layout_width="20dp"-->
@@ -128,6 +141,19 @@
                 <!--android:layout_marginRight="10dp"-->
                 <!--android:layout_gravity="center"-->
                 <!--android:text="217" />-->
+            <ImageView
+                android:id="@+id/community_unstarContents"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/view_unscrap_navy"/>
+            <TextView
+                android:id="@+id/unstarContents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:text="217" />
 
         <!--</LinearLayout>-->
     <!--</RelativeLayout>-->

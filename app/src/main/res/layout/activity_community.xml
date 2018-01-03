@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/community_tab"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/communityTxt"
+            android:text="커뮤니티"
+            android:textSize="20dp"
+            android:textColor="#0E1949"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageButton
+                android:id="@+id/community_write"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:layout_alignLeft="@+id/community_search"
+                android:src="@drawable/navi_write_navy" />
+
+            <ImageButton
+                android:id="@+id/community_search"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/navi_search_navy"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            >
+            <Button
+                android:id="@+id/community_detail"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignLeft="@+id/community_search"
+                android:background="@drawable/navi_downarrow_gray"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/community_cate_tab"
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:id="@+id/cate_1"
+            android:layout_width="335.71dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/horsehead"
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cate_2"
+            android:layout_width="335.71dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cate_1"
+            android:layout_marginTop="12dp"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+            <Button
+                android:background="@drawable/horseheaddrawable_uncheck"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:paddingRight="13dp"
+                android:paddingLeft="13dp"
+                android:paddingTop="3dp"
+                android:textColor="#0E1949"
+                android:textSize="13dp"
+                android:text="리뷰" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_below="@id/cate_2"
+            android:layout_centerInParent="true"
+            >
+            <Button
+                android:id="@+id/community_cate_hide"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignLeft="@+id/community_search"
+                android:background="@drawable/navi_uparrow_gray"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
