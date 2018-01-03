@@ -31,8 +31,6 @@
         <activity android:name=".Community.CommunityPopActivity" />
         <activity android:name=".Shop.ShopCategoryActivity"></activity>
         <activity android:name=".LockActivity" />
-        <activity android:name=".PasswordCheckActivity"></activity>
-
     </application>
 
 </manifest>

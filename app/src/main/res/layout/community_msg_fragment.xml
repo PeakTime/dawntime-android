@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:focusable="true"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/community_tab"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF">
+
+        <ImageButton
+            android:id="@+id/community_backbtn2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/navi_back_navy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="쪽지 보내기"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+
+        <EditText
+            android:id="@+id/contents"
+            android:layout_width="330dp"
+            android:layout_height="240dp"
+            android:background="@drawable/graylinedrawable"
+            android:padding="10dp"
+            android:gravity="top"
+            android:hint="해당 게시물이 악의적인 내용이나..." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="328dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="14dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/sendcomplte"
+            android:background="@drawable/purpledrawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:text="보내기" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

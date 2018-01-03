@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community_detail.view.*
 
@@ -93,20 +94,21 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
         when (item!!.getItemId()) {
         //눌러진 MenuItem의 Item Id를 얻어와 식별
 
-            R.id.save ->{
+            R.id.sendMsg ->{
+
                 //TODO : save 누르면 할 일
+                val fm = activity.fragmentManager
+                val transacton = fm.beginTransaction()
+                val fragment = CommunityMsgFragment()
+                transacton.add(R.id.community_detail_container, fragment, "msg")
+                transacton.addToBackStack(null)
+                transacton.commit()
             }
         //Toast.makeText(this, "SAVE", Toast.LENGTH_SHORT).show()
-            R.id.search ->{
+            R.id.singo ->{
                 //TODO : search 누르면 할 일
-
+                Toast.makeText(context, "신고접수 되었습니다.", Toast.LENGTH_SHORT).show()
             }
-        //Toast.makeText(this, "SEARCH", Toast.LENGTH_SHORT).show()
-            R.id.setting ->{
-                //TODO : setting 누르면 할일
-
-            }
-        //Toast.makeText(this, "SETTING", Toast.LENGTH_SHORT).show()
         }
         return false
     }

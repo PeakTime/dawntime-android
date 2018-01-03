@@ -29,7 +29,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     private var communtiy_detail : Button? = null
     private var community_search : ImageButton? =null
 
-    // private var community_write: ImageButton? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -38,7 +38,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         communityList = v.findViewById(R.id.main_list)
         community_write = v.findViewById(R.id.community_write)
         community_search = v.findViewById(R.id.community_search)
-        // community_write = v.findViewById(R.id.community_write)
+
 
         val community_layout : RelativeLayout = v.findViewById(R.id.community_tab)
         val community_detail_layout : RelativeLayout= v.findViewById(R.id.community_cate_tab)

@@ -55,6 +55,7 @@
             android:layout_height="240dp"
             android:background="@drawable/graylinedrawable"
             android:padding="10dp"
+            android:gravity="top"
             android:hint="해당 게시물이 악의적인 내용이나..." />
     </LinearLayout>
 
