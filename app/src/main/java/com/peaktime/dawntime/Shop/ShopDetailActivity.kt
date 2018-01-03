@@ -29,7 +29,7 @@ class ShopDetailActivity : AppCompatActivity() {
         //        var adapter = PhotosAdapter(getChildFragmentManager(), photosUrl)
         //adapter = CustomPagerAdapter(this)
 
-        vp!!.setAdapter(PagerAdapter(supportFragmentManager))
+        vp!!.setAdapter(ShopViewPagerAdapter(supportFragmentManager))
         vp!!.setCurrentItem(0)
 
         tabLayout!!.setupWithViewPager(vp!!, true)

@@ -14,9 +14,9 @@ import com.peaktime.dawntime.Shop.fragment.fifthFragment;
  * Created by xlsdn on 2018-01-02.
  */
 
-public class PagerAdapter extends FragmentStatePagerAdapter
+public class ShopViewPagerAdapter extends FragmentStatePagerAdapter
 {
-    public PagerAdapter(android.support.v4.app.FragmentManager fm)
+    public ShopViewPagerAdapter(android.support.v4.app.FragmentManager fm)
     {
         super(fm);
     }

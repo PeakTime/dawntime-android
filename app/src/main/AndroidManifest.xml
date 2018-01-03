@@ -3,9 +3,6 @@
     package="com.peaktime.dawntime">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -32,6 +29,7 @@
         <activity android:name=".Shop.ShopSearchActivity" />
         <activity android:name=".Community.CommunitySearchActivity" />
         <activity android:name=".Community.CommunityPopActivity" />
+        <activity android:name=".Shop.ShopCategoryActivity"></activity>
         <activity android:name=".LockActivity" />
         <activity android:name=".PasswordCheckActivity"></activity>
 

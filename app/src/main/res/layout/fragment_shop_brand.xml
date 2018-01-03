@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:orientation="horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="22dp">
+
+        <Button
+            android:id="@+id/brand_first_btn"
+            android:text="플레저 랩"
+            android:width="102dp"
+            android:layout_height="28dp"
+            android:background="@drawable/shop_button"
+            android:textColor="#FFFFFF"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/brand_second_btn"
+            android:text="은하선 토이즈"
+            android:width="102dp"
+            android:layout_height="28dp"
+            android:background="@drawable/shop_button"
+            android:textColor="#FFFFFF"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/brand_third_btn"
+            android:text="레드 컨테이너"
+            android:width="102dp"
+            android:layout_height="28dp"
+            android:background="@drawable/shop_button"
+            android:textColor="#FFFFFF"
+            android:layout_margin="5dp"/>
+
+
+
+    </GridLayout>
+
+
+</LinearLayout>

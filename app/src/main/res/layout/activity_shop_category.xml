@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.peaktime.dawntime.Shop.ShopActivity"
-    >
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:background="#ED508E">
+    tools:context="com.peaktime.dawntime.Shop.ShopCategoryActivity">
 
-    <ImageButton
-        android:id="@+id/shopBackBtn"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/shop_navi_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#ED508E">
+
+        <ImageButton
+            android:id="@+id/shopBackBtn"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/shop_navi_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            />
 
         <TextView
             android:id="@+id/title"
@@ -39,25 +39,23 @@
             android:layout_toRightOf="@+id/title"
             android:layout_centerVertical="true"
             />
-    <ImageButton
-        android:id="@+id/shopSearchBtn"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/shop_navi_search_white"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"/>
+        <ImageButton
+            android:id="@+id/shopSearchBtn"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shop_navi_search_white"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"/>
 
-</RelativeLayout>
+    </RelativeLayout>
 
-
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/shop_tab"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/shop_category_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        />
+        android:layout_marginRight="16dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -67,16 +65,15 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="9dp"/>
 
+    <!--여기에 최신순 추가하기-->
+
     <android.support.v4.view.ViewPager
-        android:id="@+id/shop_main_viewpager"
+        android:id="@+id/shop_category_viewpager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         >
     </android.support.v4.view.ViewPager>
-
-
-
-
 
 
 
