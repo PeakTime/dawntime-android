@@ -2,16 +2,16 @@ package com.peaktime.dawntime
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+
 
 class MyPageFragment : Fragment() {
 
@@ -138,6 +138,24 @@ class MyPageFragment : Fragment() {
         view4!!.isEnabled = b
         view5!!.isEnabled = b
         view6!!.isEnabled = b
+
+        if (b)//활성화 상태
+        {
+            image!!.setImageResource(R.drawable.view_activeprofile_navy)
+            myWrittenBtn!!.setTextColor(Color.parseColor("#0E1949"))
+            messageBtn!!.setTextColor(Color.parseColor("#0E1949"))
+            scrapBtn!!.setTextColor(Color.parseColor("#0E1949"))
+            basketBtn!!.setTextColor(Color.parseColor("#ED508E"))
+            optionBtn!!.setTextColor(Color.parseColor("#4F4F4F"))
+
+        } else {
+            image!!.setImageResource(R.drawable.view_unactiveprofile_gray)
+            myWrittenBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
+            messageBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
+            scrapBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
+            basketBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
+            optionBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
+        }
     }
 
 
