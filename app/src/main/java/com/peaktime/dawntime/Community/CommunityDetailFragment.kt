@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.TextView
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community_detail.view.*
 
@@ -20,18 +22,17 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     private var communityDatas: ArrayList<CommunityData>? = null
     private var index : Int = 0
 
-
-//    var community_unstarContents : ImageView?= null
-//    var community_unfireContents : ImageView?= null
-//    var unstarContents : TextView?= null
-//    var unfireContents : TextView?= null
+    var community_unstarContents : ImageView?= null
+    var community_unfireContents : ImageView?= null
+    var unstarContents : TextView?= null
+    var unfireContents : TextView?= null
+    var unstar_touch : Int ?= 0
+    var unfire_touch : Int ?= 0
 //
 //    community_unstarContents = findViewById(R.id.community_unstarContents)
 //    community_unfireContents = findViewById(R.id.community_unfireContents)
 //    unstarContents = findViewById(R.id.unfireContents)
 //    unfireContents = findViewById(R.id.unstarContents)
-
-
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -47,6 +48,37 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                 val fragment = CommunityDetailFragment()
                 transacton.remove(this)
                 transacton.commit()
+            }
+        }
+
+        community_unstarContents = v.findViewById(R.id.community_unscrapContents)
+        community_unfireContents = v.findViewById(R.id.community_unfireContents)
+        unstarContents = v.findViewById(R.id.unfireContents)
+        unfireContents = v.findViewById(R.id.unscrapContents)
+
+        community_unstarContents!!.setOnClickListener{
+            if(unstar_touch==0)
+            {
+                community_unstarContents!!.setImageResource(R.drawable.view_scrap_yellow)
+                unstar_touch = 1
+            }
+            else
+            {
+                community_unstarContents!!.setImageResource(R.drawable.view_unscrap_navy)
+                unstar_touch = 0
+            }
+
+        }
+        community_unfireContents!!.setOnClickListener{
+            if(unfire_touch==0)
+            {
+                community_unfireContents!!.setImageResource(R.drawable.view_fire_red)
+                unfire_touch = 1
+            }
+            else
+            {
+                community_unfireContents!!.setImageResource(R.drawable.view_unfire_navy)
+                unfire_touch = 0
             }
         }
 
@@ -84,48 +116,4 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
         }
         return false
     }
-
-    /*community_unstarContents!!.setOnTouchListener(object : View.OnTouchListener {
-
-    override fun onTouch(v: View, event: MotionEvent): Boolean {
-
-        when (event.action) {
-
-            MotionEvent.ACTION_DOWN -> {
-                unstarContents!!.text = unstarContents!!.text.toString() +1
-
-            }
-
-            MotionEvent.ACTION_MOVE -> {
-
-            }
-
-            MotionEvent.ACTION_CANCEL -> if (!mHasPerformedLongPress) {
-                // This is a tap, so remove the longpress check
-                removeLongPressCallback()
-            }
-
-            MotionEvent.ACTION_UP -> {
-                Log.d("CLICK", "ACTION_UP")
-
-                if (!mHasPerformedLongPress) {
-                    // Long Click을 처리되지 않았으면 제거함.
-                    removeLongPressCallback()
-
-                    // Short Click 처리 루틴을 여기에 넣으면 됩니다.
-                    performOneClick()
-
-                }
-            }
-
-            else -> {
-            }
-        }
-
-        return false
-    }
-})*/
-
-
-
 }

@@ -115,7 +115,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 //                return false
 //            }
 //       }
-
+        //글 검색
         v.community_search.setOnClickListener {
             val fm = activity.fragmentManager
             val transacton = fm.beginTransaction()
@@ -127,13 +127,10 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             transacton.addToBackStack(null)
             transacton.commit()
         }
-
         return v
 
 
     }
-
-
 
     override fun onClick(p0: View?) {
         val fm = activity.fragmentManager

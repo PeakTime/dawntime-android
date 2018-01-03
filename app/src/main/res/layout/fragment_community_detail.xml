@@ -92,6 +92,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/community_unfireContents"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/view_unfire_navy" />
@@ -121,12 +122,13 @@
 
 
             <ImageView
+                android:id="@+id/community_unscrapContents"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/view_unscrap_navy" />
 
             <TextView
-                android:id="@+id/unstarContents"
+                android:id="@+id/unscrapContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
