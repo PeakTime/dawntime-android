@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
             <EditText
                 android:id="@+id/communitySearchEditText"
-                android:layout_width="286dp"
+                android:layout_width="300dp"
                 android:layout_height="32dp"
                 android:layout_marginLeft="17dp"
                 android:layout_centerVertical="true"

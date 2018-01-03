@@ -75,41 +75,45 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="8dp"
-                android:layout_height="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/view_unfire_navy" />
             <TextView
                 android:id="@+id/unfireContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="8dp"
+                android:layout_marginRight="3dp"
                 android:layout_gravity="center"
-                android:text="contents" />
+                android:text="1117" />
 
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/view_reply_navy"/>
             <TextView
                 android:id="@+id/unreplyContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="8dp"
+                android:layout_marginRight="3dp"
+
                 android:layout_gravity="center"
-                android:text="contents" />
+                android:text="256" />
 
 
             <ImageView
-                android:layout_width="11dp"
-                android:layout_height="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/view_unscrap_navy"/>
             <TextView
                 android:id="@+id/unstarContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
                 android:textSize="8dp"
                 android:layout_gravity="center"
-                android:text="contents" />
+                android:text="465" />
 
         </LinearLayout>
     </RelativeLayout>

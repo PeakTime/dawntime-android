@@ -33,8 +33,6 @@
         <activity android:name=".Community.CommunitySearchActivity" />
         <activity android:name=".Community.CommunityPopActivity" />
         <activity android:name=".LockActivity" />
-        <activity android:name=".PasswordCheckActivity"></activity>
-
     </application>
 
 </manifest>
