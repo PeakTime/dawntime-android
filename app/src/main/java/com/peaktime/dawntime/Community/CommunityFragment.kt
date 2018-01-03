@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.fragment_community.view.*
 class CommunityFragment : Fragment(), View.OnClickListener {
 
     private var onItemClick: View.OnClickListener? = null
-
     private var communityList: RecyclerView? = null
     private var communityDatas: ArrayList<CommunityData>? = null
     private var adapter: CommunityAdapter? = null
@@ -132,7 +131,6 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         val bundle = Bundle()
         bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
         fragment.arguments = bundle
-
         transacton.add(R.id.community_container, fragment, "detial")
         transacton.addToBackStack(null)
         transacton.commit()
