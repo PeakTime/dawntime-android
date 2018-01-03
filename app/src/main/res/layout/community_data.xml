@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:orientation="horizontal"
-    android:id="@+id/community_data">
+    android:id="@+id/community_data"
+    android:background="@drawable/datadrawable"
+    >
 
     <RelativeLayout
         android:id="@+id/layout1"
@@ -13,7 +15,7 @@
 
         <TextView
             android:id="@+id/horsehead"
-            android:background="@drawable/horseheaddrawble"
+            android:background="@drawable/navydrawable"
             android:layout_width="48dp"
             android:layout_height="19dp"
             android:layout_margin="10dp"

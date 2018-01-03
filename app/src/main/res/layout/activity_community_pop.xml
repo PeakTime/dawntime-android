@@ -13,7 +13,7 @@
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:layout_gravity="bottom"
-        android:background="@drawable/popdrawble">
+        android:background="@drawable/graylinedrawable">
 
         <Button
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/popdrawble"
+            android:background="@drawable/graylinedrawable"
             android:gravity="center"
             android:text="취소"
             />

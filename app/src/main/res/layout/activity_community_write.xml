@@ -33,70 +33,69 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
+        android:layout_margin="15dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center">
 
         <EditText
             android:id="@+id/title"
-            android:layout_width="328dp"
+            android:layout_width="330dp"
             android:layout_height="33dp"
-            android:layout_marginTop ="15dp"
-            android:layout_marginLeft="15dp"
             android:layout_marginBottom="10dp"
             android:padding="5dp"
-            android:background="@drawable/popdrawble"
+            android:background="@drawable/graylinedrawable"
             android:hint="제목" />
 
-        <TextView
+        <EditText
             android:id="@+id/contents"
-            android:layout_width="328dp"
+            android:layout_width="330dp"
             android:layout_height="240dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/popdrawble"
+            android:background="@drawable/graylinedrawable"
             android:padding="10dp"
             android:hint="해당 게시물이 악의적인 내용이나..." />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="32dp"
-        android:layout_margin="15dp"
-        android:layout_gravity="center">
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
         <Button
             android:id="@+id/horsehead_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:background="@drawable/graylinedrawable"
+            android:layout_marginRight="20dp"
             android:textSize="14dp"
-            android:layout_weight="1"
             android:text="머릿말 선택" />
 
         <Button
             android:id="@+id/picture_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="136dp"
+            android:layout_height="32dp"
+            android:background="@drawable/graylinedrawable"
             android:textSize="14dp"
-            android:layout_weight="1"
             android:text="사진 추가" />
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="328dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:gravity="center">
+        android:layout_margin="23dp"
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/writecomplte"
-            android:layout_width="wrap_content"
+            android:background="@drawable/purpledrawable"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="글 작성하기" />
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            android:text="글 올리기" />
     </LinearLayout>
 
 </LinearLayout>
