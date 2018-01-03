@@ -1,4 +1,4 @@
-package com.peaktime.dawntime.Shop
+package com.peaktime.dawntime.Community
 
 import android.app.Fragment
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import com.peaktime.dawntime.Community.CommunityData
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community_detail.view.*
 
@@ -20,6 +19,20 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
 
     private var communityDatas: ArrayList<CommunityData>? = null
     private var index : Int = 0
+
+
+//    var community_unstarContents : ImageView?= null
+//    var community_unfireContents : ImageView?= null
+//    var unstarContents : TextView?= null
+//    var unfireContents : TextView?= null
+//
+//    community_unstarContents = findViewById(R.id.community_unstarContents)
+//    community_unfireContents = findViewById(R.id.community_unfireContents)
+//    unstarContents = findViewById(R.id.unfireContents)
+//    unfireContents = findViewById(R.id.unstarContents)
+
+
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val v = inflater!!.inflate(R.layout.fragment_community_detail,container,false)
@@ -39,7 +52,6 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
 
 
         v.community_gitar!!.setOnClickListener {
-
             Log.v("community", "community")
         val popup = PopupMenu(activity, v.community_gitar)//v는 클릭된 뷰를 의미
         val inflater = activity.menuInflater
@@ -72,4 +84,48 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
         }
         return false
     }
+
+    /*community_unstarContents!!.setOnTouchListener(object : View.OnTouchListener {
+
+    override fun onTouch(v: View, event: MotionEvent): Boolean {
+
+        when (event.action) {
+
+            MotionEvent.ACTION_DOWN -> {
+                unstarContents!!.text = unstarContents!!.text.toString() +1
+
+            }
+
+            MotionEvent.ACTION_MOVE -> {
+
+            }
+
+            MotionEvent.ACTION_CANCEL -> if (!mHasPerformedLongPress) {
+                // This is a tap, so remove the longpress check
+                removeLongPressCallback()
+            }
+
+            MotionEvent.ACTION_UP -> {
+                Log.d("CLICK", "ACTION_UP")
+
+                if (!mHasPerformedLongPress) {
+                    // Long Click을 처리되지 않았으면 제거함.
+                    removeLongPressCallback()
+
+                    // Short Click 처리 루틴을 여기에 넣으면 됩니다.
+                    performOneClick()
+
+                }
+            }
+
+            else -> {
+            }
+        }
+
+        return false
+    }
+})*/
+
+
+
 }

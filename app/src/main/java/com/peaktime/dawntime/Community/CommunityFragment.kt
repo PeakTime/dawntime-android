@@ -8,13 +8,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import com.peaktime.dawntime.CommonData
 import android.widget.Button
-import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.CommunityDetailFragment
-import android.widget.LinearLayout
+import android.widget.ImageButton
 import android.widget.RelativeLayout
+import com.peaktime.dawntime.CommonData
+import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community.view.*
 
 
@@ -31,6 +29,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     private var communtiy_detail : Button? = null
     private var community_search : ImageButton? =null
 
+    // private var community_write: ImageButton? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -39,11 +38,12 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         communityList = v.findViewById(R.id.main_list)
         community_write = v.findViewById(R.id.community_write)
         community_search = v.findViewById(R.id.community_search)
+        // community_write = v.findViewById(R.id.community_write)
 
         val community_layout : RelativeLayout = v.findViewById(R.id.community_tab)
         val community_detail_layout : RelativeLayout= v.findViewById(R.id.community_cate_tab)
 
-        communityList!!.layoutManager = LinearLayoutManager(activity)
+        communityList!!.layoutManager = LinearLayoutManager(activity) as RecyclerView.LayoutManager?
 
         communityDatas = ArrayList<CommunityData>()
         communityDatas!!.add(CommunityData(R.drawable.brown, "one", "원", "브라운"))
@@ -57,8 +57,6 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         CommonData.communityDatas = communityDatas!!
 
         adapter = CommunityAdapter(communityDatas)
-
-
         adapter!!.setOnItemClickListener(this)
         communityList!!.adapter = adapter
 
@@ -81,9 +79,20 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 
         //글 작성
        community_write!!.setOnClickListener {
-            val intent = Intent(activity, CommunityWriteActivity::class.java)
-            startActivity(intent)
+           val intent = Intent(activity, CommunityWriteFragment::class.java)
+           startActivity(intent)
+       }
+        v.community_write!!.setOnClickListener {
+                val fm = activity.fragmentManager
+                val transacton = fm.beginTransaction()
+                val fragment = CommunityWriteFragment()
+                transacton.add(R.id.community_container, fragment, "write")
+                transacton.addToBackStack(null)
+                transacton.commit()
         }
+
+
+
 
 //        val listener = object : OnMenuItemClickListener() {
 //
@@ -120,6 +129,8 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         }
 
         return v
+
+
     }
 
 

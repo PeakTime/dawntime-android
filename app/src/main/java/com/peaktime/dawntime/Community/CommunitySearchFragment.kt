@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.CommunityDetailFragment
 
 /**
  * Created by 예은 on 2018-01-03.

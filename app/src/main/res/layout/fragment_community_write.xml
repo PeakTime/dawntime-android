@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.peaktime.dawntime.Community.CommunityWriteActivity">
-
+    android:background="#ffffff"
+    tools:context="com.peaktime.dawntime.Community.CommunityWriteFragment">
 
     <RelativeLayout
         android:id="@+id/community_tab"
@@ -124,5 +124,6 @@
             android:textColor="#FFFFFF"
             android:text="글 올리기" />
     </LinearLayout>
+
 
 </LinearLayout>

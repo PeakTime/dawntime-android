@@ -34,7 +34,8 @@
         <activity android:name=".Community.CommunitySearchActivity" />
         <activity android:name=".Community.CommunityPopActivity" />
         <activity android:name=".Community.CommunityWriteActivity" />
-        <activity android:name=".LockActivity"></activity>
+        <activity android:name=".LockActivity" />
+        <activity android:name=".Community.CommunityWriteFragment"></activity>
     </application>
 
 </manifest>
