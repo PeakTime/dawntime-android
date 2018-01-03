@@ -40,6 +40,8 @@ class CommunityActivity : Fragment(), View.OnClickListener {
         communityDatas!!.add(CommunityData(R.drawable.selly, "three", "삼", "샐리"))
         communityDatas!!.add(CommunityData(R.drawable.brown, "one", "원", "브라운"))
         communityDatas!!.add(CommunityData(R.drawable.cony, "two", "투", "코니"))
+        communityDatas!!.add(CommunityData(R.drawable.brown, "one", "원", "브라운"))
+        communityDatas!!.add(CommunityData(R.drawable.cony, "two", "투", "코니"))
 
         adapter = CommunityAdapter(communityDatas)
 

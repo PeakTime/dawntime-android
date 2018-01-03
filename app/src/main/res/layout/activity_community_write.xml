@@ -13,19 +13,19 @@
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#2068DF">
+        android:background="#FFFFFF">
 
         <ImageButton
             android:id="@+id/community_backbtn1"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_shop"
+            android:background="@drawable/navi_back_navy"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"/>
 
         <TextView
-            android:layout_width="55dp"
-            android:layout_height="29dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="글쓰기"
             android:textSize="20dp"
             android:layout_centerInParent="true"/>
@@ -38,53 +38,52 @@
         android:layout_margin="16dp"
         android:orientation="vertical">
 
-        <TextView
+        <EditText
             android:id="@+id/title"
             android:layout_width="328dp"
             android:layout_height="33dp"
-            android:layout_marginBottom="15dp"
-            android:background="#FFC4B7"
-            android:hint="제목"
-            android:text="title" />
+            android:layout_marginTop ="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:background="@drawable/popdrawble"
+            android:hint="제목" />
 
         <TextView
             android:id="@+id/contents"
             android:layout_width="328dp"
             android:layout_height="240dp"
-            android:background="#90D133"
-            android:text="contents" />
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/popdrawble"
+            android:padding="10dp"
+            android:hint="해당 게시물이 악의적인 내용이나..." />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_height="32dp"
         android:layout_margin="15dp"
-        android:gravity="center">
+        android:layout_gravity="center">
 
         <Button
             android:id="@+id/horsehead_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14dp"
             android:layout_weight="1"
-            android:text="말머리 선택" />
+            android:text="머릿말 선택" />
 
         <Button
             android:id="@+id/picture_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="14dp"
             android:layout_weight="1"
-            android:text="사진 선택" />
+            android:text="사진 추가" />
     </LinearLayout>
 
-    //pictureview들어가는곳
-
-    <LinearLayout
-        android:id="@+id/inlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

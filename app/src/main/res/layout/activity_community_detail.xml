@@ -12,26 +12,28 @@
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#2068DF">
+        android:background="#FFFFFF">
 
         <ImageButton
             android:id="@+id/community_backbtn"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_shop"
+            android:background="@drawable/navi_back_navy"
             android:layout_width="48dp"
             android:layout_height="48dp" />
 
         <TextView
-            android:layout_width="37dp"
-            android:layout_height="29dp"
-            android:layout_toRightOf="@+id/community_backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/font"
             android:text="글쓰기"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:gravity="center" />
         <ImageButton
             android:id="@+id/community_gitar"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_shop"
+            android:background="@drawable/navi_search_navy"
             android:layout_width="48dp"
             android:layout_height="48dp" />
 
@@ -42,12 +44,12 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="10dp"
-        android:background="#d2c7c7"
+        android:background="#FCFCFC"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="322dp"
-            android:layout_height="132dp"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="22dp">
@@ -56,53 +58,77 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:text="title" />
+                android:text="title"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="contents" />
+                android:text="contents"
+                android:layout_margin="16dp"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginLeft="16dp">
             <TextView
-                android:layout_width="60dp"
-                android:layout_height="18dp"
-                android:text="날짜" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:text="2017.12.26" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="9.34dp"
-            android:layout_marginBottom="8dp"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/cony"
-                android:layout_weight="1"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/view_fire_red" />
+            <TextView
+                android:id="@+id/unfireContents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center"
+                android:text="1112" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/brown"
-                android:layout_weight="1"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/view_reply_navy"/>
+            <TextView
+                android:id="@+id/unreplyContents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginRight="15dp"
+                android:layout_gravity="center"
+                android:text="354" />
+
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/selly"
-                android:layout_weight="1"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/view_scrap_yellow"/>
+            <TextView
+                android:id="@+id/unstarContents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:text="217" />
+
         </LinearLayout>
     </RelativeLayout>
 
@@ -118,20 +144,27 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="28dp"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:background="#EDEDED"
+        android:layout_gravity="center"
+        >
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="28dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="댓글 작성하기"
+            android:paddingLeft="10dp"
+            android:textSize="13dp"
+            android:layout_gravity="center" />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:text="게시"
-            android:textSize="10dp"
-            android:layout_gravity="center"/>
+            android:textSize="13dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
     </LinearLayout>
 
 
