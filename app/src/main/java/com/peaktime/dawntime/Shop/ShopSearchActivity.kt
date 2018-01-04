@@ -7,23 +7,29 @@ import android.view.View
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.activity_shop_search.*
 
-class ShopSearchActivity : AppCompatActivity() {
+class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_search)
 
-        shopExitBtn!!.setOnClickListener(clickListener)
+        shopExitBtn!!.setOnClickListener(this)
     }
 
-    private var clickListener = View.OnClickListener { v ->
-        when (v.id) {
+
+
+    override fun onClick(v : View?) {
+
+
+        when (v!!.id) {
 
             R.id.shopExitBtn -> {
                 this.finish()
             }
 
-
         }
+
     }
+
+
 }

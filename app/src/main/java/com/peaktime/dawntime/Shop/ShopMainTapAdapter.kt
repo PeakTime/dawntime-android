@@ -10,13 +10,13 @@ import com.peaktime.dawntime.Shop.fragment.*
  */
 class ShopMainTapAdapter(fm : FragmentManager?) : FragmentStatePagerAdapter(fm) {
     var tabCount : Int = 0
-    var newTab : NewFragment? = null
+    var goodsTab: GoodsFragment? = null
     var categoryTab : CategoryFragment? = null
     var brandTab : BrandFragment? = null
 
     constructor(fm : FragmentManager?,tabCount : Int) : this(fm){
         this.tabCount = tabCount
-        this.newTab = NewFragment()
+        this.goodsTab = GoodsFragment()
         this.categoryTab = CategoryFragment()
         this.brandTab = BrandFragment()
     }
@@ -25,7 +25,7 @@ class ShopMainTapAdapter(fm : FragmentManager?) : FragmentStatePagerAdapter(fm) 
 
     override fun getItem(position: Int): Fragment? {
         when(position){
-            0 ->return newTab
+            0 ->return goodsTab
             1 ->return categoryTab
             2 ->return brandTab
         }

@@ -5,21 +5,31 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
 import com.peaktime.dawntime.Shop.ShopMainTapAdapter
 import kotlinx.android.synthetic.main.activity_shop.*
 
-class ShopActivity : AppCompatActivity() {
+class ShopActivity : AppCompatActivity() , View.OnClickListener{
+
+//    internal var categoryKindNum = 0
+//
+//    override fun onCategorySet(num: Int) {
+//        categoryKindNum = num
+//        //Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
+//    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
 
-        shopBackBtn!!.setOnClickListener(clickListener)
-        shopSearchBtn!!.setOnClickListener(clickListener)
+        shopBackBtn!!.setOnClickListener(this)
+        shopSearchBtn!!.setOnClickListener(this)
 
         shop_tab.addTab(shop_tab.newTab().setText("NEW"))
         shop_tab.addTab(shop_tab.newTab().setText("CATEGORY"))
@@ -28,8 +38,6 @@ class ShopActivity : AppCompatActivity() {
         var tabAdapter = ShopMainTapAdapter(supportFragmentManager, shop_tab.tabCount)
 
         shop_main_viewpager.adapter = tabAdapter
-
-//        shop_main_viewpager.currentItem = 0
 
         shop_main_viewpager.addOnPageChangeListener(
                 TabLayout.TabLayoutOnPageChangeListener(shop_tab))
@@ -46,19 +54,27 @@ class ShopActivity : AppCompatActivity() {
 
     }
 
-        private var clickListener = View.OnClickListener { v ->
-        when (v.id) {
+
+    override fun onClick(v : View?) {
+
+
+        when (v!!.id) {
 
             R.id.shopBackBtn -> {
                 this.finish()
             }
 
             R.id.shopSearchBtn -> {
-            var intent = Intent(applicationContext, ShopSearchActivity::class.java)
-            startActivity(intent)
+                var intent = Intent(applicationContext, ShopSearchActivity::class.java)
+                startActivity(intent)
+            }
+
         }
 
-
-        }
     }
+
+
+
+
+
 }

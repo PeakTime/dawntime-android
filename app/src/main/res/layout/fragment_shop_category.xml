@@ -105,7 +105,7 @@
             android:layout_margin="5dp"/>
 
         <Button
-            android:id="@+id/luvejel_btn"
+            android:id="@+id/luvegel_btn"
             android:text="러브젤"
             android:width="102dp"
             android:layout_height="28dp"
@@ -115,10 +115,5 @@
 
     </GridLayout>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
 
 </LinearLayout>

@@ -16,7 +16,7 @@ import com.peaktime.dawntime.Shop.ShopDetailActivity
 /**
  * Created by xlsdn on 2018-01-03.
  */
-class NewFragment : Fragment() , View.OnClickListener{
+class GoodsFragment : Fragment() , View.OnClickListener{
 
     private  var shopList : RecyclerView?=null
     private  var shopDatas : ArrayList<ShopData>? = null
@@ -61,5 +61,7 @@ class NewFragment : Fragment() , View.OnClickListener{
 //        Toast.makeText(this, name, Toast.LENGTH_LONG).show()
 
     }
+
+
 
 }

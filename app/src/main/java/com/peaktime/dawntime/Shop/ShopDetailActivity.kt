@@ -11,7 +11,7 @@ import android.support.v4.view.ViewPager
 
 
 
-class ShopDetailActivity : AppCompatActivity() {
+class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
     var vp: ViewPager? = null
     var tabLayout: TabLayout?=null
 
@@ -19,8 +19,8 @@ class ShopDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_detail)
 
-        shopBackBtn!!.setOnClickListener(clickListener)
-        shopSearchBtn!!.setOnClickListener(clickListener)
+        shopBackBtn!!.setOnClickListener(this)
+        shopSearchBtn!!.setOnClickListener(this)
 
         vp = findViewById(R.id.photos_viewpager)
         tabLayout = findViewById(R.id.tab_layout)
@@ -43,18 +43,26 @@ class ShopDetailActivity : AppCompatActivity() {
 
 
 
-    private var clickListener = View.OnClickListener { v ->
-        when (v.id) {
+
+    override fun onClick(v : View?) {
+
+
+        when (v!!.id) {
 
             R.id.shopBackBtn -> {
-               this.finish()
+                this.finish()
             }
+
             R.id.shopSearchBtn -> {
                 var intent = Intent(applicationContext, ShopSearchActivity::class.java)
                 startActivity(intent)
             }
 
-
         }
     }
+
+
+
+
+
 }

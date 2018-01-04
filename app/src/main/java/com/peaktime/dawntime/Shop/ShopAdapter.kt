@@ -19,7 +19,7 @@ class ShopAdapter(var dataList : ArrayList<ShopData>?) : RecyclerView.Adapter<Sh
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ShopViewHolder {
         val mainView : View = LayoutInflater.from(parent!!.context)
-                .inflate(R.layout.shop_data, parent, false)
+                .inflate(R.layout.shop_goods_item, parent, false)
 
         mainView.setOnClickListener(onItemClick)
 
