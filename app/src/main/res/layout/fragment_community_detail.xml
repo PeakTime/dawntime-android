@@ -161,8 +161,9 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/reply_list"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -175,6 +176,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/reply_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -185,6 +187,7 @@
                 android:textSize="13dp" />
 
             <Button
+                android:id="@+id/reply_send"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

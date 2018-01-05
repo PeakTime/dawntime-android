@@ -32,9 +32,6 @@ class CommunityWriteFragment : Fragment(){
 //        intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
 //        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
-
-
-
         v.horsehead_button!!.setOnClickListener{
             val horseheadDialog = AlertDialog.Builder(context)
             val dialogView = inflater.inflate(R.layout.fragment_community_write_horseheaddialog, null)

@@ -68,6 +68,7 @@
             android:id="@+id/community_cate_tab"
             android:layout_width="match_parent"
             android:layout_height="107dp"
+            android:background="#FFFFFF"
             android:visibility="gone"
             >
             <LinearLayout

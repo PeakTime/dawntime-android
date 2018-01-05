@@ -5,6 +5,6 @@ package com.peaktime.dawntime.Community
  */
 class CommunityReplyData (
     var replyTitle : String,
-    var replyContents : String,
-    var replyDate : String
+    var replyDate : String,
+    var replyContents : String
 )
