@@ -106,7 +106,7 @@
             <View
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.25dp"
                 android:background="#B3BACE" />
 
             <Button
@@ -124,7 +124,7 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.25dp"
                 android:background="#B3BACE" />
 
             <Button
@@ -142,7 +142,7 @@
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.25dp"
                 android:background="#B3BACE" />
 
             <Button
@@ -153,14 +153,14 @@
                 android:background="#fcfcfc"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
-                android:text="쪽지"
+                android:text="쪽지함"
                 android:textColor="#0E1949"
                 android:textSize="20sp" />
 
             <View
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.25dp"
                 android:background="#B3BACE" />
 
             <Button
@@ -178,8 +178,8 @@
             <View
                 android:id="@+id/view5"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#B3BACE" />
+                android:layout_height="0.25dp"
+                android:background="#ED508E" />
 
             <Button
                 android:id="@+id/option_btn"
@@ -196,9 +196,8 @@
             <View
                 android:id="@+id/view6"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.25dp"
                 android:background="#B3BACE" />
-
 
         </LinearLayout>
 

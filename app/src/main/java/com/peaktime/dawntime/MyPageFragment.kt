@@ -100,6 +100,16 @@ class MyPageFragment : Fragment() {
             transacton.commit()
         }
 
+        messageBtn!!.setOnClickListener {
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
+            val fg = ChildMyPageMessageBox()
+            transacton.add(R.id.child_container, fg, "message")
+            transacton.addToBackStack(null)
+            transacton.commit()
+        }
+
+
         return v
     }
 

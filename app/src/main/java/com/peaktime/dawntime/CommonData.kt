@@ -7,5 +7,6 @@ import com.peaktime.dawntime.Community.CommunityData
  */
 object CommonData {
     var communityDatas: ArrayList<CommunityData> = ArrayList()
+    var messageBoxData: ArrayList<ChildMyPageMessageBoxData> = ArrayList()
 
 }
