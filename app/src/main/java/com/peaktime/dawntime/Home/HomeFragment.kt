@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.peaktime.dawntime.Column.ColumnListFragment
+import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.ShopActivity
 import java.util.*
@@ -113,6 +114,12 @@ class HomeFragment : Fragment(),View.OnClickListener {
         peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu4_blue,"bbb","ccc"))
         peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,"ccc","eee"))
         peektimeAdapter = PeektimeAdapter(peektimeDatas)
+        peektimeAdapter!!.setOnItemClick(View.OnClickListener {
+            val fm = fragmentManager.beginTransaction()
+            fm.replace(R.id.home_fragment_container,CommunityDetailFragment())
+            fm.addToBackStack(null)
+            fm.commit()
+        })
 
         peektimeRecycler!!.adapter = peektimeAdapter
         peektimeRecycler!!.addItemDecoration(RecyclerViewDecoration(15))
@@ -146,6 +153,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
             }
         }
     }
+
+
 
 }
 

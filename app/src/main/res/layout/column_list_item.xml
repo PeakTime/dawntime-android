@@ -6,23 +6,31 @@
     <ImageView
         android:id="@+id/column_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="56dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#0E1949">
 
         <TextView
             android:id="@+id/column_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:textSize="15dp"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"/>
 
         <TextView
             android:id="@+id/column_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:textSize="11dp"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"/>
 
     </RelativeLayout>
 

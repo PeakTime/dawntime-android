@@ -17,6 +17,7 @@
             android:text="title"
             android:textSize="17dp"
             android:textColor="#FFFFFF"
+            android:includeFontPadding="false"
             android:fontFamily="@font/noto_sans_cjk_kr_demilight"/>
 
         <TextView
@@ -28,7 +29,88 @@
             android:text="text"
             android:textSize="14dp"
             android:textColor="#FFFFFF"
+            android:includeFontPadding="false"
             android:fontFamily="@font/noto_sans_cjk_kr_light"/>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:id="@+id/like_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/comment_linear"
+                android:layout_marginRight="7dp">
+
+                <ImageView
+                    android:background="@drawable/view_unfire_navy"
+                    android:layout_width="7.12dp"
+                    android:layout_height="9.67dp"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/like_cnt_text"
+                    android:text="1000"
+                    android:textSize="7.91dp"
+                    android:textColor="#FFFFFF"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/noto_sans_cjk_kr_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comment_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/scrap_linear"
+                android:layout_marginRight="7dp">
+
+                <ImageView
+                    android:background="@drawable/view_reply_navy"
+                    android:layout_width="8.8dp"
+                    android:layout_height="7.6dp"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/comment_cnt_text"
+                    android:text="354"
+                    android:textSize="7.91dp"
+                    android:textColor="#FFFFFF"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/noto_sans_cjk_kr_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/scrap_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp">
+
+                <ImageView
+                    android:background="@drawable/view_unscrap_navy"
+                    android:layout_width="7.9dp"
+                    android:layout_height="7.9dp"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/scrap_cnt_text"
+                    android:text="517"
+                    android:textSize="7.91dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/noto_sans_cjk_kr_light"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

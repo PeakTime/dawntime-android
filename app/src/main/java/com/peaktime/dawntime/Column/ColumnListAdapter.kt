@@ -12,7 +12,8 @@ import com.peaktime.dawntime.R
 class ColumnListAdapter(var dataList : ArrayList<ColumnListData>?) : RecyclerView.Adapter<ColumnListViewHolder>() {
     private var onItemClick : View.OnClickListener? = null
     override fun onBindViewHolder(holder: ColumnListViewHolder?, position: Int) {
-        holder!!.columnImg.setImageResource(dataList!!.get(position).columnImg)
+        //holder!!.columnImg.setImageResource(dataList!!.get(position).columnImg)
+        holder!!.columnImg.setBackgroundResource(dataList!!.get(position).columnImg)
         holder!!.columnText1.text = dataList!!.get(position).columnText1
         holder!!.columnText2.text = dataList!!.get(position).columnText2
     }

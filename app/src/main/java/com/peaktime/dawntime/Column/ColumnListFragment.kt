@@ -1,5 +1,6 @@
 package com.peaktime.dawntime.Column
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -33,11 +34,21 @@ class ColumnListFragment : Fragment(),View.OnClickListener {
         columnRecycler = v.findViewById(R.id.column_recycler_list)
         columnRecycler!!.layoutManager = LinearLayoutManager(activity)
         columnRecycler!!.adapter = columnAdapter
+        columnRecycler!!.addItemDecoration(RecyclerViewDecoration(15))
 
         return v
     }
 
     override fun onClick(v: View?) {
 
+    }
+
+    class RecyclerViewDecoration(var divHeight : Int?) : RecyclerView.ItemDecoration(){
+
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            super.getItemOffsets(outRect, view, parent, state)
+
+            outRect!!.bottom = divHeight!!
+        }
     }
 }

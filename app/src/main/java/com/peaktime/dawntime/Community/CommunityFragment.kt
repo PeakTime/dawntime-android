@@ -83,12 +83,16 @@ class CommunityFragment : Fragment(), View.OnClickListener {
            startActivity(intent)
        }
         v.community_write!!.setOnClickListener {
-                val fm = activity.fragmentManager
-                val transacton = fm.beginTransaction()
-                val fragment = CommunityWriteFragment()
-                transacton.add(R.id.community_container, fragment, "write")
-                transacton.addToBackStack(null)
-                transacton.commit()
+//                val fm = activity.fragmentManager
+//                val transacton = fm.beginTransaction()
+//                val fragment = CommunityWriteFragment()
+//                transacton.add(R.id.community_container, fragment, "write")
+//                transacton.addToBackStack(null)
+//                transacton.commit()
+            val fm = fragmentManager.beginTransaction()
+            fm.add(R.id.community_container,CommunityWriteFragment(),"write")
+            fm.addToBackStack(null)
+            fm.commit()
         }
 //        val listener = object : OnMenuItemClickListener() {
 //
@@ -113,29 +117,41 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 //       }
         //글 검색
         v.community_search.setOnClickListener {
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            val fragment = CommunitySearchFragment()
-            //val bundle = Bundle()
-            //bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
-            //fragment.arguments = bundle
-            transacton.add(R.id.community_container, fragment, "detial")
-            transacton.addToBackStack(null)
-            transacton.commit()
+//            val fm = activity.fragmentManager
+//            val transacton = fm.beginTransaction()
+//            val fragment = CommunitySearchFragment()
+//            //val bundle = Bundle()
+//            //bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
+//            //fragment.arguments = bundle
+//            transacton.add(R.id.community_container, fragment, "detial")
+//            transacton.addToBackStack(null)
+//            transacton.commit()
+            val fm = fragmentManager.beginTransaction()
+            fm.add(R.id.community_container,CommunitySearchFragment(),"detail")
+            fm.addToBackStack(null)
+            fm.commit()
         }
         return v
     }
 
     override fun onClick(p0: View?) {
-        val fm = activity.fragmentManager
-        val transacton = fm.beginTransaction()
+//        val fm = activity.fragmentManager
+//        val transacton = fm.beginTransaction()
+//        val fragment = CommunityDetailFragment()
+//        val bundle = Bundle()
+//        bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
+//        fragment.arguments = bundle
+//        transacton.add(R.id.community_container, fragment, "detial")
+//        transacton.addToBackStack(null)
+//        transacton.commit()
+        val fm = fragmentManager.beginTransaction()
         val fragment = CommunityDetailFragment()
         val bundle = Bundle()
-        bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
+        bundle.putInt("index",communityList!!.getChildAdapterPosition(p0!!))
         fragment.arguments = bundle
-        transacton.add(R.id.community_container, fragment, "detial")
-        transacton.addToBackStack(null)
-        transacton.commit()
+        fm.add(R.id.community_container,fragment,"detail")
+        fm.addToBackStack(null)
+        fm.commit()
 
         //startActivity(Intent(activity,CommunityDetailActivity::class.java))
     }

@@ -1,7 +1,8 @@
 package com.peaktime.dawntime.Community
 
-import android.app.Fragment
+
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -38,11 +39,14 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
             //communityDatas = arguments.get("detailData") as ArrayList<CommunityData>
 
             v.community_backbtn!!.setOnClickListener{
-                val fm = activity.fragmentManager
-                val transacton = fm.beginTransaction()
-                val fragment = CommunityDetailFragment()
-                transacton.remove(this)
-                transacton.commit()
+//                val fm = activity.fragmentManager
+//                val transacton = fm.beginTransaction()
+//                val fragment = CommunityDetailFragment()
+//                transacton.remove(this)
+//                transacton.commit()
+                val fm = fragmentManager.beginTransaction()
+                fm.remove(this)
+                fm.commit()
             }
         }
 

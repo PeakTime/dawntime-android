@@ -17,19 +17,32 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="71dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textAlignment="center"
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"
+            android:includeFontPadding="false"
+            android:textSize="20dp"
+            android:textColor="#001960"
             android:text="칼럼 리스트"/>
 
         <Button
+            android:id="@+id/column_list_back_btn"
+            android:background="@drawable/navi_back_navy"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"/>
+
+        <Button
             android:id="@+id/column_search_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/navi_search_navy"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"/>
 
     </RelativeLayout>

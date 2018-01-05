@@ -1,9 +1,9 @@
 package com.peaktime.dawntime.Community
 
 
-import android.app.Fragment
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
@@ -119,11 +119,14 @@ class CommunityWriteFragment : Fragment(){
         }
 
         v.community_backbtn1!!.setOnClickListener {
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            val fragment = CommunityDetailFragment()
-            transacton.remove(this)
-            transacton.commit()
+//            val fm = activity.fragmentManager
+//            val transacton = fm.beginTransaction()
+//            val fragment = CommunityDetailFragment()
+//            transacton.remove(this)
+//            transacton.commit()
+            val fm = fragmentManager.beginTransaction()
+            fm.remove(this)
+            fm.commit()
         }
         return v
     }
