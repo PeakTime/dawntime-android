@@ -5,19 +5,22 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.peaktime.dawntime.R
-import kotlinx.android.synthetic.main.fragment_community.view.*
 import kotlinx.android.synthetic.main.fragment_community_write.view.*
-import com.peaktime.dawntime.MainActivity
 
 class CommunityWriteFragment : Fragment(){
 
 //    var community_addImg : LinearLayout?= null
 //    community_addImg = findViewById(R.id.community_addImg)
+    private var communityReplyDatas: ArrayList<CommunityReplyData>? = null
+    private var communityReplyAdapter: CommunityReplyAdapter?=null
+    private var communityReplyList: RecyclerView? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -28,6 +31,9 @@ class CommunityWriteFragment : Fragment(){
 //        val intent = Intent(Intent.ACTION_PICK)
 //        intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
 //        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+
+
+
 
         v.horsehead_button!!.setOnClickListener{
             val horseheadDialog = AlertDialog.Builder(context)
@@ -166,9 +172,7 @@ class CommunityWriteFragment : Fragment(){
 //            }
 //        }*/
 //
-//        community_backbtn1!!.setOnClickListener{
-//            finish()
-//        }
+
 //    }
 
 }

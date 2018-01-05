@@ -3,6 +3,8 @@ package com.peaktime.dawntime.Community
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -31,6 +33,10 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     var unstar_touch : Int ?= 0
     var unfire_touch : Int ?= 0
 
+    private var communityReplyDatas: ArrayList<CommunityReplyData>? = null
+    private var communityReplyAdapter: CommunityReplyAdapter?=null
+    private var communityReplyList: RecyclerView? = null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val v = inflater!!.inflate(R.layout.fragment_community_detail,container,false)
         //communityDatas = ArrayList()
@@ -49,6 +55,18 @@ class CommunityDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                 fm.commit()
             }
         }
+
+        communityReplyDatas = ArrayList<CommunityReplyData>()
+        communityReplyDatas!!.add(CommunityReplyData("익명", "원", "브라운"))
+        communityReplyDatas!!.add(CommunityReplyData("익명", "투", "코니"))
+        communityReplyDatas!!.add(CommunityReplyData("익명", "삼", "샐리"))
+
+
+        communityReplyList = v.findViewById(R.id.reply_list)
+        communityReplyList!!.layoutManager = LinearLayoutManager(activity)
+        communityReplyAdapter = CommunityReplyAdapter(communityReplyDatas)
+        communityReplyList!!.adapter = communityReplyAdapter
+
 
         community_unstarContents = v.findViewById(R.id.community_unscrapContents)
         community_unfireContents = v.findViewById(R.id.community_unfireContents)
