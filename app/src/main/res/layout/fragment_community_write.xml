@@ -86,9 +86,17 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         android:paddingLeft="16dp"
         >
-        <ImageView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/community_write_image_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+        </android.support.v7.widget.RecyclerView>
+<!--        <ImageView
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_marginRight="16dp"
@@ -107,7 +115,7 @@
         <ImageView
             android:layout_width="72dp"
             android:layout_height="72dp"
-            android:background="@drawable/community_img"/>
+            android:background="@drawable/community_img"/>-->
     </LinearLayout>
 
     <LinearLayout

@@ -26,7 +26,7 @@ class ColumnListAdapter(var dataList : ArrayList<ColumnListData>?) : RecyclerVie
 
     override fun getItemCount(): Int = dataList!!.size
 
-    fun setOnClickListener(l:View.OnClickListener){
+    fun setOnItemClickListener(l:View.OnClickListener){
         onItemClick = l
     }
 }

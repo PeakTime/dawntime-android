@@ -14,6 +14,7 @@ import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.Community.CommunityFragment
 import com.peaktime.dawntime.R
+import kotlinx.android.synthetic.main.fragment_peektime.view.*
 
 class PeektimeFragment : Fragment(),View.OnClickListener {
 
@@ -34,6 +35,12 @@ class PeektimeFragment : Fragment(),View.OnClickListener {
             peektimeRecycler!!.layoutManager = GridLayoutManager(activity, 2)
             peektimeRecycler!!.adapter = peektimeAdapter
         peektimeRecycler!!.addItemDecoration(ReclerDeco(15))
+
+        v.peektime_back_btn!!.setOnClickListener {
+            val fm = fragmentManager.beginTransaction()
+            fm.remove(this)
+            fm.commit()
+        }
 
         return v
     }

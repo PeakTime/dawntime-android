@@ -23,7 +23,4 @@ class ColumnAdapter(var dataList : ArrayList<ColumnData>?) : RecyclerView.Adapte
 
     override fun getItemCount(): Int = dataList!!.size
 
-    fun setOnItemClickListener(l: View.OnClickListener?){
-        getItemClick = l
-    }
 }

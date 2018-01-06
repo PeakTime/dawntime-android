@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.Column.ColumnListFragment
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.R
@@ -79,6 +80,12 @@ class HomeFragment : Fragment(),View.OnClickListener {
         columnPageScroll = v.findViewById(R.id.column_viewpage)
 
         columnPageAdapter = ColumnBannerAdapter(columnPageDatas)
+        columnPageAdapter!!.SetOnItemClickListener(View.OnClickListener {
+            val fm = fragmentManager.beginTransaction()
+            fm.replace(R.id.home_fragment_container,ColumnFragment())
+            fm.addToBackStack(null)
+            fm.commit()
+        })
 
         columnPageScroll!!.adapter = columnPageAdapter
         columnPageScroll!!.setCurrentItem(shoplistDatas!!.size * 1000)

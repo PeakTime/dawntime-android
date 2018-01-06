@@ -11,6 +11,8 @@ import com.peaktime.dawntime.R
  * Created by minhyoung on 2018. 1. 1..
  */
 class ColumnBannerAdapter(var dataList : ArrayList<ColumnBannerData>?) : PagerAdapter() {
+
+    var onItemClick : View.OnClickListener? = null
     override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
         return view == `object`
     }
@@ -26,9 +28,15 @@ class ColumnBannerAdapter(var dataList : ArrayList<ColumnBannerData>?) : PagerAd
         var v : View = LayoutInflater.from(container!!.context).inflate(R.layout.column_banner_items,container,false)
         var columnBannerImg : ImageView = v.findViewById(R.id.column_banner_img)
         columnBannerImg.setImageResource(dataList!!.get(realPos).columnBannerImg)
+        v!!.setOnClickListener(onItemClick)
         container.addView(v)
 
         return v
+    }
+
+    fun SetOnItemClickListener(l:View.OnClickListener) {
+        onItemClick = l
+
     }
 
 }

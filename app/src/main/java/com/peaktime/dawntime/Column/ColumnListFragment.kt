@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.peaktime.dawntime.R
+import kotlinx.android.synthetic.main.fragment_column_list.view.*
 
 class ColumnListFragment : Fragment(),View.OnClickListener {
 
@@ -30,17 +31,35 @@ class ColumnListFragment : Fragment(),View.OnClickListener {
         columnDatas!!.add(ColumnListData(R.drawable.view_peakillu4_blue,"test8","test*"))
 
         columnAdapter = ColumnListAdapter(columnDatas)
+        columnAdapter!!.setOnItemClickListener(this)
 
         columnRecycler = v.findViewById(R.id.column_recycler_list)
         columnRecycler!!.layoutManager = LinearLayoutManager(activity)
         columnRecycler!!.adapter = columnAdapter
         columnRecycler!!.addItemDecoration(RecyclerViewDecoration(15))
 
+        v.column_list_back_btn.setOnClickListener {
+            val fm = fragmentManager.beginTransaction()
+            fm.remove(this)
+            fm.commit()
+        }
+
+        v.column_search_btn.setOnClickListener {
+            val fm = fragmentManager.beginTransaction()
+            fm.replace(R.id.column_list_container,ColumnSearchFragment())
+            fm.addToBackStack(null)
+            fm.commit()
+
+        }
+
         return v
     }
 
     override fun onClick(v: View?) {
-
+        val fm = fragmentManager.beginTransaction()
+        fm.replace(R.id.column_list_container,ColumnFragment())
+        fm.addToBackStack(null)
+        fm.commit()
     }
 
     class RecyclerViewDecoration(var divHeight : Int?) : RecyclerView.ItemDecoration(){
@@ -51,4 +70,6 @@ class ColumnListFragment : Fragment(),View.OnClickListener {
             outRect!!.bottom = divHeight!!
         }
     }
+
+
 }

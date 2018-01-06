@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#990e1949"
+    tools:context="com.peaktime.dawntime.Column.ColumnSearchActivity">
+
+    <RelativeLayout
+        android:id="@+id/column_search_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_centerVertical="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/column_search_edittext"
+                android:layout_width="300dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="17dp"
+                android:layout_centerVertical="true"
+                android:drawablePadding="8dp"
+                android:paddingLeft="10dp"
+                android:inputType="text"
+                android:drawableLeft="@drawable/navi_search_gray"
+                android:hint="검색"
+                android:textSize="14dp"
+                android:textColorHint="#B5B5B5"
+                android:background="@drawable/community_search"
+                />
+
+            <ImageButton
+                android:id="@+id/column_search_cancel_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:paddingTop="10dp"
+                android:src="@drawable/navi_cancel_navy" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
