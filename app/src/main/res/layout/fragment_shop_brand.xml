@@ -21,7 +21,11 @@
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:textSize="14dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            />
 
         <Button
             android:id="@+id/brand_second_btn"
@@ -30,7 +34,10 @@
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:textSize="14dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
 
         <Button
             android:id="@+id/brand_third_btn"
@@ -39,7 +46,11 @@
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:textSize="14dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"
+            />
 
 
 

@@ -9,17 +9,16 @@
     tools:context="com.peaktime.dawntime.Shop.ShopSearchActivity">
 
     <!--검색레이아웃-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/shopSearchTabLayout"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="56dp"
         android:background="#ED508E"
-        android:weightSum="10">
+        >
 
         <RelativeLayout
-            android:layout_weight="8.5"
-            android:layout_width="0dp"
+            android:layout_toLeftOf="@+id/shopExitBtn"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="17dp"
             android:layout_marginRight="3dp">
@@ -43,24 +42,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
                     android:hint="검색"
+                    android:fontFamily="@font/noto_sans_cjk_kr_light"
+                    android:includeFontPadding="false"
                     android:background="@null"
                     android:layout_toRightOf="@+id/search_img"
-                    android:layout_marginTop="4.8dp"
+                    android:layout_marginTop="2dp"
+                    android:imeOptions="actionSearch"
                     />
             </RelativeLayout>
 
         </RelativeLayout>
 
         <ImageButton
-            android:layout_weight="1.5"
             android:id="@+id/shopExitBtn"
             android:layout_alignParentRight="true"
             android:background="@drawable/shop_navi_cancel"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7.9dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 <!--가격대-->
     <RelativeLayout
@@ -78,7 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:textColor="#ED508E"
-            android:text="가격대" />
+            android:text="가격대"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
 
         <RelativeLayout
             android:layout_centerInParent="true"
@@ -128,10 +131,14 @@
                     android:textColor="#ED508E"
                     android:textSize="13dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="2dp"
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:includeFontPadding="false"
+
                     />
+
 
             </RelativeLayout>
 
@@ -178,10 +185,13 @@
                     android:textColor="#ED508E"
                     android:textSize="13dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="2dp"
                     android:layout_marginRight="7dp"
                     android:layout_marginBottom="7dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                    android:includeFontPadding="false"
                     />
+
 
             </RelativeLayout>
 
@@ -198,6 +208,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/highPriceLayout"
                 android:background="@drawable/shop_reset_button"
+                android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                android:includeFontPadding="false"
                 />
 
 
@@ -225,12 +237,14 @@
             android:layout_margin="3dp"
             android:textColor="#e92393"
             android:textSize="15dp"
-            android:text="인기키워드" />
+            android:text="인기키워드"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
 
         <RelativeLayout
             android:id="@+id/lineImage3"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_below="@+id/keywordTextView"
             android:background="#e92393" />
 
@@ -253,12 +267,14 @@
             android:layout_margin="3dp"
             android:textColor="#e92393"
             android:text="최근 검색어"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
+            android:includeFontPadding="false"/>
 
         <RelativeLayout
             android:id="@+id/lineImage2"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_below="@+id/searchTextView"
             android:background="#e92393" />
 

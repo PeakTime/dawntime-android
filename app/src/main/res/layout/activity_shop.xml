@@ -12,14 +12,14 @@
     android:layout_height="56dp"
     android:background="#ED508E">
 
-    <ImageButton
-        android:id="@+id/shopBackBtn"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/shop_navi_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="7dp"
-        />
+    <!--<ImageButton-->
+        <!--android:id="@+id/shopBackBtn"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:background="@drawable/shop_navi_back"-->
+        <!--android:layout_width="48dp"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:layout_marginTop="7dp"-->
+        <!--/>-->
 
         <TextView
             android:id="@+id/title"
@@ -29,16 +29,18 @@
             android:textColor="#FFFFFF"
             android:textSize="21dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="15.6dp"/>
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"
+            />
 
         <ImageView
             android:background="@drawable/shop_navi_moon"
-            android:layout_width="14.5dp"
-            android:layout_height="19.7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/title"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
             />
+
     <ImageButton
         android:id="@+id/shopSearchBtn"
         android:layout_alignParentRight="true"
@@ -57,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        app:tabIndicatorHeight="0dp"
         />
 
     <RelativeLayout
@@ -65,14 +68,39 @@
         android:background="#FF81B3"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="9dp"/>
+        />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/shop_main_viewpager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="2dp"
         >
     </android.support.v4.view.ViewPager>
+
+
+
+
+
+
+
+
+    <!--<android.support.design.widget.CoordinatorLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fitsSystemWindows="true">-->
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/exit_btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|right"-->
+        <!--android:src="@drawable/shop_view_cancel" />-->
+
+    <!--</android.support.design.widget.CoordinatorLayout>-->
+
+
 
 
 
