@@ -108,6 +108,21 @@ class MyPageFragment : Fragment() {
             transacton.addToBackStack(null)
             transacton.commit()
         }
+        scrapBtn!!.setOnClickListener {
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
+            val fg = ChildMyPageMessageBox()
+            transacton.add(R.id.child_container, fg, "message")
+            transacton.addToBackStack(null)
+            transacton.commit()
+        }
+
+        basketBtn!!.setOnClickListener {
+
+        }
+        myWrittenBtn!!.setOnClickListener {
+
+        }
 
 
         return v
@@ -166,6 +181,13 @@ class MyPageFragment : Fragment() {
             scrapBtn!!.setTextColor(Color.parseColor("#0E1949"))
             basketBtn!!.setTextColor(Color.parseColor("#ED508E"))
             optionBtn!!.setTextColor(Color.parseColor("#4F4F4F"))
+            view1!!.setBackgroundColor(Color.parseColor("#4D001960"))
+            view2!!.setBackgroundColor(Color.parseColor("#4D001960"))
+            view3!!.setBackgroundColor(Color.parseColor("#4D001960"))
+            view4!!.setBackgroundColor(Color.parseColor("#4D001960"))
+            view5!!.setBackgroundColor(Color.parseColor("#ED508E"))
+            view6!!.setBackgroundColor(Color.parseColor("#4D4F4F4F"))
+
 
         } else {
             image!!.setImageResource(R.drawable.view_unactiveprofile_gray)
@@ -174,6 +196,12 @@ class MyPageFragment : Fragment() {
             scrapBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
             basketBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
             optionBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
+            view1!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
+            view2!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
+            view3!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
+            view4!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
+            view5!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
+            view6!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
         }
     }
 
