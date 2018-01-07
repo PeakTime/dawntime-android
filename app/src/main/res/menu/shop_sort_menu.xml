@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/latest_sort"
+        android:title="최신순"
+        />
+
+    <item
+        android:id="@+id/famous_sort"
+        android:title="인기순"
+        />
+
+    <item
+        android:id="@+id/highprice_sort"
+        android:title="높은가격순"
+        />
+
+    <item
+        android:id="@+id/loprice_sort"
+        android:title="낮은가격순"
+        />
+
+</menu>

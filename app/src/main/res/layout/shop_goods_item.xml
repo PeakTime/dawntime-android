@@ -7,19 +7,38 @@
     android:layout_marginRight="14dp"
     android:layout_marginBottom="1dp"
     android:background="@drawable/shop_goods_layout"
+    android:elevation="3dp"
+
     >
 
-    <ImageView
-        android:id="@+id/goods_img"
-        android:src="@drawable/brown"
-        android:layout_width="157dp"
-        android:layout_height="157dp"
-        android:background="@drawable/shop_goods_layout"/>
+    <FrameLayout
+        android:id="@+id/goods_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/goods_img"
+            android:src="@drawable/brown"
+            android:layout_width="157dp"
+            android:layout_height="157dp"
+            android:background="@drawable/shop_goods_layout"/>
+
+        <ImageView
+            android:id="@+id/goods_rangetag"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="18dp"
+            />
+
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="157dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/goods_img"
+        android:layout_below="@+id/goods_layout"
         android:background="@drawable/shop_goods_layout"
         >
 

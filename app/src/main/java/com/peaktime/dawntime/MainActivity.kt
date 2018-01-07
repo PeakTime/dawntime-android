@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import com.peaktime.dawntime.Community.CommunityFragment
 import com.peaktime.dawntime.Home.HomeFragment
 import com.peaktime.dawntime.Shop.ShopActivity
+import com.peaktime.dawntime.Shop.ShopToMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                         ReplaceFragment(CommunityFragment(),"community")
                     }
                     2->{
+                        ShopToMainActivity.bestFlagFun.bestFlag = 0
                         val bundle = Bundle()
   //                      bundle.putString("title",thirdText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))

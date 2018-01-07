@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.peaktime.dawntime.Shop.ShopToMainActivity"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#ED508E">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHOP"
+            android:textColor="#FFFFFF"
+            android:textSize="21dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"
+            />
+
+        <ImageView
+            android:background="@drawable/shop_navi_moon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/title"
+            android:layout_marginTop="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/shopSearchBtn"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shop_navi_search_white"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"/>
+
+    </RelativeLayout>
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/shop_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:tabIndicatorHeight="0dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#FF81B3"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/shop_main_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="2dp"
+        >
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

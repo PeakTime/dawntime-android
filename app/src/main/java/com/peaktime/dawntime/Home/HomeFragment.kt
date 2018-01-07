@@ -18,7 +18,8 @@ import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.Column.ColumnListFragment
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.ShopActivity
+import com.peaktime.dawntime.Shop.*
+import com.peaktime.dawntime.Shop.ShopToMainActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -140,7 +141,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.shoplist_btn->{
-                startActivity(Intent(activity,ShopActivity::class.java))
+                ShopToMainActivity.bestFlagFun.bestFlag = 1
+                startActivity(Intent(activity, ShopToMainActivity::class.java))
             }
             R.id.column_btn->{
                 var childFm = fragmentManager.beginTransaction()

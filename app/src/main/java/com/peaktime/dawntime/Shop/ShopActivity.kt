@@ -18,6 +18,7 @@ import android.view.ViewGroup
 
 
 
+
 class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
 //    internal var categoryKindNum = 0
