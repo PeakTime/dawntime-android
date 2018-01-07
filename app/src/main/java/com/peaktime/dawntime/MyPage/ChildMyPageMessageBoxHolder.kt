@@ -1,8 +1,9 @@
-package com.peaktime.dawntime
+package com.peaktime.dawntime.MyPage
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import com.peaktime.dawntime.R
 
 /**
  * Created by LEESANGYUN on 2018-01-05.

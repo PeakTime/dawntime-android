@@ -7,12 +7,10 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.peaktime.dawntime.Community.CommunityFragment
 import com.peaktime.dawntime.Home.HomeFragment
+import com.peaktime.dawntime.MyPage.MyPageFragment
 import com.peaktime.dawntime.Shop.ShopActivity
 import com.peaktime.dawntime.Shop.ShopToMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 

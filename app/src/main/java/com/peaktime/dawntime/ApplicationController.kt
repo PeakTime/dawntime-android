@@ -12,13 +12,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApplicationController : Application() {
     var networkService: NetworkService? = null
         private set
-    var baseUrl = "http://13.125.78.152:6789"
+    var baseUrl = "http://13.125.78.152:6789/"
     var mContext: Context? = null
 
     override fun onCreate() {
         super.onCreate()
 
-        mContext = this
+        mContext = applicationContext
+
+        instance = this
 
         buildNetwork()
     }

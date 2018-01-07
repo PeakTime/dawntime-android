@@ -122,7 +122,6 @@ class LockActivity : AppCompatActivity() {
     fun btnClick(v: View) {
         when (v.id) {
             R.id.one_btn -> {
-
                 addNum("1")
             }
             R.id.two_btn -> {
@@ -166,7 +165,7 @@ class LockActivity : AppCompatActivity() {
                 }
             }
         }
-        changeEvent(order)
+        //    changeEvent(order)
 //        var j = 0
 //        for (j in 0..list.size - 1) {
 //            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))

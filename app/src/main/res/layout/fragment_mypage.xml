@@ -4,7 +4,7 @@
     android:id="@+id/child_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.peaktime.dawntime.MyPageFragment">
+    tools:context="com.peaktime.dawntime.MyPage.MyPageFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.peaktime.dawntime
+package com.peaktime.dawntime.MyPage
 
 import android.app.Activity.RESULT_OK
 
@@ -13,6 +13,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.peaktime.dawntime.LoginActivity
+import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 
 
 class MyPageFragment : Fragment() {

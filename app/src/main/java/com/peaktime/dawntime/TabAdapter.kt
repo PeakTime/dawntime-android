@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.peaktime.dawntime.Community.CommunityFragment
 import com.peaktime.dawntime.Home.HomeFragment
+import com.peaktime.dawntime.MyPage.MyPageFragment
 
 /**
  * Created by minhyoung on 2017. 12. 31..

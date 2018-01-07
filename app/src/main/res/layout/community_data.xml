@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/community_data"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:orientation="horizontal"
-    android:id="@+id/community_data"
     android:background="@drawable/datadrawable"
+    android:orientation="horizontal"
     >
 
     <RelativeLayout
@@ -15,16 +15,16 @@
 
         <TextView
             android:id="@+id/horsehead"
-            android:background="@drawable/navydrawable"
             android:layout_width="48dp"
             android:layout_height="19dp"
             android:layout_margin="10dp"
-            android:paddingRight="13dp"
+            android:background="@drawable/navydrawable"
             android:paddingLeft="13dp"
+            android:paddingRight="13dp"
             android:paddingTop="3dp"
+            android:text="리뷰"
             android:textColor="#FFFFFF"
-            android:textSize="11dp"
-            android:text="리뷰" />
+            android:textSize="11dp" />
 
         <ImageView
             android:id="@+id/communityimage"
@@ -56,25 +56,26 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="title" />
+                android:text="title"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17dp"
-                android:text="contents" />
+                android:text="contents"
+                android:textSize="17dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/fire_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/view_unfire_navy" />
@@ -82,12 +83,13 @@
                 android:id="@+id/unfireContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="8dp"
-                android:layout_marginRight="3dp"
                 android:layout_gravity="center"
-                android:text="1117" />
+                android:layout_marginRight="3dp"
+                android:text="1117"
+                android:textSize="8dp" />
 
             <ImageView
+                android:id="@+id/reply_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/view_reply_navy"/>
@@ -95,14 +97,15 @@
                 android:id="@+id/unreplyContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="8dp"
+                android:layout_gravity="center"
                 android:layout_marginRight="3dp"
 
-                android:layout_gravity="center"
-                android:text="256" />
+                android:text="256"
+                android:textSize="8dp" />
 
 
             <ImageView
+                android:id="@+id/scrap_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/view_unscrap_navy"/>
@@ -110,10 +113,10 @@
                 android:id="@+id/unstarContents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="3dp"
-                android:textSize="8dp"
                 android:layout_gravity="center"
-                android:text="465" />
+                android:layout_marginRight="3dp"
+                android:text="465"
+                android:textSize="8dp" />
 
         </LinearLayout>
     </RelativeLayout>

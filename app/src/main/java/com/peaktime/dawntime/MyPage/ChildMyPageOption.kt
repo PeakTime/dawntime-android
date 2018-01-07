@@ -1,17 +1,20 @@
-package com.peaktime.dawntime
+package com.peaktime.dawntime.MyPage
 
 
 import android.app.Activity.RESULT_OK
 import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.data.OAuthLoginState
+import com.peaktime.dawntime.LockActivity
+import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
+
 
 /**
  * Created by LEESANGYUN on 2018-01-01.
@@ -46,7 +49,6 @@ class ChildMyPageOption : Fragment() {
         backBtn!!.setOnClickListener {
             val fm = activity.fragmentManager
             val transacton = fm.beginTransaction()
-            val fragment = ChildMyPageOption()
             transacton.remove(this)
             transacton.commit()
         }
@@ -60,8 +62,20 @@ class ChildMyPageOption : Fragment() {
                 SharedPreferInstance.getInstance(activity).putPreferString("ID", "로그인 정보 없음")
                 SharedPreferInstance.getInstance(activity).putPreferString("GENDER", "로그인 정보 없음")
                 SharedPreferInstance.getInstance(activity).putPreferString("EMAIL", "로그인 정보 없음")
-                Toast.makeText(activity, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "로그아웃 되었습니다." + SharedPreferInstance.getInstance(activity).getPreferString("EMAIL"), Toast.LENGTH_LONG).show()
             }
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
+            var fragment = MyPageFragment()
+            transacton.remove(this)
+            transacton.commit()
+
+
+//            val fm = activity.fragmentManager
+//            val transacton = fm.beginTransaction()
+//            val fg = ChildMyPageOption()
+//            transacton.add(R.id.child_container, fg, "option")
+//            transacton.commit()
         }
 
         noticeSwitch!!.setOnClickListener {
