@@ -56,17 +56,18 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
         shoplistRecycler = v.findViewById(R.id.shop_recycler_list)
         shoplistRecycler!!.layoutManager = mLayoutManager
+        shoplistRecycler!!.addItemDecoration(RecyclerViewDecoration(16,"left"))
 
         shoplistDatas = ArrayList<ShoplistData>()
-        shoplistDatas!!.add(ShoplistData(R.drawable.cony,"코니"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.brown,"브라운"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.jake,"제이크"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.cony,"코니"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.brown,"브라운"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.jake,"제이크"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.cony,"코니"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.brown,"브라운"))
-        shoplistDatas!!.add(ShoplistData(R.drawable.jake,"제이크"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_black,"코니"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_green,"브라운"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_orange,"제이크"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_pink,"코니"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_purple,"브라운"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_green,"제이크"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_purple,"코니"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_orange,"브라운"))
+        shoplistDatas!!.add(ShoplistData(R.drawable.view_blind_black,"제이크"))
         shoplistAdapter = ShoplistAdapter(shoplistDatas)
 
         shoplistRecycler!!.adapter = shoplistAdapter
@@ -129,7 +130,7 @@ class HomeFragment : Fragment(),View.OnClickListener {
         })
 
         peektimeRecycler!!.adapter = peektimeAdapter
-        peektimeRecycler!!.addItemDecoration(RecyclerViewDecoration(15))
+        peektimeRecycler!!.addItemDecoration(RecyclerViewDecoration(15,"bottom"))
 
 
         return v
@@ -160,16 +161,24 @@ class HomeFragment : Fragment(),View.OnClickListener {
             }
         }
     }
+    class RecyclerViewDecoration(var div : Int?,var side : String) : RecyclerView.ItemDecoration(){
 
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            super.getItemOffsets(outRect, view, parent, state)
+            when(side){
+                "bottom"->{
+                    outRect!!.bottom = div!!
+                }
+                "left"->{
+                    outRect!!.left = div!!
+                }
+                "right"->{
+                    outRect!!.right = div!!
+                }
+            }
 
-
-}
-
-class RecyclerViewDecoration(var divHeight : Int?) : RecyclerView.ItemDecoration(){
-
-    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-        super.getItemOffsets(outRect, view, parent, state)
-
-        outRect!!.bottom = divHeight!!
+        }
     }
+
+
 }

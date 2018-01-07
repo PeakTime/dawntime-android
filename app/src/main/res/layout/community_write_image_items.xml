@@ -2,11 +2,13 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="72dp"
     android:layout_height="72dp"
-    android:background="@drawable/community_img"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/community_write_imageview"
+        android:background="@drawable/community_img"
+        android:outlineProvider="background"
+        android:scaleType="fitXY"
         android:layout_width="72dp"
         android:layout_height="72dp"
         />

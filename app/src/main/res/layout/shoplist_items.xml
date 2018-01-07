@@ -7,12 +7,16 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:background="@drawable/shoplist_image_background"
+
         android:id="@+id/shoplist_img" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/shoplist_text"
         android:text="goods"
+        android:fontFamily="@font/noto_sans_cjk_kr_light"
+        android:includeFontPadding="false"
         android:layout_gravity="center"/>
 
 </LinearLayout>

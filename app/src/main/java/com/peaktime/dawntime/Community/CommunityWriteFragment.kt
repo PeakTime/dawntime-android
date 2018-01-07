@@ -7,10 +7,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.Rect
 import android.media.Image
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
@@ -31,6 +34,7 @@ import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community.view.*
 import kotlinx.android.synthetic.main.fragment_community_write.view.*
 import com.peaktime.dawntime.MainActivity
+import kotlinx.android.synthetic.main.fragment_community_write.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import java.io.FileNotFoundException
 import java.io.IOException
@@ -227,17 +231,6 @@ class CommunityWriteFragment : Fragment(){
         intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE)
         startActivityForResult(Intent.createChooser(intent, "다중 선택은 '포토를 선택하세요"), REQUEST_IMG)
     }
-
-//    fun imageDecode(bitmap : Bitmap) : Bitmap{
-//        var option = BitmapFactory.Options()
-//        option.inJustDecodeBounds = true
-//        BitmapFactory.decodeResource(resources,R.id.community_write_imageview,option)
-//        var imageHeight = option.outHeight
-//        var imageWidth = option.outWidth
-//        var imageType = option.outMimeType
-//
-//    }
-
     fun calculateInSampleSize(options : BitmapFactory.Options,reqWidth : Int, reqHeight : Int) : Int{
         var height = options.outHeight
         var width = options.outWidth
@@ -256,12 +249,11 @@ class CommunityWriteFragment : Fragment(){
         return inSampleSize
     }
 
-    fun decodeSampledBitmapFromPath(res: Resources, resPath: String,
+    fun decodeSampledBitmapFromPath(resPath: String,
                                         reqWidth: Int, reqHeight: Int): Bitmap {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         val options = BitmapFactory.Options()
-        Log.e("aaaa",resPath)
         options.inJustDecodeBounds = true
         BitmapFactory.decodeFile(resPath, options)
 
@@ -273,15 +265,25 @@ class CommunityWriteFragment : Fragment(){
         return BitmapFactory.decodeFile(resPath,options)
     }
 
+    fun getPathFromUri(uri : Uri) : String{
+        var cursor = activity.contentResolver.query(uri,null,null,null,null)
+        cursor.moveToNext()
+        var path = cursor.getString(cursor.getColumnIndex("_data"))
+        cursor.close()
+        return path
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        Log.e("Error","onActivity")
         if (requestCode == REQUEST_IMG) {
-            if (resultCode == Activity.RESULT_OK) {
+            Log.e("Error","Request Img")
+            if (resultCode == Activity.RESULT_OK){
+                Log.e("Error : ","Result Ok")
                 try {
                     takeImgDatas = ArrayList<TakeImageData>()
                     if(data.clipData == null){
                         Log.i("take one Image","사진을 하나만 선택할 수 있습니다")
-                        //imageList!!.add(MediaStore.Images.Media.getBitmap(activity.contentResolver,data.data))
-                        //imageList!!.add(data.data.toString())
                         takeImgDatas!!.add(TakeImageData(MediaStore.Images.Media.getBitmap(activity.contentResolver,data.data)))
                     }
                     else{
@@ -298,12 +300,8 @@ class CommunityWriteFragment : Fragment(){
                         else if(clipData.itemCount > 1 && clipData.itemCount <= 10){
                             var index = 0
                             while(index < clipData.itemCount){
-                                //imageList!!.add(clipData.getItemAt(index).uri.toString())
-                                //takeImgDatas!!.add(TakeImageData(MediaStore.Images.Media.getBitmap(activity.contentResolver,clipData.getItemAt(index).uri)))
-                                //takeImgDatas!!.add()
-                                takeImgDatas!!.add(TakeImageData(decodeSampledBitmapFromPath(resources,clipData.getItemAt(index).uri.path,100,100)))
-                                //Log.e("fff",takeImgDatas!!.size.toString())
-
+                                takeImgDatas!!.add(TakeImageData(decodeSampledBitmapFromPath(getPathFromUri(clipData.getItemAt(index).uri),100,100)))
+                                index++
                             }
                         }
                     }
@@ -313,14 +311,24 @@ class CommunityWriteFragment : Fragment(){
                     val layoutManager = LinearLayoutManager(activity)
                     layoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
                     takeImgRecycler!!.layoutManager = layoutManager
+                    takeImgRecycler!!.addItemDecoration(RecyclerViewDecoration(20))
                     takeImgRecycler!!.adapter = takeImgAdapter
 
+                    if(takeImgDatas!!.size > 0){
+                        picture_button!!.setTextColor(Color.parseColor("#ffffff"))
+                        picture_button!!.setBackgroundResource(R.drawable.selectlinedrawable)
+                    }
+                    else{
+                        picture_button!!.setTextColor(Color.parseColor("#231815"))
+                        picture_button!!.setBackgroundColor(Color.parseColor("#ffffff"))
+                    }
+
                 } catch (e: FileNotFoundException) {
-                    e.printStackTrace()
+
                 } catch (e: IOException) {
-                    e.printStackTrace()
+
                 } catch (e: Exception) {
-                    e.printStackTrace()
+
                 }
 
             }
@@ -328,6 +336,15 @@ class CommunityWriteFragment : Fragment(){
                 Toast.makeText(activity,"사진선택을 취소하였습니다.",Toast.LENGTH_LONG).show()
             }
 
+        }
+    }
+
+    class RecyclerViewDecoration(var divWidth : Int?) : RecyclerView.ItemDecoration(){
+
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            super.getItemOffsets(outRect, view, parent, state)
+
+            outRect!!.right = divWidth!!
         }
     }
 

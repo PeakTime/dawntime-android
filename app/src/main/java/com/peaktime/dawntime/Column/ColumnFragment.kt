@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.peaktime.dawntime.Home.RecyclerViewDecoration
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_column.view.*
 
@@ -43,12 +42,13 @@ class ColumnFragment : Fragment() {
 
         return v
     }
-}
 
-class RecyclerViewDecoration(var divHeight : Int?) : RecyclerView.ItemDecoration(){
+    class RecyclerViewDecoration(var divHeight : Int?) : RecyclerView.ItemDecoration(){
 
-    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-        super.getItemOffsets(outRect, view, parent, state)
-        outRect!!.bottom = divHeight!!
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            super.getItemOffsets(outRect, view, parent, state)
+            outRect!!.bottom = divHeight!!
+        }
     }
 }
+

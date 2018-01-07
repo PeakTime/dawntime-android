@@ -16,6 +16,7 @@ class ShoplistAdapter(var dataList : ArrayList<ShoplistData>?) : RecyclerView.Ad
 
     override fun onBindViewHolder(holder: ShoplistViewHolder?, position: Int) {
         holder!!.shoplistImg.setImageResource(dataList!!.get(position).shoplistImg)
+        holder!!.shoplistImg.clipToOutline = true
         holder!!.shoplistText.text = dataList!!.get(position).shoplistText
     }
 

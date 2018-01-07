@@ -14,6 +14,7 @@ class TakeImageAdapter(var dataList : ArrayList<TakeImageData>?) : RecyclerView.
 
     override fun onBindViewHolder(holder: TakeImageViewHolder?, position: Int) {
         holder!!.takeImageView.setImageBitmap(dataList!!.get(position).takeImageView)
+        holder!!.takeImageView.clipToOutline = true
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): TakeImageViewHolder {

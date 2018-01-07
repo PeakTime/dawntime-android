@@ -71,6 +71,8 @@
             android:background="@drawable/graylinedrawable"
             android:layout_marginRight="20dp"
             android:textSize="14dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"
             android:text="머릿말 선택" />
 
         <Button
@@ -78,6 +80,8 @@
             android:layout_width="136dp"
             android:layout_height="32dp"
             android:background="@drawable/graylinedrawable"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"
             android:textSize="14dp"
             android:text="사진 추가" />
     </LinearLayout>
@@ -92,8 +96,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/community_write_image_recycler"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp">
 
         </android.support.v7.widget.RecyclerView>
 <!--        <ImageView
