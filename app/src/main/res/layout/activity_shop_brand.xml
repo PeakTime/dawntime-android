@@ -29,16 +29,17 @@
             android:textColor="#FFFFFF"
             android:textSize="21dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="15.6dp"/>
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"/>
 
         <ImageView
             android:background="@drawable/shop_navi_moon"
-            android:layout_width="14.5dp"
-            android:layout_height="19.7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/title"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
             />
+
         <ImageButton
             android:id="@+id/shopSearchBtn"
             android:layout_alignParentRight="true"
@@ -53,9 +54,11 @@
         android:id="@+id/shop_brand_list"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_margin="5dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"

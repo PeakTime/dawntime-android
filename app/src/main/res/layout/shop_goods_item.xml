@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="15.8dp">
+    android:layout_marginTop="9dp"
+    android:layout_marginRight="14dp"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/shop_goods_layout"
+    >
 
     <ImageView
         android:id="@+id/goods_img"
-        android:src="@drawable/pika"
+        android:src="@drawable/brown"
         android:layout_width="157dp"
-        android:layout_height="157dp" />
+        android:layout_height="157dp"
+        android:background="@drawable/shop_goods_layout"/>
 
     <RelativeLayout
         android:layout_width="157dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/goods_img">
+        android:layout_below="@+id/goods_img"
+        android:background="@drawable/shop_goods_layout"
+        >
 
         <TextView
             android:id="@+id/goods_name"
@@ -21,17 +29,21 @@
             android:textColor="#ED508E"
             android:textSize="13dp"
             android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:paddingLeft="8.9dp"
-            android:paddingTop="4.1dp"/>
+            android:layout_height="wrap_content"
+           android:fontFamily="@font/noto_sans_cjk_kr_bold"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="3dp"
+            android:includeFontPadding="false"
+            />
 
         <RelativeLayout
             android:background="#ED508E"
-            android:layout_width="110.5dp"
+            android:layout_width="110dp"
             android:layout_height="0.5dp"
             android:layout_below="@+id/goods_name"
             android:layout_marginTop="2.8dp"
             android:layout_marginBottom="2.8dp"
+            android:layout_marginLeft="10dp"
             />
 
         <TextView
@@ -43,16 +55,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/goods_name"
             android:paddingLeft="8.9dp"
-            android:paddingTop="3dp"/>
+            android:paddingTop="3dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"/>
 
         <ImageButton
             android:id="@+id/shopLikeBtn"
-            android:background="@drawable/shop_tab_heart_line"
+            android:background="@drawable/shop_view_zzim_heart_line"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="11.2dp"/>
+            android:layout_marginRight="11dp"/>
 
     </RelativeLayout>
 

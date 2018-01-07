@@ -1,8 +1,10 @@
 package com.peaktime.dawntime
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
@@ -20,7 +22,7 @@ class PasswordCheckActivity : AppCompatActivity() {
     var order = 1
     var password: String? = null
     var inputNum = ""
-
+    var vibrate: Vibrator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class PasswordCheckActivity : AppCompatActivity() {
 
         password = intent.getStringExtra("PASSWORD")
 
+        vibrate = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     }
 
     fun checkMatch() {
@@ -46,6 +49,7 @@ class PasswordCheckActivity : AppCompatActivity() {
             list.clear()
             list.add("")
             inputNum = ""
+            vibrate!!.vibrate(300)
             Toast.makeText(this, "비밀번호가 다릅니다", Toast.LENGTH_SHORT).show()
             var intent = Intent(this, LockActivity::class.java)
             intent.putExtra("MODE", MODE_SETTING)

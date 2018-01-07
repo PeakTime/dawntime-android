@@ -22,22 +22,22 @@
             />
 
         <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SHOP"
-        android:textColor="#FFFFFF"
-        android:textSize="21dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="15.6dp"/>
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHOP"
+            android:textColor="#FFFFFF"
+            android:textSize="21dp"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"/>
 
         <ImageView
             android:background="@drawable/shop_navi_moon"
-            android:layout_width="14.5dp"
-            android:layout_height="19.7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/title"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="20dp"
             />
 
         <ImageButton
@@ -50,152 +50,168 @@
 
     </RelativeLayout>
 
+
+
     <LinearLayout
         android:id="@+id/shopContentLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/shopTabLayout">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_below="@+id/shopTabLayout"
+        >
 
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/photos_viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="353dp" >
-
-            </android.support.v4.view.ViewPager>
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:clickable="false"
-                app:tabBackground="@drawable/tab_selector"
-                app:tabGravity="center"
-                app:tabIndicatorHeight="0dp"/>
-
-        </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
 
 
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/photos_viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                    </android.support.v4.view.ViewPager>
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:clickable="false"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabGravity="center"
+                        app:tabIndicatorHeight="0dp"
+                        android:background="#81ffffff"/>
+
+                </FrameLayout>
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/shop_detail_content_layout">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shop_detail_content_layout">
 
-            <TextView
-                android:id="@+id/shopDetailBrandTextView"
-                android:textColor="#000000"
-                android:textSize="9dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="브랜드"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                />
-            <TextView
-                android:id="@+id/shopDetailNameTextView"
-                android:textColor="#000"
-                android:textSize="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제품이름"
-                android:layout_below="@+id/shopDetailBrandTextView"
-                android:layout_centerHorizontal="true"
-                />
-            <TextView
-                android:id="@+id/shopDetailPriceTextView"
-                android:textColor="#ca4585"
-                android:textSize="24sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제품가격"
-                android:layout_below="@+id/shopDetailNameTextView"
-                android:layout_centerHorizontal="true"
-               />
+                    <TextView
+                        android:id="@+id/shopDetailBrandTextView"
+                        android:textColor="#000000"
+                        android:textSize="9dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="브랜드"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/noto_sans_cjk_kr_light"
+                        android:includeFontPadding="false"
+                        />
+                    <TextView
+                        android:id="@+id/shopDetailNameTextView"
+                        android:textColor="#000"
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="제품이름"
+                        android:layout_below="@+id/shopDetailBrandTextView"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                        android:includeFontPadding="false"
+                        />
+                    <TextView
+                        android:id="@+id/shopDetailPriceTextView"
+                        android:textColor="#ca4585"
+                        android:textSize="24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="제품가격"
+                        android:layout_below="@+id/shopDetailNameTextView"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/noto_sans_cjk_kr_medium"
+                        android:includeFontPadding="false"
+                       />
 
-            <RelativeLayout
-                android:id="@+id/line"
-                android:background="#E2E5E8"
-                android:layout_width="306dp"
-                android:layout_height="1dp"
-                android:layout_below="@+id/shopDetailPriceTextView"
-                android:layout_centerHorizontal="true"/>
+                    <RelativeLayout
+                        android:id="@+id/line"
+                        android:background="#E2E5E8"
+                        android:layout_width="306dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/shopDetailPriceTextView"
+                        android:layout_centerHorizontal="true"/>
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="10dp"
-                android:layout_height="15dp"
-                android:background="@drawable/shop_view_moon"
-                android:layout_below="@+id/line"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="7dp"
-                />
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="10dp"
+                        android:layout_height="15dp"
+                        android:background="@drawable/shop_view_moon"
+                        android:layout_below="@+id/line"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="7dp"
+                        />
 
-            <TextView
-                android:id="@+id/shopDetailContentTextView"
-                android:textColor="#000"
-                android:textSize="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/image"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:text="설명"
-                />
+                    <TextView
+                        android:id="@+id/shopDetailContentTextView"
+                        android:textColor="#000"
+                        android:textSize="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/image"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:text="설명"
+                        android:fontFamily="@font/noto_sans_cjk_kr_light"
+                        android:includeFontPadding="false"
+                        />
 
-        </RelativeLayout>
+                </RelativeLayout>
+
+
+
 
     </LinearLayout>
 
 
 
-    <LinearLayout
+
+
+    <RelativeLayout
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:orientation="horizontal"
-        android:weightSum="10">
-
+       >
 
 
         <RelativeLayout
-            android:layout_weight="8"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="#ED508E">
+            android:background="#ED508E"
+            android:layout_toLeftOf="@+id/shopLikeBtn">
 
             <Button
-                android:layout_width="294dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:background="#ED508E"
                 android:text="구매 페이지로 이동"
                 android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textSize="17dp"
+                android:fontFamily="@font/noto_sans_cjk_kr_demilight"
+                android:includeFontPadding="false"
+                />
 
         </RelativeLayout>
 
 
 
         <ImageButton
-            android:layout_weight="2"
             android:id="@+id/shopLikeBtn"
             android:layout_alignParentRight="true"
             android:background="@drawable/shop_tab_heart_line"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -12,6 +12,11 @@ import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
 import com.peaktime.dawntime.Shop.ShopMainTapAdapter
 import kotlinx.android.synthetic.main.activity_shop.*
+import android.graphics.Typeface
+import android.widget.TextView
+import android.view.ViewGroup
+
+
 
 class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
@@ -27,13 +32,19 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-
-        shopBackBtn!!.setOnClickListener(this)
+        //shopBackBtn!!.setOnClickListener(this)
         shopSearchBtn!!.setOnClickListener(this)
 
-        shop_tab.addTab(shop_tab.newTab().setText("NEW"))
-        shop_tab.addTab(shop_tab.newTab().setText("CATEGORY"))
-        shop_tab.addTab(shop_tab.newTab().setText("BRAND"))
+//        shop_tab.addTab(shop_tab.newTab().setText("NEW"))
+//        shop_tab.addTab(shop_tab.newTab().setText("CATEGORY"))
+//        shop_tab.addTab(shop_tab.newTab().setText("BRAND"))
+
+        shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_new))
+        shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_category))
+        shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_brand))
+
+
+
 
         var tabAdapter = ShopMainTapAdapter(supportFragmentManager, shop_tab.tabCount)
 
@@ -56,21 +67,14 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
 
     override fun onClick(v : View?) {
-
-
         when (v!!.id) {
-
-            R.id.shopBackBtn -> {
-                this.finish()
-            }
+            R.id.shopBackBtn -> {this.finish()}
 
             R.id.shopSearchBtn -> {
                 var intent = Intent(applicationContext, ShopSearchActivity::class.java)
                 startActivity(intent)
             }
-
         }
-
     }
 
 

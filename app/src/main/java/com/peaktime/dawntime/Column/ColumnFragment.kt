@@ -1,8 +1,8 @@
 package com.peaktime.dawntime.Column
 
-import android.app.Fragment
 import android.graphics.Rect
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,9 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.peaktime.dawntime.Home.RecyclerViewDecoration
 import com.peaktime.dawntime.R
+import kotlinx.android.synthetic.main.fragment_column.view.*
 
 
-class ColumnFragment : Fragment(),View.OnClickListener {
+class ColumnFragment : Fragment() {
 
     private var columnRecycler : RecyclerView? = null
     private var columnDatas : ArrayList<ColumnData>? = null
@@ -28,18 +29,19 @@ class ColumnFragment : Fragment(),View.OnClickListener {
         columnDatas!!.add(ColumnData(R.drawable.view_peakillu4_blue))
 
         columnAdapter = ColumnAdapter(columnDatas)
-        columnAdapter!!.setOnItemClickListener(this)
 
-        columnRecycler = v.findViewById(R.id.column_recycler_list)
+        columnRecycler = v.findViewById(R.id.card_news_recycler)
         columnRecycler!!.layoutManager = LinearLayoutManager(activity)
         columnRecycler!!.adapter = columnAdapter
         columnRecycler!!.addItemDecoration(RecyclerViewDecoration(15))
 
+        v.column_back_btn.setOnClickListener{
+            val fm = fragmentManager.beginTransaction()
+            fm.remove(this)
+            fm.commit()
+        }
+
         return v
-    }
-
-    override fun onClick(v: View?) {
-
     }
 }
 

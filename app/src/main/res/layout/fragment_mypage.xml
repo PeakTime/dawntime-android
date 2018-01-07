@@ -107,7 +107,7 @@
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#B3BACE" />
+                android:background="#4D001960" />
 
             <Button
                 android:id="@+id/my_written_btn"
@@ -117,6 +117,7 @@
                 android:background="#fcfcfc"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
                 android:text="내가 쓴글"
                 android:textColor="#0E1949"
                 android:textSize="20sp" />
@@ -125,7 +126,7 @@
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#B3BACE" />
+                android:background="#4D001960" />
 
             <Button
                 android:id="@+id/scrap_btn"
@@ -135,6 +136,7 @@
                 android:background="#fcfcfc"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
                 android:text="스크랩"
                 android:textColor="#0E1949"
                 android:textSize="20sp" />
@@ -143,7 +145,7 @@
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#B3BACE" />
+                android:background="#4D001960" />
 
             <Button
                 android:id="@+id/message_btn"
@@ -153,6 +155,7 @@
                 android:background="#fcfcfc"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
                 android:text="쪽지함"
                 android:textColor="#0E1949"
                 android:textSize="20sp" />
@@ -161,7 +164,7 @@
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#B3BACE" />
+                android:background="#4D001960" />
 
             <Button
                 android:id="@+id/basket_btn"
@@ -171,6 +174,7 @@
                 android:background="#fcfcfc"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
                 android:text="찜 목록"
                 android:textColor="#ED508E"
                 android:textSize="20sp" />
@@ -189,6 +193,7 @@
                 android:background="#fcfcfc"
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
+                android:includeFontPadding="false"
                 android:text="설정"
                 android:textColor="#4F4F4F"
                 android:textSize="20sp" />
@@ -197,7 +202,7 @@
                 android:id="@+id/view6"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#B3BACE" />
+                android:background="#4D4F4F4F" />
 
         </LinearLayout>
 

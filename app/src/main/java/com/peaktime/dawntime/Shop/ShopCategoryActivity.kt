@@ -1,30 +1,32 @@
 package com.peaktime.dawntime.Shop
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
 import kotlinx.android.synthetic.main.activity_shop_category.*
+import kotlinx.android.synthetic.main.shop_kind_item.*
 
 class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
     private  var shopCategoryDatas : ArrayList<ShopKindData>? = null
     private  var shopCategoryAdapter : ShopKindAdapter? = null
-   // private var categoryKindNum: Int = intent.getIntExtra("categoryKindNum",0)
-    //internal var categoryKindNum
+    private var typeface : Typeface?=null
 
-//    override fun onCategorySet(num: Int) {
-//        categoryKindNum = num
-//    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_category)
+
+
 
         shopBackBtn!!.setOnClickListener(clickListener)
         shopSearchBtn!!.setOnClickListener(clickListener)
@@ -78,63 +80,81 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
                 //bundle.putString("title",firstText.text.toString())
                 //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
                 ReplaceFragment(GoodsFragment(),0)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
+//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
+//                kind_name_textview.setTypeface(typeface)
             }
 
             1->{
                 //기능구현하면 GoodsFragment로 바꾸기
-                ReplaceFragment(GoodsFragment(),1)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                ReplaceFragment(FirstFragment(),1)
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
+
+//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
+//                kind_name_textview.setTypeface(typeface)
+
+
             }
 
             2->{
                 //기능구현하면 GoodsFragment로 바꾸기
                 ReplaceFragment(GoodsFragment(),2)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
+
+//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
+//                kind_name_textview.setTypeface(typeface)
+
+
             }
 
             3->{
                 ReplaceFragment(GoodsFragment(),3)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
+
+//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
+//                kind_name_textview.setTypeface(typeface)
             }
 
             4->{
                 ReplaceFragment(GoodsFragment(),4)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
+
+//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
+//                kind_name_textview.setTypeface(typeface)
             }
             5->{
                 ReplaceFragment(GoodsFragment(),5)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
             6->{
                 ReplaceFragment(GoodsFragment(),6)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
             7->{
                 ReplaceFragment(GoodsFragment(),7)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
             8->{
                 ReplaceFragment(GoodsFragment(),8)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
             9->{
                 ReplaceFragment(GoodsFragment(),9)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
             10->{
                 ReplaceFragment(GoodsFragment(),10)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
             11->{
                 ReplaceFragment(GoodsFragment(),11)
-                Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
 
             }
 
@@ -159,20 +179,13 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
                 startActivity(intent)
             }
 
-        } //버튼이벤트 end
-    }
+        }
+    } //버튼이벤트 end
 
 
 
 
-    fun AddFragment(fragment : Fragment, bundle : Bundle, tag : String){
 
-        val fm = supportFragmentManager
-        val transaction = fm.beginTransaction()
-        fragment.arguments = null
-        transaction.add(R.id.shop_category_viewpager,fragment,tag)
-        transaction.commit()
-    }
 
     //번들없는 함수
     fun AddFragment(fragment: Fragment, tag : Int){
@@ -195,14 +208,25 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
     }
 
 
-    fun ReplaceFragment(fragment : Fragment, bundle : Bundle, tag : String){
 
-        val fm = supportFragmentManager
-        val transaction = fm.beginTransaction()
-        fragment.arguments = null
-        transaction.replace(R.id.shop_category_viewpager,fragment,tag)
-        transaction.commit()
-    }
+
+//    fun AddFragment(fragment : Fragment, bundle : Bundle, tag : String){
+//        val fm = supportFragmentManager
+//        val transaction = fm.beginTransaction()
+//        fragment.arguments = null
+//        transaction.add(R.id.shop_category_viewpager,fragment,tag)
+//        transaction.commit()
+//    }
+//
+//
+//    fun ReplaceFragment(fragment : Fragment, bundle : Bundle, tag : String){
+//
+//        val fm = supportFragmentManager
+//        val transaction = fm.beginTransaction()
+//        fragment.arguments = null
+//        transaction.replace(R.id.shop_category_viewpager,fragment,tag)
+//        transaction.commit()
+//    }
 
 
 

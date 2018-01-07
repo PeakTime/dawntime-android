@@ -56,6 +56,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
 //                val fragment = CommunityDetailFragment()
 //                transacton.remove(this)
 //                transacton.commit()
+                Log.e("vvvv","gggg")
                 val fm = fragmentManager.beginTransaction()
                 fm.remove(this)
                 fm.commit()

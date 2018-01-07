@@ -1,9 +1,10 @@
 package com.peaktime.dawntime
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -23,6 +24,7 @@ class LockActivity : AppCompatActivity() {
     var order = 1
     var password: String? = null
     var inputNum = ""
+    var vibrator: Vibrator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,8 @@ class LockActivity : AppCompatActivity() {
         image2 = findViewById(R.id.password_circle_image2)
         image3 = findViewById(R.id.password_circle_image3)
         image4 = findViewById(R.id.password_circle_image4)
+
+        vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         mode = intent.getStringExtra("MODE")
 
@@ -56,6 +60,8 @@ class LockActivity : AppCompatActivity() {
                 list.clear()
                 list.add("")
                 inputNum = ""
+                vibrator!!.vibrate(300)
+
                 Toast.makeText(this, "비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show()
             }
         } else if (mode == MODE_SETTING) {
@@ -161,13 +167,13 @@ class LockActivity : AppCompatActivity() {
             }
         }
         changeEvent(order)
-        var j = 0
-        for (j in 0..list.size - 1) {
-            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))
-        }
-        Log.i("inputNum", inputNum)
-        Log.i("order", order.toString())
-        Log.i("size", list.size.toString())
+//        var j = 0
+//        for (j in 0..list.size - 1) {
+//            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))
+//        }
+//        Log.i("inputNum", inputNum)
+//        Log.i("order", order.toString())
+//        Log.i("size", list.size.toString())
     }
 
     override fun onDestroy() {
