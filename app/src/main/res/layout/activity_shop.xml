@@ -12,14 +12,14 @@
     android:layout_height="56dp"
     android:background="#ED508E">
 
-    <!--<ImageButton-->
-        <!--android:id="@+id/shopBackBtn"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:background="@drawable/shop_navi_back"-->
-        <!--android:layout_width="48dp"-->
-        <!--android:layout_height="48dp"-->
-        <!--android:layout_marginTop="7dp"-->
-        <!--/>-->
+    <ImageButton
+        android:id="@+id/shopBackBtn"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/shop_navi_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="7dp"
+        />
 
         <TextView
             android:id="@+id/title"
@@ -74,7 +74,6 @@
         android:id="@+id/shop_main_viewpager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginRight="2dp"
         >
     </android.support.v4.view.ViewPager>

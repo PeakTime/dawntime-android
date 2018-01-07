@@ -40,20 +40,18 @@ class ShopAdapter(var dataList : ArrayList<ShopData>?) : RecyclerView.Adapter<Sh
 
         if(ShopToMainActivity.bestFlagFun.bestFlag == 1){
 
-            Log.d("main","나왔다나왔다나왔다나왔다나왔다나왔다")
+            if(position==0){
+                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no1)
 
-//            if(position==1){
-//                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no1)
-//
-//            }
-//            if(position==2){
-//                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no2)
-//
-//            }
-//            if(position==3){
-//                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
-//
-//            }
+            }
+            if(position==1){
+                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no2)
+
+            }
+            if(position==2){
+                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
+
+            }
 
         }
 
@@ -61,4 +59,8 @@ class ShopAdapter(var dataList : ArrayList<ShopData>?) : RecyclerView.Adapter<Sh
 
     //리턴값이 간단할때 이렇게 사용
     override fun getItemCount(): Int = dataList!!.size
+
+
+
+
 }

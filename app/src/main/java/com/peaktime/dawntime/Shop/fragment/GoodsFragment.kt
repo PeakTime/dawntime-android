@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,8 @@ import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.ShopAdapter
 import com.peaktime.dawntime.Shop.ShopData
 import com.peaktime.dawntime.Shop.ShopDetailActivity
+import com.peaktime.dawntime.Shop.ShopToMainActivity
+import kotlinx.android.synthetic.main.activity_shop_detail.*
 import kotlinx.android.synthetic.main.fragment_shop_goods.view.*
 
 /**
@@ -62,9 +65,11 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         val idx : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
         val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
         //val price : String = shopDatas!!.get(idx).shopPrice
+
         intent.putExtra("name", name)
+        intent.putExtra("position", idx)
+
         startActivity(intent)
-//        Toast.makeText(this, name, Toast.LENGTH_LONG).show()
 
 
 

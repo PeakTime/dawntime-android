@@ -33,7 +33,7 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
-        //shopBackBtn!!.setOnClickListener(this)
+        shopBackBtn!!.setOnClickListener(this)
         shopSearchBtn!!.setOnClickListener(this)
 
 //        shop_tab.addTab(shop_tab.newTab().setText("NEW"))

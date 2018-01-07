@@ -5,13 +5,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View
+import android.widget.PopupMenu
 import android.widget.Toast
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
 import kotlinx.android.synthetic.main.activity_shop_brand.*
 
-class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
+class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.OnMenuItemClickListener{
 
     private  var shopBrandDatas : ArrayList<ShopKindData>? = null
     private  var shopBrandAdapter : ShopKindAdapter? = null
@@ -43,6 +45,14 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
         shopBrandAdapter!!.setOnItemClickListener(this)
 
         shop_brand_list!!.adapter = shopBrandAdapter
+
+
+        shop_sort_layout!!.setOnClickListener {
+            val popup = PopupMenu(this, shop_sort_layout)
+            this.menuInflater.inflate(R.menu.shop_sort_menu, popup.menu)
+            popup.setOnMenuItemClickListener(this)
+            popup.show()
+        }
 
 
     }
@@ -98,6 +108,33 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
             }
 
         } //버튼이벤트 end
+    }
+
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        when (item!!.getItemId()) {
+        //눌러진 MenuItem의 Item Id를 얻어와 식별
+
+            R.id.latest_sort ->{
+                sort_textview!!.text="최신순"
+                Toast.makeText(this, "최신순", Toast.LENGTH_SHORT).show()
+            }
+            R.id.famous_sort ->{
+                sort_textview!!.text="인기순"
+                Toast.makeText(this, "인기순", Toast.LENGTH_SHORT).show()
+            }
+            R.id.highprice_sort ->{
+                sort_textview!!.text="높은가격순"
+                Toast.makeText(this, "높은가격순", Toast.LENGTH_SHORT).show()
+            }
+            R.id.loprice_sort ->{
+                sort_textview!!.text="낮은가격순"
+                Toast.makeText(this, "낮은가격순", Toast.LENGTH_SHORT).show()
+            }
+
+
+        }
+        return false
     }
 
 
