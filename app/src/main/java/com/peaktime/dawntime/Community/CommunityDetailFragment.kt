@@ -11,11 +11,17 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.TextView
+import android.widget.Toast
 import com.peaktime.dawntime.R
+import kotlinx.android.synthetic.main.fragment_community_detail.*
 import kotlinx.android.synthetic.main.fragment_community_detail.view.*
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 /**
  * Created by HYEON on 2018-01-03.
@@ -56,6 +62,18 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
             }
         }
 
+        communityReplyDatas = ArrayList<CommunityReplyData>()
+        communityReplyDatas!!.add(CommunityReplyData("익명", "원", "브라운"))
+        communityReplyDatas!!.add(CommunityReplyData("익명", "투", "코니"))
+        communityReplyDatas!!.add(CommunityReplyData("익명", "삼", "샐리"))
+        communityReplyDatas!!.add(CommunityReplyData("익명", "삼", "샐리"))
+        communityReplyDatas!!.add(CommunityReplyData("익명", "삼", "샐리"))
+
+        communityReplyList = v.findViewById(R.id.reply_list)
+        communityReplyList!!.layoutManager = LinearLayoutManager(activity)
+        communityReplyAdapter = CommunityReplyAdapter(communityReplyDatas)
+        communityReplyList!!.adapter = communityReplyAdapter
+
 
         community_unstarContents = v.findViewById(R.id.community_unscrapContents)
         community_unfireContents = v.findViewById(R.id.community_unfireContents)
@@ -88,6 +106,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
             }
         }
 
+
         v.community_gitar!!.setOnClickListener {
             Log.v("community", "community")
         val popup = PopupMenu(activity, v.community_gitar)//v는 클릭된 뷰를 의미
@@ -103,6 +122,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
         v.reply_send!!.setOnClickListener{
             var reply_content : String ?= null
             reply_content = v.reply_msg.getText().toString()
+            reply_msg.setText("")
             val now = System.currentTimeMillis()
             val date = Date(now)
             val sdf = SimpleDateFormat("MM/dd HH:mm")
@@ -113,6 +133,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
             communityReplyList!!.adapter = communityReplyAdapter
             communityReplyAdapter!!.setOnItemClickListener(this)
         }
+
         return v
 
     }

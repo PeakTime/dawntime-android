@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/community_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,44 +9,55 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+    <!--상단탭-->
+    <RelativeLayout
+        android:id="@+id/community_tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF">
+
+        <ImageButton
+            android:id="@+id/community_backbtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/navi_back_navy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:text="리뷰"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/community_gitar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/navi_more_navy" />
+
+    </RelativeLayout>
+    <!--스크롤뷰 줄곳-->
+
+    <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_below="@+id/community_tab"
+        android:isScrollContainer="false"
+        >
+    <LinearLayout
+        android:id="@+id/community_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/community_tab"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:background="#FFFFFF">
-
-            <ImageButton
-                android:id="@+id/community_backbtn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/navi_back_navy" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:fontFamily="@font/font"
-                android:gravity="center"
-                android:text="리뷰"
-                android:textSize="20dp" />
-
-            <ImageButton
-                android:id="@+id/community_gitar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/navi_more_navy" />
-
-        </RelativeLayout>
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -155,26 +166,29 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/selly" />
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/reply_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp">
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
-        </android.support.v7.widget.RecyclerView>
-
-
+    </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="#FFFFFF">
         <RelativeLayout
-            android:layout_width="330dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_gravity="center"
             android:background="@drawable/graynolinedrawable"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
             <EditText
                 android:id="@+id/reply_msg"
                 android:layout_width="wrap_content"
@@ -184,8 +198,8 @@
                 android:background="@android:color/transparent"
                 android:hint="댓글 작성하기"
                 android:paddingLeft="10dp"
-                android:textSize="13dp" />
-
+                android:textSize="13dp"
+                />
             <Button
                 android:id="@+id/reply_send"
                 android:layout_width="24dp"
@@ -199,4 +213,4 @@
                 android:textSize="13dp" />
         </RelativeLayout>
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>
