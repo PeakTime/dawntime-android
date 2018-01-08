@@ -11,13 +11,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.CommonData
+import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxAdapter
+import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.ShopAdapter
-import com.peaktime.dawntime.Shop.ShopData
-import com.peaktime.dawntime.Shop.ShopDetailActivity
-import com.peaktime.dawntime.Shop.ShopToMainActivity
+import com.peaktime.dawntime.Shop.*
 import kotlinx.android.synthetic.main.activity_shop_detail.*
 import kotlinx.android.synthetic.main.fragment_shop_goods.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Created by xlsdn on 2018-01-03.
@@ -28,6 +35,12 @@ class GoodsFragment : Fragment() , View.OnClickListener{
     private  var shopDatas : ArrayList<ShopData>? = null
     private  var shopAdapter : ShopAdapter? = null
 
+    var shopBestList : ArrayList<ShopBestData> ?= null
+
+    var networkService: NetworkService? = null
+    var requestManager: RequestManager? = null
+    var index: Int = 0
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_shop_goods, container, false)
@@ -36,24 +49,26 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         shopList = v.findViewById(R.id.shopList)
         shopList!!.layoutManager = GridLayoutManager(activity, 2)
 
-        shopDatas = ArrayList<ShopData>()
-        shopDatas!!.add(ShopData(R.drawable.pika, "피카츄", "10000원"))
-        shopDatas!!.add(ShopData(R.drawable.fire, "파이리", "15000원"))
-        shopDatas!!.add(ShopData(R.drawable.brown, "brown", "10000원"))
-        shopDatas!!.add(ShopData(R.drawable.cony, "cony", "10000원"))
-        shopDatas!!.add(ShopData(R.drawable.selly, "selly", "15000원"))
-        shopDatas!!.add(ShopData(R.drawable.jake, "jake", "10000원"))
+        networkService = ApplicationController.instance!!.networkService
+        requestManager = Glide.with(this)
 
-
-        shopAdapter = ShopAdapter(shopDatas)
-        shopAdapter!!.setOnItemClickListener(this)
-
-        shopList!!.adapter = shopAdapter
+//        shopDatas = ArrayList<ShopData>()
+//        shopDatas!!.add(ShopData(R.drawable.pika, "피카츄", "10000원"))
+//        shopDatas!!.add(ShopData(R.drawable.fire, "파이리", "15000원"))
+//        shopDatas!!.add(ShopData(R.drawable.brown, "brown", "10000원"))
+//        shopDatas!!.add(ShopData(R.drawable.cony, "cony", "10000원"))
+//        shopDatas!!.add(ShopData(R.drawable.selly, "selly", "15000원"))
+//        shopDatas!!.add(ShopData(R.drawable.jake, "jake", "10000원"))
+//
+//        shopAdapter = ShopAdapter(shopDatas)
+//        shopAdapter!!.setOnItemClickListener(this)
+//
+//        shopList!!.adapter = shopAdapter
 
         v.fab.setOnClickListener(clickListener)
         v.fab.attachToRecyclerView(shopList!!)
 
-
+        getShopBest()
 
         return v
     }
@@ -76,6 +91,39 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
     }
 
+    fun getShopBest() {
+        var getContentList = networkService!!.getShopBestList(1)
+
+        getContentList.enqueue(object : Callback<ShopBestResponse> {
+            override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().message.equals("successful get best list")) {
+
+                        Log.i("status", "success")
+                        Log.i("size: ", response.body().result.toString())
+
+                        shopBestList = response.body().result
+
+                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_name)
+                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_price.toString())
+
+                        CommonData.shopBestList = shopBestList!!
+                        shopAdapter = ShopAdapter(shopBestList,requestManager)
+                        shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
+                        shopList!!.adapter = shopAdapter
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
+    }
 
 
     private var clickListener = View.OnClickListener { v ->

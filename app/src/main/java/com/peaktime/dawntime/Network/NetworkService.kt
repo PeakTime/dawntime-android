@@ -4,6 +4,7 @@ import com.peaktime.dawntime.Community.CommunityDetailInstance
 import com.peaktime.dawntime.Community.CommunityDetailResponse
 import com.peaktime.dawntime.Community.CommunityResponse
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
+import com.peaktime.dawntime.Shop.ShopBestResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -30,5 +31,13 @@ interface NetworkService {
             @Path("board_id") board_id: Int,
             @Body instance: CommunityDetailInstance)
             : Call<CommunityDetailResponse>
+
+    //쇼핑몰 best 리스트 조회
+    @GET("/shop/best/{user_id}")
+    fun getShopBestList(
+            @Path("user_id") user_id: Int)
+            : Call<ShopBestResponse>
+
+
 
 }

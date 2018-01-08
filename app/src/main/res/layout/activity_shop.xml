@@ -78,13 +78,6 @@
         >
     </android.support.v4.view.ViewPager>
 
-
-
-
-
-
-
-
     <!--<android.support.design.widget.CoordinatorLayout-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -98,14 +91,5 @@
         <!--android:src="@drawable/shop_view_cancel" />-->
 
     <!--</android.support.design.widget.CoordinatorLayout>-->
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>

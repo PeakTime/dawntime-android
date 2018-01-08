@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.shop_goods_item.view.*
 
@@ -13,10 +14,9 @@ import kotlinx.android.synthetic.main.shop_goods_item.view.*
 /**
  * Created by xlsdn on 2017-12-31.
  */
-class ShopAdapter(var dataList : ArrayList<ShopData>?) : RecyclerView.Adapter<ShopViewHolder>() {
+class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : RequestManager?) : RecyclerView.Adapter<ShopViewHolder>() {
 
     private var mainView : View?=null
-
 
     private var onItemClick : View.OnClickListener? = null
 
@@ -34,9 +34,11 @@ class ShopAdapter(var dataList : ArrayList<ShopData>?) : RecyclerView.Adapter<Sh
 
     //어뎁터와 뷰홀더를 포디션에 맞게 연결하는 부분
     override fun onBindViewHolder(holder: ShopViewHolder?, position: Int) {
-        holder!!.shopImage.setImageResource(dataList!!.get(position).shopImage)
-        holder!!.shopName.setText(dataList!!.get(position).shopName)
-        holder!!.shopPrice.setText(dataList!!.get(position).shopPrice)
+//        holder!!.shopImage.setImageResource(dataList!!.get(position).)
+
+        requestManager!!.load(dataList!!.get(position).goods_image).into(holder!!.shopImage)
+//        holder!!.shopName.setText(dataList!!.get(position).goods_name)
+//        holder!!.shopPrice.setText(dataList!!.get(position).goods_price)
 
         if(ShopToMainActivity.bestFlagFun.bestFlag == 1){
 
@@ -50,17 +52,16 @@ class ShopAdapter(var dataList : ArrayList<ShopData>?) : RecyclerView.Adapter<Sh
             }
             if(position==2){
                 mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
-
             }
-
         }
+        if(dataList!!.get(position).goods_like == 1)
+            mainView!!.shopLikeBtn.setBackgroundResource(R.drawable.shop_view_zzim_heart_solid)
+        else
+            mainView!!.shopLikeBtn.setBackgroundResource(R.drawable.shop_view_zzim_heart_line)
 
     }
 
     //리턴값이 간단할때 이렇게 사용
     override fun getItemCount(): Int = dataList!!.size
-
-
-
 
 }

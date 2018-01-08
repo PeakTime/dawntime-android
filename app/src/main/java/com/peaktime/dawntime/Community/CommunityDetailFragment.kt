@@ -148,6 +148,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                         likeCount!!.text = communityDetailDatas!!.get(0).board_like.toString()
                         replyCount!!.text = communityDetailDatas!!.get(0).com_count.toString()
 //                        scrapCount!!.setText(communityDetailDatas!!.get(0).scrap_count.toString())
+
                         //아직 널로 들어오는거 같은데 서버에 검사 부탁해야할듯
                         if (communityDetailDatas!!.get(0).user_like == true) {
                             community_unfireContents.setImageResource(R.drawable.view_fire_red)
