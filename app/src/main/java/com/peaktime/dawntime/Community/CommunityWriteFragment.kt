@@ -274,7 +274,7 @@ class CommunityWriteFragment : Fragment(){
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int,data: Intent?) {
         Log.e("Error","onActivity")
         if (requestCode == REQUEST_IMG) {
             Log.e("Error","Request Img")
@@ -282,14 +282,14 @@ class CommunityWriteFragment : Fragment(){
                 Log.e("Error : ","Result Ok")
                 try {
                     takeImgDatas = ArrayList<TakeImageData>()
-                    if(data.clipData == null){
+                    if(data!!.clipData == null){
                         Log.i("take one Image","사진을 하나만 선택할 수 있습니다")
                         takeImgDatas!!.add(TakeImageData(MediaStore.Images.Media.getBitmap(activity.contentResolver,data.data)))
                     }
                     else{
                         var clipData = data.clipData
-                        if(clipData.itemCount > 10) {
-                            Toast.makeText(activity, "사진은 10개까지 선택 가능합니다.", Toast.LENGTH_LONG).show()
+                        if(clipData.itemCount > 5) {
+                            Toast.makeText(activity, "사진은 5개까지 선택 가능합니다.", Toast.LENGTH_LONG).show()
                         }
                         else if(clipData.itemCount == 1){
                             //val dataStr = clipData.getItemAt(0).uri.toString()
@@ -297,7 +297,7 @@ class CommunityWriteFragment : Fragment(){
                             //imageList!!.add(dataStr)
                             takeImgDatas!!.add(TakeImageData(dataStr))
                         }
-                        else if(clipData.itemCount > 1 && clipData.itemCount <= 10){
+                        else if(clipData.itemCount > 1 && clipData.itemCount <= 5){
                             var index = 0
                             while(index < clipData.itemCount){
                                 takeImgDatas!!.add(TakeImageData(decodeSampledBitmapFromPath(getPathFromUri(clipData.getItemAt(index).uri),100,100)))

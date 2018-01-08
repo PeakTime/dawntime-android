@@ -135,7 +135,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
 
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("success")) {
-                        communityDetailDatas = response.body().boardRelsult
+                        communityDetailDatas = response.body().boardResult
                         communityDetailReplyDatas = response.body().comResult
 
                         title.text = communityDetailDatas!!.get(0).board_title
@@ -223,6 +223,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
         }
         var sendreply = dialogView.findViewById<TextView>(R.id.sendreply)
         sendreply.setOnClickListener {
+
 
         }
         var singo = dialogView.findViewById<TextView>(R.id.singo)

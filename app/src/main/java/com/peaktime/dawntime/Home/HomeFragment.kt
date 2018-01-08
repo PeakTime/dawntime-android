@@ -17,9 +17,13 @@ import android.widget.Button
 import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.Column.ColumnListFragment
 import com.peaktime.dawntime.Community.CommunityDetailFragment
+import com.peaktime.dawntime.ExpandableHeightGridView
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.*
 import com.peaktime.dawntime.Shop.ShopToMainActivity
+import com.peaktime.dawntime.Shop.ShopActivity
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,9 +37,12 @@ class HomeFragment : Fragment(),View.OnClickListener {
     private var columnPageDatas : ArrayList<ColumnBannerData>? = null
     private var columnPageAdapter : ColumnBannerAdapter? = null
 
-    private var peektimeRecycler :RecyclerView? = null
+    //private var peektimeRecycler :RecyclerView? = null
     private var peektimeDatas : ArrayList<PeektimeData>? = null
-    private var peektimeAdapter : PeektimeAdapter? = null
+    //private var peektimeAdapter : PeektimeAdapter? = null
+
+    private var peektimeGridAdapter : PeaktimeGridAdapter? = null
+    private var peektimeGridView : ExpandableHeightGridView? = null
 
     private var timer : Timer? = null
     private val DELAY_MS : Long = 500
@@ -108,30 +115,53 @@ class HomeFragment : Fragment(),View.OnClickListener {
             }
         }, DELAY_MS, PERIOD_MS)
 
-        mLayoutManager = GridLayoutManager(activity,2)
-        peektimeRecycler = v.findViewById(R.id.peektime_recycler_list)
-        peektimeRecycler!!.layoutManager = mLayoutManager
+//        mLayoutManager = GridLayoutManager(activity,2)
+//        peektimeRecycler = v.findViewById(R.id.peektime_recycler_list)
+//        peektimeRecycler!!.layoutManager = mLayoutManager
 
         peektimeDatas = ArrayList<PeektimeData>()
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,"abc","qqq"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu2_green,"bbb","ccc"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu3_violet,"ccc","eee"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu4_blue,"abc","qqq"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,"bbb","ccc"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu2_green,"ccc","eee"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu3_violet,"abc","qqq"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu4_blue,"bbb","ccc"))
-        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,"ccc","eee"))
-        peektimeAdapter = PeektimeAdapter(peektimeDatas)
-        peektimeAdapter!!.setOnItemClick(View.OnClickListener {
+        var temp = "너무너무너무너무 긴 텍스트 입니다."
+        var str : String? = null
+        if(temp.length > 6){
+            str = temp.substring(0,6)
+            str = str + "..."
+        }
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,str!!,"qqq",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu2_green,"bbb","ccc",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu3_violet,"ccc","eee",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu4_blue,"abc","qqq",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,"bbb","ccc",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu2_green,"ccc","eee",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu3_violet,"abc","qqq",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu4_blue,"bbb","ccc",300,200,100))
+        peektimeDatas!!.add(PeektimeData(R.drawable.view_peakillu1_purple,"ccc","eee",300,200,100))
+
+//        peektimeAdapter = PeektimeAdapter(peektimeDatas)
+//        peektimeAdapter!!.setOnItemClick(View.OnClickListener {
+//            val fm = fragmentManager.beginTransaction()
+//            fm.replace(R.id.home_fragment_container,CommunityDetailFragment())
+//            fm.addToBackStack(null)
+//            fm.commit()
+//        })
+
+  //      peektimeRecycler!!.adapter = peektimeAdapter
+  //      peektimeRecycler!!.addItemDecoration(RecyclerViewDecoration(15,"bottom"))
+
+
+        peektimeGridAdapter = PeaktimeGridAdapter(peektimeDatas)
+        peektimeGridAdapter!!.setOnItemClick(View.OnClickListener {
             val fm = fragmentManager.beginTransaction()
             fm.replace(R.id.home_fragment_container,CommunityDetailFragment())
             fm.addToBackStack(null)
             fm.commit()
         })
+        peektimeGridView = v.findViewById(R.id.peektime_grid_list)
+        peektimeGridView!!.adapter = peektimeGridAdapter
+        peektimeGridView!!.setExpanded(true)
+//        v.peektime_grid_list.adapter = peektimeGridAdapter
+//        v.peektime_grid_list.setExpanded(true)
 
-        peektimeRecycler!!.adapter = peektimeAdapter
-        peektimeRecycler!!.addItemDecoration(RecyclerViewDecoration(15,"bottom"))
+
 
 
         return v

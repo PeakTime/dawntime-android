@@ -18,6 +18,9 @@ class PeektimeAdapter(var dataList : ArrayList<PeektimeData>? ) : RecyclerView.A
         holder!!.peektimeBack.setBackgroundResource(dataList!!.get(position).peektimeBackground)
         holder!!.peektimeTitle.text = dataList!!.get(position).peektimeTitle
         holder!!.peektimeText.text = dataList!!.get(position).peektimeText
+        holder!!.peektimeLikeCnt.text = dataList!!.get(position).peektimeLikeCnt.toString()
+        holder!!.peektimeCommentCnt.text = dataList!!.get(position).peektimeCommentCnt.toString()
+        holder!!.peektimeScrapCnt.text = dataList!!.get(position).peektimeScrapCnt.toString()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PeektimeViewHolder {

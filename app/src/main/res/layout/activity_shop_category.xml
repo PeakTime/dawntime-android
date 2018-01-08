@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.peaktime.dawntime.Shop.ShopCategoryActivity">
 
     <RelativeLayout
@@ -50,18 +51,19 @@
 
     </RelativeLayout>
 
-
-
-    <android.support.v7.widget.RecyclerView
+    <android.support.design.widget.TabLayout
         android:id="@+id/shop_category_list"
+        app:tabMode="scrollable"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_below="@+id/layout"
-        />
+        app:tabTextColor="#ED508E"
+        app:tabSelectedTextColor="#ED508E">
+
+    </android.support.design.widget.TabLayout>
 
     <RelativeLayout
         android:id="@+id/layout2"
@@ -125,14 +127,19 @@
         />
 
     <!--<android.support.v4.view.ViewPager-->
-    <!--android:id="@+id/shop_category_viewpager"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginTop="12dp"-->
-    <!--&gt;-->
+        <!--android:id="@+id/shop_category_viewpager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="12dp"-->
+        <!--&gt;-->
     <!--</android.support.v4.view.ViewPager>-->
 
 
+    <RelativeLayout
+        android:id="@+id/shop_category_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="12dp"/>
 
 
 

@@ -5,12 +5,18 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.MotionEvent
+import android.view.View
+import android.widget.LinearLayout
 import com.peaktime.dawntime.Community.CommunityFragment
 import com.peaktime.dawntime.Home.HomeFragment
 import com.peaktime.dawntime.MyPage.MyPageFragment
 import com.peaktime.dawntime.Shop.ShopActivity
 import com.peaktime.dawntime.Shop.ShopToMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_mypage.*
+import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +39,14 @@ class MainActivity : AppCompatActivity() {
 
 
         var tabAdapter = TabAdapter(supportFragmentManager,main_tab.tabCount)
+
+        var tabStrip = main_tab.getChildAt(0) as LinearLayout
+        tabStrip.getChildAt(2).setOnTouchListener(fun(v : View, event: MotionEvent) : Boolean{
+            if(event.action == MotionEvent.ACTION_UP){
+                startActivity(Intent(applicationContext,ShopActivity::class.java))
+            }
+            return true
+        })
 
         main_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {

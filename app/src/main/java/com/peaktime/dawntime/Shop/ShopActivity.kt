@@ -13,9 +13,15 @@ import com.peaktime.dawntime.Shop.fragment.*
 import com.peaktime.dawntime.Shop.ShopMainTapAdapter
 import kotlinx.android.synthetic.main.activity_shop.*
 import android.graphics.Typeface
+import android.support.v4.content.res.ResourcesCompat
 import android.widget.TextView
 import android.view.ViewGroup
-
+import kotlinx.android.synthetic.main.shop_customtab_brand.*
+import kotlinx.android.synthetic.main.shop_customtab_brand.view.*
+import kotlinx.android.synthetic.main.shop_customtab_category.*
+import kotlinx.android.synthetic.main.shop_customtab_category.view.*
+import kotlinx.android.synthetic.main.shop_customtab_new.*
+import kotlinx.android.synthetic.main.shop_customtab_new.view.*
 
 
 
@@ -58,9 +64,46 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
+//                when(tab!!.position){
+//                    1->{
+//                        //tab!!.customView!!.brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+//                        brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+//                    }
+//                    2->{
+//                        //tab!!.customView!!.category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+//                        category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+//                    }
+//                    3->{
+//                        //tab!!.customView!!.new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+//                        new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+//                    }
+//                }
             }
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 shop_main_viewpager.currentItem = tab!!.position
+                when(tab!!.position){
+                    0->{
+                        //tab!!.customView!!.brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+                        new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+
+                        category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                        brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                    }
+                    1->{
+                        //tab!!.customView!!.category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+                        category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+
+                        brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                        new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                    }
+                    2->{
+                        //tab!!.customView!!.new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+                        brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+
+                        new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                        category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                    }
+                }
             }
         })
 

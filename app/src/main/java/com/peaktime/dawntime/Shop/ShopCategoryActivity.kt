@@ -4,16 +4,27 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
+import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import android.text.Layout
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupMenu
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.load.engine.Resource
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_shop_category.*
+import kotlinx.android.synthetic.main.activity_shop_category.view.*
 import kotlinx.android.synthetic.main.shop_kind_item.*
 
 class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenuItemClickListener{
@@ -28,7 +39,22 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_category)
 
+        shop_category_list.addTab(shop_category_list.newTab().setText("바이브레이터"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("커플토이"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("하네스 벨트"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("딜도"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("애널 케겔"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("PARTY 용품"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("코스튬"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("BDSM"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("속옷"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("콘돔"))
+        shop_category_list.addTab(shop_category_list.newTab().setText("러브젤"))
 
+        setCustomFont(shop_category_list)
+
+
+        shop_category_list.setSelectedTabIndicatorHeight(0)
 
         shopBackBtn!!.setOnClickListener(clickListener)
         shopSearchBtn!!.setOnClickListener(clickListener)
@@ -39,29 +65,69 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
 
             Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
             AddFragment(GoodsFragment(), categoryKindNum) //받은값으로 태그설정
+//            var tab = shop_category_list.getTabAt(categoryKindNum)
+//            tab!!.select()
+            Handler().postDelayed(
+                    Runnable { shop_category_list.getTabAt(categoryKindNum)!!.select() }, 100)
 
         }
 
-        shop_category_list!!.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        var tabAdapter = ShopCategoryTabAdapter(supportFragmentManager,shop_category_list.tabCount)
 
-        shopCategoryDatas = ArrayList<ShopKindData>()
-        shopCategoryDatas!!.add(ShopKindData("바이브레이터"))
-        shopCategoryDatas!!.add(ShopKindData("커플토이"))
-        shopCategoryDatas!!.add(ShopKindData("하네스 벨트"))
-        shopCategoryDatas!!.add(ShopKindData("딜도"))
-        shopCategoryDatas!!.add(ShopKindData("애널 케겔"))
-        shopCategoryDatas!!.add(ShopKindData("PARTY 용품"))
-        shopCategoryDatas!!.add(ShopKindData("코스튬"))
-        shopCategoryDatas!!.add(ShopKindData("BDSM"))
-        shopCategoryDatas!!.add(ShopKindData("속옷"))
-        shopCategoryDatas!!.add(ShopKindData("콘돔"))
-        shopCategoryDatas!!.add(ShopKindData("러브젤"))
+        shop_category_list.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(tab: TabLayout.Tab?) {
 
+            }
 
-        shopCategoryAdapter = ShopKindAdapter(shopCategoryDatas)
-        shopCategoryAdapter!!.setOnItemClickListener(this)
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                setCustomFont(shop_category_list)
+            }
 
-        shop_category_list!!.adapter = shopCategoryAdapter
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                setCustomFont(shop_category_list,tab!!.position)
+
+            }
+
+        })
+
+    }
+
+    fun setCustomFont(tabLayout: TabLayout) {
+
+        val vg = tabLayout.getChildAt(0) as ViewGroup
+        val tabsCount = vg.childCount
+
+        for (j in 0 until tabsCount) {
+            val vgTab = vg.getChildAt(j) as ViewGroup
+
+            val tabChildsCount = vgTab.childCount
+
+            for (i in 0 until tabChildsCount) {
+                val tabViewChild = vgTab.getChildAt(i)
+                if (tabViewChild is TextView) {
+                    //Put your font in assests folder
+                    //assign name of the font here (Must be case sensitive)
+                    tabViewChild.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+                }
+            }
+        }
+    }
+
+    fun setCustomFont(tabLayout: TabLayout,position : Int){
+        val vg = tabLayout.getChildAt(0) as ViewGroup
+
+        val vgTab = vg.getChildAt(position) as ViewGroup
+
+        val tabChildsCount = vgTab.childCount
+
+        for (i in 0 until tabChildsCount) {
+            val tabViewChild = vgTab.getChildAt(i)
+            if (tabViewChild is TextView) {
+                //Put your font in assests folder
+                //assign name of the font here (Must be case sensitive)
+                tabViewChild.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+            }
+        }
 
 
         shop_sort_layout!!.setOnClickListener {
@@ -74,103 +140,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
     }
 
     override fun onClick(v : View?) {
-
-
-
-        //리싸이클러뷰 이벤트
-        val idx : Int = shop_category_list!!.getChildAdapterPosition(v) //position 받아오기
-        val categoryName : String = shopCategoryDatas!!.get(idx).kindName //포지션에 위치하는 정보받아오기
-        //Toast.makeText(this, categoryName, Toast.LENGTH_LONG).show() //이름으로 토스트
-        //Toast.makeText(this, idx.toString(), Toast.LENGTH_LONG).show()     //스트링으로 토스트
-
-        when(idx){
-            0->{
-                val bundle = Bundle()
-                //bundle.putString("categoryName", categoryName)
-                //bundle.putString("title",firstText.text.toString())
-                //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                ReplaceFragment(GoodsFragment(),0)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
-//                kind_name_textview.setTypeface(typeface)
-            }
-
-            1->{
-                //기능구현하면 GoodsFragment로 바꾸기
-                ReplaceFragment(FirstFragment(),1)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
-//                kind_name_textview.setTypeface(typeface)
-
-
-            }
-
-            2->{
-                //기능구현하면 GoodsFragment로 바꾸기
-                ReplaceFragment(GoodsFragment(),2)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
-//                kind_name_textview.setTypeface(typeface)
-
-
-            }
-
-            3->{
-                ReplaceFragment(GoodsFragment(),3)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
-//                kind_name_textview.setTypeface(typeface)
-            }
-
-            4->{
-                ReplaceFragment(GoodsFragment(),4)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-//                typeface = ResourcesCompat.getFont(this, R.font.noto_sans_cjk_kr_medium)
-//                kind_name_textview.setTypeface(typeface)
-            }
-            5->{
-                ReplaceFragment(GoodsFragment(),5)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-            6->{
-                ReplaceFragment(GoodsFragment(),6)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-            7->{
-                ReplaceFragment(GoodsFragment(),7)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-            8->{
-                ReplaceFragment(GoodsFragment(),8)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-            9->{
-                ReplaceFragment(GoodsFragment(),9)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-            10->{
-                ReplaceFragment(GoodsFragment(),10)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-            11->{
-                ReplaceFragment(GoodsFragment(),11)
-                Toast.makeText(this, categoryName, Toast.LENGTH_SHORT).show()
-
-            }
-
-        }
-
-
 
 
     }//onClick end

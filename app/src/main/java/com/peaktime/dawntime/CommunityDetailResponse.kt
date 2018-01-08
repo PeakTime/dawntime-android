@@ -7,6 +7,6 @@ data class CommunityDetailResponse(
 
         var status: Boolean,
         var message: String,
-        var boardRelsult: ArrayList<CommunityDetailData>,
+        var boardResult: ArrayList<CommunityDetailData>,
         var comResult: ArrayList<CommunityDetailData2>
 )
