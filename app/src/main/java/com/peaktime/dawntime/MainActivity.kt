@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         var tabStrip = main_tab.getChildAt(0) as LinearLayout
         tabStrip.getChildAt(2).setOnTouchListener(fun(v : View, event: MotionEvent) : Boolean{
             if(event.action == MotionEvent.ACTION_UP){
+                ShopToMainActivity.bestFlagFun.bestFlag = 0
                 startActivity(Intent(applicationContext,ShopActivity::class.java))
             }
             return true
