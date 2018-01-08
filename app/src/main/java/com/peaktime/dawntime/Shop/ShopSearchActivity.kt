@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.R.id.container
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -15,6 +16,9 @@ import com.peaktime.dawntime.Community.CommunityWriteFragment
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.activity_shop_search.*
 import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
+import android.widget.Toast
+
+
 
 
 
@@ -38,7 +42,6 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         flowLayoutManager.isAutoMeasureEnabled = true
         famous_keword_list.setLayoutManager(flowLayoutManager)
 
-
         famousKeywordData = ArrayList<ShopSearchFamousKeywordData>()
         famousKeywordData!!.add(ShopSearchFamousKeywordData("딜도"))
         famousKeywordData!!.add(ShopSearchFamousKeywordData("바이브레이터"))
@@ -58,9 +61,6 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         famousAdapter!!.setOnItemClickListener(famousClickListener)
         famous_keword_list!!.adapter = famousAdapter
 
-
-
-
         val flowLayoutManager2 = FlowLayoutManager()
         flowLayoutManager2.isAutoMeasureEnabled = true
         recent_keword_list.setLayoutManager(flowLayoutManager2)
@@ -74,9 +74,6 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         recentAdapter!!.setOnItemClickListener(recentClickListener)
         recent_keword_list!!.adapter = recentAdapter
 
-
-
-
         shopSearchEditText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
                 when (actionId) {
@@ -85,12 +82,13 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                     }
                     else ->
                     {
-                        search_content = shopSearchEditText.text.toString()
-                        val intent = Intent(this@ShopSearchActivity,ShopSearchResultActivity::class.java)
-                        startActivityForResult(intent,0)
+                        search_content = shopSearchEditText!!.text.toString()//검색키워드 받아오기
+                        var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
+                        intent.putExtra("keyword",search_content)
+                        startActivity(intent)
+
                         return false
                     }// 기본 엔터키 동작
-
 
                 }// 검색 동작
                 return true

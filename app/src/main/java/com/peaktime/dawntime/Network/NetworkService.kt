@@ -33,11 +33,10 @@ interface NetworkService {
             : Call<CommunityDetailResponse>
 
     //쇼핑몰 best 리스트 조회
-    @GET("/shop/best/{user_id}")
+    @GET("/shop/best")
     fun getShopBestList(
-            @Path("user_id") user_id: Int)
+            @Header("user_token") user_token: String)
             : Call<ShopBestResponse>
-
 
 
 }

@@ -39,7 +39,6 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
     var networkService: NetworkService? = null
     var requestManager: RequestManager? = null
-    var index: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -85,14 +84,10 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         intent.putExtra("position", idx)
 
         startActivity(intent)
-
-
-
-
     }
 
     fun getShopBest() {
-        var getContentList = networkService!!.getShopBestList(1)
+        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMywidXNlcl9lbWFpbCI6ImFzZnNkZmFzZGZAbmF2ZXIuY29tIiwidXNlcl91aWQiOiJ1aWR1aWR1aWQiLCJpYXQiOjE1MTU0Mjc0MjQsImV4cCI6MTUxNTUxMzgyNH0.Oh125-ew-ehCP9DwX-Xa-5tf0PpduZYddoSQA2-aU8QB69OGTZITmSc_YrqWCurwuBTHqppZmOCbGZaxKU_viA")
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {

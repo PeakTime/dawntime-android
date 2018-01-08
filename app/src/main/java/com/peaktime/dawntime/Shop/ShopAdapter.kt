@@ -37,8 +37,8 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : 
 //        holder!!.shopImage.setImageResource(dataList!!.get(position).)
 
         requestManager!!.load(dataList!!.get(position).goods_image).into(holder!!.shopImage)
-//        holder!!.shopName.setText(dataList!!.get(position).goods_name)
-//        holder!!.shopPrice.setText(dataList!!.get(position).goods_price)
+        holder!!.shopName.setText(dataList!!.get(position).goods_name)
+        holder!!.shopPrice.setText(dataList!!.get(position).goods_price.toString())
 
         if(ShopToMainActivity.bestFlagFun.bestFlag == 1){
 

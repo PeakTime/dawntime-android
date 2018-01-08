@@ -12,6 +12,7 @@ import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.text.Layout
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupMenu
@@ -19,13 +20,21 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.Resource
+import com.peaktime.dawntime.CommonData
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_shop_category.*
 import kotlinx.android.synthetic.main.activity_shop_category.view.*
 import kotlinx.android.synthetic.main.shop_kind_item.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenuItemClickListener{
 
@@ -33,11 +42,15 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
     private  var shopCategoryAdapter : ShopKindAdapter? = null
     private var typeface : Typeface?=null
 
-
+    var networkService: NetworkService? = null
+    var requestManager: RequestManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_category)
+
+        networkService = ApplicationController.instance!!.networkService
+        requestManager = Glide.with(this)
 
         shop_category_list.addTab(shop_category_list.newTab().setText("바이브레이터"))
         shop_category_list.addTab(shop_category_list.newTab().setText("커플토이"))
@@ -91,6 +104,7 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
         })
 
     }
+
 
     fun setCustomFont(tabLayout: TabLayout) {
 
@@ -232,12 +246,5 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
 //        transaction.replace(R.id.shop_category_viewpager,fragment,tag)
 //        transaction.commit()
 //    }
-
-
-
-
-
-
-
 
 }
