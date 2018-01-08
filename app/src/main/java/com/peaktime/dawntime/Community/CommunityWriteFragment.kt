@@ -35,9 +35,6 @@ class CommunityWriteFragment : Fragment(){
 
 //    var community_addImg : LinearLayout?= null
 //    community_addImg = findViewById(R.id.community_addImg)
-    private var communityReplyDatas: ArrayList<CommunityReplyData>? = null
-    private var communityReplyAdapter: CommunityReplyAdapter?=null
-    private var communityReplyList: RecyclerView? = null
 
 
 //    final val REQUEST_CAMERA_TAKE: Int = 100
