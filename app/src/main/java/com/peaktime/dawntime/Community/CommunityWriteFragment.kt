@@ -36,10 +36,6 @@ class CommunityWriteFragment : Fragment(){
 //    var community_addImg : LinearLayout?= null
 //    community_addImg = findViewById(R.id.community_addImg)
 
-
-//    final val REQUEST_CAMERA_TAKE: Int = 100
-//    final val REQUEST_READ_TAKE: Int = 101
-//    final val REQUEST_WRITE_TAKE: Int = 102
     final val REQUEST_ALL: Int = 103
     final val REQUEST_IMG: Int = 200
     private var imageList : ArrayList<Any>? = null
@@ -47,7 +43,7 @@ class CommunityWriteFragment : Fragment(){
     private var takeImgAdapter : TakeImageAdapter? = null
     private var takeImgDatas : ArrayList<TakeImageData>? = null
 
-    //var permissionCheck : PermissionChecker? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -55,9 +51,11 @@ class CommunityWriteFragment : Fragment(){
         var select_horsehead : String ?= null
 
          //TODO :  뭔가 눌렀을 떄(가령 버튼을 누른다든가) 발생할 일 같아 보임.
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
-//        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        takeImgRecycler = v.findViewById(R.id.community_write_image_recycler)
+        val layoutManager = LinearLayoutManager(activity)
+        layoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
+        takeImgRecycler!!.layoutManager = layoutManager
+        takeImgRecycler!!.addItemDecoration(ColumnFragment.RecyclerViewDecoration(20))
 
         v.horsehead_button!!.setOnClickListener{
 
@@ -151,11 +149,6 @@ class CommunityWriteFragment : Fragment(){
         }
 
         v.community_backbtn1!!.setOnClickListener {
-//            val fm = activity.fragmentManager
-//            val transacton = fm.beginTransaction()
-//            val fragment = CommunityDetailFragment()
-//            transacton.remove(this)
-//            transacton.commit()
             val fm = fragmentManager.beginTransaction()
             fm.remove(this)
             fm.commit()
@@ -170,10 +163,7 @@ class CommunityWriteFragment : Fragment(){
                     //permission을 요청
                     requestPermissions(permissions, REQUEST_ALL)
                 } else {
-//                    val intent = Intent(Intent.ACTION_PICK)
-//                    intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
-//                    intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-//                    startActivityForResult(intent, REQUEST_IMG)
+                    takeImgDatas = ArrayList<TakeImageData>()
                     getAlbum()
                 }
             } else {
@@ -186,22 +176,13 @@ class CommunityWriteFragment : Fragment(){
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-//            REQUEST_CAMERA_TAKE -> {
-//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    Toast.makeText(activity, "permission CAMERA", Toast.LENGTH_LONG).show()
-//                }
-//            }
-//            REQUEST_READ_TAKE -> {
-//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    Toast.makeText(activity, "permission READ", Toast.LENGTH_LONG).show()
-//                }
-//            }
             REQUEST_ALL -> {
                 Toast.makeText(activity, "permissions ALL", Toast.LENGTH_LONG).show()
             }
         }
     }
 
+    //퍼미션 하나라도 없으면 전부 요청
     fun hasPermissions(context: Context, permissions: Array<String>): Boolean {
         if (Build.VERSION.SDK_INT >= 23) {
             for (permission in permissions) {
@@ -213,6 +194,7 @@ class CommunityWriteFragment : Fragment(){
         return true
     }
 
+    //앨범 호출
     fun getAlbum() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.setType(("image/*"))
@@ -221,16 +203,8 @@ class CommunityWriteFragment : Fragment(){
         startActivityForResult(Intent.createChooser(intent, "다중 선택은 '포토를 선택하세요"), REQUEST_IMG)
     }
 
-//    fun imageDecode(bitmap : Bitmap) : Bitmap{
-//        var option = BitmapFactory.Options()
-//        option.inJustDecodeBounds = true
-//        BitmapFactory.decodeResource(resources,R.id.community_write_imageview,option)
-//        var imageHeight = option.outHeight
-//        var imageWidth = option.outWidth
-//        var imageType = option.outMimeType
-//
-//    }
 
+    //이미지 사이즈 줄이기
     fun calculateInSampleSize(options : BitmapFactory.Options,reqWidth : Int, reqHeight : Int) : Int{
         var height = options.outHeight
         var width = options.outWidth
@@ -249,6 +223,7 @@ class CommunityWriteFragment : Fragment(){
         return inSampleSize
     }
 
+    //이미지 사이즈 줄이기(파일 경로를 통함)
     fun decodeSampledBitmapFromPath(resPath: String,
                                     reqWidth: Int, reqHeight: Int): Bitmap {
 
@@ -264,7 +239,7 @@ class CommunityWriteFragment : Fragment(){
         options.inJustDecodeBounds = false
         return BitmapFactory.decodeFile(resPath,options)
     }
-
+    //Uri to filePath
     fun getPathFromUri(uri : Uri) : String{
         var cursor = activity.contentResolver.query(uri,null,null,null,null)
         cursor.moveToNext()
@@ -281,7 +256,6 @@ class CommunityWriteFragment : Fragment(){
             if (resultCode == Activity.RESULT_OK){
                 Log.e("Error : ","Result Ok")
                 try {
-                    takeImgDatas = ArrayList<TakeImageData>()
                     if(data!!.clipData == null){
                         Log.i("take one Image","사진을 하나만 선택할 수 있습니다")
                         takeImgDatas!!.add(TakeImageData(MediaStore.Images.Media.getBitmap(activity.contentResolver,data.data)))
@@ -306,22 +280,12 @@ class CommunityWriteFragment : Fragment(){
                         }
                     }
                     takeImgAdapter = TakeImageAdapter(takeImgDatas)
-
-                    takeImgRecycler = activity.findViewById(R.id.community_write_image_recycler)
-                    val layoutManager = LinearLayoutManager(activity)
-                    layoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
-                    takeImgRecycler!!.layoutManager = layoutManager
-                    takeImgRecycler!!.addItemDecoration(ColumnFragment.RecyclerViewDecoration(20))
                     takeImgRecycler!!.adapter = takeImgAdapter
 
-                    if(takeImgDatas!!.size > 0){
-                        picture_button!!.setTextColor(Color.parseColor("#ffffff"))
-                        picture_button!!.setBackgroundResource(R.drawable.selectlinedrawable)
-                    }
-                    else{
-                        picture_button!!.setTextColor(Color.parseColor("#231815"))
-                        picture_button!!.setBackgroundColor(Color.parseColor("#ffffff"))
-                    }
+                    picture_button!!.setTextColor(Color.parseColor("#ffffff"))
+                    picture_button!!.setBackgroundResource(R.drawable.selectlinedrawable)
+
+
 
                 } catch (e: FileNotFoundException) {
 
@@ -333,6 +297,14 @@ class CommunityWriteFragment : Fragment(){
 
             }
             else{
+                takeImgAdapter = TakeImageAdapter(takeImgDatas)
+                takeImgRecycler!!.adapter = takeImgAdapter
+
+                picture_button!!.setTextColor(Color.parseColor("#231815"))
+                picture_button!!.setBackgroundResource(R.drawable.graylinedrawable)
+
+
+
                 Toast.makeText(activity,"사진선택을 취소하였습니다.",Toast.LENGTH_LONG).show()
             }
 
