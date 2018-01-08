@@ -6,21 +6,15 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Resources
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.Rect
-import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.PermissionChecker
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -30,16 +24,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.R
-import kotlinx.android.synthetic.main.fragment_community.view.*
-import kotlinx.android.synthetic.main.fragment_community_write.view.*
-import com.peaktime.dawntime.MainActivity
 import kotlinx.android.synthetic.main.fragment_community_write.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
+import kotlinx.android.synthetic.main.fragment_community_write.view.*
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.security.Permission
-import java.security.Permissions
 
 class CommunityWriteFragment : Fragment(){
 
@@ -73,11 +63,13 @@ class CommunityWriteFragment : Fragment(){
 //        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         v.horsehead_button!!.setOnClickListener{
-            val horseheadDialog = AlertDialog.Builder(context)
+
+           val horseheadDialog = AlertDialog.Builder(context)
             val dialogView = inflater.inflate(R.layout.fragment_community_write_horseheaddialog, null)
             horseheadDialog.setView(dialogView)
             val alertDialog = horseheadDialog.create()
             alertDialog.show()
+
 
             var btn_horsehead0 = dialogView.findViewById<Button>(R.id.horsehead0)
             btn_horsehead0.setOnClickListener{
@@ -231,6 +223,17 @@ class CommunityWriteFragment : Fragment(){
         intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE)
         startActivityForResult(Intent.createChooser(intent, "다중 선택은 '포토를 선택하세요"), REQUEST_IMG)
     }
+
+//    fun imageDecode(bitmap : Bitmap) : Bitmap{
+//        var option = BitmapFactory.Options()
+//        option.inJustDecodeBounds = true
+//        BitmapFactory.decodeResource(resources,R.id.community_write_imageview,option)
+//        var imageHeight = option.outHeight
+//        var imageWidth = option.outWidth
+//        var imageType = option.outMimeType
+//
+//    }
+
     fun calculateInSampleSize(options : BitmapFactory.Options,reqWidth : Int, reqHeight : Int) : Int{
         var height = options.outHeight
         var width = options.outWidth
@@ -250,7 +253,7 @@ class CommunityWriteFragment : Fragment(){
     }
 
     fun decodeSampledBitmapFromPath(resPath: String,
-                                        reqWidth: Int, reqHeight: Int): Bitmap {
+                                    reqWidth: Int, reqHeight: Int): Bitmap {
 
         // First decode with inJustDecodeBounds=true to check dimensions
         val options = BitmapFactory.Options()
@@ -311,7 +314,7 @@ class CommunityWriteFragment : Fragment(){
                     val layoutManager = LinearLayoutManager(activity)
                     layoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
                     takeImgRecycler!!.layoutManager = layoutManager
-                    takeImgRecycler!!.addItemDecoration(RecyclerViewDecoration(20))
+                    takeImgRecycler!!.addItemDecoration(ColumnFragment.RecyclerViewDecoration(20))
                     takeImgRecycler!!.adapter = takeImgAdapter
 
                     if(takeImgDatas!!.size > 0){
@@ -338,14 +341,4 @@ class CommunityWriteFragment : Fragment(){
 
         }
     }
-
-    class RecyclerViewDecoration(var divWidth : Int?) : RecyclerView.ItemDecoration(){
-
-        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-            super.getItemOffsets(outRect, view, parent, state)
-
-            outRect!!.right = divWidth!!
-        }
-    }
-
 }

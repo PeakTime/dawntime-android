@@ -248,7 +248,6 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                 transacton.addToBackStack(null)
                 transacton.commit()
             }
-        //Toast.makeText(this, "SAVE", Toast.LENGTH_SHORT).show()
             R.id.singo ->{
                 //TODO : search 누르면 할 일
                 Toast.makeText(context, "신고접수 되었습니다.", Toast.LENGTH_SHORT).show()

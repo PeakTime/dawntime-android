@@ -52,6 +52,10 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 
         getList()
 
+        val horsehead_datas = arrayOfNulls<Button>(10)
+        val horsehead_datas_btn = arrayOf(R.id.horsehead_0, R.id.horsehead_1, R.id.horsehead_2, R.id.horsehead_3, R.id.horsehead_4,
+                R.id.horsehead_5, R.id.horsehead_6, R.id.horsehead_7, R.id.horsehead_8, R.id.horsehead_9)
+
         //말머리 보이기
         communtiy_detail = v.findViewById(R.id.community_detail)
         communtiy_detail!!.setOnClickListener{
@@ -121,6 +125,21 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             fm.addToBackStack(null)
             fm.commit()
         }
+
+
+        v.horsehead_0.setOnClickListener{
+            v.horsehead_0!!.setSelected(!v.horsehead_0.isSelected());
+        }
+        v.horsehead_1.setOnClickListener{
+            v.horsehead_1!!.setSelected(!v.horsehead_1.isSelected());
+        }
+        v.horsehead_2.setOnClickListener{
+            v.horsehead_2!!.setSelected(!v.horsehead_2.isSelected());
+        }
+
+
+
+
         return v
     }
 
