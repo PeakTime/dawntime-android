@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#3f486d"
     android:orientation="vertical"
-    tools:context="com.peaktime.dawntime.LockActivity">
+    tools:context="com.peaktime.dawntime.MyPage.LockActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

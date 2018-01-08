@@ -11,7 +11,7 @@
 
 
     <application
-        android:name=".ApplicationController"
+        android:name=".Network.ApplicationController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".MyPage.LoginActivity" />
         <activity android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity" />
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
@@ -41,8 +41,8 @@
         <activity android:name=".Shop.ShopSearchActivity" />
         <activity android:name=".Community.CommunitySearchActivity" />
         <activity android:name=".Community.CommunityPopActivity" />
-        <activity android:name=".LockActivity" />
-        <activity android:name=".PasswordCheckActivity" />
+        <activity android:name=".MyPage.LockActivity" />
+        <activity android:name=".MyPage.PasswordCheckActivity" />
         <activity android:name=".Shop.ShopToMainActivity" />
         <activity android:name=".Shop.ShopSearchResultActivity"></activity>
     </application>

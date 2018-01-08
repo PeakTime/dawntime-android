@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.*
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.data.OAuthLoginState
-import com.peaktime.dawntime.LockActivity
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
 

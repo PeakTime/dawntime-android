@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget
+import com.peaktime.dawntime.MyPage.LockActivity
 
 
 class SplashActivity : AppCompatActivity() {

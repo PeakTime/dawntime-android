@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.peaktime.dawntime.LoginActivity
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
 

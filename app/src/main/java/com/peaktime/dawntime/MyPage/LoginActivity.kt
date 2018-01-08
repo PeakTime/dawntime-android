@@ -1,4 +1,4 @@
-package com.peaktime.dawntime
+package com.peaktime.dawntime.MyPage
 
 import android.app.Activity
 import android.content.Context
@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import org.json.JSONException
 import org.json.JSONObject
 

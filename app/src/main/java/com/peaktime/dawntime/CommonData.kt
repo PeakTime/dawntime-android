@@ -1,5 +1,6 @@
 package com.peaktime.dawntime
 
+import com.peaktime.dawntime.Community.CommunityList
 import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
 
 /**

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
-import com.peaktime.dawntime.CommunityList
 import com.peaktime.dawntime.R
 
 /**

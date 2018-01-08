@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.peaktime.dawntime.*
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
+import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community_detail.*
 import kotlinx.android.synthetic.main.fragment_community_detail.view.*
 import kotlinx.android.synthetic.main.fragment_community_detail_replyitem.view.*

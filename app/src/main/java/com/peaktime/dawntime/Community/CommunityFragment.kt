@@ -14,7 +14,10 @@ import android.widget.ImageButton
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.peaktime.dawntime.*
+import com.peaktime.dawntime.CommonData
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
+import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_community.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -128,13 +131,13 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 
 
         v.horsehead_0.setOnClickListener{
-            v.horsehead_0!!.setSelected(!v.horsehead_0.isSelected());
+            v.horsehead_0!!.isSelected = !v.horsehead_0.isSelected
         }
         v.horsehead_1.setOnClickListener{
-            v.horsehead_1!!.setSelected(!v.horsehead_1.isSelected());
+            v.horsehead_1!!.isSelected = !v.horsehead_1.isSelected
         }
         v.horsehead_2.setOnClickListener{
-            v.horsehead_2!!.setSelected(!v.horsehead_2.isSelected());
+            v.horsehead_2!!.isSelected = !v.horsehead_2.isSelected
         }
 
 

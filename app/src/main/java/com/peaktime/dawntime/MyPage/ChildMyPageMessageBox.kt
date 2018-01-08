@@ -9,9 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.peaktime.dawntime.ApplicationController
 import com.peaktime.dawntime.CommonData
-import com.peaktime.dawntime.NetworkService
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import retrofit2.Call
 import retrofit2.Callback

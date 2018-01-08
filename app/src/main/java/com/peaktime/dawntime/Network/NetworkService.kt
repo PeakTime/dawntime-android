@@ -1,5 +1,8 @@
-package com.peaktime.dawntime
+package com.peaktime.dawntime.Network
 
+import com.peaktime.dawntime.Community.CommunityDetailInstance
+import com.peaktime.dawntime.Community.CommunityDetailResponse
+import com.peaktime.dawntime.Community.CommunityResponse
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
 import retrofit2.Call
 import retrofit2.http.*
