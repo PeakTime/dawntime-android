@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.recent_keword_item.view.*
 /**
  * Created by xlsdn on 2018-01-08.
  */
-class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<ShopSearchRecentKeywordData>?) : RecyclerView.Adapter<ShopSearchRecentKeywordViewHolder>() {
+class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<ShopKeywordData>?) : RecyclerView.Adapter<ShopSearchRecentKeywordViewHolder>() {
 
     private var mainView : View?=null
 
@@ -33,15 +33,12 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<ShopSearchRecentKe
 
     //어뎁터와 뷰홀더를 포디션에 맞게 연결하는 부분
     override fun onBindViewHolder(holder: ShopSearchRecentKeywordViewHolder?, position: Int) {
-        holder!!.recentKeywordName.setText(dataList!!.get(position).recentKeywordName)
+        holder!!.recentKeywordName.setText(dataList!!.get(position).recent_keywords[position])
 
         mainView!!.delete_btn.setOnClickListener{
             deleteItem(holder, position)
 //            mainView!!.kind_name_textview.setText("바뀜")
         }
-
-
-
     }
 
 

@@ -6,6 +6,7 @@ import com.peaktime.dawntime.Community.CommunityResponse
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
 import com.peaktime.dawntime.Shop.ShopBestResponse
 import com.peaktime.dawntime.Shop.ShopDetailResponse
+import com.peaktime.dawntime.Shop.ShopKeywordResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -38,6 +39,11 @@ interface NetworkService {
     fun getShopBestList(
             @Header("user_token") user_token: String)
             : Call<ShopBestResponse>
+    //쇼핑몰 keyword
+    @GET("shop/keyword")
+    fun getShopKeyword(
+            @Header("user_token") user_token: String)
+            : Call<ShopKeywordResponse>
 
 //    //쇼핑몰 new 리스트 조회
 //    @GET("/shop/new")

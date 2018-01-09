@@ -17,9 +17,16 @@ import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.activity_shop_search.*
 import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import android.widget.Toast
-
-
-
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.CommonData
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
+import kotlinx.android.synthetic.main.fragment_community_detail_replyitem.view.*
+import kotlinx.android.synthetic.main.fragment_community_detail_replyitem2.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
@@ -32,17 +39,27 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
     var search_content : String ?=null
 
+    var shopKeywordList : ArrayList<ShopKeywordData> ?= null
+    var networkService: NetworkService? = null
+    var requestManager: RequestManager? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_search)
 
         shopExitBtn!!.setOnClickListener(this)
 
+        networkService = ApplicationController.instance!!.networkService
+        requestManager = Glide.with(this)
+
+        getShopKeyword()
+
         val flowLayoutManager = FlowLayoutManager()
         flowLayoutManager.isAutoMeasureEnabled = true
         famous_keword_list.setLayoutManager(flowLayoutManager)
 
-        famousKeywordData = ArrayList<ShopSearchFamousKeywordData>()
+        /*famousKeywordData = ArrayList<ShopSearchFamousKeywordData>()
         famousKeywordData!!.add(ShopSearchFamousKeywordData("딜도"))
         famousKeywordData!!.add(ShopSearchFamousKeywordData("바이브레이터"))
         famousKeywordData!!.add(ShopSearchFamousKeywordData("커플용품"))
@@ -72,7 +89,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
         recentAdapter = ShopSearchRecentKeywordAdapter(recentKeywordData)
         recentAdapter!!.setOnItemClickListener(recentClickListener)
-        recent_keword_list!!.adapter = recentAdapter
+        recent_keword_list!!.adapter = recentAdapter*/
 
         shopSearchEditText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
@@ -96,6 +113,47 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         })
 
     }//onCreate
+
+    fun getShopKeyword() {
+        var getContentList = networkService!!.getShopKeyword("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMywidXNlcl9lbWFpbCI6ImFzZnNkZmFzZGZAbmF2ZXIuY29tIiwidXNlcl91aWQiOiJ1aWR1aWR1aWQiLCJpYXQiOjE1MTU0Mjc0MjQsImV4cCI6MTUxNTUxMzgyNH0.Oh125-ew-ehCP9DwX-Xa-5tf0PpduZYddoSQA2-aU8QB69OGTZITmSc_YrqWCurwuBTHqppZmOCbGZaxKU_viA")
+
+        getContentList.enqueue(object : Callback<ShopKeywordResponse> {
+            override fun onResponse(call: Call<ShopKeywordResponse>?, response: Response<ShopKeywordResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().message.equals("successful post keywords list")) {
+
+                        Log.i("status", "success")
+                        Log.i("size: ", response.body().result.toString())
+
+                        shopKeywordList = response.body().result
+
+//                        Log.i("sajldlkasjdkl",shopKeywordList!!.get(0).recent_keywords[0])
+//                        Log.i("sajldlkasjdkl",shopKeywordList!!.get(0).hot_keywords[0])
+
+                        CommonData.shopKeywordList = shopKeywordList!!
+                        //최근 검색어
+                        for (i in 0..shopKeywordList!!.get(0).recent_keywords!!.size - 1) {
+                            recentAdapter = ShopSearchRecentKeywordAdapter(shopKeywordList)
+                            recentAdapter!!.setOnItemClickListener(this@ShopSearchActivity)
+                            recent_keword_list!!.adapter = recentAdapter
+                        }
+                        /*//인기 검색어
+                        famousAdapter = ShopSearchFamousKeywordAdapter(shopKeywordList)
+                        famousAdapter!!.setOnItemClickListener(this@ShopSearchActivity)
+                        famous_keword_list!!.adapter = famousAdapter*/
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<ShopKeywordResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
