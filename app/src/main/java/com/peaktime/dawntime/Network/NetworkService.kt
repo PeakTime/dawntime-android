@@ -5,6 +5,7 @@ import com.peaktime.dawntime.Community.CommunityDetailResponse
 import com.peaktime.dawntime.Community.CommunityResponse
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
 import com.peaktime.dawntime.Shop.ShopBestResponse
+import com.peaktime.dawntime.Shop.ShopDetailResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -33,10 +34,23 @@ interface NetworkService {
             : Call<CommunityDetailResponse>
 
     //쇼핑몰 best 리스트 조회
-    @GET("/shop/best")
+    @GET("shop/best")
     fun getShopBestList(
             @Header("user_token") user_token: String)
             : Call<ShopBestResponse>
+
+//    //쇼핑몰 new 리스트 조회
+//    @GET("/shop/new")
+//    fun getShopNewList(
+//            @Path("user_token") user_token: String)
+//            : Call<ShopBestResponse>
+
+    //쇼핑몰 detail 상품 상세 조회
+    @GET("shop/detail/{goods_id}")
+    fun getShopDetailList(
+            @Header("user_token") user_token:String,
+            @Path("goods_id") goods_id: Int)
+            : Call<ShopDetailResponse>
 
 
 }

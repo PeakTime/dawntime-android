@@ -5,7 +5,6 @@
         android:id="@+id/sendMsg"
         android:title="쪽지보내기" />
 
-
     <item
         android:id="@+id/singo"
         android:title="신고"

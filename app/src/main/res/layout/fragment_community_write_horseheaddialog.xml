@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent" >
+    android:background="@android:color/transparent">
+
 
     <RelativeLayout
         android:id="@+id/community_cate_tab"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/view_horsehead_white"
         >
 
@@ -27,9 +28,9 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
+                android:paddingTop="3dp"
                 android:paddingLeft="13dp"
                 android:paddingRight="13dp"
-                android:paddingTop="3dp"
                 android:text="리뷰"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
@@ -37,8 +38,8 @@
             <Button
                 android:id="@+id/horsehead1"
                 android:layout_width="55dp"
-                android:layout_height="24dp"
                 android:layout_marginRight="7dp"
+                android:layout_height="24dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
                 android:paddingLeft="13dp"
@@ -169,5 +170,4 @@
                 android:textSize="13dp" />
         </LinearLayout>
     </RelativeLayout>
-
-</LinearLayout>
+</FrameLayout>

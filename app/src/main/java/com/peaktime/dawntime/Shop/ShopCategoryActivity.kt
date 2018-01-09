@@ -8,8 +8,6 @@ import android.os.Handler
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
-import android.support.v7.widget.AppCompatTextView
-import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.text.Layout
 import android.util.Log
@@ -17,7 +15,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.PopupMenu
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -27,8 +24,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.fragment.*
-import kotlinx.android.synthetic.main.activity_main.*
+import com.peaktime.dawntime.Shop.fragment.GoodsFragment
 import kotlinx.android.synthetic.main.activity_shop_category.*
 import kotlinx.android.synthetic.main.activity_shop_category.view.*
 import kotlinx.android.synthetic.main.shop_kind_item.*
@@ -54,16 +50,12 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
 
         shop_category_list.addTab(shop_category_list.newTab().setText("바이브레이터"))
         shop_category_list.addTab(shop_category_list.newTab().setText("커플토이"))
-        shop_category_list.addTab(shop_category_list.newTab().setText("하네스 벨트"))
         shop_category_list.addTab(shop_category_list.newTab().setText("딜도"))
         shop_category_list.addTab(shop_category_list.newTab().setText("애널 케겔"))
         shop_category_list.addTab(shop_category_list.newTab().setText("PARTY 용품"))
-        shop_category_list.addTab(shop_category_list.newTab().setText("코스튬"))
         shop_category_list.addTab(shop_category_list.newTab().setText("BDSM"))
-        shop_category_list.addTab(shop_category_list.newTab().setText("속옷"))
-        shop_category_list.addTab(shop_category_list.newTab().setText("콘돔"))
         shop_category_list.addTab(shop_category_list.newTab().setText("러브젤"))
-
+        shop_category_list.addTab(shop_category_list.newTab().setText("콘돔"))
         setCustomFont(shop_category_list)
 
 
@@ -104,7 +96,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
         })
 
     }
-
 
     fun setCustomFont(tabLayout: TabLayout) {
 
@@ -246,5 +237,12 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
 //        transaction.replace(R.id.shop_category_viewpager,fragment,tag)
 //        transaction.commit()
 //    }
+
+
+
+
+
+
+
 
 }

@@ -17,7 +17,7 @@
         <Button
             android:id="@+id/vibrator_btn"
             android:text="바이브레이터"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -29,7 +29,7 @@
         <Button
             android:id="@+id/coupletoy_btn"
             android:text="커플토이"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -38,22 +38,11 @@
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"/>
 
-        <Button
-            android:id="@+id/belt_btn"
-            android:text="하네스 벨트"
-            android:width="102dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shop_button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"
-            android:textSize="14dp"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
 
         <Button
             android:id="@+id/dildo_btn"
             android:text="딜도"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -65,7 +54,7 @@
         <Button
             android:id="@+id/anal_btn"
             android:text="애널케겔"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -78,7 +67,7 @@
         <Button
             android:id="@+id/party_btn"
             android:text="PARTY 용품"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -88,22 +77,11 @@
             android:includeFontPadding="false"
             />
 
-        <Button
-            android:id="@+id/costum_btn"
-            android:text="코스튬"
-            android:width="102dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shop_button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"
-            android:textSize="14dp"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
 
         <Button
             android:id="@+id/BDSM_btn"
             android:text="BDSM"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -113,9 +91,9 @@
             android:includeFontPadding="false"/>
 
         <Button
-            android:id="@+id/underwear_btn"
-            android:text="속옷"
-            android:width="102dp"
+            android:id="@+id/lovegel_btn"
+            android:text="러브젤"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -127,7 +105,7 @@
         <Button
             android:id="@+id/condom_btn"
             android:text="콘돔"
-            android:width="102dp"
+            android:width="117dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -136,17 +114,8 @@
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"/>
 
-        <Button
-            android:id="@+id/luvegel_btn"
-            android:text="러브젤"
-            android:width="102dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shop_button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"
-            android:textSize="14dp"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
+
+
 
     </GridLayout>
 

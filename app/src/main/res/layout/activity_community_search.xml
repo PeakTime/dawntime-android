@@ -33,6 +33,8 @@
                 android:textSize="14dp"
                 android:textColorHint="#B5B5B5"
                 android:background="@drawable/community_search"
+                android:fontFamily="@font/noto_sans_cjk_kr_light"
+                android:includeFontPadding="false"
                 />
 
             <ImageButton

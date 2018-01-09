@@ -24,6 +24,7 @@ class CommunityAdapter(var dataList: ArrayList<CommunityList>?, var requestManag
     override fun onBindViewHolder(holder: CommunityViewholder?, position: Int) {
 
         requestManager.load(dataList!!.get(position).board_image).into(holder!!.communityImage)
+        //이미지 리케스트로 가져오기
         holder.horesHead.text = dataList!!.get(position).board_tag
         holder.title.text = dataList!!.get(position).board_title
         holder.contents.text = dataList!!.get(position).board_content

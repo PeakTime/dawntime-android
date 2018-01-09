@@ -30,6 +30,7 @@
             android:textSize="21dp"
             android:layout_centerInParent="true"
             android:fontFamily="@font/noto_sans_cjk_kr_demilight"
+            android:includeFontPadding="false"
             />
 
         <ImageView

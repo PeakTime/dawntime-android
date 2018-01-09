@@ -2,22 +2,21 @@ package com.peaktime.dawntime.Community
 
 
 import android.Manifest
-import android.app.ActionBar
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.PermissionChecker
-import android.support.v4.view.ViewPager
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -26,7 +25,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.R
@@ -40,6 +38,11 @@ class CommunityWriteFragment : Fragment(){
 //    var community_addImg : LinearLayout?= null
 //    community_addImg = findViewById(R.id.community_addImg)
 
+
+
+//    final val REQUEST_CAMERA_TAKE: Int = 100
+//    final val REQUEST_READ_TAKE: Int = 101
+//    final val REQUEST_WRITE_TAKE: Int = 102
     final val REQUEST_ALL: Int = 103
     final val REQUEST_IMG: Int = 200
     private var imageList : ArrayList<Any>? = null
@@ -47,7 +50,7 @@ class CommunityWriteFragment : Fragment(){
     private var takeImgAdapter : TakeImageAdapter? = null
     private var takeImgDatas : ArrayList<TakeImageData>? = null
 
-
+    //var permissionCheck : PermissionChecker? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -55,6 +58,10 @@ class CommunityWriteFragment : Fragment(){
         var select_horsehead : String ?= null
 
          //TODO :  뭔가 눌렀을 떄(가령 버튼을 누른다든가) 발생할 일 같아 보임.
+//        val intent = Intent(Intent.ACTION_PICK)
+//        intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+//        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        var mDialog: Dialog? = null
         takeImgRecycler = v.findViewById(R.id.community_write_image_recycler)
         val layoutManager = LinearLayoutManager(activity)
         layoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
@@ -62,13 +69,15 @@ class CommunityWriteFragment : Fragment(){
         takeImgRecycler!!.addItemDecoration(ColumnFragment.RecyclerViewDecoration(20))
 
         v.horsehead_button!!.setOnClickListener{
-
-           val horseheadDialog = AlertDialog.Builder(context)
+            mDialog = Dialog(activity);
+            val horseheadDialog = AlertDialog.Builder(context)
             val dialogView = inflater.inflate(R.layout.fragment_community_write_horseheaddialog, null)
             horseheadDialog.setView(dialogView)
             val alertDialog = horseheadDialog.create()
             alertDialog.show()
-
+           mDialog!!.getWindow().setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+           // mDialog!!.getWindow().setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
+            mDialog!!.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.view_horsehead_white))
 
             var btn_horsehead0 = dialogView.findViewById<Button>(R.id.horsehead0)
             btn_horsehead0.setOnClickListener{
@@ -153,6 +162,11 @@ class CommunityWriteFragment : Fragment(){
         }
 
         v.community_backbtn1!!.setOnClickListener {
+//            val fm = activity.fragmentManager
+//            val transacton = fm.beginTransaction()
+//            val fragment = CommunityDetailFragment()
+//            transacton.remove(this)
+//            transacton.commit()
             val fm = fragmentManager.beginTransaction()
             fm.remove(this)
             fm.commit()
@@ -180,6 +194,16 @@ class CommunityWriteFragment : Fragment(){
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
+//            REQUEST_CAMERA_TAKE -> {
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    Toast.makeText(activity, "permission CAMERA", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//            REQUEST_READ_TAKE -> {
+//                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    Toast.makeText(activity, "permission READ", Toast.LENGTH_LONG).show()
+//                }
+//            }
             REQUEST_ALL -> {
                 Toast.makeText(activity, "permissions ALL", Toast.LENGTH_LONG).show()
             }
@@ -207,6 +231,15 @@ class CommunityWriteFragment : Fragment(){
         startActivityForResult(Intent.createChooser(intent, "다중 선택은 '포토를 선택하세요"), REQUEST_IMG)
     }
 
+//    fun imageDecode(bitmap : Bitmap) : Bitmap{
+//        var option = BitmapFactory.Options()
+//        option.inJustDecodeBounds = true
+//        BitmapFactory.decodeResource(resources,R.id.community_write_imageview,option)
+//        var imageHeight = option.outHeight
+//        var imageWidth = option.outWidth
+//        var imageType = option.outMimeType
+//
+//    }
 
     //이미지 사이즈 줄이기
     fun calculateInSampleSize(options : BitmapFactory.Options,reqWidth : Int, reqHeight : Int) : Int{

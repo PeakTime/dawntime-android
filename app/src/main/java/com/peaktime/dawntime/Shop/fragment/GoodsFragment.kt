@@ -9,18 +9,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.CommonData
-import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxAdapter
-import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.*
-import kotlinx.android.synthetic.main.activity_shop_detail.*
 import kotlinx.android.synthetic.main.fragment_shop_goods.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,7 +39,6 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
         val v = inflater!!.inflate(R.layout.fragment_shop_goods, container, false)
 
-
         shopList = v.findViewById(R.id.shopList)
         shopList!!.layoutManager = GridLayoutManager(activity, 2)
 
@@ -67,7 +61,9 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         v.fab.setOnClickListener(clickListener)
         v.fab.attachToRecyclerView(shopList!!)
 
-        getShopBest()
+
+
+        getShopBestList()
 
         return v
     }
@@ -76,18 +72,25 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
         var intent = Intent(activity, ShopDetailActivity::class.java)
 
-        val idx : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
-        val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
-        //val price : String = shopDatas!!.get(idx).shopPrice
 
-        intent.putExtra("name", name)
-        intent.putExtra("position", idx)
+        /*val idx : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
+        val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
+        val price : String = shopDatas!!.get(idx).shopPrice*/
+        intent.putExtra("Goods_Id",shopBestList!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
+//        val name = v!!.goods_name.text
+//        val price = v!!.goods_price.text
+//        intent.putExtra("name", name)
+//        intent.putExtra("price", price)
 
         startActivity(intent)
+
+
+
+
     }
 
-    fun getShopBest() {
-        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMywidXNlcl9lbWFpbCI6ImFzZnNkZmFzZGZAbmF2ZXIuY29tIiwidXNlcl91aWQiOiJ1aWR1aWR1aWQiLCJpYXQiOjE1MTU0Mjc0MjQsImV4cCI6MTUxNTUxMzgyNH0.Oh125-ew-ehCP9DwX-Xa-5tf0PpduZYddoSQA2-aU8QB69OGTZITmSc_YrqWCurwuBTHqppZmOCbGZaxKU_viA")
+    fun getShopBestList() {
+        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMywidXNlcl9lbWFpbCI6ImFzZnNkZmFzZGZAbmF2ZXIuY29tIiwidXNlcl91aWQiOiJ1aWR1aWR1aWQiLCJpYXQiOjE1MTU0MjYyNjMsImV4cCI6MTUxNTUxMjY2M30.meeMPRHcc1DOKxqiR0YTZzPacVekrLSFNVP3Ae93BiIUiBnx5q-FWnLwk7xnK2i0KUel_MUk3D-N-XSQ18aqJg")
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
@@ -99,9 +102,6 @@ class GoodsFragment : Fragment() , View.OnClickListener{
                         Log.i("size: ", response.body().result.toString())
 
                         shopBestList = response.body().result
-
-                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_name)
-                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_price.toString())
 
                         CommonData.shopBestList = shopBestList!!
                         shopAdapter = ShopAdapter(shopBestList,requestManager)

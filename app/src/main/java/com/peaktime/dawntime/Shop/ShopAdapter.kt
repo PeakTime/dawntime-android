@@ -14,7 +14,8 @@ import kotlinx.android.synthetic.main.shop_goods_item.view.*
 /**
  * Created by xlsdn on 2017-12-31.
  */
-class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : RequestManager?) : RecyclerView.Adapter<ShopViewHolder>() {
+class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
+                  var requestManager : RequestManager?) : RecyclerView.Adapter<ShopViewHolder>() {
 
     private var mainView : View?=null
 
@@ -34,11 +35,13 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : 
 
     //어뎁터와 뷰홀더를 포디션에 맞게 연결하는 부분
     override fun onBindViewHolder(holder: ShopViewHolder?, position: Int) {
-//        holder!!.shopImage.setImageResource(dataList!!.get(position).)
 
         requestManager!!.load(dataList!!.get(position).goods_image).into(holder!!.shopImage)
         holder!!.shopName.setText(dataList!!.get(position).goods_name)
         holder!!.shopPrice.setText(dataList!!.get(position).goods_price.toString())
+//        holder!!.shopBrand.setText(dataList!!.get(position).goods_brand)
+//        holder!!.shopInfo.setText(dataDetailList!!.get(position).goods_info)
+
 
         if(ShopToMainActivity.bestFlagFun.bestFlag == 1){
 
