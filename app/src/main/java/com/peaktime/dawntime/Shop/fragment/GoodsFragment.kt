@@ -1,6 +1,7 @@
 package com.peaktime.dawntime.Shop.fragment
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -17,6 +18,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import com.peaktime.dawntime.Shop.*
 import kotlinx.android.synthetic.main.activity_shop_detail.*
 import kotlinx.android.synthetic.main.fragment_shop_goods.view.*
@@ -53,11 +55,9 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
 
         if(ShopToMainActivity.bestFlagFun.bestFlag == 1) {
-            Toast.makeText(activity, "bset들어옴", Toast.LENGTH_SHORT).show()
             getShopBest()
 
         }else if(ShopToMainActivity.bestFlagFun.bestFlag == 0){
-            Toast.makeText(activity, "new들어옴", Toast.LENGTH_SHORT).show()
             getShopNew()
         }
 
@@ -83,7 +83,7 @@ class GoodsFragment : Fragment() , View.OnClickListener{
     }
 
     fun getShopBest() {
-        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
+        var getContentList = networkService!!.getShopBestList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
@@ -115,7 +115,7 @@ class GoodsFragment : Fragment() , View.OnClickListener{
     }
 
     fun getShopNew() {
-        var getContentList = networkService!!.getShopNewList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
+        var getContentList = networkService!!.getShopNewList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
