@@ -13,6 +13,7 @@ import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import kotlinx.android.synthetic.main.activity_shop_detail.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -80,7 +81,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
 
 
     fun getShopDetailList(){
-        var getContentList = networkService!!.getShopDetailList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozMywidXNlcl9lbWFpbCI6ImFzZnNkZmFzZGZAbmF2ZXIuY29tIiwidXNlcl91aWQiOiJ1aWR1aWR1aWQiLCJpYXQiOjE1MTU0MjYyNjMsImV4cCI6MTUxNTUxMjY2M30.meeMPRHcc1DOKxqiR0YTZzPacVekrLSFNVP3Ae93BiIUiBnx5q-FWnLwk7xnK2i0KUel_MUk3D-N-XSQ18aqJg",index!!)
+        var getContentList = networkService!!.getShopDetailList(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!,index!!)
 
         getContentList.enqueue(object : Callback<ShopDetailResponse> {
             override fun onResponse(call: Call<ShopDetailResponse>?, response: Response<ShopDetailResponse>?) {

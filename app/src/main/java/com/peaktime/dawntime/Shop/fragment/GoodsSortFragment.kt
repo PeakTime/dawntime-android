@@ -18,6 +18,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import com.peaktime.dawntime.Shop.*
 import kotlinx.android.synthetic.main.fragment_shop_goods_sort.*
 import kotlinx.android.synthetic.main.fragment_shop_goods_sort.view.*
@@ -82,52 +83,20 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
 
 //        if(ShopToMainActivity.bestFlagFun.bestFlag == 1) {
 //            Toast.makeText(activity, "bset들어옴", Toast.LENGTH_SHORT).show()
-            getShopBest()
+     //       getShopBest()
 //
 //        }
 
         return v
     }
 
-    fun getShopBest() {
-        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
-
-        getContentList.enqueue(object : Callback<ShopBestResponse> {
-            override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
-
-                if (response!!.isSuccessful) {
-                    if (response.body().message.equals("successful get best list")) {
-
-//                        Log.i("status", "success")
-//                        Log.i("size: ", response.body().result.toString())
-//                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_name)
-//                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_price.toString())
-
-
-                        shopBestDatas = response.body().result
-                        CommonData.shopBestList = shopBestDatas!!
-                        shopAdapter = ShopAdapter(shopBestDatas,requestManager)
-                        shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
-                        shopList!!.adapter = shopAdapter
-                    }
-                } else {
-                    Log.i("status", "fail")
-                }
-            }
-
-            override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
-                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
-                Log.i("status", "check")
-            }
-        })
-    }
     fun getShopCategory(categoryName : String,order : Int){
-        val getContentList = networkService!!.getShopCategoryList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw",categoryName,order)
+        val getContentList = networkService!!.getShopCategoryList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, categoryName, order)
         getContentList!!.enqueue(object : Callback<ShopBestResponse>{
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get category list")){
+
                     shopBestDatas = response.body().result
-                    CommonData.shopBestList = shopBestDatas!!
                     shopAdapter = ShopAdapter(shopBestDatas,requestManager)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
@@ -143,12 +112,14 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
     }
 
     fun getShopBrand(brandName : String,order : Int){
-        val getContentList = networkService!!.getShopBrandList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw",brandName,order)
+        val getContentList = networkService!!.getShopBrandList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!,brandName,order)
         getContentList!!.enqueue(object : Callback<ShopBestResponse>{
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get brand list")){
+
+                    Log.d("들어옴","들어옴들어옴들어옴들어옴들어옴들어옴들어옴들어옴")
+
                     shopBestDatas = response.body().result
-                    CommonData.shopBestList = shopBestDatas!!
                     shopAdapter = ShopAdapter(shopBestDatas,requestManager)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter

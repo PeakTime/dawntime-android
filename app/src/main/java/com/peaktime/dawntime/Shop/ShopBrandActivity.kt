@@ -43,7 +43,7 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
         if(savedInstanceState == null){
 
             Toast.makeText(this, brandKindNum.toString(), Toast.LENGTH_LONG).show()
-            AddFragment(GoodsSortFragment(), shop_brand_list.getTabAt(brandKindNum)!!.text.toString()) //받은값으로 태그설정
+            //AddFragment(GoodsSortFragment(), shop_brand_list.getTabAt(brandKindNum)!!.text.toString()) //받은값으로 태그설정
             Handler().postDelayed(
                     Runnable { shop_brand_list.getTabAt(brandKindNum)!!.select() }, 100)
 
@@ -173,6 +173,7 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
         var bundle = Bundle()
         bundle.putInt("callAt", CommonData.CALL_AT_BRAND)
         bundle.putString("brandName",shopBrandtag)
+        fragment.arguments = bundle
         transaction.add(R.id.shop_brand_viewpager,fragment)
         transaction.commit()
     }
@@ -187,6 +188,7 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
         var bundle = Bundle()
         bundle.putInt("callAt", CommonData.CALL_AT_BRAND)
         bundle.putString("brandName",shopBrandtag)
+        fragment.arguments = bundle
         transaction.replace(R.id.shop_brand_viewpager,fragment)
         transaction.commit()
     }

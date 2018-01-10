@@ -12,14 +12,18 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.peaktime.dawntime.Community.CommunityWriteFragment
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.activity_shop_search.*
 import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import android.widget.Toast
-
-
-
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
+import com.peaktime.dawntime.SharedPreferInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
@@ -188,7 +192,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
 
     fun getKeywordList(){
-        var getKeywordList = networkService!!.getKeywordList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
+        var getKeywordList = networkService!!.getKeywordList(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!)
         getKeywordList.enqueue(object : Callback<ShopKeywordResponse> {
             override fun onResponse(call: Call<ShopKeywordResponse>?, response: Response<ShopKeywordResponse>?) {
                 if (response!!.isSuccessful) {

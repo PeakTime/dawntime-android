@@ -2,7 +2,6 @@ package com.peaktime.dawntime.Network
 
 import com.peaktime.dawntime.Column.ColumnListResponse
 import com.peaktime.dawntime.Column.ColumnResponse
-import com.peaktime.dawntime.Community.CommunityDetailInstance
 import com.peaktime.dawntime.Community.CommunityDetailResponse
 import com.peaktime.dawntime.Community.CommunityResponse
 import com.peaktime.dawntime.Home.HomeResponse
@@ -108,7 +107,7 @@ interface NetworkService {
             @Path("order") order: Int)
             : Call<ShopBestResponse>
     //쇼핑몰 brand 리스트 조회
-    @GET("shop/category/{goods_brand}/{order}")
+    @GET("shop/brand/{goods_brand}/{order}")
     fun getShopBrandList(
             @Header("user_token") user_token: String,
             @Path("goods_brand") goods_brand:String,
