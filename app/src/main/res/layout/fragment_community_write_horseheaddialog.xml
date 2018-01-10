@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent">
+    android:background="#000000"
+    android:padding="10dp">
 
-
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/community_cate_tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="@drawable/view_horsehead_white"
-        >
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
 
         <LinearLayout
             android:id="@+id/cate_1"
@@ -19,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <Button
@@ -28,24 +32,19 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingTop="3dp"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:text="리뷰"
+                android:text="뻘글"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
             <Button
                 android:id="@+id/horsehead1"
                 android:layout_width="55dp"
-                android:layout_marginRight="7dp"
                 android:layout_height="24dp"
+                android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="뻘글"
+
+                android:text="엑소"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -56,10 +55,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="엑소"
+                android:text="뮤직"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -70,10 +66,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="리뷰"
+                android:text="후기"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -83,17 +76,14 @@
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="리뷰"
+                android:text="발언"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/cate_2"
-            android:layout_width="303dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cate_1"
             android:layout_centerHorizontal="true"
@@ -107,10 +97,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="리뷰"
+                android:text="인생"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -121,10 +108,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="리뷰"
+                android:text="먹방"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -135,9 +119,6 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
                 android:text="리뷰"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
@@ -149,10 +130,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="리뷰"
+                android:text="BTS"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -162,12 +140,10 @@
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:paddingLeft="13dp"
-                android:paddingRight="13dp"
-                android:paddingTop="3dp"
-                android:text="리뷰"
+                android:text="퇴치법"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
         </LinearLayout>
-    </RelativeLayout>
-</FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

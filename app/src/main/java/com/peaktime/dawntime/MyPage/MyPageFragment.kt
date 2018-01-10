@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -89,19 +90,13 @@ class MyPageFragment : Fragment() {
             var intent = Intent(activity, LoginActivity::class.java)
             startActivityForResult(intent, 0)
         }
-
         optionBtn!!.setOnClickListener {
-            //            val fg = ChildMyPageOption()
-//            setChildFragment(fg)
 
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            val fg = ChildMyPageOption()
-            transacton.add(R.id.child_container, fg, "option")
-            transacton.addToBackStack(null)
-            transacton.commit()
+            val fm = fragmentManager.beginTransaction()
+            fm.add(R.id.child_container, ChildMyPageOption(), "option")
+            fm.addToBackStack(null)
+            fm.commit()
         }
-
         messageBtn!!.setOnClickListener {
             val fm = activity.fragmentManager
             val transacton = fm.beginTransaction()
@@ -122,22 +117,12 @@ class MyPageFragment : Fragment() {
         basketBtn!!.setOnClickListener {
 
         }
+
         myWrittenBtn!!.setOnClickListener {
 
         }
 
-
         return v
-    }
-
-    fun setChildFragment(child: Fragment) {
-        var fm = childFragmentManager.beginTransaction()
-
-        if (!child.isAdded) {
-            fm.replace(R.id.child_container, child)
-            fm.addToBackStack(null)//스택 쌓는 부분 수정필요할 듯
-            fm.commit()
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -147,7 +132,6 @@ class MyPageFragment : Fragment() {
             setEnable(true)
             emailText!!.text = data!!.getStringExtra("EMAIL")
         }
-
     }
 
     fun setEnable(b: Boolean) {
@@ -190,7 +174,6 @@ class MyPageFragment : Fragment() {
             view5!!.setBackgroundColor(Color.parseColor("#ED508E"))
             view6!!.setBackgroundColor(Color.parseColor("#4D4F4F4F"))
 
-
         } else {
             image!!.setImageResource(R.drawable.view_unactiveprofile_gray)
             myWrittenBtn!!.setTextColor(Color.parseColor("#B7B7B7"))
@@ -207,22 +190,19 @@ class MyPageFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("qwerty", "onCreate")
+    }
 
-//    fun ableControls(enable : Boolean,vg : ViewGroup)
-//    {
-//        var i : Int
-//        for( i in 0..vg.childCount)
-//        {
-//            var child =vg.getChildAt(i)
-////            if(vg.getChildAt(i).id == R.id.frame)
-////            {
-////                continue
-////            }
-//            child.setEnabled(enable)
-//
-//
-//            if(child is ViewGroup)
-//                ableControls(enable,child)
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        Log.i("qwerty", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("qwerty", "onResume")
+    }
+
 }

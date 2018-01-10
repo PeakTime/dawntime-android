@@ -10,7 +10,7 @@ import android.content.SharedPreferences
 class SharedPreferInstance {
     //키값
     // Boolean -> LOGIN, NOTICE, LOCK, BLIND
-    // String - > EMAIL, ID, GENDER, PASSWORD
+    // String - > EMAIL, UID, GENDER, PASSWORD, TOKEN , AGE
 
     fun putPreferString(key: String, value: String) {
         editor!!.putString(key, value)
@@ -18,9 +18,18 @@ class SharedPreferInstance {
 
     }
 
+    fun putPreferInt(key: String, value: Int) {
+        editor!!.putInt(key, value)
+        editor!!.commit()
+    }
+
     fun putPreferBoolean(key: String, value: Boolean) {
         editor!!.putBoolean(key, value)
         editor!!.commit()
+    }
+
+    fun getPreferInt(key: String): Int? {
+        return prefer!!.getInt(key, 0)
     }
 
     fun getPreferString(key: String): String? {

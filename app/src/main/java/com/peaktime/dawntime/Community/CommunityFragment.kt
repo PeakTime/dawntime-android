@@ -3,6 +3,7 @@ package com.peaktime.dawntime.Community
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -18,6 +19,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import kotlinx.android.synthetic.main.fragment_community.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,6 +34,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     private var communityList: RecyclerView? = null
     private var communityDatas: ArrayList<CommunityList>? = null
     private var adapter: CommunityAdapter? = null
+
     private var community_write: ImageButton? = null
     private var communtiy_detail : Button? = null
     private var community_search : ImageButton? =null
@@ -76,26 +79,19 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             }
         }
 
-        //글 작성
-       community_write!!.setOnClickListener {
-           val intent = Intent(activity, CommunityWriteFragment::class.java)
-           startActivity(intent)
-       }
-        v.community_write!!.setOnClickListener {
-//                val fm = activity.fragmentManager
-//                val transacton = fm.beginTransaction()
-//                val fragment = CommunityWriteFragment()
-//                transacton.add(R.id.community_container, fragment, "write")
-//                transacton.addToBackStack(null)
-//                transacton.commit()
-            val fm = fragmentManager.beginTransaction()
-            fm.add(R.id.community_container,CommunityWriteFragment(),"write")
-            fm.addToBackStack(null)
-            fm.commit()
+//        //글 작성
+        community_write!!.setOnClickListener {
+            //            val fm = fragmentManager.beginTransaction()
+//            fm.add(R.id.community_container,CommunityWriteFragment(),"write")
+//            fm.addToBackStack(null)
+//            fm.commit()
+
+            var intent = Intent(activity, CommunityWriteActicity::class.java)
+            startActivityForResult(intent, 0)
         }
+
 //        val listener = object : OnMenuItemClickListener() {
-//
-//
+
 //            fun onMenuItemClick(item: MenuItem): Boolean {
 //
 
@@ -140,14 +136,18 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             v.horsehead_2!!.isSelected = !v.horsehead_2.isSelected
         }
 
-
-
-
         return v
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+            getList()
+            Log.i("rerere", "sdkfsjlk")
+        }
+    }
+
     fun getList() {
-        var getContentList = networkService!!.getCommunityList(1)
+        var getContentList = networkService!!.getCommunityList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
         getContentList.enqueue(object : Callback<CommunityResponse> {
             override fun onResponse(call: Call<CommunityResponse>?, response: Response<CommunityResponse>?) {
 
@@ -179,7 +179,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
         val fm = fragmentManager.beginTransaction()
         val fragment = CommunityDetailFragment()
         val bundle = Bundle()
-        bundle.putInt("index", adapter!!.itemCount - communityList!!.getChildAdapterPosition(p0!!))
+        bundle.putInt("index", communityDatas!!.get(communityList!!.getChildAdapterPosition(p0!!)).board_id)
         fragment.arguments = bundle
         fm.add(R.id.community_container,fragment,"detail")
         fm.addToBackStack(null)
