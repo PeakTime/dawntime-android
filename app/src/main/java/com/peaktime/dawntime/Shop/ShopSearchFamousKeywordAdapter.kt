@@ -1,15 +1,17 @@
 package com.peaktime.dawntime.Shop
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.R
 
 /**
  * Created by xlsdn on 2018-01-08.
  */
-class ShopSearchFamousKeywordAdapter(var dataList : ArrayList<ShopKeywordData>?) : RecyclerView.Adapter<ShopSearchFamousKeywordViewHolder>() {
+class ShopSearchFamousKeywordAdapter(var dataList : ArrayList<String>?, var requestManagaer: RequestManager) : RecyclerView.Adapter<ShopSearchFamousKeywordViewHolder>() {
 
     private var onItemClick : View.OnClickListener? = null
 
@@ -28,10 +30,8 @@ class ShopSearchFamousKeywordAdapter(var dataList : ArrayList<ShopKeywordData>?)
 
     //어뎁터와 뷰홀더를 포디션에 맞게 연결하는 부분
     override fun onBindViewHolder(holder: ShopSearchFamousKeywordViewHolder?, position: Int) {
-        holder!!.famousKeywordName.setText(dataList!!.get(position).hot_keywords[position])
+        holder!!.famousKeywordName.text = (dataList!!.get(position))
 
-        //Log.d("search", "나와라 숫자는 "+position.toString())
-        //Log.d("search", "나와라 데이터는 "+dataList!!.get(position).famousKeywordName)
     }
 
     //리턴값이 간단할때 이렇게 사용
@@ -40,5 +40,8 @@ class ShopSearchFamousKeywordAdapter(var dataList : ArrayList<ShopKeywordData>?)
 //    override fun getItemCount(): Int{
 //        return dataList!!.size
 //    }
+
+
+
 
 }

@@ -46,17 +46,21 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
         if(ShopToMainActivity.bestFlagFun.bestFlag == 1){
 
             if(position==0){
-                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no1)
+                holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no1)
+//                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no1)
 
             }
             if(position==1){
-                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no2)
+                holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no2)
+                //mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no2)
 
             }
             if(position==2){
-                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
+                holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no3)
+                //mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
             }
         }
+
         if(dataList!!.get(position).goods_like == 1)
             mainView!!.shopLikeBtn.setBackgroundResource(R.drawable.shop_view_zzim_heart_solid)
         else

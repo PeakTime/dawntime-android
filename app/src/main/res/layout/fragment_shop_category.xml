@@ -17,7 +17,7 @@
         <Button
             android:id="@+id/vibrator_btn"
             android:text="바이브레이터"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -29,7 +29,7 @@
         <Button
             android:id="@+id/coupletoy_btn"
             android:text="커플토이"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -42,7 +42,7 @@
         <Button
             android:id="@+id/dildo_btn"
             android:text="딜도"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -54,7 +54,7 @@
         <Button
             android:id="@+id/anal_btn"
             android:text="애널케겔"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -67,7 +67,7 @@
         <Button
             android:id="@+id/party_btn"
             android:text="PARTY 용품"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -81,7 +81,7 @@
         <Button
             android:id="@+id/BDSM_btn"
             android:text="BDSM"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -93,7 +93,7 @@
         <Button
             android:id="@+id/lovegel_btn"
             android:text="러브젤"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -105,7 +105,7 @@
         <Button
             android:id="@+id/condom_btn"
             android:text="콘돔"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
