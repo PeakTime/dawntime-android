@@ -4,18 +4,17 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.R
 
 /**
  * Created by minhyoung on 2018. 1. 3..
  */
-class ColumnListAdapter(var dataList : ArrayList<ColumnListData>?) : RecyclerView.Adapter<ColumnListViewHolder>() {
+class ColumnListAdapter(var dataList : ArrayList<ColumnListData>?,var requestManager: RequestManager) : RecyclerView.Adapter<ColumnListViewHolder>() {
     private var onItemClick : View.OnClickListener? = null
     override fun onBindViewHolder(holder: ColumnListViewHolder?, position: Int) {
         //holder!!.columnImg.setImageResource(dataList!!.get(position).columnImg)
-        holder!!.columnImg.setBackgroundResource(dataList!!.get(position).columnImg)
-        holder!!.columnText1.text = dataList!!.get(position).columnText1
-        holder!!.columnText2.text = dataList!!.get(position).columnText2
+        requestManager.load(dataList!!.get(position).column_head).into(holder!!.columnImg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ColumnListViewHolder {

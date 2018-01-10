@@ -11,6 +11,4 @@ import com.peaktime.dawntime.R
  */
 class ColumnListViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     var columnImg : ImageView = itemView!!.findViewById(R.id.column_img)
-    var columnText1 : TextView = itemView!!.findViewById(R.id.column_text1)
-    var columnText2 : TextView = itemView!!.findViewById(R.id.column_text2)
 }

@@ -165,6 +165,7 @@
                     android:layout_height="match_parent"
                     android:horizontalSpacing="14dp"
                     android:verticalSpacing="12dp"
+                    android:clickable="true"
                     android:stretchMode="columnWidth"
                     android:scrollbars="none"
                     android:numColumns="2"

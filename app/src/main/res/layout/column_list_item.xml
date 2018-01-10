@@ -1,37 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/column_img"
-        android:layout_width="match_parent"
-        android:layout_height="56dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#0E1949">
-
-        <TextView
-            android:id="@+id/column_text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:textSize="15dp"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"/>
-
-        <TextView
-            android:id="@+id/column_text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:textSize="11dp"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"/>
-
-    </RelativeLayout>
-
-</FrameLayout>
+</LinearLayout>

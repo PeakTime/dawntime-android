@@ -1,5 +1,11 @@
 package com.peaktime.dawntime.Network
 
+import com.peaktime.dawntime.Column.ColumnListResponse
+import com.peaktime.dawntime.Column.ColumnResponse
+import com.peaktime.dawntime.Community.CommunityDetailInstance
+import com.peaktime.dawntime.Community.CommunityDetailResponse
+import com.peaktime.dawntime.Community.CommunityResponse
+import com.peaktime.dawntime.Home.HomeResponse
 import com.peaktime.dawntime.Community.*
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
 import com.peaktime.dawntime.MyPage.SignInResponse
@@ -139,6 +145,30 @@ interface NetworkService {
             @Header("user_token") user_token:String,
             @Path("goods_id") goods_id: Int)
             : Call<ShopDetailResponse>
+
+
+    //홈 화면
+    @GET("home")
+    fun getHome(@Header("user_token") user_token: String)
+            : Call<HomeResponse>
+
+    //칼럼 리스트
+    @GET("column/list")
+    fun getColumnList() : Call<ColumnListResponse>
+
+    //칼럼 검색
+    @FormUrlEncoded
+    @POST("column/search")
+    fun getColumnSearch(@Field("column_title") column_title : String)
+                : Call<ColumnListResponse>
+
+
+    //칼럼 상세보기
+
+    @GET("column/detail/{column_id}")
+    fun getColumn(
+        @Path("column_id") column_id : Int)
+            : Call<ColumnResponse>
 
 
 }
