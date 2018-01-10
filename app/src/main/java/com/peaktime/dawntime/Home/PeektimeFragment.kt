@@ -10,9 +10,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.Community.CommunityFragment
+import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.fragment_peektime.view.*
 
@@ -25,10 +27,13 @@ class PeektimeFragment : Fragment(),View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_peektime,container,false)
 
+        var networkService: NetworkService? = null
+        var requestManager: RequestManager? = null
+
         peektimeDatas = ArrayList<PeektimeData>()
 
-            peektimeDatas = PeektimeObject.peektimeDatas
-            peektimeAdapter = PeektimeAdapter(peektimeDatas)
+        peektimeDatas = PeektimeObject.peektimeDatas
+        peektimeAdapter = PeektimeAdapter(peektimeDatas)
         peektimeAdapter!!.setOnItemClick(this)
 
             peektimeRecycler = v.findViewById(R.id.peektime_recycler_list2)
@@ -46,22 +51,29 @@ class PeektimeFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        var fm = fragmentManager.beginTransaction()
+        var board_id =
+                peektimeDatas!!.get(peektimeRecycler!!.getChildLayoutPosition(v)).board_id
+        var bundle = Bundle()
+        bundle.putInt("index",board_id)
         var fragment = CommunityDetailFragment()
+        fragment.arguments = bundle
 
-        fm.replace(R.id.peektime_container,fragment)
+        var fm = fragmentManager.beginTransaction()
+        fm.replace(R.id.home_fragment_container,fragment)
         fm.addToBackStack(null)
         fm.commit()
 
     }
-}
 
-class ReclerDeco(var divHeight : Int?) : RecyclerView.ItemDecoration() {
+    class ReclerDeco(var divHeight : Int?) : RecyclerView.ItemDecoration() {
 
-    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
-        super.getItemOffsets(outRect, view, parent, state)
+        override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+            super.getItemOffsets(outRect, view, parent, state)
 
-        outRect!!.right = 50
-        outRect!!.bottom = divHeight!!
+            outRect!!.right = 50
+            outRect!!.bottom = divHeight!!
+        }
     }
+
 }
+

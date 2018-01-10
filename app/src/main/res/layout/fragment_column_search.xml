@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/column_search_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#990e1949"
-    tools:context="com.peaktime.dawntime.Column.ColumnSearchActivity">
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/column_search_tablayout"
@@ -17,6 +24,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/column_search_relative"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
             <EditText
@@ -33,6 +41,7 @@
                 android:textSize="14dp"
                 android:textColorHint="#B5B5B5"
                 android:background="@drawable/community_search"
+
                 />
 
             <ImageButton
@@ -49,4 +58,14 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/column_search_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/column_search_relative">
+
+    </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+
+</FrameLayout>

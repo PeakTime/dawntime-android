@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.R
 
 /**
  * Created by minhyoung on 2018. 1. 1..
  */
-class ColumnBannerAdapter(var dataList : ArrayList<ColumnBannerData>?) : PagerAdapter() {
+class ColumnBannerAdapter(var dataList : ArrayList<ColumnBannerData>?,var requestManager: RequestManager) : PagerAdapter() {
 
     var onItemClick : View.OnClickListener? = null
     override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
@@ -27,7 +28,8 @@ class ColumnBannerAdapter(var dataList : ArrayList<ColumnBannerData>?) : PagerAd
         var realPos : Int = position % dataList!!.size
         var v : View = LayoutInflater.from(container!!.context).inflate(R.layout.column_banner_items,container,false)
         var columnBannerImg : ImageView = v.findViewById(R.id.column_banner_img)
-        columnBannerImg.setImageResource(dataList!!.get(realPos).columnBannerImg)
+        requestManager.load(dataList!!.get(realPos).column_head).into(columnBannerImg)
+
         v!!.setOnClickListener(onItemClick)
         container.addView(v)
 
