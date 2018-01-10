@@ -7,7 +7,7 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    tools:context="com.peaktime.dawntime.Community.CommunityWriteFragment">
+    tools:context="com.peaktime.dawntime.Community.CommunityWriteActicity">
 
     <RelativeLayout
         android:id="@+id/community_tab"
@@ -42,7 +42,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/b_title"
             android:layout_width="330dp"
             android:layout_height="33dp"
             android:layout_marginBottom="10dp"
@@ -63,8 +63,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
+
         <Button
             android:id="@+id/horsehead_button"
             android:layout_width="136dp"
@@ -82,48 +82,77 @@
             android:text="사진 추가"
             android:textSize="14dp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/community_addImg"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        >
+        android:paddingLeft="12dp"
+        android:paddingRight="10dp">
+        <!--
         <android.support.v7.widget.RecyclerView
             android:id="@+id/community_write_image_recycler"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
 
-        </android.support.v7.widget.RecyclerView>
-<!--        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/community_img"/>
+        </android.support.v7.widget.RecyclerView>-->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/community_img"/>
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/community_img"/>
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:background="@drawable/community_img"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/community_img" />
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/community_img" />
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/community_img" />
+
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/community_img" />
+
+                <ImageView
+                    android:id="@+id/image5"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:background="@drawable/community_img" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="328dp"
         android:layout_height="33dp"
         android:layout_gravity="center"
-        android:layout_marginTop="14dp">
+        android:layout_marginTop="14dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/write_complete"
@@ -133,6 +162,8 @@
             android:text="글 올리기"
             android:textColor="#FFFFFF"
             android:textSize="14dp" />
+
+
     </LinearLayout>
 
 

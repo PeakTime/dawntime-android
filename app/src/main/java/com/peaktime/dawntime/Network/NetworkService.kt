@@ -1,10 +1,11 @@
 package com.peaktime.dawntime.Network
 
-import com.peaktime.dawntime.Community.CommunityDetailInstance
-import com.peaktime.dawntime.Community.CommunityDetailResponse
-import com.peaktime.dawntime.Community.CommunityResponse
+import com.peaktime.dawntime.Community.*
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
+import com.peaktime.dawntime.MyPage.SignInResponse
 import com.peaktime.dawntime.Shop.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,25 +14,75 @@ import retrofit2.http.*
  */
 interface NetworkService {
     //쪽지함
-    @GET("message/list/{user_email}")
+    @GET("message/list")
     fun getMessageBoxList(
-            @Path("user_email") user_email: String)
+            @Header("user_token") user_token: String)
             : Call<MessageBoxResponse>
 
     //커뮤니티 리스트
-    @FormUrlEncoded
-    @POST("board/dateList")
-    fun getCommunityList(@Field("user_id") user_id: Int)
+    @GET("board/dateList")
+    fun getCommunityList(
+            @Header("user_token") user_token: String)
             : Call<CommunityResponse>
 
     //커뮤니티 상세보기
-
-    @POST("board/list/{board_id}")
+    @GET("board/list/{board_id}")
     fun getCommunityDetail(
-            @Path("board_id") board_id: Int,
-            @Body instance: CommunityDetailInstance)
+            @Header("user_token") user_token: String,
+            @Path("board_id") board_id: Int)
             : Call<CommunityDetailResponse>
 
+    //좋아요
+    @PUT("board/like/{board_id}")
+    fun communityLike(
+            @Header("user_token") user_token: String,
+            @Path("board_id") board_id: Int)
+            : Call<CommunityLikeResponse>
+
+    //스크랩
+    @FormUrlEncoded
+    @PUT("board/scrap")
+    fun communityScrap(
+            @Header("user_token") user_token: String,
+            @Field("board_id") board_id: Int)
+            : Call<CommunityLikeResponse>
+
+    //댓글쓰기
+    @FormUrlEncoded
+    @POST("comment/write")
+    fun replyWrite(
+            @Header("user_token") user_token: String,
+            @Field("board_id") board_id: Int,
+            @Field("com_parent") com_parent: Int,
+            @Field("com_seq") com_seq: Int,
+            @Field("com_content") com_content: String)
+            : Call<ReplyWriteResponse>
+
+    //로그인
+    @FormUrlEncoded
+    @POST("home/signin")
+    fun signIn(
+            @Field("user_email") user_email: String,
+            @Field("user_uid") user_uid: String
+    ): Call<SignInResponse>
+
+    //게시글 작성
+    @Multipart
+    @POST("board/write")
+    fun boardWrite(
+            @Header("user_token") user_token: String,
+            @Part("board_title") board_title: RequestBody,
+            @Part("board_content") board_content: RequestBody,
+            @Part("board_tag") board_tag: RequestBody,
+            @Part image: ArrayList<MultipartBody.Part>?
+    ): Call<CommunityWriteResponse>
+
+    //내가 쓴글 보기
+    @FormUrlEncoded
+    @GET("/mypage/mypost")
+    fun myWritten(
+            @Header("user_token") user_token: String
+    ): Call<MyWrittenResponse>
     //쇼핑몰 best 리스트 조회
     @GET("shop/best")
     fun getShopBestList(
@@ -91,4 +142,3 @@ interface NetworkService {
 
 
 }
-

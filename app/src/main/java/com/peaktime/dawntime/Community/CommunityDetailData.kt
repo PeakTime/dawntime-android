@@ -10,7 +10,7 @@ class CommunityDetailData(
         var board_tag: String,
         var board_content: String,
         var board_date: String,
-        var board_image: ArrayList<String>,
+        var board_images: ArrayList<String>,
         var board_like: Int,
         var com_count: Int,
         var scrap_count: Int,
