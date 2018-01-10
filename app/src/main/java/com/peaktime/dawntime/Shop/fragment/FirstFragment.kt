@@ -10,15 +10,24 @@ import com.peaktime.dawntime.R
 /**
  * Created by xlsdn on 2018-01-02.
  */
-class FirstFragment: Fragment() {
+class FirstFragment : Fragment() {
+
+    var imageItem :  String? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater!!.inflate(R.layout.pager_item, container, false)
         val ImageView = rootView!!.findViewById<View>(R.id.imageView)
+
         ImageView.setBackgroundResource(R.drawable.brown)
 
         return rootView
 
     }
+
+    fun getImageItem(items : String)
+    {
+        this.imageItem = items
+    }
+
 
 }

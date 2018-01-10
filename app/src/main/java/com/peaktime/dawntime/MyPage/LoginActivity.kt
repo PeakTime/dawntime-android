@@ -5,13 +5,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
@@ -20,10 +26,16 @@ class LoginActivity : AppCompatActivity() {
     val OAUTH_CLIENT_SECRET = "h74JENKxq6"
     val OAUTH_CLIENT_NAME = "네이버 아이디로 로그인"
 
-    var accessToken: String? = null
+    var networkService: NetworkService? = null
+    var signData: SignInData? = null
     var mLoginButton: OAuthLoginButton? = null
     var mAuthLoginModule: OAuthLogin? = null
     var mContext: Context? = null
+
+    var email: String? = null
+    var gender: String? = null
+    var naver_uid: String? = null
+    var age: String? = null
 
 //    var profileGet = NaverProfileGet()
 
@@ -57,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 OAUTH_CLIENT_SECRET,
                 OAUTH_CLIENT_NAME
         )
+        networkService = ApplicationController.instance!!.networkService
         mLoginButton = findViewById(R.id.loginBtn)
         mLoginButton!!.setOAuthLoginHandler(object : OAuthLoginHandler() {
             override fun run(b: Boolean) {
@@ -67,20 +80,12 @@ class LoginActivity : AppCompatActivity() {
                         try {
                             val json = JSONObject(response)
                             // response 객체에서 원하는 값 얻어오기
-                            val email = json.getJSONObject("response").getString("email")
-                            val gender = json.getJSONObject("response").getString("gender")
-                            val id = json.getJSONObject("response").getString("id")
+                            email = json.getJSONObject("response").getString("email")
+                            gender = json.getJSONObject("response").getString("gender")
+                            naver_uid = json.getJSONObject("response").getString("id")
+                            age = json.getJSONObject("response").getString("age")
 
-                            SharedPreferInstance.getInstance(applicationContext).putPreferString("EMAIL", email)
-                            SharedPreferInstance.getInstance(applicationContext).putPreferString("GENDER", gender)
-                            SharedPreferInstance.getInstance(applicationContext).putPreferString("ID", id)
-                            SharedPreferInstance.getInstance(applicationContext).putPreferBoolean("LOGIN", true)
-
-                            var intent = Intent()
-                            intent.putExtra("EMAIL", email)
-                            setResult(Activity.RESULT_OK, intent)
-                            finish()
-
+                            signIn()
                         } catch (e: JSONException) {
                             e.printStackTrace()
                         }
@@ -89,8 +94,42 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         })
-        //        mLoginButton!!.setOAuthLoginHandler(mOAuthLoginHandler)
+    }
 
+    fun signIn() {
+        var getContentList = networkService!!.signIn(email!!, naver_uid!!)
+        getContentList.enqueue(object : Callback<SignInResponse> {
+            override fun onResponse(call: Call<SignInResponse>?, response: Response<SignInResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().message.equals("successful sign in")) {
+
+                        signData = response.body().result
+                        SharedPreferInstance.getInstance(applicationContext).putPreferString("EMAIL", email!!)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferString("GENDER", gender!!)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferString("AGE", age!!)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferString("NAVER_UID", naver_uid!!)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferBoolean("LOGIN", true)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferString("TOKEN", signData!!.user_token)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferInt("UID", signData!!.user_id)
+                        Log.i("LoginCheck : ", "로그인 되었습니다.")
+                        Log.i("Token : ", signData!!.user_token)
+
+                        var intent = Intent()
+                        intent.putExtra("EMAIL", email)
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<SignInResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
     }
 
 //

@@ -15,8 +15,6 @@ class CommunityMsgFragment : android.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.community_msg_fragment, container, false)
 
-
-
         v.community_backbtn2!!.setOnClickListener {
             val fm = activity.fragmentManager
             val transacton = fm.beginTransaction()

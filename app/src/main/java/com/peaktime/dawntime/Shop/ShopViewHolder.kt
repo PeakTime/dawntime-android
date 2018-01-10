@@ -10,9 +10,10 @@ import com.peaktime.dawntime.R
 class ShopViewHolder(itemView : View?) : RecyclerView.ViewHolder(itemView){
 
     var shopImage : ImageView = itemView!!.findViewById<ImageView>(R.id.goods_img)
-
     var shopName : TextView = itemView!!.findViewById<TextView>(R.id.goods_name)
-
     var shopPrice : TextView = itemView!!.findViewById<TextView>(R.id.goods_price)
+    var rankImage : ImageView = itemView!!.findViewById<ImageView>(R.id.goods_rangetag)
+//    var shopBrand : TextView = itemView!!.findViewById<TextView>(R.id.shopDetailBrandTextView)
+//    var shopInfo : TextView = itemView!!.findViewById<TextView>(R.id.shopDetailContentTextView)
 
 }

@@ -2,9 +2,9 @@ package com.peaktime.dawntime.MyPage
 
 
 import android.app.Activity.RESULT_OK
-import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +30,6 @@ class ChildMyPageOption : Fragment() {
 
     var backBtn: Button? = null
 
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         var v = inflater!!.inflate(R.layout.child_mypage_option, container, false)
@@ -46,10 +45,10 @@ class ChildMyPageOption : Fragment() {
         blindSwitch!!.isChecked = SharedPreferInstance.getInstance(activity).getPreferBoolean("BLIND")!!
 
         backBtn!!.setOnClickListener {
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            transacton.remove(this)
-            transacton.commit()
+
+            val fm = fragmentManager.beginTransaction()
+            fm.remove(this)
+            fm.commit()
         }
 
         logoutBtn!!.setOnClickListener {
@@ -61,20 +60,16 @@ class ChildMyPageOption : Fragment() {
                 SharedPreferInstance.getInstance(activity).putPreferString("ID", "로그인 정보 없음")
                 SharedPreferInstance.getInstance(activity).putPreferString("GENDER", "로그인 정보 없음")
                 SharedPreferInstance.getInstance(activity).putPreferString("EMAIL", "로그인 정보 없음")
-                Toast.makeText(activity, "로그아웃 되었습니다." + SharedPreferInstance.getInstance(activity).getPreferString("EMAIL"), Toast.LENGTH_LONG).show()
+
+                Toast.makeText(activity, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
             }
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            var fragment = MyPageFragment()
-            transacton.remove(this)
-            transacton.commit()
 
+            val fm = fragmentManager.beginTransaction()
+            fm.add(R.id.child_container, MyPageFragment(), "mypage")
+            fm.commit()
 
-//            val fm = activity.fragmentManager
-//            val transacton = fm.beginTransaction()
-//            val fg = ChildMyPageOption()
-//            transacton.add(R.id.child_container, fg, "option")
-//            transacton.commit()
+            var fragment = fragmentManager
+            fragment!!.popBackStack()
         }
 
         noticeSwitch!!.setOnClickListener {
@@ -122,7 +117,6 @@ class ChildMyPageOption : Fragment() {
                 blindSwitch!!.setThumbResource(R.drawable.switch_thumb)
             }
         }
-
         return v
     }
 

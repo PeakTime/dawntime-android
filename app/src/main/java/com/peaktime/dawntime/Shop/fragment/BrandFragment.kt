@@ -23,6 +23,7 @@ class BrandFragment : Fragment(), View.OnClickListener{
         v.brand_first_btn!!.setOnClickListener(this)
         v.brand_second_btn!!.setOnClickListener(this)
         v.brand_third_btn!!.setOnClickListener(this)
+        v.brand_forth_btn!!.setOnClickListener(this)
 
         return v
     }
@@ -46,6 +47,11 @@ class BrandFragment : Fragment(), View.OnClickListener{
             R.id.brand_third_btn -> {
                 var intent = Intent(activity , ShopBrandActivity::class.java)
                 intent.putExtra("brandKindNum",2)
+                startActivity(intent)
+            }
+            R.id.brand_third_btn -> {
+                var intent = Intent(activity , ShopBrandActivity::class.java)
+                intent.putExtra("brandKindNum",3)
                 startActivity(intent)
             }
 

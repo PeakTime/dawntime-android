@@ -13,6 +13,7 @@
         <item name="android:textColor">@color/menuColor</item>
         <item name="android:width">50dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
 </resources>

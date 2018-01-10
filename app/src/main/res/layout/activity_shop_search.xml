@@ -63,7 +63,7 @@
 
     </RelativeLayout>
 
-<!--가격대-->
+    <!--가격대-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -242,13 +242,23 @@
             android:includeFontPadding="false"/>
 
         <RelativeLayout
-            android:id="@+id/lineImage3"
+            android:id="@+id/lineImage2"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_below="@+id/keywordTextView"
             android:background="#e92393" />
 
 
+        <!--인기키워드보여주는부분-->
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/lineImage2"
+            android:id="@+id/famous_keword_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_centerHorizontal="true"
+            />
 
     </RelativeLayout>
 
@@ -272,11 +282,20 @@
             android:includeFontPadding="false"/>
 
         <RelativeLayout
-            android:id="@+id/lineImage2"
+            android:id="@+id/lineImage3"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_below="@+id/searchTextView"
             android:background="#e92393" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/lineImage3"
+            android:id="@+id/recent_keword_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_centerHorizontal="true"
+            />
 
 
 

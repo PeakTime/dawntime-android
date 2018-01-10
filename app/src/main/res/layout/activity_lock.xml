@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:fontFamily="@font/notosansmonocjkkr_regular"
+            android:fontFamily="@font/noto_sans_mono_cjk_kr_regular"
+            android:includeFontPadding="false"
             android:text="암호 입력하기"
             android:textColor="#ffffff"
             android:textSize="28sp" />
@@ -287,6 +288,8 @@
                     android:layout_weight="1"
                     android:background="#3f486d"
                     android:onClick="btnClick"
+                    android:fontFamily="@font/noto_sans_mono_cjk_kr_regular"
+                    android:includeFontPadding="false"
                     android:text="취소"
                     android:textColor="#ffffff"
                     android:textSize="25sp" />

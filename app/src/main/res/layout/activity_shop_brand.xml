@@ -78,53 +78,11 @@
 
     <!--여기에 최신순 추가하기-->
 
-
-    <RelativeLayout
-        android:id="@+id/shop_sort_layout"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout2"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/shop_sort_layout"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-
-        >
-
-        <TextView
-            android:id="@+id/sort_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="최신순"
-            android:textColor="#ED508E"
-            android:fontFamily="@font/noto_sans_cjk_kr_demilight"
-            android:includeFontPadding="false"
-            android:layout_toLeftOf="@+id/sort_img"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"
-            android:textSize="12dp"
-            />
-
-        <ImageView
-            android:id="@+id/sort_img"
-            android:layout_width="9dp"
-            android:layout_height="6dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/shop_view_fold_down"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"/>
-
-
-    </RelativeLayout>
-
-
     <RelativeLayout
         android:id="@+id/shop_brand_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/shop_sort_layout"
+        android:layout_below="@+id/layout2"
         />
 
 

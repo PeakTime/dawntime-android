@@ -2,12 +2,7 @@ package com.peaktime.dawntime.Shop
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentStatePagerAdapter
-
-import com.peaktime.dawntime.Shop.fragment.FirstFragment
-import com.peaktime.dawntime.Shop.fragment.FourthFragment
-import com.peaktime.dawntime.Shop.fragment.SecondFragment
-import com.peaktime.dawntime.Shop.fragment.ThirdFragment
-import com.peaktime.dawntime.Shop.fragment.fifthFragment
+import com.peaktime.dawntime.Shop.fragment.*
 
 
 /**
@@ -15,6 +10,7 @@ import com.peaktime.dawntime.Shop.fragment.fifthFragment
  */
 
 class ShopViewPagerAdapter(fm: android.support.v4.app.FragmentManager) : FragmentStatePagerAdapter(fm) {
+
     override fun getItem(position: Int): Fragment? {
         when (position) {
             0 -> return FirstFragment()
@@ -25,6 +21,7 @@ class ShopViewPagerAdapter(fm: android.support.v4.app.FragmentManager) : Fragmen
             else -> return null
         }
     }
+
 
     override fun getCount(): Int {
         return 5

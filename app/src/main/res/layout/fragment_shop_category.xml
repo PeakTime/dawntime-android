@@ -38,17 +38,6 @@
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"/>
 
-        <Button
-            android:id="@+id/belt_btn"
-            android:text="하네스 벨트"
-            android:width="102dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shop_button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"
-            android:textSize="14dp"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
 
         <Button
             android:id="@+id/dildo_btn"
@@ -88,17 +77,6 @@
             android:includeFontPadding="false"
             />
 
-        <Button
-            android:id="@+id/costum_btn"
-            android:text="코스튬"
-            android:width="102dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shop_button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"
-            android:textSize="14dp"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
 
         <Button
             android:id="@+id/BDSM_btn"
@@ -113,8 +91,8 @@
             android:includeFontPadding="false"/>
 
         <Button
-            android:id="@+id/underwear_btn"
-            android:text="속옷"
+            android:id="@+id/lovegel_btn"
+            android:text="러브젤"
             android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
@@ -136,17 +114,8 @@
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"/>
 
-        <Button
-            android:id="@+id/luvegel_btn"
-            android:text="러브젤"
-            android:width="102dp"
-            android:layout_height="28dp"
-            android:background="@drawable/shop_button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="5dp"
-            android:textSize="14dp"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
-            android:includeFontPadding="false"/>
+
+
 
     </GridLayout>
 

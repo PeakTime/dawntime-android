@@ -13,6 +13,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,7 +75,7 @@ class ChildMyPageMessageBox : Fragment(), View.OnClickListener {
     }
 
     fun getList() {//SharedPreferInstance.getInstance(activity).getPreferString("EMAIL")!!
-        var getContentList = networkService!!.getMessageBoxList("2")
+        var getContentList = networkService!!.getMessageBoxList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<MessageBoxResponse> {
             override fun onResponse(call: Call<MessageBoxResponse>?, response: Response<MessageBoxResponse>?) {

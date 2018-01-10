@@ -1,18 +1,13 @@
 package com.peaktime.dawntime.Shop.fragment
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.Toast
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.*
+import com.peaktime.dawntime.Shop.ShopCategoryActivity
 import kotlinx.android.synthetic.main.fragment_shop_category.view.*
 
 /**
@@ -38,19 +33,12 @@ class CategoryFragment : Fragment(), View.OnClickListener {
 
         v.vibrator_btn!!.setOnClickListener(this)
         v.coupletoy_btn!!.setOnClickListener(this)
-        v.belt_btn!!.setOnClickListener(this)
-
         v.dildo_btn!!.setOnClickListener(this)
         v.anal_btn!!.setOnClickListener(this)
         v.party_btn!!.setOnClickListener(this)
-
-        v.costum_btn!!.setOnClickListener(this)
         v.BDSM_btn!!.setOnClickListener(this)
-        v.underwear_btn!!.setOnClickListener(this)
-
+        v.lovegel_btn!!.setOnClickListener(this)
         v.condom_btn!!.setOnClickListener(this)
-        v.luvegel_btn!!.setOnClickListener(this)
-
 
         return v
     }
@@ -69,57 +57,36 @@ class CategoryFragment : Fragment(), View.OnClickListener {
                 intent.putExtra("categoryKindNum",1)
                 startActivity(intent)
             }
-            R.id.belt_btn -> {
+            R.id.dildo_btn -> {
                 var intent = Intent(activity , ShopCategoryActivity::class.java)
                 intent.putExtra("categoryKindNum",2)
                 startActivity(intent)
             }
-            R.id.dildo_btn -> {
+            R.id.anal_btn -> {
                 var intent = Intent(activity , ShopCategoryActivity::class.java)
                 intent.putExtra("categoryKindNum",3)
                 startActivity(intent)
             }
-            R.id.anal_btn -> {
+            R.id.party_btn -> {
                 var intent = Intent(activity , ShopCategoryActivity::class.java)
                 intent.putExtra("categoryKindNum",4)
                 startActivity(intent)
             }
-            R.id.party_btn -> {
+            R.id.BDSM_btn -> {
                 var intent = Intent(activity , ShopCategoryActivity::class.java)
                 intent.putExtra("categoryKindNum",5)
                 startActivity(intent)
             }
-            R.id.costum_btn -> {
+            R.id.lovegel_btn -> {
                 var intent = Intent(activity , ShopCategoryActivity::class.java)
                 intent.putExtra("categoryKindNum",6)
                 startActivity(intent)
             }
-            R.id.BDSM_btn -> {
+            R.id.condom_btn -> {
                 var intent = Intent(activity , ShopCategoryActivity::class.java)
                 intent.putExtra("categoryKindNum",7)
                 startActivity(intent)
             }
-            R.id.underwear_btn -> {
-                var intent = Intent(activity , ShopCategoryActivity::class.java)
-                intent.putExtra("categoryKindNum",8)
-                startActivity(intent)
-            }
-            R.id.condom_btn -> {
-                var intent = Intent(activity , ShopCategoryActivity::class.java)
-                intent.putExtra("categoryKindNum",9)
-                startActivity(intent)
-            }
-            R.id.luvegel_btn -> {
-                var intent = Intent(activity , ShopCategoryActivity::class.java)
-                intent.putExtra("categoryKindNum",10)
-                startActivity(intent)
-            }
-
-
-
-
-
-
 
         }
 

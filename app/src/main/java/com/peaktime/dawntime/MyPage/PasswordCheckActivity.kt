@@ -26,6 +26,7 @@ class PasswordCheckActivity : AppCompatActivity() {
     var inputNum = ""
     var vibrate: Vibrator? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_password_check)
@@ -39,6 +40,7 @@ class PasswordCheckActivity : AppCompatActivity() {
 
         vibrate = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
     }
+
 
     fun checkMatch() {
         if (password == inputNum) {

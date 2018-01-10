@@ -9,18 +9,18 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:name=".Network.ApplicationController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,6 @@
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
             android:label="OAuth2.0 In-app" />
-
         <activity android:name=".Shop.ShopActivity" />
         <activity android:name=".Shop.ShopCategoryActivity" />
         <activity android:name=".Shop.ShopBrandActivity" />
@@ -44,7 +43,8 @@
         <activity android:name=".MyPage.LockActivity" />
         <activity android:name=".MyPage.PasswordCheckActivity" />
         <activity android:name=".Shop.ShopToMainActivity" />
-        <activity android:name=".Shop.ShopSearchResultActivity"></activity>
+        <activity android:name=".Shop.ShopSearchResultActivity" />
+        <activity android:name=".Community.CommunityWriteActicity"></activity>
     </application>
 
 </manifest>

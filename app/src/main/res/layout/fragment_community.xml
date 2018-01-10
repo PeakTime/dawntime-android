@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="107dp"
             android:background="#FFFFFF"
-            android:visibility="visible"
+            android:visibility="gone"
             >
             <LinearLayout
                 android:id="@+id/cate_1"
