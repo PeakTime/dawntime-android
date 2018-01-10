@@ -14,11 +14,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.PopupMenu
 import android.widget.Toast
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.*
 import kotlinx.android.synthetic.main.activity_shop_brand.*
 
-class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.OnMenuItemClickListener{
+class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
 
     private  var shopBrandDatas : ArrayList<ShopKindData>? = null
     private  var shopBrandAdapter : ShopKindAdapter? = null
@@ -33,7 +34,8 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.
 
         shop_brand_list.addTab(shop_brand_list.newTab()!!.setText("플레저 랩"))
         shop_brand_list.addTab(shop_brand_list.newTab()!!.setText("은하선 토이즈"))
-        shop_brand_list.addTab(shop_brand_list.newTab()!!.setText("레드 컨테이너"))
+        shop_brand_list.addTab(shop_brand_list.newTab()!!.setText("바른생각"))
+        shop_brand_list.addTab(shop_brand_list.newTab()!!.setText("식스티 원"))
         shop_brand_list.setSelectedTabIndicatorHeight(0)
         setCustomFont(shop_brand_list)
 
@@ -41,7 +43,7 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.
         if(savedInstanceState == null){
 
             Toast.makeText(this, brandKindNum.toString(), Toast.LENGTH_LONG).show()
-            AddFragment(GoodsFragment(), brandKindNum) //받은값으로 태그설정
+            AddFragment(GoodsSortFragment(), shop_brand_list.getTabAt(brandKindNum)!!.text.toString()) //받은값으로 태그설정
             Handler().postDelayed(
                     Runnable { shop_brand_list.getTabAt(brandKindNum)!!.select() }, 100)
 
@@ -60,21 +62,10 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 setCustomFont(shop_brand_list,tab!!.position)
+                ReplaceFragment(GoodsSortFragment(),tab!!.text.toString())
             }
 
         })
-
-//        shop_brand_list!!.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-//
-//        shopBrandDatas = ArrayList<ShopKindData>()
-//        shopBrandDatas!!.add(ShopKindData("플레저 랩"))
-//        shopBrandDatas!!.add(ShopKindData("은하선 토이즈"))
-//        shopBrandDatas!!.add(ShopKindData("레드 컨테이너"))
-//
-//        shopBrandAdapter = ShopKindAdapter(shopBrandDatas)
-//        shopBrandAdapter!!.setOnItemClickListener(this)
-//
-//        shop_brand_list!!.adapter = shopBrandAdapter
 
 
     }
@@ -115,14 +106,6 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.
                 tabViewChild.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
             }
         }
-
-        shop_sort_layout!!.setOnClickListener {
-            val popup = PopupMenu(this, shop_sort_layout)
-            this.menuInflater.inflate(R.menu.shop_sort_menu, popup.menu)
-            popup.setOnMenuItemClickListener(this)
-            popup.show()
-        }
-
 
     }
 
@@ -180,51 +163,31 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener, PopupMenu.
     }
 
 
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when (item!!.getItemId()) {
-        //눌러진 MenuItem의 Item Id를 얻어와 식별
-
-            R.id.latest_sort ->{
-                sort_textview!!.text="최신순"
-                Toast.makeText(this, "최신순", Toast.LENGTH_SHORT).show()
-            }
-            R.id.famous_sort ->{
-                sort_textview!!.text="인기순"
-                Toast.makeText(this, "인기순", Toast.LENGTH_SHORT).show()
-            }
-            R.id.highprice_sort ->{
-                sort_textview!!.text="높은가격순"
-                Toast.makeText(this, "높은가격순", Toast.LENGTH_SHORT).show()
-            }
-            R.id.loprice_sort ->{
-                sort_textview!!.text="낮은가격순"
-                Toast.makeText(this, "낮은가격순", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }
-        return false
-    }
-
 
 
     //번들없는 함수
-    fun AddFragment(fragment: Fragment, tag : Int){
+    fun AddFragment(fragment: Fragment, shopBrandtag : String ){
 
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
-        transaction.add(R.id.shop_brand_viewpager,fragment,tag.toString())
+        var bundle = Bundle()
+        bundle.putInt("callAt", CommonData.CALL_AT_BRAND)
+        bundle.putString("brandName",shopBrandtag)
+        transaction.add(R.id.shop_brand_viewpager,fragment)
         transaction.commit()
     }
 
 
 
     //번들없는 함수
-    fun ReplaceFragment(fragment: Fragment, tag : Int){
+    fun ReplaceFragment(fragment: Fragment, shopBrandtag : String){
 
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
-        transaction.replace(R.id.shop_brand_viewpager,fragment, tag.toString())
+        var bundle = Bundle()
+        bundle.putInt("callAt", CommonData.CALL_AT_BRAND)
+        bundle.putString("brandName",shopBrandtag)
+        transaction.replace(R.id.shop_brand_viewpager,fragment)
         transaction.commit()
     }
 

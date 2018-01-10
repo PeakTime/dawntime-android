@@ -18,7 +18,7 @@
         <Button
             android:id="@+id/brand_first_btn"
             android:text="플레저 랩"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -31,7 +31,7 @@
         <Button
             android:id="@+id/brand_second_btn"
             android:text="은하선 토이즈"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -43,7 +43,7 @@
         <Button
             android:id="@+id/brand_third_btn"
             android:text="바른생각"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"
@@ -55,7 +55,7 @@
         <Button
             android:id="@+id/brand_forth_btn"
             android:text="식스티 원"
-            android:width="117dp"
+            android:width="102dp"
             android:layout_height="28dp"
             android:background="@drawable/shop_button"
             android:textColor="#FFFFFF"

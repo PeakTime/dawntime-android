@@ -24,7 +24,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.fragment.GoodsFragment
+import com.peaktime.dawntime.Shop.fragment.*
 import kotlinx.android.synthetic.main.activity_shop_category.*
 import kotlinx.android.synthetic.main.activity_shop_category.view.*
 import kotlinx.android.synthetic.main.shop_kind_item.*
@@ -32,7 +32,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMenu.OnMenuItemClickListener{
+class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
     private  var shopCategoryDatas : ArrayList<ShopKindData>? = null
     private  var shopCategoryAdapter : ShopKindAdapter? = null
@@ -69,7 +69,7 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
         if(savedInstanceState == null){
 
             Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
-            AddFragment(GoodsFragment(), categoryKindNum) //받은값으로 태그설정
+            AddFragment(GoodsSortFragment(), shop_category_list.getTabAt(categoryKindNum)!!.text.toString()) //받은값으로 태그설정
 //            var tab = shop_category_list.getTabAt(categoryKindNum)
 //            tab!!.select()
             Handler().postDelayed(
@@ -90,7 +90,8 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 setCustomFont(shop_category_list,tab!!.position)
-
+                Log.i("tab aaaa",tab!!.text.toString())
+                ReplaceFragment(GoodsSortFragment(), tab!!.text.toString()) //받은값으로 태그설정
             }
 
         })
@@ -135,13 +136,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
         }
 
 
-        shop_sort_layout!!.setOnClickListener {
-            val popup = PopupMenu(this, shop_sort_layout)//v는 클릭된 뷰를 의미
-            this.menuInflater.inflate(R.menu.shop_sort_menu, popup.menu)
-            popup.setOnMenuItemClickListener(this)
-            popup.show()
-        }
-
     }
 
     override fun onClick(v : View?) {
@@ -166,54 +160,32 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener, PopupMen
         }
     } //버튼이벤트 end
 
-    override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when (item!!.getItemId()) {
-        //눌러진 MenuItem의 Item Id를 얻어와 식별
-
-            R.id.latest_sort ->{
-                sort_textview!!.text="최신순"
-                Toast.makeText(this, "최신순", Toast.LENGTH_SHORT).show()
-            }
-            R.id.famous_sort ->{
-                sort_textview!!.text="인기순"
-                Toast.makeText(this, "인기순", Toast.LENGTH_SHORT).show()
-            }
-            R.id.highprice_sort ->{
-                sort_textview!!.text="높은가격순"
-                Toast.makeText(this, "높은가격순", Toast.LENGTH_SHORT).show()
-            }
-            R.id.loprice_sort ->{
-                sort_textview!!.text="낮은가격순"
-                Toast.makeText(this, "낮은가격순", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }
-        return false
-    }
-
-
-
-
-
 
     //번들없는 함수
-    fun AddFragment(fragment: Fragment, tag : Int){
+    fun AddFragment(fragment: Fragment, shopCategoryTag: String){
 
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
-        transaction.add(R.id.shop_category_viewpager,fragment,tag.toString())
+        var bundle = Bundle()
+        bundle.putInt("callAt",CommonData.CALL_AT_CATEGORY)
+        bundle.putString("categoryName",shopCategoryTag)
+        fragment.arguments = bundle
+        transaction.add(R.id.shop_category_viewpager,fragment)
         transaction.commit()
     }
 
 
 
     //번들없는 함수
-    fun ReplaceFragment(fragment: Fragment,tag : Int){
+    fun ReplaceFragment(fragment: Fragment,shopCategoryTag : String){
 
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
-        transaction.replace(R.id.shop_category_viewpager,fragment, tag.toString())
+        var bundle = Bundle()
+        bundle.putInt("callAt",CommonData.CALL_AT_CATEGORY)
+        bundle.putString("categoryName",shopCategoryTag)
+        fragment.arguments = bundle
+        transaction.replace(R.id.shop_category_viewpager,fragment)
         transaction.commit()
     }
 

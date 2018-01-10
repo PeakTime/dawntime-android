@@ -13,5 +13,8 @@ object CommonData {
     var messageBoxData: ArrayList<ChildMyPageMessageBoxData> = ArrayList()
     var shopBestList :  ArrayList<ShopBestData> = ArrayList()
     var shopDetailList :  ArrayList<ShopDetailData> = ArrayList()
+    val CALL_AT_CATEGORY = 0
+    val CALL_AT_BRAND = 1
+    val CALL_AT_SEARCH = 2
 
 }
