@@ -73,12 +73,14 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 
 
         val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오
-        var view : View = shopList!!.getChildAt(position)// 기
+       // var view : View = shopList!!.getChildAt(position)// 기
         /*val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
         val price : String = shopDatas!!.get(idx).shopPrice*/
         intent.putExtra("bestFlag", bestFlag)
         intent.putExtra("position", position)
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
+        CommonData.shopLikeSend = v!!.findViewById(R.id.shopLikeBtn)
+//        intent.putExtra("select_view",view as Serializable)
 //        val name = v!!.goods_name.text
 //        val price = v!!.goods_price.text
 //        intent.putExtra("name", name)

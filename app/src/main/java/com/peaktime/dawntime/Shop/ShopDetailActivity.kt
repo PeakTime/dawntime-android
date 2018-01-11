@@ -77,7 +77,6 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
         var bestFlag: Int = intent.getIntExtra("bestFlag",0)
 
         if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP) {
-
             if (position == 0 || position == 1 || position == 2) {
                 goods_besttag.setBackgroundResource(R.drawable.shop_view_best_icon)
             }
@@ -158,25 +157,18 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("successful regist basket")) {
                         //좋아요했을때
-                        Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
+                        // Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
 
-                            //ApplicationController.instance!!.makeToast("북마크 변경.")
-//                            if(){
+                        CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_solid)
                         shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_solid)
-//                                Log.i("status", "바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜")
-//                                shopLike = 1
-//                            }else if(shopLike == 1){
-
-//                                shopLike = 0
-//                            }
-                        //shopLikeDetailBtn.invalidate()
 
 
                     }
                     else if(response.body().message.equals("successful delete basket"))
                     {
-                        Log.i("qwe","ㅁ니아ㅓㅁ니ㅏ)")
+                        Log.i("qwe","ㅁ니아ㅓㅁ니ㅏ")
                         //좋아요 취소했을때
+                        CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_line)
 
                         shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_line)
                        // shopLikeDetailBtn.invalidate()
@@ -220,7 +212,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
             }
             R.id.shopLikeDetailBtn -> {
                 putShopLike()
-                Log.i("누룸", "눌ㄹ림눌림")
+                Log.i("누룸", "눌림눌림")
 
             }
         }

@@ -8,10 +8,8 @@ import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import com.peaktime.dawntime.CommonData
 import android.view.WindowManager
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.fragment.GoodsFragment
 import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.shop_customtab_brand.*
 import kotlinx.android.synthetic.main.shop_customtab_category.*
@@ -43,6 +41,10 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
         shopBackBtn!!.setOnClickListener(this)
         shopSearchBtn!!.setOnClickListener(this)
+
+//        shop_tab.addTab(shop_tab.newTab().setText("NEW"))
+//        shop_tab.addTab(shop_tab.newTab().setText("CATEGORY"))
+//        shop_tab.addTab(shop_tab.newTab().setText("BRAND"))
 
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_new))
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_category))
@@ -125,5 +127,9 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
             }
         }
     }
+
+
+
+
 
 }
