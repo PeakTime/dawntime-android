@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var isLogin: Boolean? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_my))
 
         if(savedInstanceState == null){
-     //       val bundle = Bundle()
-         //   bundle.putString("title",firstText.text.toString())
-          //  Toast.makeText(this,"ttttt",Toast.LENGTH_LONG)
             AddFragment(HomeFragment(),"home")
         }
 
@@ -63,29 +62,50 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                isLogin = SharedPreferInstance.getInstance(this@MainActivity).getPreferBoolean("LOGIN")
                 when(tab!!.position){
                     0->{
                         val bundle = Bundle()
      //                   bundle.putString("title",firstText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        ReplaceFragment(HomeFragment(),"home")
+                        if(isLogin!!) {
+                            ReplaceFragment(HomeFragment(), "home")
+                        }
+                        else{
+                            //로그인 팝업
+                        }
                     }
                     1->{
                         val bundle = Bundle()
 //                        bundle.putString("title",secondText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        ReplaceFragment(CommunityFragment(),"community")
+                        if(isLogin!!) {
+                            ReplaceFragment(CommunityFragment(), "community")
+                        }
+                        else{
+                            //로그인 팝업
+                        }
                     }
                     2->{
-                        var intent = Intent(applicationContext, ShopActivity::class.java)
-                        intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
-                        startActivity(intent)
+                        if(isLogin!!) {
+                            var intent = Intent(applicationContext, ShopActivity::class.java)
+                            intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+                            startActivity(intent)
+                        }
+                        else{
+                            //로그인 팝업
+                        }
                     }
                     3->{
                         val bundle = Bundle()
     //                    bundle.putString("title",fourthText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        ReplaceFragment(MyPageFragment(),"myPage")
+                        if(isLogin!!) {
+                            ReplaceFragment(MyPageFragment(), "myPage")
+                        }
+                        else{
+                            //로그인 팝업
+                        }
                     }
                 }
             }
