@@ -85,8 +85,6 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : 
 ////                setLikeBtn(holder,position)
 //            }
 
-
-
     }
 
         fun putShopLike(position: Int){
@@ -129,8 +127,6 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : 
     fun setLikeBtn(holder: ShopViewHolder?, position: Int){
 
     }
-
-
 
 
     //리턴값이 간단할때 이렇게 사용

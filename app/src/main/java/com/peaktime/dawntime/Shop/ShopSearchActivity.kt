@@ -122,8 +122,6 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
                         shopSearchEditText.text = null
 
-
-
                         return false
                     }// 기본 엔터키 동작
 
@@ -136,6 +134,13 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         shopExitBtn!!.setOnClickListener(this)
 
     }//onCreate
+
+    override fun onResume() {
+        super.onResume()
+        getKeywordList()
+        shopSearchEditText.text = null
+        shopSearchEditText.setHint("검색")
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -214,7 +219,6 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                         recentAdapter = ShopSearchRecentKeywordAdapter(recentKeywordData, requestManager!!)
                         recentAdapter!!.setOnItemClickListener(recentClickListener)
                         recent_keword_list!!.adapter = recentAdapter
-
 
                     }
                 }else{

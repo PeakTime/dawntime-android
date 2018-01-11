@@ -17,6 +17,7 @@ import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.GoodsSortFragment
+import kotlinx.android.synthetic.main.activity_shop_search.*
 import kotlinx.android.synthetic.main.activity_shop_search_result.*
 
 
@@ -30,7 +31,6 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_search_result)
 
-
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
@@ -39,21 +39,11 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
         var lowPriceSt : String = intent.getStringExtra("lowPrice")
         var highPriceSt : String = intent.getStringExtra("highPrice")
 
-//        if(keyword==""){
-//            keyword="null"
-//        }
         //값넘길떄 쓸가격정보들 -> Int 로 보내야해서 형변환
         var lowPrice : Int = Integer.parseInt(lowPriceSt)
         var highPrice : Int = Integer.parseInt(highPriceSt)
 
-        var bundle = Bundle()
-        savedInstanceState!!.putInt("callAt", 2)
-        savedInstanceState.putInt("lowPrice", lowPrice)
-        savedInstanceState.putInt("highPrice", highPrice)
-        savedInstanceState.putString("keyword", keyword)
-        GoodsSortFragment().arguments = savedInstanceState
-        Log.d("은미","나와라나와라나와라나와라나와라나와라나와라")
-
+        AddFragment(GoodsSortFragment(),lowPrice,highPrice,keyword )
 
         /*
         * 낮은가격만 들어오면 낮은가격 이상
@@ -103,16 +93,25 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
 
         shop_search_text.text = search
 
-//        Toast.makeText(this, lowPriceSt, Toast.LENGTH_SHORT).show()
-//        Toast.makeText(this, highPriceSt, Toast.LENGTH_LONG).show()
-
-//        shopSearch(lowPrice, highPrice, keyword)
 
         //뒤로가기버튼
         shopBackBtn!!.setOnClickListener(this)
 
     }
+    //번들없는 함수
+    fun AddFragment(fragment: Fragment, lowPrice:Int,highPrice:Int,keyword:String){
 
+        val fm = supportFragmentManager
+        val transaction = fm.beginTransaction()
+        var bundle = Bundle()
+        bundle.putInt("callAt", CommonData.CALL_AT_SEARCH)
+        bundle.putInt("lowPrice", lowPrice)
+        bundle.putInt("highPrice", highPrice)
+        bundle.putString("keyword", keyword)
+        fragment.arguments = bundle
+        transaction.add(R.id.shop_search_viewpager,fragment)
+        transaction.commit()
+    }
 
     override fun onClick(v : View?) {
 

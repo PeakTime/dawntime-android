@@ -43,8 +43,6 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
 
         networkService = ApplicationController.instance!!.networkService
 
-
-
         mainView!!.delete_btn.setOnClickListener{
 
 //            Toast.makeText(mainView!!.context, dataList!!.get(position), Toast.LENGTH_SHORT).show()

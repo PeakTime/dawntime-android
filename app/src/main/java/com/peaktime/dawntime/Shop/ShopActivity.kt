@@ -42,19 +42,12 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         super.onRestart()
     }
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop)
 
         shopBackBtn!!.setOnClickListener(this)
         shopSearchBtn!!.setOnClickListener(this)
-
-//        shop_tab.addTab(shop_tab.newTab().setText("NEW"))
-//        shop_tab.addTab(shop_tab.newTab().setText("CATEGORY"))
-//        shop_tab.addTab(shop_tab.newTab().setText("BRAND"))
 
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_new))
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_category))
@@ -118,7 +111,6 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
     }
 
 
-
     override fun onClick(v : View?) {
         when (v!!.id) {
             R.id.shopBackBtn -> {this.finish()}
@@ -129,9 +121,5 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
             }
         }
     }
-
-
-
-
 
 }

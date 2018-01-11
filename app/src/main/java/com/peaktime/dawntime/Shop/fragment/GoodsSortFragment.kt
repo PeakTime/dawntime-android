@@ -14,6 +14,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+
 import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
@@ -156,11 +157,15 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                     shopList!!.adapter = shopAdapter
 
                 }
+                else{
+                    Log.d("통신","데이터 없음")
+                    ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
+                }
             }
 
             override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
                 ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
-                Log.i("status", "check")
+                Log.d("통신11111","데이터 없음")
             }
 
         })

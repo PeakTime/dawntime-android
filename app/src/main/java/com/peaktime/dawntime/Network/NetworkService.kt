@@ -117,8 +117,6 @@ interface NetworkService {
             @Path("order") order: Int)
             : Call<ShopBestResponse>
 
-
-
     //인기검색어, 최근검색어불러오기
     @GET("shop/keyword")
     fun getKeywordList(
