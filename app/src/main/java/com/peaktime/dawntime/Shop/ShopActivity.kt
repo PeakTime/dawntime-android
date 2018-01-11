@@ -10,7 +10,6 @@ import android.view.View
 import com.peaktime.dawntime.R
 import kotlinx.android.synthetic.main.activity_shop.*
 import android.graphics.Typeface
-import android.support.v4.content.res.ResourcesCompat
 import android.widget.TextView
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -111,9 +110,6 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
                         category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
                         brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
 
-                        var bundle = Bundle()
-                        bundle.putInt("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
-                        GoodsFragment().arguments = bundle
 //                        GoodsSortFragment().arguments = bundle
 
                     }
