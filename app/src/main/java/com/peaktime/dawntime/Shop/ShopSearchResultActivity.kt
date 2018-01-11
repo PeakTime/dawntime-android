@@ -1,14 +1,11 @@
 package com.peaktime.dawntime.Shop
 
-import android.app.Activity
-import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -17,7 +14,6 @@ import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.GoodsSortFragment
-import kotlinx.android.synthetic.main.activity_shop_search.*
 import kotlinx.android.synthetic.main.activity_shop_search_result.*
 
 
@@ -30,6 +26,11 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_search_result)
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
 
 
         networkService = ApplicationController.instance!!.networkService

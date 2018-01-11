@@ -2,12 +2,14 @@ package com.peaktime.dawntime.Shop
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -40,11 +42,18 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
     var shopLike : Int? = null
 
     var shopPagerAdapter : ShopViewPagerAdapter? =null
+    var selectedView : View? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_detail)
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
 
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
@@ -75,6 +84,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
         }
 
         index = intent.getIntExtra("Goods_Id",0)
+  //      selectedView = intent.getSerializableExtra("select_view") as View
 
         getShopDetailList()
 

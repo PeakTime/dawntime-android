@@ -1,17 +1,23 @@
 package com.peaktime.dawntime.Shop
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.Shop.fragment.GoodsFragment
 import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.shop_customtab_brand.*
 import kotlinx.android.synthetic.main.shop_customtab_category.*
 import kotlinx.android.synthetic.main.shop_customtab_new.*
+
+
 
 
 class ShopActivity : AppCompatActivity() , View.OnClickListener{
@@ -26,16 +32,8 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
     override fun onStart() {
         super.onStart()
-        Log.i("qwerty","onStart()")
+        Log.i("qwerty", "onStart()")
     }
-
-//    override fun onResume() {
-////        val intent = Intent(this@ShopActivity, ShopActivity::class.java)
-////        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-////        startActivity(intent)
-//        super.onResume()
-//    }
-
     override fun onRestart() {
         Log.i("qwerty","onRestart()")
 
@@ -52,6 +50,12 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_new))
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_category))
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_brand))
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
 
 
         var tabAdapter = ShopMainTapAdapter(supportFragmentManager, shop_tab.tabCount)

@@ -13,16 +13,10 @@
 
     <FrameLayout
         android:id="@+id/goods_layout"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
-        <ImageView
-            android:id="@+id/goods_img"
-            android:src="@drawable/brown"
-            android:layout_width="157dp"
-            android:layout_height="157dp"
-            android:background="@drawable/shop_goods_layout"/>
 
         <ImageView
             android:id="@+id/goods_rangetag"
@@ -32,14 +26,21 @@
             android:layout_marginLeft="18dp"
             />
 
+        <ImageView
+            android:id="@+id/goods_img"
+            android:layout_width="160dp"
+            android:layout_height="140dp"
+            android:scaleType="fitXY"
+            android:background="@drawable/shop_goods_layout"
+            android:layout_gravity="center"
+            android:src="@drawable/brown" />
+
     </FrameLayout>
 
     <RelativeLayout
         android:layout_width="157dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/goods_layout"
-        android:background="@drawable/shop_goods_layout"
-        >
+        android:layout_below="@+id/goods_layout">
 
         <TextView
             android:id="@+id/goods_name"
@@ -80,12 +81,12 @@
 
         <ImageButton
             android:id="@+id/shopLikeBtn"
-            android:background="@drawable/shop_view_zzim_heart_line"
+            android:background="@drawable/view_heart_line"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="11dp"/>
+         />
 
     </RelativeLayout>
 

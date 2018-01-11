@@ -5,4 +5,8 @@
     <color name="colorAccent">#000000</color>
     <color name="menuColor">#FF0000</color>
     <color name="trans">#00ff0000</color>
+
+    <color name="status_home">#F8F8F8</color>
+    <color name="status_shop">#F173A5</color>
+
 </resources>
