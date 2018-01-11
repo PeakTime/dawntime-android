@@ -98,20 +98,21 @@ class MyPageFragment : Fragment() {
             fm.commit()
         }
         messageBtn!!.setOnClickListener {
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            val fg = ChildMyPageMessageBox()
-            transacton.add(R.id.child_container, fg, "message")
-            transacton.addToBackStack(null)
-            transacton.commit()
+            //            val fm = activity.fragmentManager
+//            val transacton = fm.beginTransaction()
+//            val fg = ChildMyPageMessageBox()
+//            transacton.add(R.id.child_container, fg, "message")
+//            transacton.addToBackStack(null)
+//            transacton.commit()
+
+            val fm = fragmentManager.beginTransaction()
+            val fragment = ChildMyPageMessageBox()
+            fm.add(R.id.child_container, fragment, "detail")
+            fm.addToBackStack(null)
+            fm.commit()
         }
         scrapBtn!!.setOnClickListener {
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            val fg = ChildMyPageMessageBox()
-            transacton.add(R.id.child_container, fg, "message")
-            transacton.addToBackStack(null)
-            transacton.commit()
+
         }
 
         basketBtn!!.setOnClickListener {

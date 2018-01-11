@@ -46,7 +46,8 @@
         <activity android:name=".MyPage.PasswordCheckActivity" />
         <activity android:name=".Shop.ShopToMainActivity" />
         <activity android:name=".Shop.ShopSearchResultActivity" />
-        <activity android:name=".Community.CommunityWriteActicity"></activity>
+        <activity android:name=".Community.CommunityWriteActicity" />
+        <activity android:name=".Community.CommunityMsgActivity"></activity>
     </application>
 
 </manifest>

@@ -39,6 +39,8 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     private var communtiy_detail : Button? = null
     private var community_search : ImageButton? =null
 
+    private var tagList: ArrayList<String>? = null
+
     var networkService: NetworkService? = null
     var requestManager: RequestManager? = null
 
@@ -52,15 +54,12 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 
         val community_detail_layout : RelativeLayout= v.findViewById(R.id.community_cate_tab)
 
+        tagList = ArrayList<String>()
         communityList!!.layoutManager = LinearLayoutManager(activity)
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
         getList()
-
-        val horsehead_datas = arrayOfNulls<Button>(10)
-        val horsehead_datas_btn = arrayOf(R.id.horsehead_0, R.id.horsehead_1, R.id.horsehead_2, R.id.horsehead_3, R.id.horsehead_4,
-                R.id.horsehead_5, R.id.horsehead_6, R.id.horsehead_7, R.id.horsehead_8, R.id.horsehead_9)
 
         //말머리 보이기
         communtiy_detail = v.findViewById(R.id.community_detail)
@@ -69,6 +68,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             community_search!!.visibility = View.INVISIBLE
             community_write!!.visibility = View.INVISIBLE
             community_detail_layout.visibility = View.VISIBLE
+
             var cate_hide : Button ?= null
             cate_hide = v.findViewById(R.id.community_cate_hide)
             cate_hide!!.setOnClickListener {
@@ -76,15 +76,25 @@ class CommunityFragment : Fragment(), View.OnClickListener {
                 communtiy_detail!!.visibility = View.VISIBLE
                 community_search!!.visibility = View.VISIBLE
                 community_write!!.visibility = View.VISIBLE
+
+//                Log.i("taggg",tagList.toString())
+                if (tagList!!.size == 0) {
+                    getList()
+//                    Log.i("사이즈0일때_","sdjfksdljfk")
+                } else if (tagList!!.size == 1) {
+                    tagList!!.add("default")
+                    tagSearch()
+                    tagList!!.remove("default")
+//                    Log.i("사이즈 1일떄",tagList.toString())
+                } else {
+                    tagSearch()
+//                    Log.i("다수일때",tagList.toString())
+                }
             }
         }
 
 //        //글 작성
         community_write!!.setOnClickListener {
-            //            val fm = fragmentManager.beginTransaction()
-//            fm.add(R.id.community_container,CommunityWriteFragment(),"write")
-//            fm.addToBackStack(null)
-//            fm.commit()
 
             var intent = Intent(activity, CommunityWriteActicity::class.java)
             startActivityForResult(intent, 0)
@@ -128,12 +138,83 @@ class CommunityFragment : Fragment(), View.OnClickListener {
 
         v.horsehead_0.setOnClickListener{
             v.horsehead_0!!.isSelected = !v.horsehead_0.isSelected
+            if (v.horsehead_0.isSelected) {
+                tagList!!.add(v.horsehead_0.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_0.text.toString())
+            }
         }
         v.horsehead_1.setOnClickListener{
             v.horsehead_1!!.isSelected = !v.horsehead_1.isSelected
+            if (v.horsehead_1.isSelected) {
+                tagList!!.add(v.horsehead_1.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_1.text.toString())
+            }
         }
         v.horsehead_2.setOnClickListener{
             v.horsehead_2!!.isSelected = !v.horsehead_2.isSelected
+            if (v.horsehead_2.isSelected) {
+                tagList!!.add(v.horsehead_2.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_2.text.toString())
+            }
+        }
+        v.horsehead_3.setOnClickListener {
+            v.horsehead_3!!.isSelected = !v.horsehead_3.isSelected
+            if (v.horsehead_3.isSelected) {
+                tagList!!.add(v.horsehead_3.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_3.text.toString())
+            }
+        }
+        v.horsehead_4.setOnClickListener {
+            v.horsehead_4!!.isSelected = !v.horsehead_4.isSelected
+            if (v.horsehead_4.isSelected) {
+                tagList!!.add(v.horsehead_4.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_4.text.toString())
+            }
+        }
+        v.horsehead_5.setOnClickListener {
+            v.horsehead_5!!.isSelected = !v.horsehead_5.isSelected
+            if (v.horsehead_5.isSelected) {
+                tagList!!.add(v.horsehead_5.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_5.text.toString())
+            }
+        }
+        v.horsehead_6.setOnClickListener {
+            v.horsehead_6!!.isSelected = !v.horsehead_6.isSelected
+            if (v.horsehead_6.isSelected) {
+                tagList!!.add(v.horsehead_6.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_6.text.toString())
+            }
+        }
+        v.horsehead_7.setOnClickListener {
+            v.horsehead_7!!.isSelected = !v.horsehead_7.isSelected
+            if (v.horsehead_7.isSelected) {
+                tagList!!.add(v.horsehead_7.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_7.text.toString())
+            }
+        }
+        v.horsehead_8.setOnClickListener {
+            v.horsehead_8!!.isSelected = !v.horsehead_8.isSelected
+            if (v.horsehead_8.isSelected) {
+                tagList!!.add(v.horsehead_8.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_8.text.toString())
+            }
+        }
+        v.horsehead_9.setOnClickListener {
+            v.horsehead_9!!.isSelected = !v.horsehead_9.isSelected
+            if (v.horsehead_9.isSelected) {
+                tagList!!.add(v.horsehead_9.text.toString())
+            } else {
+                tagList!!.remove(v.horsehead_9.text.toString())
+            }
         }
 
         return v
@@ -142,10 +223,36 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == AppCompatActivity.RESULT_OK) {
             getList()
-            Log.i("rerere", "sdkfsjlk")
         }
     }
 
+    fun tagSearch() {
+        var getContentList = networkService!!.tagSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, tagList!!)
+        getContentList.enqueue(object : Callback<TagSearchResponse> {
+            override fun onResponse(call: Call<TagSearchResponse>?, response: Response<TagSearchResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().message.equals("success")) {
+
+                        communityDatas = response.body().result
+
+                        CommonData.communityDatas = communityDatas!!
+
+                        adapter = CommunityAdapter(communityDatas, requestManager!!)
+                        adapter!!.setOnItemClickListener(this@CommunityFragment)
+                        communityList!!.adapter = adapter
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<TagSearchResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
+    }
     fun getList() {
         var getContentList = networkService!!.getCommunityList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
         getContentList.enqueue(object : Callback<CommunityResponse> {

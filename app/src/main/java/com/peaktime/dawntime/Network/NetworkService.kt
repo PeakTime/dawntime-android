@@ -2,20 +2,17 @@ package com.peaktime.dawntime.Network
 
 import com.peaktime.dawntime.Column.ColumnListResponse
 import com.peaktime.dawntime.Column.ColumnResponse
-import com.peaktime.dawntime.Community.CommunityDetailResponse
-import com.peaktime.dawntime.Community.CommunityResponse
-import com.peaktime.dawntime.Home.HomeResponse
 import com.peaktime.dawntime.Community.*
+import com.peaktime.dawntime.Home.HomeResponse
 import com.peaktime.dawntime.MyPage.MessageBoxResponse
+import com.peaktime.dawntime.MyPage.MypageMessageDetailResponse
 import com.peaktime.dawntime.MyPage.SignInResponse
 import com.peaktime.dawntime.Shop.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import com.peaktime.dawntime.Shop.ShopBestResponse
-import com.peaktime.dawntime.Shop.ShopDetailResponse
-import com.peaktime.dawntime.Shop.ShopLikeResponse
 import retrofit2.Call
 import retrofit2.http.*
+
 
 /**
  * Created by LEESANGYUN on 2018-01-06.
@@ -73,7 +70,6 @@ interface NetworkService {
             @Header("user_token") user_token: String,
             @Field("board_id") board_id: Int,
             @Field("com_parent") com_parent: Int,
-            @Field("com_seq") com_seq: Int,
             @Field("com_content") com_content: String)
             : Call<ReplyWriteResponse>
 
@@ -182,11 +178,68 @@ interface NetworkService {
                 : Call<ColumnListResponse>
 
     //칼럼 상세보기
-
     @GET("column/detail/{column_id}")
     fun getColumn(
         @Path("column_id") column_id : Int)
             : Call<ColumnResponse>
 
+    //커뮤니티 태그검색
+    @FormUrlEncoded
+    @POST("board/tagList")
+    fun tagSearch(
+            @Header("user_token") user_token: String,
+            @Field("tag") tag: ArrayList<String>)
+            : Call<TagSearchResponse>
+
+    //게시글을 통한 쪽지보내기
+    @FormUrlEncoded
+    @POST("message/boardWrite")
+    fun communityMessage(
+            @Header("user_token") user_token: String,
+            @Field("board_id") board_id: Int,
+            @Field("msg_content") msg_content: String
+    ): Call<CommunityLikeResponse>
+
+    //마이페이지에서 쪽지 상세보기
+    @GET("message/room/{room_id}")
+    fun getMessgaeDetailList(
+            @Header("user_token") user_token: String,
+            @Path("room_id") room_id: Int
+    ): Call<MypageMessageDetailResponse>
+
+    //쪽지 상세보기에서 쪽지보내기
+    @FormUrlEncoded
+    @POST("message/write")
+    fun sendMessageDetail(
+            @Header("user_token") user_token: String,
+            @Field("room_id") room_id: Int,
+            @Field("msg_content") msg_content: String
+    ): Call<CommunityLikeResponse>//response 재사용
+
+    //게시물 수정
+    @Multipart
+    @POST("board/modify")
+    fun modifyDetail(
+            @Header("user_token") user_token: String,
+            @Part("board_title") board_title: RequestBody,
+            @Part("board_content") board_content: RequestBody,
+            @Part("board_tag") board_tag: RequestBody,
+            @Part("board_id") board_id: RequestBody,
+            @Part image: ArrayList<MultipartBody.Part>?
+    ): Call<CommunityWriteResponse>//response 재사용
+
+    //게시글 삭제
+    @HTTP(method = "DELETE", path = "board/delete", hasBody = true)
+    fun boardDelete(
+            @Header("user_token") user_token: String,
+            @Body instance: CommunityDeleteInstance)
+            : Call<CommunityDeleteResponse>
+
+    //댓글 삭제
+    @HTTP(method = "DELETE", path = "comment/delete", hasBody = true)
+    fun replyDelete(
+            @Header("user_token") user_token: String,
+            @Body instance: CommunityReplyDeleteInstance)
+            : Call<CommunityDeleteResponse2>
 
 }

@@ -110,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
                         SharedPreferInstance.getInstance(applicationContext).putPreferString("AGE", age!!)
                         SharedPreferInstance.getInstance(applicationContext).putPreferString("NAVER_UID", naver_uid!!)
                         SharedPreferInstance.getInstance(applicationContext).putPreferBoolean("LOGIN", true)
-                        SharedPreferInstance.getInstance(applicationContext).putPreferString("TOKEN", signData!!.user_token)
+//                        SharedPreferInstance.getInstance(applicationContext).putPreferString("TOKEN", signData!!.user_token)
                         SharedPreferInstance.getInstance(applicationContext).putPreferInt("UID", signData!!.user_id)
                         Log.i("LoginCheck : ", "로그인 되었습니다.")
                         Log.i("Token : ", signData!!.user_token)

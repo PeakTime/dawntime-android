@@ -1,9 +1,11 @@
 package com.peaktime.dawntime.Community
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -32,10 +34,14 @@ import java.util.*
  */
 class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,View.OnLongClickListener{
 
-    var communityDetailDatas: ArrayList<CommunityDetailData>? = null
-    var communityDetailReplyDatas: ArrayList<CommunityDetailData2>? = null
+    var communityDetailDatas: ArrayList<CommunityDetailData>? = ArrayList()
+    var communityDetailReplyDatas: ArrayList<CommunityDetailData2>? = ArrayList()
 
     var index: Int = 0
+    var replyIndex: Int = 0
+    var reReplyParentNum = 0
+    var reReplyMode: Boolean = false
+    var inputEdit: EditText? = null
 
     var basicLayout: LinearLayout? = null
     var networkService: NetworkService? = null
@@ -95,49 +101,47 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
         }
 
         optionImageBtn!!.setOnClickListener {
-            Log.v("community", "community")
-            val popup = PopupMenu(activity, community_gitar)//v는 클릭된 뷰를 의미
+            val popup = PopupMenu(activity, v!!.community_gitar)//v는 클릭된 뷰를 의미
             val inflater = activity.menuInflater
-            activity.menuInflater.inflate(R.menu.community_menu, popup.menu)
+            if (communityDetailDatas!!.get(0).writer_check == true) {
+                activity.menuInflater.inflate(R.menu.community_menu2, popup.menu)
+            } else {
+                activity.menuInflater.inflate(R.menu.community_menu, popup.menu)
+            }
+
             popup.setOnMenuItemClickListener(this)
             popup.show()
         }
 
-//        //댓글작성
-//        communityReplyDatas = ArrayList<CommunityReplyData>()
-//        communityReplyList = v.findViewById(R.id.reply_list)
-//        communityReplyList!!.layoutManager = LinearLayoutManager(activity)
-//        v.reply_send!!.setOnClickListener{
-//            var reply_content : String ?= null
-//            reply_content = v.reply_msg.getText().toString()
-//            reply_msg.setText("")
-//            val now = System.currentTimeMillis()
-//            val date = Date(now)
-//            val sdf = SimpleDateFormat("MM/dd HH:mm")
-//            val getTime = sdf.format(date)
-//
-//            communityReplyDatas!!.add(CommunityReplyData("익명",getTime, reply_content))
-//            communityReplyAdapter = CommunityReplyAdapter(communityReplyDatas)
-//            communityReplyList!!.adapter = communityReplyAdapter
-//            communityReplyAdapter!!.setOnItemClickListener(this)
-//        }
-
         var inflater = layoutInflater
         inputLayout = inflater.inflate(R.layout.fragment_community_detail_input, null)
+        inputEdit = inputLayout!!.findViewById(R.id.reply_msg)
+        inputEdit!!.setOnFocusChangeListener { v, hasFocus ->
+
+            if (hasFocus) {
+//                Toast.makeText(activity,"포커스 유 ",Toast.LENGTH_SHORT).show()
+            } else {
+                reReplyMode = false
+//                Toast.makeText(activity,"포커스 무 ",Toast.LENGTH_SHORT).show()
+            }
+        }
+
         replyBtn = inputLayout!!.findViewById(R.id.reply_send)
         replyEdit = inputLayout!!.findViewById(R.id.reply_msg)
         replyBtn!!.reply_send.setOnClickListener {
-            replyWrite()
+            Log.i("numaaa", reReplyParentNum.toString())
+            replyWrite(reReplyParentNum)
+            reReplyParentNum = 0
             replyEdit!!.setText("")
-            var ft = fragmentManager.beginTransaction()
-            ft.detach(this@CommunityDetailFragment).attach(this@CommunityDetailFragment).commit()
         }
+
+
 
         return v!!
     }
 
-    fun replyWrite() {
-        var getContentList = networkService!!.replyWrite(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, index, 0, 1, replyEdit!!.text.toString())
+    fun replyWrite(parentNum: Int) {
+        var getContentList = networkService!!.replyWrite(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, index, parentNum, replyEdit!!.text.toString())
 
         getContentList.enqueue(object : Callback<ReplyWriteResponse> {
             override fun onResponse(call: Call<ReplyWriteResponse>?, response: Response<ReplyWriteResponse>?) {
@@ -145,6 +149,8 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("success")) {
                         Toast.makeText(activity, "댓글이 등록되었습니다.", Toast.LENGTH_SHORT).show()
+                        var ft = fragmentManager.beginTransaction()
+                        ft.detach(this@CommunityDetailFragment).attach(this@CommunityDetailFragment).commit()
                     }
                 } else {
                     Log.i("status", "fail")
@@ -203,7 +209,6 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                     Log.i("status", "fail")
                 }
             }
-
             override fun onFailure(call: Call<CommunityLikeResponse>?, t: Throwable?) {
                 ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
                 Log.i("status", "check")
@@ -231,7 +236,6 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                         replyCount!!.text = communityDetailDatas!!.get(0).com_count.toString()
                         scrapCount!!.text = communityDetailDatas!!.get(0).scrap_count.toString()
 
-                        //아직 널로 들어오는거 같은데 서버에 검사 부탁해야할듯
                         if (communityDetailDatas!!.get(0).user_like == true) {
                             detail_fire_image.setImageResource(R.drawable.view_fire_red)
                         } else
@@ -242,13 +246,18 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                             detail_scrap_image.setImageResource(R.drawable.view_unscrap_navy)
 
                         //동적 뷰 추가
-                        for (i in 0..communityDetailDatas!!.get(0).board_images.size - 1) {
-                            var inflater = layoutInflater
-                            var imageLayout = inflater.inflate(R.layout.fragment_community_detail_imageitem, null)
-                            var image: ImageView = imageLayout.findViewById(R.id.detail_image)
-                            requestManager!!.load(communityDetailDatas!!.get(0).board_images.get(i)).into(image)
-                            basicLayout!!.addView(imageLayout)
+//                        communityDetailDatas!!.get(0).board_images = ArrayList()
+                        try {
+                            for (i in 0..communityDetailDatas!!.get(0).board_images!!.size - 1) {
+                                var inflater = layoutInflater
+                                var imageLayout = inflater.inflate(R.layout.fragment_community_detail_imageitem, null)
+                                var image: ImageView = imageLayout.findViewById(R.id.detail_image)
+                                requestManager!!.load(communityDetailDatas!!.get(0).board_images!!.get(i)).into(image)
+                                basicLayout!!.addView(imageLayout)
+                            }
+                        } catch (e: Exception) {
                         }
+
                         for (i in 0..communityDetailReplyDatas!!.size - 1) {
                             var inflater = layoutInflater
                             if (communityDetailReplyDatas!!.get(i).recom_check == true) {
@@ -256,22 +265,43 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
 
                                 replyLayout.setOnLongClickListener(this@CommunityDetailFragment)
 
-                                if (communityDetailReplyDatas!!.get(i).writer_check == true) {
+                                if (communityDetailReplyDatas!!.get(i).com_writer == 1) {
                                     replyLayout.reply_writer_text.text = "익명(글쓴이)"
                                 } else
                                     replyLayout.reply_writer_text.text = "익명"
+
+                                if (communityDetailReplyDatas!!.get(i).writer_check == true) {
+                                    replyLayout.cancle_btn1.visibility = View.VISIBLE
+                                    replyLayout.cancle_btn1.setOnClickListener {
+                                        replyIndex = communityDetailReplyDatas!!.get(i).com_id
+                                        replyDelete()
+                                    }
+                                } else
+                                    replyLayout.cancle_btn1.visibility = View.GONE
+
                                 replyLayout.reply_date_text.text = communityDetailReplyDatas!!.get(i).com_date
                                 replyLayout.reply_contents_text.text = communityDetailReplyDatas!!.get(i).com_content
+                                replyLayout.id = i
                                 basicLayout!!.addView(replyLayout)
                             } else {
                                 var replyLayout = inflater.inflate(R.layout.fragment_community_detail_replyitem2, null)
 
                                 replyLayout.setOnLongClickListener(this@CommunityDetailFragment)
 
-                                if (communityDetailReplyDatas!!.get(i).writer_check == true) {
+                                if (communityDetailReplyDatas!!.get(i).com_writer == 1) {
                                     replyLayout.reply2_writer_text.text = "익명(글쓴이)"
                                 } else
                                     replyLayout.reply2_writer_text.text = "익명"
+
+                                if (communityDetailReplyDatas!!.get(i).writer_check == true) {
+                                    replyLayout.cancle_btn2.visibility = View.VISIBLE
+                                    replyLayout.cancle_btn2.setOnClickListener {
+                                        replyIndex = communityDetailReplyDatas!!.get(i).com_id
+                                        replyDelete()
+                                    }
+                                } else
+                                    replyLayout.cancle_btn2.visibility = View.GONE
+
                                 replyLayout.reply2_date_text.text = communityDetailReplyDatas!!.get(i).com_date
                                 replyLayout.reply2_contents_text.text = communityDetailReplyDatas!!.get(i).com_content
                                 replyLayout.id = i
@@ -299,34 +329,24 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
         val dialogView = View.inflate(context,R.layout.reply_dialog,null)
         replyDialog.setView(dialogView)
         val alertDialog = replyDialog.create()
-        alertDialog.show()
 
-        when (p0!!.id) {
-            1 -> {
-                Log.v("ygClick", "1입니다")
-            }
-            2 -> {
-                Log.v("ygClick", "2입니다")
-            }
+        val replyDialog2 = AlertDialog.Builder(context)
+        val dialogView2 = View.inflate(context, R.layout.rereply_dialog, null)
+        replyDialog.setView(dialogView2)
+        val alertDialog2 = replyDialog.create()
+
+        if (communityDetailReplyDatas!!.get(p0!!.id).com_parent == 0 && communityDetailReplyDatas!!.get(p0.id).writer_check == false) {
+            alertDialog.show()
+        } else if (communityDetailReplyDatas!!.get(p0.id).com_parent != 0 && communityDetailReplyDatas!!.get(p0.id).writer_check == false) {
+            alertDialog2.show()
         }
 
-
-
-        var sendMsg = dialogView.findViewById<TextView>(R.id.sendMsg)
-        sendMsg.setOnClickListener {
-            val fm = activity.fragmentManager
-            val transacton = fm.beginTransaction()
-            val fragment = CommunityMsgFragment()
-            transacton.add(R.id.community_detail_container, fragment, "msg")
-            transacton.addToBackStack(null)
-            transacton.commit()
-
-            alertDialog.cancel()
-        }
         var sendreply = dialogView.findViewById<TextView>(R.id.sendreply)
         sendreply.setOnClickListener {
-
-
+            reReplyMode = true
+            reReplyParentNum = communityDetailReplyDatas!!.get(p0.id).com_id
+            alertDialog.cancel()
+            replyEdit!!.requestFocus()
         }
         var singo = dialogView.findViewById<TextView>(R.id.singo)
         singo.setOnClickListener {
@@ -341,19 +361,80 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
         //눌러진 MenuItem의 Item Id를 얻어와 식별
 
             R.id.sendMsg ->{
+                var intent = Intent(activity, CommunityMsgActivity::class.java)
+                intent.putExtra("BOARD_ID", communityDetailDatas!!.get(0).board_id)
 
-                val fm = activity.fragmentManager
-                val transacton = fm.beginTransaction()
-                val fragment = CommunityMsgFragment()
-                transacton.add(R.id.community_detail_container, fragment, "msg")
-                transacton.addToBackStack(null)
-                transacton.commit()
+                startActivity(intent)
             }
             R.id.singo ->{
-
                 Toast.makeText(context, "신고접수 되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+            R.id.modify_community_detail -> {
+                var intent = Intent(activity, CommunityWriteActicity::class.java)
+                intent.putExtra("MODE", "modify")
+                intent.putExtra("INDEX", index)
+                startActivityForResult(intent, 0)
+            }
+            R.id.delete_community_detail -> {
+                boardDelete()
             }
         }
         return false
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+
+        }
+    }
+
+    fun boardDelete() {
+        var getContentList = networkService!!.boardDelete(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, CommunityDeleteInstance(index))
+
+        getContentList.enqueue(object : Callback<CommunityDeleteResponse> {
+            override fun onResponse(call: Call<CommunityDeleteResponse>?, response: Response<CommunityDeleteResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().msg.equals("success")) {
+                        ApplicationController.instance!!.makeToast("게시물이 삭제되었습니다.")
+                        val fm = fragmentManager.beginTransaction()
+                        fm.remove(this@CommunityDetailFragment)
+                        fm.commit()
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<CommunityDeleteResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
+    }
+
+    fun replyDelete() {
+//        Log.i("qwerqwer",communityDetailReplyDatas!!.get(replyIndex).com_id.toString())
+        var getContentList = networkService!!.replyDelete(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, CommunityReplyDeleteInstance(replyIndex))
+
+        getContentList.enqueue(object : Callback<CommunityDeleteResponse2> {
+            override fun onResponse(call: Call<CommunityDeleteResponse2>?, response: Response<CommunityDeleteResponse2>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().msg.equals("successful delete")) {
+                        ApplicationController.instance!!.makeToast("댓글이 삭제되었습니다.")
+                        var ft = fragmentManager.beginTransaction()
+                        ft.detach(this@CommunityDetailFragment).attach(this@CommunityDetailFragment).commit()
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<CommunityDeleteResponse2>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
     }
 }
