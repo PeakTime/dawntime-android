@@ -6,7 +6,7 @@ package com.peaktime.dawntime.Shop
 class ShopBestData (
         var goods_id : Int,
         var goods_name : String,
-        var goods_price : Int,
+        var goods_price : String,
         var goods_brand : String,
         var goods_image : String,
         var goods_like : Int

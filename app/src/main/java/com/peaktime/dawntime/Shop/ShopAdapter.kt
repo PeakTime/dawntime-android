@@ -32,6 +32,7 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
         onItemClick = l
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ShopViewHolder {
         mainView = LayoutInflater.from(parent!!.context).inflate(R.layout.shop_goods_item, parent, false)
 

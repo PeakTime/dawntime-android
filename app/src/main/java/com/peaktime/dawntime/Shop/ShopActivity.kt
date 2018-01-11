@@ -9,9 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.fragment.GoodsFragment
 import kotlinx.android.synthetic.main.activity_shop.*
 import kotlinx.android.synthetic.main.shop_customtab_brand.*
 import kotlinx.android.synthetic.main.shop_customtab_category.*
