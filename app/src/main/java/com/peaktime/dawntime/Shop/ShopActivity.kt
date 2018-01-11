@@ -13,28 +13,9 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.GoodsFragment
 import kotlinx.android.synthetic.main.activity_shop.*
-import android.graphics.Typeface
-import android.widget.TextView
-import android.view.ViewGroup
-import android.widget.ImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestManager
-import com.peaktime.dawntime.CommonData
-import com.peaktime.dawntime.Community.CommunityDetailResponse
-import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxAdapter
-import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
-import com.peaktime.dawntime.MyPage.MessageBoxResponse
-import com.peaktime.dawntime.Network.ApplicationController
-import com.peaktime.dawntime.Network.NetworkService
-import kotlinx.android.synthetic.main.fragment_community_detail.*
-import kotlinx.android.synthetic.main.fragment_community_detail_replyitem.view.*
-import kotlinx.android.synthetic.main.fragment_community_detail_replyitem2.view.*
 import kotlinx.android.synthetic.main.shop_customtab_brand.*
 import kotlinx.android.synthetic.main.shop_customtab_category.*
 import kotlinx.android.synthetic.main.shop_customtab_new.*
-
-
-
 
 class ShopActivity : AppCompatActivity() , View.OnClickListener{
 

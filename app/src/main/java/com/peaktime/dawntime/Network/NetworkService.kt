@@ -26,6 +26,11 @@ interface NetworkService {
     fun getMessageBoxList(
             @Header("user_token") user_token: String)
             : Call<MessageBoxResponse>
+    //찜 목록
+    @GET("mypage/shopLikeList")
+    fun getBasketList(
+            @Header("user_token") user_token: String)
+            : Call<ShopBestResponse>
 
     //커뮤니티 리스트
     @GET("board/dateList")
@@ -175,7 +180,6 @@ interface NetworkService {
     @POST("column/search")
     fun getColumnSearch(@Field("column_title") column_title : String)
                 : Call<ColumnListResponse>
-
 
     //칼럼 상세보기
 
