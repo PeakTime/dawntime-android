@@ -104,7 +104,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         getHomeData(user_blind!!)
 
-        home_scrollview!!.fullScroll(ScrollView.FOCUS_UP)
 
         val handler = Handler()
         val Update = Runnable {

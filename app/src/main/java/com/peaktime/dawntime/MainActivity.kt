@@ -103,12 +103,7 @@ class MainActivity : AppCompatActivity() {
                         val bundle = Bundle()
     //                    bundle.putString("title",fourthText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        if(isLogin!!) {
                             ReplaceFragment(MyPageFragment(), "myPage")
-                        }
-                        else{
-                            //로그인 팝업
-                        }
                     }
                 }
             }
