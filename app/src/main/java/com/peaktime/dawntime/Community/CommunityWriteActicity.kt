@@ -14,7 +14,6 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
@@ -43,15 +42,17 @@ class CommunityWriteActicity : AppCompatActivity() {
     private var image: MultipartBody.Part? = null
     var imageArray: ArrayList<MultipartBody.Part>? = ArrayList()
 
-    var testArray: ArrayList<Uri>? = null
+    var modifyData: ArrayList<CommunityDetailData>? = ArrayList()
+    var modifyImage: ArrayList<String>? = ArrayList()
 
     var requestManager: RequestManager? = null
     private var networkService: NetworkService? = null
-    private var takeImgAdapter: TakeImageAdapter? = null
-    private var takeImgRecycler: RecyclerView? = null
     var select_horsehead: String? = null
 
     val REQUEST_ALL: Int = 103
+
+    var mode: String? = null
+    var index: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +60,8 @@ class CommunityWriteActicity : AppCompatActivity() {
 
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
+        mode = intent.getStringExtra("MODE")
+        index = intent.getIntExtra("INDEX", 0)
 
         picture_button!!.setOnClickListener {
             if (Build.VERSION.SDK_INT >= 23) {
@@ -75,12 +78,19 @@ class CommunityWriteActicity : AppCompatActivity() {
                 //sdk 버전이 23이하 일경우
             }
         }
-
+        if (mode == "modify") {
+            getDetail()
+        }
         write_complete!!.setOnClickListener {
-            boardWrite()
+            if (mode == "modify") {
+                modifyDetail()
+            } else {
+                boardWrite()
+            }
             setResult(Activity.RESULT_OK)
             finish()
         }
+
         horsehead_button!!.setOnClickListener {
 
             val horseheadDialog = AlertDialog.Builder(this)
@@ -171,12 +181,11 @@ class CommunityWriteActicity : AppCompatActivity() {
                 horsehead_button.setBackgroundResource(R.drawable.selectlinedrawable)
             }
         }
-
         community_backbtn1!!.setOnClickListener {
-
             finish()
         }
     }
+
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -285,4 +294,71 @@ class CommunityWriteActicity : AppCompatActivity() {
             }
         })
     }
+
+    fun modifyDetail() {
+        val board_title = RequestBody.create(MediaType.parse("text/plain"), b_title.text.toString())
+        val board_content = RequestBody.create(MediaType.parse("text/plain"), contents.text.toString())
+        val board_tag = RequestBody.create(MediaType.parse("text/plain"), horsehead_button.text.toString())
+        var board_id = RequestBody.create(MediaType.parse("text/plain"), index.toString())
+
+        var getContentList = networkService!!.modifyDetail(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!, board_title, board_content, board_tag, board_id, imageArray)
+
+        getContentList.enqueue(object : Callback<CommunityWriteResponse> {
+            override fun onResponse(call: Call<CommunityWriteResponse>?, response: Response<CommunityWriteResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().msg.equals("success")) {
+                        ApplicationController.instance!!.makeToast("게시글이 수정되었습니다.")
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<CommunityWriteResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
+
+    }
+
+    fun getDetail() {
+        var getContentList = networkService!!.getCommunityDetail(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!, index!!)
+
+        getContentList.enqueue(object : Callback<CommunityDetailResponse> {
+            override fun onResponse(call: Call<CommunityDetailResponse>?, response: Response<CommunityDetailResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().message.equals("success")) {
+                        modifyData = response.body().boardResult
+                        b_title.setText(modifyData!!.get(0).board_title)
+                        contents.setText(modifyData!!.get(0).board_content)
+                        horsehead_button.text = modifyData!!.get(0).board_tag
+
+                        for (i in 0..(modifyData!!.get(0).board_images!!.size - 1)) {
+                            if (i == 0)
+                                requestManager!!.load(modifyData!!.get(0).board_images!!.get(i)).into(image1)
+                            else if (i == 1)
+                                requestManager!!.load(modifyData!!.get(0).board_images!!.get(i)).into(image2)
+                            else if (i == 2)
+                                requestManager!!.load(modifyData!!.get(0).board_images!!.get(i)).into(image3)
+                            else if (i == 3)
+                                requestManager!!.load(modifyData!!.get(0).board_images!!.get(i)).into(image4)
+                            else if (i == 4)
+                                requestManager!!.load(modifyData!!.get(0).board_images!!.get(i)).into(image5)
+                        }
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<CommunityDetailResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
+    }
+
 }

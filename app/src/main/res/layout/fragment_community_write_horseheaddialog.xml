@@ -32,7 +32,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="뻘글"
+                android:text="걱정"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -43,8 +43,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-
-                android:text="엑소"
+                android:text="리뷰"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -55,7 +54,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="뮤직"
+                android:text="추천"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -66,7 +65,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="후기"
+                android:text="애인"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -76,7 +75,7 @@
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="발언"
+                android:text="팁"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
         </LinearLayout>
@@ -97,7 +96,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="인생"
+                android:text="썰"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -108,7 +107,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="먹방"
+                android:text="질문"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -119,7 +118,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="리뷰"
+                android:text="기타"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -130,7 +129,7 @@
                 android:layout_marginRight="7dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="BTS"
+                android:text="자랑"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
 
@@ -140,7 +139,7 @@
                 android:layout_height="24dp"
                 android:layout_weight="1"
                 android:background="@drawable/horseheaddrawable_uncheck"
-                android:text="퇴치법"
+                android:text="건의"
                 android:textColor="#0E1949"
                 android:textSize="13dp" />
         </LinearLayout>

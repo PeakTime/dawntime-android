@@ -49,9 +49,9 @@ class ChildMypageBasketAdapter(var dataList : ArrayList<ShopBestData>?, var requ
         holder!!.shopPrice.setText(dataList!!.get(position).goods_price.toString())
 
         if(dataList!!.get(position).goods_like == 1){
-            holder!!.shopLikeBtn.setImageResource(R.drawable.shop_view_zzim_heart_solid)
+            holder!!.shopLikeBtn.setImageResource(R.drawable.view_heart_solid)
         }else{
-            holder!!.shopLikeBtn.setImageResource(R.drawable.shop_view_zzim_heart_line)
+            holder!!.shopLikeBtn.setImageResource(R.drawable.view_heart_line)
         }
 
 //        holder!!.shopBrand.setText(dataList!!.get(position).goods_brand)
