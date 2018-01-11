@@ -79,7 +79,6 @@ class GoodsFragment : Fragment() , View.OnClickListener {
         intent.putExtra("bestFlag", bestFlag)
         intent.putExtra("position", position)
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
-//        intent.putExtra("select_view",view as Serializable)
 //        val name = v!!.goods_name.text
 //        val price = v!!.goods_price.text
 //        intent.putExtra("name", name)

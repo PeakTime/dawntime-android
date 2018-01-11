@@ -115,7 +115,12 @@ class MyPageFragment : Fragment() {
         }
 
         basketBtn!!.setOnClickListener {
-
+            val fm = activity.fragmentManager
+            val transacton = fm.beginTransaction()
+            val fg = ChildMypageBasket()
+            transacton.add(R.id.child_container, fg, "basket")
+            transacton.addToBackStack(null)
+            transacton.commit()
         }
 
         myWrittenBtn!!.setOnClickListener {
