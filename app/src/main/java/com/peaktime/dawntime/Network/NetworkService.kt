@@ -2,7 +2,6 @@ package com.peaktime.dawntime.Network
 
 import com.peaktime.dawntime.Column.ColumnListResponse
 import com.peaktime.dawntime.Column.ColumnResponse
-import com.peaktime.dawntime.Community.CommunityDetailInstance
 import com.peaktime.dawntime.Community.CommunityDetailResponse
 import com.peaktime.dawntime.Community.CommunityResponse
 import com.peaktime.dawntime.Home.HomeResponse
@@ -28,6 +27,12 @@ interface NetworkService {
     //커뮤니티 리스트
     @GET("board/dateList")
     fun getCommunityList(
+            @Header("user_token") user_token: String)
+            : Call<CommunityResponse>
+
+    //커뮤니티 리스트(홈 인기순)
+    @GET("board/bestList")
+    fun getCommunityBestList(
             @Header("user_token") user_token: String)
             : Call<CommunityResponse>
 

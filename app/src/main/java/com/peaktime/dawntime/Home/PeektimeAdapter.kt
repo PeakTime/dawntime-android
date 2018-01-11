@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.Community.CommunityDetailData
+import com.peaktime.dawntime.Community.CommunityList
 import com.peaktime.dawntime.R
 
 /**
  * Created by minhyoung on 2018. 1. 2..
  */
-class PeektimeAdapter(var dataList : ArrayList<PeektimeData>? ) : RecyclerView.Adapter<PeektimeViewHolder>() {
+class PeektimeAdapter(var dataList : ArrayList<CommunityList>? ) : RecyclerView.Adapter<PeektimeViewHolder>() {
 
     private val backGround = listOf(R.drawable.view_peakillu1_purple,R.drawable.view_peakillu2_green,
             R.drawable.view_peakillu3_violet,R.drawable.view_peakillu4_blue)

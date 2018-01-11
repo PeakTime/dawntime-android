@@ -20,7 +20,6 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.CommonData
-import com.peaktime.dawntime.Community.CommunityDetailInstance
 import com.peaktime.dawntime.Community.CommunityDetailResponse
 import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxAdapter
 import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData

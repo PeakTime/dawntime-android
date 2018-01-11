@@ -4,7 +4,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.resource.drawable.GlideDrawable
+import com.bumptech.glide.request.target.ViewTarget
 import com.peaktime.dawntime.R
 
 /**
