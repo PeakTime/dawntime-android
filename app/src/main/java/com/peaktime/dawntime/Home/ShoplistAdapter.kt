@@ -18,7 +18,7 @@ class ShoplistAdapter(var dataList : ArrayList<ShoplistData>?,var requestManager
     private var onItemClick : View.OnClickListener? = null
 
     override fun onBindViewHolder(holder: ShoplistViewHolder?, position: Int) {
-        if(user_blind == 0) {
+        if(user_blind == 1) {
             requestManager.load(dataList!!.get(position).goods_image).into(holder!!.shoplistImg)
         }
         else{

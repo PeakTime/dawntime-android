@@ -33,6 +33,12 @@ interface NetworkService {
             @Header("user_token") user_token: String)
             : Call<CommunityResponse>
 
+    //커뮤니티 리스트(홈 인기순)
+    @GET("board/bestList")
+    fun getCommunityBestList(
+            @Header("user_token") user_token: String)
+            : Call<CommunityResponse>
+
     //커뮤니티 상세보기
     @GET("board/list/{board_id}")
     fun getCommunityDetail(

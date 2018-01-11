@@ -1,5 +1,6 @@
 package com.peaktime.dawntime.Column
 
+import android.graphics.Color
 import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -36,8 +37,10 @@ class ColumnSearchFragment : Fragment() {
     private var requestManager : RequestManager? = null
     private var columnSearchEditText : EditText? = null
 
+    private var v : View? = null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(R.layout.fragment_column_search,container,false)
+        v = inflater!!.inflate(R.layout.fragment_column_search,container,false)
 
         var column_title : String? = null
 
@@ -45,10 +48,10 @@ class ColumnSearchFragment : Fragment() {
         networkSerivce = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
-        columnSearchEditText = v.findViewById(R.id.column_search_edittext)
+        columnSearchEditText = v!!.findViewById(R.id.column_search_edittext)
         columnSearchEditText!!.imeOptions = EditorInfo.IME_ACTION_SEARCH
 
-        columnSearchResult = v.findViewById(R.id.column_search_result)
+        columnSearchResult = v!!.findViewById(R.id.column_search_result)
         columnSearchResult!!.layoutManager = LinearLayoutManager(activity)
         columnSearchResult!!.addItemDecoration(RecyclerViewDecoration(15))
 
@@ -59,7 +62,7 @@ class ColumnSearchFragment : Fragment() {
 //                        highPrice = highPriceEditText!!.text.toString()
 
                     //입력된 값이 하나라도 없으면 예외처리
-                    if(column_title == null){
+                    if(column_title.equals("")){
                         Toast.makeText(activity, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
                     }
                     else{
@@ -96,25 +99,31 @@ class ColumnSearchFragment : Fragment() {
             override fun onResponse(call: Call<ColumnListResponse>?, response: Response<ColumnListResponse>?) {
                 if(response!!.isSuccessful){
                     if(response!!.body().status.equals("success")){
-                        columnSearchDatas = response!!.body().result
-                        Log.e("aaaaa",columnSearchDatas!!.get(0).column_title)
-                        columnSearchAdapter = ColumnListAdapter(columnSearchDatas,requestManager!!)
-                        columnSearchAdapter!!.setOnItemClickListener(View.OnClickListener { v: View? ->
-                            Log.e("aaaaaa","clcicclc")
-                            var bundle = Bundle()
-                            var fragment = ColumnFragment()
-                            val fm = fragmentManager.beginTransaction()
-                            var position = columnSearchResult!!.getChildLayoutPosition(v)
-                            var column_id = columnSearchDatas!!.get(position).column_id
+                        if(!response!!.body().msg.equals("successful search the column list but no data")) {
+                            columnSearchDatas = response!!.body().result
+                            Log.e("aaaaa", columnSearchDatas!!.get(0).column_title)
+                            columnSearchAdapter = ColumnListAdapter(columnSearchDatas, requestManager!!)
+                            columnSearchAdapter!!.setOnItemClickListener(View.OnClickListener { v: View? ->
+                                Log.e("aaaaaa", "clcicclc")
+                                var bundle = Bundle()
+                                var fragment = ColumnFragment()
+                                val fm = fragmentManager.beginTransaction()
+                                var position = columnSearchResult!!.getChildLayoutPosition(v)
+                                var column_id = columnSearchDatas!!.get(position).column_id
 
-                            bundle.putInt("column_id",column_id)
-                            fragment.arguments = bundle
+                                bundle.putInt("column_id", column_id)
+                                fragment.arguments = bundle
 
-                            fm.replace(R.id.column_search_layout,fragment)
-                            fm.addToBackStack(null)
-                            fm.commit()
-                        })
-                        columnSearchResult!!.adapter = columnSearchAdapter
+                                fm.replace(R.id.column_search_layout, fragment)
+                                fm.addToBackStack(null)
+                                fm.commit()
+                            })
+                            columnSearchResult!!.adapter = columnSearchAdapter
+                            v!!.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                        }
+                        else{
+                            Toast.makeText(activity, "검색 결과가 없습니다", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
                 else{

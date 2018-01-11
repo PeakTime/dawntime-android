@@ -12,6 +12,6 @@ import kotlinx.android.synthetic.main.shoplist_items.view.*
  */
 class ShoplistViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
-    var shoplistImg : ImageView = itemView!!.findViewById(R.id.shoplist_img)
+    var shoplistImg : ImageView = itemView!!.findViewById(R.id.shoplist_real_img)
     var shoplistText : TextView = itemView!!.findViewById(R.id.shoplist_text)
 }
