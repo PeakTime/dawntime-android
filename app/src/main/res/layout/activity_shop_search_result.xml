@@ -79,7 +79,7 @@
 
     <!--&lt;!&ndash;여기에 최신순 추가하기&ndash;&gt;-->
 
-    <fragment
+    <!--<fragment
         android:id="@+id/fragmentA"
         android:layout_below="@+id/layout2"
         android:layout_width="match_parent"
@@ -87,7 +87,13 @@
         android:name="com.peaktime.dawntime.Shop.fragment.GoodsSortFragment"
         tools:layout="@layout/fragment_shop_goods_sort"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="2dp"/>
+        android:layout_marginRight="2dp"/><-->
+    <RelativeLayout
+        android:id="@+id/shop_search_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout2"
+        />
 
 
 

@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Column.ColumnFragment
 import com.peaktime.dawntime.Column.ColumnListFragment
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.ExpandableHeightGridView
 import com.peaktime.dawntime.Network.ApplicationController
@@ -196,8 +197,9 @@ class HomeFragment : Fragment(),View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.shoplist_btn->{
-                ShopToMainActivity.bestFlagFun.bestFlag = 1
-                startActivity(Intent(activity, ShopToMainActivity::class.java))
+                var intent = Intent(activity, ShopToMainActivity::class.java)
+                intent.putExtra("bestFlag", CommonData.CALL_AT_HOME_TO_SHOP)
+                startActivity(intent)
             }
             R.id.column_btn->{
                 var childFm = fragmentManager.beginTransaction()

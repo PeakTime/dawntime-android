@@ -3,14 +3,11 @@ package com.peaktime.dawntime.Shop
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.Shop.fragment.*
-import com.peaktime.dawntime.Shop.ShopMainTapAdapter
 import kotlinx.android.synthetic.main.activity_shop.*
 import android.graphics.Typeface
 import android.support.v4.content.res.ResourcesCompat
@@ -30,14 +27,8 @@ import kotlinx.android.synthetic.main.fragment_community_detail.*
 import kotlinx.android.synthetic.main.fragment_community_detail_replyitem.view.*
 import kotlinx.android.synthetic.main.fragment_community_detail_replyitem2.view.*
 import kotlinx.android.synthetic.main.shop_customtab_brand.*
-import kotlinx.android.synthetic.main.shop_customtab_brand.view.*
 import kotlinx.android.synthetic.main.shop_customtab_category.*
-import kotlinx.android.synthetic.main.shop_customtab_category.view.*
 import kotlinx.android.synthetic.main.shop_customtab_new.*
-import kotlinx.android.synthetic.main.shop_customtab_new.view.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class ShopActivity : AppCompatActivity() , View.OnClickListener{
@@ -49,6 +40,24 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
 //        //Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
 //    }
 
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("qwerty","onStart()")
+    }
+
+//    override fun onResume() {
+////        val intent = Intent(this@ShopActivity, ShopActivity::class.java)
+////        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+////        startActivity(intent)
+//        super.onResume()
+//    }
+
+    override fun onRestart() {
+        Log.i("qwerty","onRestart()")
+
+        super.onRestart()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +110,12 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
                         category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
                         brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+
+                        var bundle = Bundle()
+                        bundle.putInt("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+                        GoodsFragment().arguments = bundle
+//                        GoodsSortFragment().arguments = bundle
+
                     }
                     1->{
                         //tab!!.customView!!.category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
@@ -121,7 +136,6 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         })
 
     }
-
 
 
     override fun onClick(v : View?) {

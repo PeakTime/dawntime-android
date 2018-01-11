@@ -19,7 +19,6 @@ class BrandFragment : Fragment(), View.OnClickListener{
 
         val v = inflater!!.inflate(R.layout.fragment_shop_brand, container, false)
 
-
         v.brand_first_btn!!.setOnClickListener(this)
         v.brand_second_btn!!.setOnClickListener(this)
         v.brand_third_btn!!.setOnClickListener(this)
@@ -27,7 +26,6 @@ class BrandFragment : Fragment(), View.OnClickListener{
 
         return v
     }
-
 
 
     override fun onClick(v: View?) {
@@ -54,14 +52,6 @@ class BrandFragment : Fragment(), View.OnClickListener{
                 intent.putExtra("brandKindNum",3)
                 startActivity(intent)
             }
-
-
-
-
-
-
-
-
 
         }
 

@@ -11,6 +11,7 @@ import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import kotlinx.android.synthetic.main.recent_keword_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,8 +43,6 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
 
         networkService = ApplicationController.instance!!.networkService
 
-
-
         mainView!!.delete_btn.setOnClickListener{
 
 //            Toast.makeText(mainView!!.context, dataList!!.get(position), Toast.LENGTH_SHORT).show()
@@ -58,7 +57,7 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
     }
 
     fun deleteKeyword(position: Int){
-        var deleteKeyword = networkService!!.deleteKeyword("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NDk0MDQ3LCJleHAiOjE1MTU1ODA0NDd9.ltcsj-QYKeUDXeaRWSP2O0X9ZF5H0ELO3d34p9bSIE9NLP5Qgf7QvFFrVT0res_WK_X3Zi6QlPw71Xq-ZzRQPA", dataList!!.get(position))
+        var deleteKeyword = networkService!!.deleteKeyword(SharedPreferInstance.getInstance(mainView!!.context).getPreferString("TOKEN")!!, dataList!!.get(position))
         deleteKeyword.enqueue(object : Callback<KeywordDeleteResponse> {
             override fun onResponse(call: Call<KeywordDeleteResponse>?, response: Response<KeywordDeleteResponse>?) {
                 if (response!!.isSuccessful) {

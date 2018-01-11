@@ -14,62 +14,68 @@
 
         <ImageButton
             android:id="@+id/shopBackBtn"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/shop_navi_back"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
             android:layout_marginTop="7dp"
-            />
+            android:background="@drawable/shop_navi_back" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/noto_sans_cjk_kr_demilight"
             android:text="SHOP"
             android:textColor="#FFFFFF"
-            android:textSize="21dp"
-            android:layout_centerInParent="true"
-            android:fontFamily="@font/noto_sans_cjk_kr_demilight"/>
+            android:textSize="21dp" />
 
         <ImageView
-            android:background="@drawable/shop_navi_moon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/title"
             android:layout_marginTop="20dp"
-            />
+            android:layout_toRightOf="@+id/title"
+            android:background="@drawable/shop_navi_moon" />
 
         <ImageButton
             android:id="@+id/shopSearchBtn"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/shop_navi_search_white"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="7dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/shop_navi_search_white" />
 
     </RelativeLayout>
-
 
 
     <LinearLayout
         android:id="@+id/shopContentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="500dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/shopTabLayout"
-        >
+        android:orientation="vertical">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:isScrollContainer="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="350dp">
 
-
                     <android.support.v4.view.ViewPager
                         android:id="@+id/photos_viewpager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="wrap_content">
 
                     </android.support.v4.view.ViewPager>
 
@@ -88,140 +94,146 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
+                        android:background="#81ffffff"
                         android:clickable="false"
                         app:tabBackground="@drawable/tab_selector"
                         app:tabGravity="center"
-                        app:tabIndicatorHeight="0dp"
-                        android:background="#81ffffff"/>
+                        app:tabIndicatorHeight="0dp" />
 
                 </FrameLayout>
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/shop_detail_content_layout">
 
                     <TextView
                         android:id="@+id/shopDetailBrandTextView"
-                        android:textColor="#000000"
-                        android:textSize="9dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="브랜드"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/noto_sans_cjk_kr_light"
                         android:includeFontPadding="false"
-                        />
+                        android:text="브랜드"
+                        android:textColor="#000000"
+                        android:textSize="9dp" />
+
                     <TextView
                         android:id="@+id/shopDetailNameTextView"
-                        android:textColor="#000"
-                        android:textSize="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="제품이름"
                         android:layout_below="@+id/shopDetailBrandTextView"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="@font/noto_sans_cjk_kr_regular"
                         android:includeFontPadding="false"
-                        />
+                        android:text="제품이름"
+                        android:textColor="#000"
+                        android:textSize="20dp" />
+
                     <TextView
                         android:id="@+id/shopDetailPriceTextView"
-                        android:textColor="#ca4585"
-                        android:textSize="24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="제품가격"
                         android:layout_below="@+id/shopDetailNameTextView"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="@font/noto_sans_cjk_kr_medium"
                         android:includeFontPadding="false"
-                       />
+                        android:text="제품가격"
+                        android:textColor="#ca4585"
+                        android:textSize="24dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/line"
+                        android:layout_toRightOf="@+id/shopDetailPriceTextView"
+                        android:fontFamily="@font/noto_sans_cjk_kr_medium"
+                        android:includeFontPadding="false"
+                        android:text="원"
+                        android:textColor="#ca4585"
+                        android:textSize="24dp" />
 
                     <RelativeLayout
                         android:id="@+id/line"
-                        android:background="#E2E5E8"
                         android:layout_width="306dp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/shopDetailPriceTextView"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_centerHorizontal="true"
+                        android:background="#E2E5E8" />
 
                     <ImageView
                         android:id="@+id/image"
                         android:layout_width="10dp"
                         android:layout_height="15dp"
-                        android:background="@drawable/shop_view_moon"
                         android:layout_below="@+id/line"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="7dp"
-                        />
+                        android:background="@drawable/shop_view_moon" />
 
                     <TextView
                         android:id="@+id/shopDetailContentTextView"
-                        android:textColor="#000"
-                        android:textSize="12dp"
-                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/image"
                         android:layout_centerHorizontal="true"
-                        android:layout_margin="7dp"
-                        android:text="설명"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="7dp"
                         android:fontFamily="@font/noto_sans_cjk_kr_light"
+                        android:gravity="center"
                         android:includeFontPadding="false"
-                        />
+                        android:text="설명"
+                        android:textColor="#000"
+                        android:textSize="12dp" />
 
                 </RelativeLayout>
 
+            </LinearLayout>
 
+        </ScrollView>
 
 
     </LinearLayout>
 
-
-
-
-
     <RelativeLayout
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-       >
+        android:layout_alignParentBottom="true">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="#ED508E"
-            android:layout_toLeftOf="@+id/shopLikeBtn">
+            android:layout_toLeftOf="@+id/shopLikeDetailBtn"
+            android:background="#ED508E">
 
             <Button
+                android:id="@+id/shopDetailPageBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:background="#ED508E"
-                android:text="구매 페이지로 이동"
-                android:textColor="#fff"
-                android:textSize="17dp"
                 android:fontFamily="@font/noto_sans_cjk_kr_demilight"
                 android:includeFontPadding="false"
-                />
+                android:text="구매 페이지로 이동"
+                android:textColor="#fff"
+                android:textSize="17dp" />
 
         </RelativeLayout>
 
 
-
         <ImageButton
-            android:id="@+id/shopLikeBtn"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/shop_tab_heart_line"
+            android:id="@+id/shopLikeDetailBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shop_tab_heart_line" />
 
     </RelativeLayout>
 

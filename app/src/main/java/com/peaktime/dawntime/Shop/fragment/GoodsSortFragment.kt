@@ -14,10 +14,12 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+
 import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import com.peaktime.dawntime.Shop.*
 import kotlinx.android.synthetic.main.fragment_shop_goods_sort.*
 import kotlinx.android.synthetic.main.fragment_shop_goods_sort.view.*
@@ -40,6 +42,10 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
     var order : Int = 1
     var callAt : Int? = null
     var tabFlag : String? = null
+
+    var lowPrice : Int = 0
+    var highPrice : Int = 0
+    var keyword : String? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -75,60 +81,33 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
             }
             CommonData.CALL_AT_SEARCH->{
 
+                Log.d("넘오옴","넘어옴넘어옴넘어옴넘어옴넘어옴넘어옴넘어옴넘어옴")
+
+                lowPrice = arguments.getInt("lowPrice")
+                highPrice = arguments.getInt("highPrice")
+                keyword = arguments.getString("keyword")
+                getShopSearch(lowPrice, highPrice, keyword!!, order!!)
+
             }
         }
 
-
-
 //        if(ShopToMainActivity.bestFlagFun.bestFlag == 1) {
 //            Toast.makeText(activity, "bset들어옴", Toast.LENGTH_SHORT).show()
-            getShopBest()
+     //       getShopBest()
 //
 //        }
 
         return v
     }
 
-    fun getShopBest() {
-        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
-
-        getContentList.enqueue(object : Callback<ShopBestResponse> {
-            override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
-
-                if (response!!.isSuccessful) {
-                    if (response.body().message.equals("successful get best list")) {
-
-//                        Log.i("status", "success")
-//                        Log.i("size: ", response.body().result.toString())
-//                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_name)
-//                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_price.toString())
-
-
-                        shopBestDatas = response.body().result
-                        CommonData.shopBestList = shopBestDatas!!
-                        shopAdapter = ShopAdapter(shopBestDatas,requestManager)
-                        shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
-                        shopList!!.adapter = shopAdapter
-                    }
-                } else {
-                    Log.i("status", "fail")
-                }
-            }
-
-            override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
-                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
-                Log.i("status", "check")
-            }
-        })
-    }
     fun getShopCategory(categoryName : String,order : Int){
-        val getContentList = networkService!!.getShopCategoryList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw",categoryName,order)
+        val getContentList = networkService!!.getShopCategoryList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, categoryName, order)
         getContentList!!.enqueue(object : Callback<ShopBestResponse>{
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get category list")){
+
                     shopBestDatas = response.body().result
-                    CommonData.shopBestList = shopBestDatas!!
-                    shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
                 }
@@ -143,13 +122,15 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
     }
 
     fun getShopBrand(brandName : String,order : Int){
-        val getContentList = networkService!!.getShopBrandList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw",brandName,order)
+        val getContentList = networkService!!.getShopBrandList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!,brandName,order)
         getContentList!!.enqueue(object : Callback<ShopBestResponse>{
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get brand list")){
+
+                    Log.d("들어옴","들어옴들어옴들어옴들어옴들어옴들어옴들어옴들어옴")
+
                     shopBestDatas = response.body().result
-                    CommonData.shopBestList = shopBestDatas!!
-                    shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
                 }
@@ -163,9 +144,43 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
         })
     }
 
+
+    fun getShopSearch(lowPrice : Int, highPrice : Int, keyword : String, order : Int){
+        val getContentList = networkService!!.shopSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, order, ShopSearchRequest(lowPrice, highPrice, keyword!!))
+        getContentList!!.enqueue(object : Callback<ShopBestResponse>{
+            override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
+                if(response!!.body().message.equals("successful get search result")){
+
+                    shopBestDatas = response.body().result
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
+                    shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
+                    shopList!!.adapter = shopAdapter
+
+                }else if(response!!.body().message.equals("successful get search result : no data")){
+                    ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
+                }
+                else{
+                    Log.d("통신","데이터 없음")
+                    ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
+                }
+            }
+
+            override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.d("통신11111","데이터 없음")
+            }
+
+        })
+    }
+
     override fun onClick(v : View?) {
 
         var intent = Intent(activity, ShopDetailActivity::class.java)
+
+        val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
+        intent.putExtra("position", position)
+        intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id) //받는 데이터의 상품아이디
         startActivity(intent)
     }
@@ -220,7 +235,10 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                 getShopBrand(tabFlag!!,order!!)
             }
             CommonData.CALL_AT_SEARCH->{
-
+                lowPrice = arguments.getInt("lowPrice")
+                highPrice = arguments.getInt("highPrice")
+                keyword = arguments.getString("keyword")
+                getShopSearch(lowPrice, highPrice, keyword!!, order!!)
             }
         }
 

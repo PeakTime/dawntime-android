@@ -1,6 +1,7 @@
 package com.peaktime.dawntime.Shop.fragment
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -17,6 +18,7 @@ import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import com.peaktime.dawntime.Shop.*
 import kotlinx.android.synthetic.main.activity_shop_detail.*
 import kotlinx.android.synthetic.main.fragment_shop_goods.view.*
@@ -27,21 +29,26 @@ import retrofit2.Response
 /**
  * Created by xlsdn on 2018-01-03.
  */
-class GoodsFragment : Fragment() , View.OnClickListener{
+class GoodsFragment : Fragment() , View.OnClickListener {
 
     private  var shopList : RecyclerView?=null
     private var shopBestDatas : ArrayList<ShopBestData> ?= null
     private  var shopAdapter : ShopAdapter? = null
-
+    private  var bestFlag : Int? = null
 
     var networkService: NetworkService? = null
     var requestManager: RequestManager? = null
+    var index : Int ?= null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_shop_goods, container, false)
 
 
+        bestFlag = arguments.getInt("bestFlag")
+
+        Log.e("aaaaaa",bestFlag.toString())
         shopList = v.findViewById(R.id.shopList)
         shopList!!.layoutManager = GridLayoutManager(activity, 2)
 
@@ -52,12 +59,10 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         v.fab.attachToRecyclerView(shopList!!)
 
 
-        if(ShopToMainActivity.bestFlagFun.bestFlag == 1) {
-            Toast.makeText(activity, "bset들어옴", Toast.LENGTH_SHORT).show()
+        if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP) {
             getShopBest()
 
-        }else if(ShopToMainActivity.bestFlagFun.bestFlag == 0){
-            Toast.makeText(activity, "new들어옴", Toast.LENGTH_SHORT).show()
+        }else if(bestFlag == CommonData.CALL_AT_TAB_TO_SHOP){
             getShopNew()
         }
 
@@ -65,14 +70,16 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         return v
     }
 
-    override fun onClick(v : View?) {
+    override fun onClick(v: View?) {
 
         var intent = Intent(activity, ShopDetailActivity::class.java)
 
 
-        /*val idx : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
-        val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
+        val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
+        /*val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
         val price : String = shopDatas!!.get(idx).shopPrice*/
+        intent.putExtra("bestFlag", bestFlag)
+        intent.putExtra("position", position)
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
 //        val name = v!!.goods_name.text
 //        val price = v!!.goods_price.text
@@ -83,7 +90,7 @@ class GoodsFragment : Fragment() , View.OnClickListener{
     }
 
     fun getShopBest() {
-        var getContentList = networkService!!.getShopBestList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
+        var getContentList = networkService!!.getShopBestList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
@@ -98,7 +105,7 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
                         shopBestDatas = response.body().result
                         CommonData.shopBestList = shopBestDatas!!
-                        shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                        shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_HOME_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
                         shopList!!.adapter = shopAdapter
                     }
@@ -114,8 +121,8 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         })
     }
 
-    fun getShopNew() {
-        var getContentList = networkService!!.getShopNewList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
+    fun getShopNew()     {
+        var getContentList = networkService!!.getShopNewList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
@@ -130,7 +137,7 @@ class GoodsFragment : Fragment() , View.OnClickListener{
 
 
                         shopBestDatas = response.body().result
-                        shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                        shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
                         shopList!!.adapter = shopAdapter
                     }
@@ -146,6 +153,57 @@ class GoodsFragment : Fragment() , View.OnClickListener{
         })
     }
 
+////    private void refresh(){
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction()
+//        transaction.detach(this).attach(this)commit()
+//    }
+
+    fun putShopLike(goods_id : Int){
+            var getContentList = networkService!!.putShopLike(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!,goods_id)
+
+        getContentList.enqueue(object : Callback<ShopLikeResponse> {
+            override fun onResponse(call: Call<ShopLikeResponse>?, response: Response<ShopLikeResponse>?) {
+                if (response!!.isSuccessful) {
+                    if (response.body().message.equals("successful regist basket")) {
+                        //좋아요했을때
+                        Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
+
+                        //ApplicationController.instance!!.makeToast("북마크 변경.")
+//                            if(){
+                        shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_view_zzim_heart_solid)
+//                                Log.i("status", "바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜")
+//                                shopLike = 1
+//                            }else if(shopLike == 1){
+
+//                                shopLike = 0
+//                            }
+                        //shopLikeDetailBtn.invalidate()
+
+
+                    }
+                    else if(response.body().message.equals("successful delete basket"))
+                    {
+                        Log.i("qwe","ㅁ니아ㅓㅁ니ㅏ)")
+                        //좋아요 취소했을때
+
+                        shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_view_zzim_heart_line)
+                        // shopLikeDetailBtn.invalidate()
+
+                    }
+                } else {
+                    Log.i("status", "failfailfailfailfailfailfailfailfailfailfail")
+//                    ApplicationController.instance!!.makeToast("북마크 실패.")
+                }
+            }
+            override fun onFailure(call: Call<ShopLikeResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+
+        })
+
+    }
+
 
     private var clickListener = View.OnClickListener { v ->
         //버튼이벤트
@@ -155,10 +213,14 @@ class GoodsFragment : Fragment() , View.OnClickListener{
                 //Toast.makeText(activity, "눌렸다", Toast.LENGTH_SHORT).show()
                 activity.finish()
             }
+            R.id.shopLikeBtn -> {
+                putShopLike(index!!)
+                Log.i("누룸", "눌ㄹ림눌림")
 
-        }
-    } //버튼이벤트 end
+            }
 
 
+        } //버튼이벤트 end
 
+    }
 }

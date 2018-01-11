@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.R.id.container
+import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -18,8 +19,11 @@ import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
+import com.peaktime.dawntime.SharedPreferInstance
+import com.peaktime.dawntime.Shop.fragment.GoodsSortFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -118,8 +122,6 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
                         shopSearchEditText.text = null
 
-
-
                         return false
                     }// 기본 엔터키 동작
 
@@ -132,6 +134,13 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         shopExitBtn!!.setOnClickListener(this)
 
     }//onCreate
+
+    override fun onResume() {
+        super.onResume()
+        getKeywordList()
+        shopSearchEditText.text = null
+        shopSearchEditText.setHint("검색")
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -184,6 +193,8 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         intent.putExtra("keyword", recent_name)
         intent.putExtra("lowPrice", "-1")
         intent.putExtra("highPrice", "-1")
+
+
         startActivity(intent)
 
 
@@ -191,7 +202,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
 
     fun getKeywordList(){
-        var getKeywordList = networkService!!.getKeywordList("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
+        var getKeywordList = networkService!!.getKeywordList(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!)
         getKeywordList.enqueue(object : Callback<ShopKeywordResponse> {
             override fun onResponse(call: Call<ShopKeywordResponse>?, response: Response<ShopKeywordResponse>?) {
                 if (response!!.isSuccessful) {

@@ -58,7 +58,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
         shop_category_list.addTab(shop_category_list.newTab().setText("콘돔"))
         setCustomFont(shop_category_list)
 
-
         shop_category_list.setSelectedTabIndicatorHeight(0)
 
         shopBackBtn!!.setOnClickListener(clickListener)
@@ -70,8 +69,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
             Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
             AddFragment(GoodsSortFragment(), shop_category_list.getTabAt(categoryKindNum)!!.text.toString()) //받은값으로 태그설정
-//            var tab = shop_category_list.getTabAt(categoryKindNum)
-//            tab!!.select()
             Handler().postDelayed(
                     Runnable { shop_category_list.getTabAt(categoryKindNum)!!.select() }, 100)
 
@@ -90,7 +87,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 setCustomFont(shop_category_list,tab!!.position)
-                Log.i("tab aaaa",tab!!.text.toString())
                 ReplaceFragment(GoodsSortFragment(), tab!!.text.toString()) //받은값으로 태그설정
             }
 
@@ -134,7 +130,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
                 tabViewChild.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
             }
         }
-
 
     }
 
@@ -188,9 +183,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
         transaction.replace(R.id.shop_category_viewpager,fragment)
         transaction.commit()
     }
-
-
-
 
 //    fun AddFragment(fragment : Fragment, bundle : Bundle, tag : String){
 //        val fm = supportFragmentManager

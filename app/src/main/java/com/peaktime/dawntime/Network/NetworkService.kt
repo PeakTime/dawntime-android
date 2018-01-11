@@ -11,6 +11,9 @@ import com.peaktime.dawntime.MyPage.SignInResponse
 import com.peaktime.dawntime.Shop.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import com.peaktime.dawntime.Shop.ShopBestResponse
+import com.peaktime.dawntime.Shop.ShopDetailResponse
+import com.peaktime.dawntime.Shop.ShopLikeResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -113,14 +116,12 @@ interface NetworkService {
             @Path("order") order: Int)
             : Call<ShopBestResponse>
     //쇼핑몰 brand 리스트 조회
-    @GET("shop/category/{goods_brand}/{order}")
+    @GET("shop/brand/{goods_brand}/{order}")
     fun getShopBrandList(
             @Header("user_token") user_token: String,
             @Path("goods_brand") goods_brand:String,
             @Path("order") order: Int)
             : Call<ShopBestResponse>
-
-
 
     //인기검색어, 최근검색어불러오기
     @GET("shop/keyword")
@@ -142,7 +143,7 @@ interface NetworkService {
             @Header("user_token") user_token: String,
             @Path("order") order: Int,
             @Body shopSearchRequest : ShopSearchRequest
-    ) : Call<ShopSearchResponse>
+    ) : Call<ShopBestResponse>
 
     //쇼핑몰 detail 상품 상세 조회
     @GET("shop/detail/{goods_id}")
@@ -150,6 +151,14 @@ interface NetworkService {
             @Header("user_token") user_token:String,
             @Path("goods_id") goods_id: Int)
             : Call<ShopDetailResponse>
+
+    //상품 찜,찜 해제
+    @PUT("shop/like/{goods_id}")
+    fun putShopLike(
+            @Header("user_token") user_token:String,
+            @Path("goods_id") goods_id: Int
+    ) : Call<ShopLikeResponse>
+
 
 
     //홈 화면
