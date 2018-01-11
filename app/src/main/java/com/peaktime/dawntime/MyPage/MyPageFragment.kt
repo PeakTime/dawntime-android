@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
 
@@ -113,6 +114,11 @@ class MyPageFragment : Fragment() {
         }
         scrapBtn!!.setOnClickListener {
 
+            val fm = fragmentManager.beginTransaction()
+            val fg = ChildMypageScrap()
+            fm.add(R.id.child_container,fg,"scrap")
+            fm.addToBackStack(null)
+            fm.commit()
         }
 
         basketBtn!!.setOnClickListener {
@@ -125,7 +131,11 @@ class MyPageFragment : Fragment() {
         }
 
         myWrittenBtn!!.setOnClickListener {
-
+            val fm = fragmentManager.beginTransaction()
+            val fg = ChildMypageMypost()
+            fm.add(R.id.child_container,fg,"mypost")
+            fm.addToBackStack(null)
+            fm.commit()
         }
 
         return v

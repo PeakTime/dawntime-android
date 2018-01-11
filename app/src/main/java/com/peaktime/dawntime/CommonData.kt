@@ -3,6 +3,8 @@ package com.peaktime.dawntime
 import android.widget.ImageView
 import com.peaktime.dawntime.Community.CommunityList
 import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
+import com.peaktime.dawntime.MyPage.MyPageMycommentResponse
+import com.peaktime.dawntime.MyPage.MypageMycommentData
 import com.peaktime.dawntime.Shop.ShopBestData
 import com.peaktime.dawntime.Shop.ShopDetailData
 import com.peaktime.dawntime.Shop.ShopKeywordData
@@ -13,6 +15,7 @@ import com.peaktime.dawntime.Shop.ShopKeywordData
 object CommonData {
     var communityDatas: ArrayList<CommunityList> = ArrayList()
     var messageBoxData: ArrayList<ChildMyPageMessageBoxData> = ArrayList()
+    var mycommentData : ArrayList<MypageMycommentData>? = null
     var shopBestList :  ArrayList<ShopBestData> = ArrayList()
     var shopKeywordList : ArrayList<ShopKeywordData> = ArrayList()
     var shopDetailList :  ArrayList<ShopDetailData> = ArrayList()
