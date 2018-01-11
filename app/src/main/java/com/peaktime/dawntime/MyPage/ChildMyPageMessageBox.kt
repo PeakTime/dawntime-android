@@ -1,19 +1,20 @@
 package com.peaktime.dawntime.MyPage
 
-import android.app.Fragment
+
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
+import kotlinx.android.synthetic.main.child_mypage_messagebox.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,37 +45,16 @@ class ChildMyPageMessageBox : Fragment(), View.OnClickListener {
 
         getList()
 
-//        back_btn.setOnClickListener {
-//            val fm = activity.fragmentManager
-//            val transacton = fm.beginTransaction()
-//            transacton.remove(this)
-//            transacton.commit()
-//        }
-
-//        for (i in 0..messageBoxList!!.size-1) {
-//            var list = messageBoxList!!.get(i)
-//            var str = list.msg_date.split(" ")
-//            messageBoxData!!.add(ChildMyPageMessageBoxData(str[1], str[0], list.board_title, list.msg_content!!))
-//        }
-//
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "one", "원", "브라운"))
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "two", "투", "코니"))
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "three", "삼", "샐리"))
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "one", "원", "브라운"))
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "two", "투", "코니"))
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "one", "원", "브라운"))
-////        messageBoxData!!.add(ChildMyPageMessageBoxData("2017,12.27", "two", "투", "코니"))
-//
-//        CommonData.messageBoxData = messageBoxData!!
-//
-//        adapter = ChildMyPageMessageBoxAdapter(messageBoxData)
-//        adapter!!.setOnItemClickListener(this)
-//        messageList!!.adapter = adapter
+        v.back_btn.setOnClickListener {
+            val fm = fragmentManager.beginTransaction()
+            fm.remove(this)
+            fm.commit()
+        }
 
         return v
     }
 
-    fun getList() {//SharedPreferInstance.getInstance(activity).getPreferString("EMAIL")!!
+    fun getList() {
         var getContentList = networkService!!.getMessageBoxList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<MessageBoxResponse> {
@@ -112,7 +92,14 @@ class ChildMyPageMessageBox : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        Toast.makeText(activity, "클릭", Toast.LENGTH_SHORT).show()
+        val fm = fragmentManager.beginTransaction()
+        val fragment = MypageMsgFragment()
+        val bundle = Bundle()
+        bundle.putInt("index", messageBoxList!!.get(messageList!!.getChildAdapterPosition(v!!)).room_id)
+        fragment.arguments = bundle
+        fm.add(R.id.messagebox_detail_container, fragment, "msg_detail")
+        fm.addToBackStack(null)
+        fm.commit()
     }
 
 

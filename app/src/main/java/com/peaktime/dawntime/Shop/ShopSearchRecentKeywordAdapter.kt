@@ -53,7 +53,6 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
         }
 
 
-
     }
 
     fun deleteKeyword(position: Int){
@@ -82,21 +81,10 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
         })
     }
 
-
     fun deleteItem(holder: ShopSearchRecentKeywordViewHolder?, position: Int){
 
-
-
-
     }
-
-
     //리턴값이 간단할때 이렇게 사용
     override fun getItemCount(): Int = dataList!!.size
-
-
-
-
-
 
 }
