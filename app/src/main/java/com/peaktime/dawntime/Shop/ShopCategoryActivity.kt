@@ -2,19 +2,17 @@ package com.peaktime.dawntime.Shop
 
 import android.content.Intent
 import android.graphics.Typeface
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
-import android.view.MenuItem
 import android.text.Layout
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.widget.PopupMenu
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -45,6 +43,12 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_category)
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
+
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
@@ -67,7 +71,7 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
         if(savedInstanceState == null){
 
-            Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
             AddFragment(GoodsSortFragment(), shop_category_list.getTabAt(categoryKindNum)!!.text.toString()) //받은값으로 태그설정
             Handler().postDelayed(
                     Runnable { shop_category_list.getTabAt(categoryKindNum)!!.select() }, 100)

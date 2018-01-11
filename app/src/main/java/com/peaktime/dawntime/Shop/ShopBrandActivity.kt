@@ -1,6 +1,7 @@
 package com.peaktime.dawntime.Shop
 
 import android.content.Intent
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.TextView
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -39,10 +41,16 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
         shop_brand_list.setSelectedTabIndicatorHeight(0)
         setCustomFont(shop_brand_list)
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
+
 
         if(savedInstanceState == null){
 
-            Toast.makeText(this, brandKindNum.toString(), Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, brandKindNum.toString(), Toast.LENGTH_LONG).show()
             //AddFragment(GoodsSortFragment(), shop_brand_list.getTabAt(brandKindNum)!!.text.toString()) //받은값으로 태그설정
             Handler().postDelayed(
                     Runnable { shop_brand_list.getTabAt(brandKindNum)!!.select() }, 100)

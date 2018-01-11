@@ -1,12 +1,14 @@
 package com.peaktime.dawntime.Shop
 
 import android.content.Intent
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.Shop.fragment.GoodsFragment
@@ -20,17 +22,23 @@ class ShopToMainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_to_main)
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
+
 
         shopSearchBtn!!.setOnClickListener(this)
 
-        if(savedInstanceState == null){
+//        if(savedInstanceState == null){
             AddFragment(GoodsFragment()) //받은값으로 태그설정
-        }
+//        }
 
     }
 
     //번들없는 함수
-    fun AddFragment(fragment: Fragment){
+     fun AddFragment(fragment: Fragment){
 
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()

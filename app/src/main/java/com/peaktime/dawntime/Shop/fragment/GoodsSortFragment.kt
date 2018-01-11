@@ -149,25 +149,33 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
         val getContentList = networkService!!.shopSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, order, ShopSearchRequest(lowPrice, highPrice, keyword!!))
         getContentList!!.enqueue(object : Callback<ShopBestResponse>{
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
-                if(response!!.body().message.equals("successful get search result")){
 
-                    shopBestDatas = response.body().result
-                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
-                    shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
-                    shopList!!.adapter = shopAdapter
+                if (response!!.isSuccessful) {
+                    if (response!!.body().message.equals("successful get search result")) {
+                        shopBestDatas = response.body().result
+                        shopAdapter = ShopAdapter(shopBestDatas, requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
+                        shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
+                        shopList!!.adapter = shopAdapter
+                    }
+                    else if (response!!.body().message.equals("successful get search result : no data")) {
 
-                }else if(response!!.body().message.equals("successful get search result : no data")){
-                    ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
-                }
-                else{
-                    Log.d("통신","데이터 없음")
+//                        Log.e("은미2", "lowPrice"+lowPrice)
+//                        Log.e("은미2", "highPrice"+highPrice)
+//                        Log.e("은미2", "keyword"+keyword)
+
+                        ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
+                    }else{
+                        ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
+                    }
+
+                }else {
+                    Log.e("통신", "데이터 없음")
                     ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
                 }
             }
 
             override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
-                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
-                Log.d("통신11111","데이터 없음")
+                ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
             }
 
         })
@@ -206,22 +214,22 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
             R.id.latest_sort ->{
                 sort_textview!!.text="최신순"
                 order = 1
-                Toast.makeText(activity, "최신순", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "최신순", Toast.LENGTH_SHORT).show()
             }
             R.id.famous_sort ->{
                 order = 2
                 sort_textview!!.text="인기순"
-                Toast.makeText(activity, "인기순", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "인기순", Toast.LENGTH_SHORT).show()
             }
             R.id.highprice_sort ->{
                 order = 3
                 sort_textview!!.text="높은가격순"
-                Toast.makeText(activity, "높은가격순", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "높은가격순", Toast.LENGTH_SHORT).show()
             }
             R.id.loprice_sort ->{
                 order = 4
                 sort_textview!!.text="낮은가격순"
-                Toast.makeText(activity, "낮은가격순", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity, "낮은가격순", Toast.LENGTH_SHORT).show()
             }
         }
 

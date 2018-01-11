@@ -67,82 +67,84 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
         getKeywordList()
 
-        //enter누르면 검색창으로 이동
-        shopSearchEditText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
-            override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
+        shop_search_btn.setOnClickListener(searchListener)
 
-                when (actionId) {
-                    EditorInfo.IME_ACTION_SEARCH -> {
-
-                        shopSearchEditText.text = null
-
-                    }
-                    else ->
-                    {
-                        search_content = shopSearchEditText!!.text.toString()//검색키워드 받아오기
-//                        highPrice = highPriceEditText!!.text.toString()
-
-                        //낮은가격 값넘기기 + 예외처리
-                        if(lowPriceEditText!!.text.toString()==""){
-                            lowPrice="-1"
-                        }else{
-                            lowPrice = lowPriceEditText!!.text.toString()
-                        }
-
-                        //높은가격 값 넘기기 + 예외처리
-                        if(highPriceEditText!!.text.toString()==""){
-                            highPrice="-1"
-                        }else{
-                            highPrice = highPriceEditText!!.text.toString()
-                        }
-
-                        var lowPriceInt : Int = Integer.parseInt(lowPrice)
-                        var highPriceInt : Int = Integer.parseInt(highPrice)
-
-                        //입력된 값이 하나라도 없으면 예외처리
-                        if(lowPrice.equals("-1")&&highPrice.equals("-1")&&search_content.equals("")){
-                            Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
-                        }
-                        else if(lowPriceInt!=-1&&highPriceInt!=-1){
-
-                            if(lowPriceInt>highPriceInt) {
-                                Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
-                            }
-                            else{
-                                Log.d("엔터검색","검색ㅅ검색")
-                                var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
-                                intent.putExtra("keyword",search_content)
-                                intent.putExtra("lowPrice", lowPrice)
-                                intent.putExtra("highPrice", highPrice)
-
-                                startActivity(intent)
-
-                            }
-
-                        }
-                        else{
-                            Log.d("엔터검색","검색ㅅ검색")
-                            var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
-                            intent.putExtra("keyword",search_content)
-                            intent.putExtra("lowPrice", lowPrice)
-                            intent.putExtra("highPrice", highPrice)
-
-                            startActivity(intent)
-
-                        }
-
-                        shopSearchEditText.text = null
-
-                        return false
-                    }// 기본 엔터키 동작
-
-                }// 검색 동작
-                return true
-            }
-        })
+//        //enter누르면 검색창으로 이동
+//        shopSearchEditText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+//            override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
+//
+//                when (actionId) {
+//                    EditorInfo.IME_ACTION_SEARCH -> {
+//
+//                        shopSearchEditText.text = null
+//
+//                    }
+//                    else ->
+//                    {
+//                        search_content = shopSearchEditText!!.text.toString()//검색키워드 받아오기
+////                        highPrice = highPriceEditText!!.text.toString()
+//
+//                        //낮은가격 값넘기기 + 예외처리
+//                        if(lowPriceEditText!!.text.toString()==""){
+//                            lowPrice="-1"
+//                        }else{
+//                            lowPrice = lowPriceEditText!!.text.toString()
+//                        }
+//
+//                        //높은가격 값 넘기기 + 예외처리
+//                        if(highPriceEditText!!.text.toString()==""){
+//                            highPrice="-1"
+//                        }else{
+//                            highPrice = highPriceEditText!!.text.toString()
+//                        }
+//
+//                        var lowPriceInt : Int = Integer.parseInt(lowPrice)
+//                        var highPriceInt : Int = Integer.parseInt(highPrice)
+//
+//                        //입력된 값이 하나라도 없으면 예외처리
+//                        if(lowPrice.equals("-1")&&highPrice.equals("-1")&&search_content.equals("")){
+//                            Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
+//                        }
+//                        else if(lowPriceInt!=-1&&highPriceInt!=-1){
+//
+//                            if(lowPriceInt>highPriceInt) {
+//                                Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
+//                            }
+//                            else{
+//                                Log.d("엔터검색","검색ㅅ검색")
+//                                var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
+//                                intent.putExtra("keyword",search_content)
+//                                intent.putExtra("lowPrice", lowPrice)
+//                                intent.putExtra("highPrice", highPrice)
+//
+//                                startActivity(intent)
+//
+//                            }
+//
+//                        }
+//                        else{
+//                            Log.d("엔터검색","검색ㅅ검색")
+//                            var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
+//                            intent.putExtra("keyword",search_content)
+//                            intent.putExtra("lowPrice", lowPrice)
+//                            intent.putExtra("highPrice", highPrice)
+//
+//                            startActivity(intent)
+//
+//                        }
+//
+//                        shopSearchEditText.text = null
+//
+//                        return false
+//                    }// 기본 엔터키 동작
+//
+//                }// 검색 동작
+//                return true
+//            }
+//        })
 
         //X버튼누르면 액티비티 finish
-        shopExitBtn!!.setOnClickListener(this)
+//        shopExitBtn!!.setOnClickListener(this)
 
     }//onCreate
 
@@ -174,13 +176,71 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                 highPriceEditText.text=null
             }
 
-            R.id.shopExitBtn -> {
-                this.finish()
-            }
+//            R.id.shopExitBtn -> {
+//                this.finish()
+//            }
 
         }
 
     }
+
+    private var searchListener = View.OnClickListener { v ->
+
+        search_content = shopSearchEditText!!.text.toString()//검색키워드 받아오기
+//                        highPrice = highPriceEditText!!.text.toString()
+
+        //낮은가격 값넘기기 + 예외처리
+        if(lowPriceEditText!!.text.toString()==""){
+            lowPrice="-1"
+        }else{
+            lowPrice = lowPriceEditText!!.text.toString()
+        }
+
+        //높은가격 값 넘기기 + 예외처리
+        if(highPriceEditText!!.text.toString()==""){
+            highPrice="-1"
+        }else{
+            highPrice = highPriceEditText!!.text.toString()
+        }
+
+        var lowPriceInt : Int = Integer.parseInt(lowPrice)
+        var highPriceInt : Int = Integer.parseInt(highPrice)
+
+        //입력된 값이 하나라도 없으면 예외처리
+        if(lowPrice.equals("-1")&&highPrice.equals("-1")&&search_content.equals("")){
+            Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
+        }
+        else if(lowPriceInt!=-1&&highPriceInt!=-1){
+
+            if(lowPriceInt>highPriceInt) {
+                Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Log.d("엔터검색","검색ㅅ검색")
+                var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
+                intent.putExtra("keyword",search_content)
+                intent.putExtra("lowPrice", lowPrice)
+                intent.putExtra("highPrice", highPrice)
+
+                startActivity(intent)
+
+            }
+
+        }
+        else{
+            Log.d("엔터검색","검색ㅅ검색")
+            var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
+            intent.putExtra("keyword",search_content)
+            intent.putExtra("lowPrice", lowPrice)
+            intent.putExtra("highPrice", highPrice)
+
+            startActivity(intent)
+
+        }
+
+        shopSearchEditText.text = null
+
+    } //버튼이벤트 end
 
     private var famousClickListener = View.OnClickListener { v ->
         val famous_idx : Int = famous_keword_list!!.getChildAdapterPosition(v) //position 받아오기
