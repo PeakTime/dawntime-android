@@ -1,8 +1,10 @@
 package com.peaktime.dawntime.Shop
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Shop.fragment.*
 
 /**
@@ -15,8 +17,11 @@ class ShopMainTapAdapter(fm : FragmentManager?) : FragmentStatePagerAdapter(fm) 
     var brandTab : BrandFragment? = null
 
     constructor(fm : FragmentManager?,tabCount : Int) : this(fm){
+        var bundle = Bundle()
+        bundle.putInt("bestFlag",CommonData.CALL_AT_TAB_TO_SHOP)
         this.tabCount = tabCount
         this.goodsTab = GoodsFragment()
+        goodsTab!!.arguments = bundle
         this.categoryTab = CategoryFragment()
         this.brandTab = BrandFragment()
     }

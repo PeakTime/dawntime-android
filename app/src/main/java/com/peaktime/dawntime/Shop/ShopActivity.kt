@@ -89,6 +89,12 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
 
                         category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
                         brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
+
+                        var bundle = Bundle()
+                        bundle.putInt("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+                        GoodsFragment().arguments = bundle
+//                        GoodsSortFragment().arguments = bundle
+
                     }
                     1->{
                         //tab!!.customView!!.category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)

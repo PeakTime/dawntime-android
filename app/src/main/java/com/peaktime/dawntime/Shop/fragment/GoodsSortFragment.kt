@@ -86,7 +86,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                 lowPrice = arguments.getInt("lowPrice")
                 highPrice = arguments.getInt("highPrice")
                 keyword = arguments.getString("keyword")
-                getShopSearch(order!!)
+                getShopSearch(lowPrice, highPrice, keyword!!, order!!)
 
             }
         }
@@ -107,7 +107,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                 if(response!!.body().message.equals("successful get category list")){
 
                     shopBestDatas = response.body().result
-                    shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
                 }
@@ -130,7 +130,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                     Log.d("들어옴","들어옴들어옴들어옴들어옴들어옴들어옴들어옴들어옴")
 
                     shopBestDatas = response.body().result
-                    shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
                 }
@@ -145,17 +145,19 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
     }
 
 
-    fun getShopSearch(order : Int){
+    fun getShopSearch(lowPrice : Int, highPrice : Int, keyword : String, order : Int){
         val getContentList = networkService!!.shopSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, order, ShopSearchRequest(lowPrice, highPrice, keyword!!))
         getContentList!!.enqueue(object : Callback<ShopBestResponse>{
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get search result")){
 
                     shopBestDatas = response.body().result
-                    shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
 
+                }else if(response!!.body().message.equals("successful get search result : no data")){
+                    ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
                 }
                 else{
                     Log.d("통신","데이터 없음")
@@ -174,6 +176,11 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
     override fun onClick(v : View?) {
 
         var intent = Intent(activity, ShopDetailActivity::class.java)
+
+        val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
+        intent.putExtra("position", position)
+        intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id) //받는 데이터의 상품아이디
         startActivity(intent)
     }
@@ -231,7 +238,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                 lowPrice = arguments.getInt("lowPrice")
                 highPrice = arguments.getInt("highPrice")
                 keyword = arguments.getString("keyword")
-                getShopSearch(order!!)
+                getShopSearch(lowPrice, highPrice, keyword!!, order!!)
             }
         }
 

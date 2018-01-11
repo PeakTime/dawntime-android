@@ -4,15 +4,16 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.View
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.Shop.fragment.GoodsFragment
+import com.peaktime.dawntime.Shop.fragment.GoodsSortFragment
 import kotlinx.android.synthetic.main.activity_shop_to_main.*
 
 class ShopToMainActivity : AppCompatActivity(), View.OnClickListener {
-
-//    private val bestFlag : Int = 0
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,26 +23,22 @@ class ShopToMainActivity : AppCompatActivity(), View.OnClickListener {
 
         shopSearchBtn!!.setOnClickListener(this)
 
-        shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_best))
+        if(savedInstanceState == null){
+            AddFragment(GoodsFragment()) //받은값으로 태그설정
+        }
 
+    }
 
-        var tabAdapter = ShopMainTapAdapter(supportFragmentManager, shop_tab.tabCount)
+    //번들없는 함수
+    fun AddFragment(fragment: Fragment){
 
-        shop_main_viewpager.adapter = tabAdapter
-
-        shop_main_viewpager.addOnPageChangeListener(
-                TabLayout.TabLayoutOnPageChangeListener(shop_tab))
-
-        shop_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                shop_main_viewpager.currentItem = tab!!.position
-            }
-        })
-
+        val fm = supportFragmentManager
+        val transaction = fm.beginTransaction()
+        var bundle = Bundle()
+        bundle.putInt("bestFlag", CommonData.CALL_AT_HOME_TO_SHOP)
+        fragment.arguments = bundle
+        transaction.add(R.id.shop_search_result_layout,fragment)
+        transaction.commit()
     }
 
 
@@ -54,15 +51,6 @@ class ShopToMainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         }
-    }
-
-    object bestFlagFun {
-
-        var bestFlag : Int = 0
-
-//        fun baz() {
-//            // Do something
-//        }
     }
 
 }

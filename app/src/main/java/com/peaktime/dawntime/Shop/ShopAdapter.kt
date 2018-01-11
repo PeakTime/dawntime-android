@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
@@ -17,7 +19,8 @@ import retrofit2.Response
 /**
  * Created by xlsdn on 2017-12-31.
  */
-class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : RequestManager?) : RecyclerView.Adapter<ShopViewHolder>() {
+class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
+                  var requestManager : RequestManager?, var bestFlag : Int?) : RecyclerView.Adapter<ShopViewHolder>() {
 
     private var mainView : View?=null
 
@@ -54,7 +57,8 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?, var requestManager : 
 //        holder!!.shopBrand.setText(dataList!!.get(position).goods_brand)
 //        holder!!.shopInfo.setText(dataDetailList!!.get(position).goods_info)
 
-        if(ShopToMainActivity.bestFlagFun.bestFlag == 1){
+
+        if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP){
 
             if(position==0){
                 holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no1)

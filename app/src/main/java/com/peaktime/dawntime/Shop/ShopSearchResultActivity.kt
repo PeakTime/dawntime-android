@@ -31,6 +31,7 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_search_result)
 
+
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
@@ -93,6 +94,10 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
 
         shop_search_text.text = search
 
+//        Toast.makeText(this, lowPriceSt, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, highPriceSt, Toast.LENGTH_LONG).show()
+
+//        shopSearch(lowPrice, highPrice, keyword)
 
         //뒤로가기버튼
         shopBackBtn!!.setOnClickListener(this)

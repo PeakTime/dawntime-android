@@ -220,6 +220,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                         recentAdapter!!.setOnItemClickListener(recentClickListener)
                         recent_keword_list!!.adapter = recentAdapter
 
+
                     }
                 }else{
                     Log.d("fail","fail")

@@ -1,6 +1,7 @@
 package com.peaktime.dawntime.Shop.fragment
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -9,6 +10,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.CommonData
@@ -28,9 +31,10 @@ import retrofit2.Response
  */
 class GoodsFragment : Fragment() , View.OnClickListener {
 
-    private var shopList: RecyclerView? = null
-    private var shopBestDatas: ArrayList<ShopBestData>? = null
-    private var shopAdapter: ShopAdapter? = null
+    private  var shopList : RecyclerView?=null
+    private var shopBestDatas : ArrayList<ShopBestData> ?= null
+    private  var shopAdapter : ShopAdapter? = null
+    private  var bestFlag : Int? = null
 
     var networkService: NetworkService? = null
     var requestManager: RequestManager? = null
@@ -42,6 +46,9 @@ class GoodsFragment : Fragment() , View.OnClickListener {
         val v = inflater!!.inflate(R.layout.fragment_shop_goods, container, false)
 
 
+        bestFlag = arguments.getInt("bestFlag")
+
+        Log.e("aaaaaa",bestFlag.toString())
         shopList = v.findViewById(R.id.shopList)
         shopList!!.layoutManager = GridLayoutManager(activity, 2)
 
@@ -52,11 +59,10 @@ class GoodsFragment : Fragment() , View.OnClickListener {
         v.fab.attachToRecyclerView(shopList!!)
 
 
-
-        if (ShopToMainActivity.bestFlagFun.bestFlag == 1) {
+        if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP) {
             getShopBest()
 
-        } else if (ShopToMainActivity.bestFlagFun.bestFlag == 0) {
+        }else if(bestFlag == CommonData.CALL_AT_TAB_TO_SHOP){
             getShopNew()
         }
 
@@ -69,14 +75,17 @@ class GoodsFragment : Fragment() , View.OnClickListener {
         var intent = Intent(activity, ShopDetailActivity::class.java)
 
 
-        /*val idx : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
-        val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
+        val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
+        /*val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
         val price : String = shopDatas!!.get(idx).shopPrice*/
-        intent.putExtra("Goods_Id", shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
+        intent.putExtra("bestFlag", bestFlag)
+        intent.putExtra("position", position)
+        intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
 //        val name = v!!.goods_name.text
 //        val price = v!!.goods_price.text
 //        intent.putExtra("name", name)
 //        intent.putExtra("price", price)
+
         startActivity(intent)
     }
 
@@ -96,7 +105,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 
                         shopBestDatas = response.body().result
                         CommonData.shopBestList = shopBestDatas!!
-                        shopAdapter = ShopAdapter(shopBestDatas, requestManager)
+                        shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_HOME_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
                         shopList!!.adapter = shopAdapter
                     }
@@ -112,7 +121,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
         })
     }
 
-    fun getShopNew() {
+    fun getShopNew()     {
         var getContentList = networkService!!.getShopNewList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
         getContentList.enqueue(object : Callback<ShopBestResponse> {
@@ -128,7 +137,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 
 
                         shopBestDatas = response.body().result
-                        shopAdapter = ShopAdapter(shopBestDatas, requestManager)
+                        shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
                         shopList!!.adapter = shopAdapter
                     }

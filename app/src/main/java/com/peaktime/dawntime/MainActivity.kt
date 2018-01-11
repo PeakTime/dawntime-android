@@ -43,8 +43,12 @@ class MainActivity : AppCompatActivity() {
         var tabStrip = main_tab.getChildAt(0) as LinearLayout
         tabStrip.getChildAt(2).setOnTouchListener(fun(v : View, event: MotionEvent) : Boolean{
             if(event.action == MotionEvent.ACTION_UP){
-                ShopToMainActivity.bestFlagFun.bestFlag = 0
-                startActivity(Intent(applicationContext,ShopActivity::class.java))
+//                ShopToMainActivity.bestFlagFun.bestFlag = 0
+
+                var intent = Intent(applicationContext, ShopActivity::class.java)
+                intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+                startActivity(intent)
+
             }
             return true
         })
@@ -73,11 +77,9 @@ class MainActivity : AppCompatActivity() {
                         ReplaceFragment(CommunityFragment(),"community")
                     }
                     2->{
-                        ShopToMainActivity.bestFlagFun.bestFlag = 0
-                        val bundle = Bundle()
-  //                      bundle.putString("title",thirdText.text.toString())
-                        //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        startActivity(Intent(applicationContext,ShopActivity::class.java))
+                        var intent = Intent(applicationContext, ShopActivity::class.java)
+                        intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+                        startActivity(intent)
                     }
                     3->{
                         val bundle = Bundle()

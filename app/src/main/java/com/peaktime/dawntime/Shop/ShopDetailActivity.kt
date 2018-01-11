@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
@@ -64,8 +65,9 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
 
 
         var position: Int = intent.getIntExtra("position",0)
+        var bestFlag: Int = intent.getIntExtra("bestFlag",0)
 
-        if(ShopToMainActivity.bestFlagFun.bestFlag == 1) {
+        if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP) {
 
             if (position == 0 || position == 1 || position == 2) {
                 goods_besttag.setBackgroundResource(R.drawable.shop_view_best_icon)

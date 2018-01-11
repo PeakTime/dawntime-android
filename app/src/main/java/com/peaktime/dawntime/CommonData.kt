@@ -18,5 +18,6 @@ object CommonData {
     val CALL_AT_CATEGORY = 0
     val CALL_AT_BRAND = 1
     val CALL_AT_SEARCH = 2
-
+    val CALL_AT_HOME_TO_SHOP = 0
+    val CALL_AT_TAB_TO_SHOP = 1
 }

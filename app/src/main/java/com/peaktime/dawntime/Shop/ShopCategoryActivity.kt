@@ -69,8 +69,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
             Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
             AddFragment(GoodsSortFragment(), shop_category_list.getTabAt(categoryKindNum)!!.text.toString()) //받은값으로 태그설정
-//            var tab = shop_category_list.getTabAt(categoryKindNum)
-//            tab!!.select()
             Handler().postDelayed(
                     Runnable { shop_category_list.getTabAt(categoryKindNum)!!.select() }, 100)
 
@@ -89,7 +87,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 setCustomFont(shop_category_list,tab!!.position)
-                Log.i("tab aaaa",tab!!.text.toString())
                 ReplaceFragment(GoodsSortFragment(), tab!!.text.toString()) //받은값으로 태그설정
             }
 
