@@ -1,6 +1,7 @@
 package com.peaktime.dawntime.Home
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.ScrollView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Column.ColumnFragment
@@ -27,6 +29,7 @@ import com.peaktime.dawntime.ExpandableHeightGridView
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.SharedPreferInstance
 import com.peaktime.dawntime.Shop.*
 import com.peaktime.dawntime.Shop.ShopToMainActivity
 import com.peaktime.dawntime.Shop.ShopActivity
@@ -38,37 +41,40 @@ import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeFragment : Fragment(),View.OnClickListener {
+class HomeFragment : Fragment(), View.OnClickListener {
 
-    private var shoplistRecycler : RecyclerView? = null
-    private var shoplistDatas : ArrayList<ShoplistData>? = null
-    private var shoplistAdapter : ShoplistAdapter? = null
+    private var shoplistRecycler: RecyclerView? = null
+    private var shoplistDatas: ArrayList<ShoplistData>? = null
+    private var shoplistAdapter: ShoplistAdapter? = null
 
-    private var columnBannerScroll : ViewPager? = null
-    private var columnBannerDatas : ArrayList<ColumnBannerData>? = null
-    private var columnBannerAdapter : ColumnBannerAdapter? = null
+    private var columnBannerScroll: ViewPager? = null
+    private var columnBannerDatas: ArrayList<ColumnBannerData>? = null
+    private var columnBannerAdapter: ColumnBannerAdapter? = null
 
     //private var peektimeRecycler :RecyclerView? = null
-    private var peektimeDatas : ArrayList<PeektimeData>? = null
+    private var peektimeDatas: ArrayList<PeektimeData>? = null
     //private var peektimeAdapter : PeektimeAdapter? = null
 
-    private var peektimeGridAdapter : PeaktimeGridAdapter? = null
-    private var peektimeGridView : ExpandableHeightGridView? = null
+    private var peektimeGridAdapter: PeaktimeGridAdapter? = null
+    private var peektimeGridView: ExpandableHeightGridView? = null
 
-    private var timer : Timer? = null
-    private val DELAY_MS : Long = 500
-    private val PERIOD_MS : Long = 5000
+    private var timer: Timer? = null
+    private val DELAY_MS: Long = 500
+    private val PERIOD_MS: Long = 5000
 
     private var networkService: NetworkService? = null
     private var requestManager: RequestManager? = null
 
+    private var user_blind: Boolean? = null
+    private var isLogin: Boolean? = null
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater!!.inflate(R.layout.fragment_home,container,false)
+        val v = inflater!!.inflate(R.layout.fragment_home, container, false)
 
-        val peektimeBtn : View = v.findViewById(R.id.peektime_btn)
-        val shopBtn : View = v.findViewById(R.id.shoplist_btn)
-        val columnBtn : View = v.findViewById(R.id.column_btn)
+        val peektimeBtn: View = v.findViewById(R.id.peektime_btn)
+        val shopBtn: View = v.findViewById(R.id.shoplist_btn)
+        val columnBtn: View = v.findViewById(R.id.column_btn)
 
         peektimeBtn.setOnClickListener(this)
         shopBtn.setOnClickListener(this)
@@ -77,21 +83,27 @@ class HomeFragment : Fragment(),View.OnClickListener {
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
-        var mLayoutManager : LinearLayoutManager = LinearLayoutManager(activity)
+        var mLayoutManager: LinearLayoutManager = LinearLayoutManager(activity)
         mLayoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
 
         shoplistRecycler = v.findViewById(R.id.shop_recycler_list)
         shoplistRecycler!!.layoutManager = mLayoutManager
-        shoplistRecycler!!.addItemDecoration(RecyclerViewDecoration(16,"left"))
+        shoplistRecycler!!.addItemDecoration(RecyclerViewDecoration(16, "left"))
 
         columnBannerScroll = v.findViewById(R.id.column_viewpage)
 
-
-
         peektimeGridView = v.findViewById(R.id.peektime_grid_list)
 
+        isLogin = SharedPreferInstance.getInstance(activity).getPreferBoolean("LOGIN")
 
-        getHomeData()
+        if (isLogin!!) {
+            user_blind = SharedPreferInstance.getInstance(activity).getPreferBoolean("BLIND")
+        } else {
+            user_blind = true
+        }
+
+        getHomeData(user_blind!!)
+
 
         val handler = Handler()
         val Update = Runnable {
@@ -109,47 +121,52 @@ class HomeFragment : Fragment(),View.OnClickListener {
             }
         }, DELAY_MS, PERIOD_MS)
 
-
         return v
 
     }
 
-    fun getHomeData(){
-        val getContentList = networkService!!.getHome("eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NTczNTQwLCJleHAiOjE1MjQyMTM1NDB9.iazA1wUDy2wgeum1pNbc-LW3Qi2d2H_k-QVB3EjlBgxp1J7Z9_HhJwm6WZDCSaF6Tjijgbjz7eJQVeyVdCesqw")
-        getContentList.enqueue(object : Callback<HomeResponse>{
+    fun getHomeData(user_blind: Boolean) {
+        val getContentList = networkService!!.getHome(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
+        getContentList.enqueue(object : Callback<HomeResponse> {
 
             override fun onResponse(call: Call<HomeResponse>?, response: Response<HomeResponse>?) {
-                if(response!!.isSuccessful){
-                    if(response.body().status.equals("success")){
+                if (response!!.isSuccessful) {
+                    if (response.body().status.equals("success")) {
                         shoplistDatas = response.body().main_shop
                         columnBannerDatas = response.body().main_column
                         peektimeDatas = response.body().main_peaktime
 
                         PeektimeObject!!.peektimeDatas = peektimeDatas
 
-                        shoplistAdapter = ShoplistAdapter(shoplistDatas,requestManager!!,response.body().user_blind)
+                        shoplistAdapter = ShoplistAdapter(shoplistDatas, requestManager!!, user_blind)
                         shoplistAdapter!!.setOnClickListener(View.OnClickListener { v: View? ->
-                            var goods_id = shoplistDatas!!.get(shoplistRecycler!!.getChildLayoutPosition(v)).goods_id
-                            Log.e("aaaaaa",goods_id.toString())
-                            var intent = Intent(activity,ShopDetailActivity::class.java)
-                            intent.putExtra("goods_id",goods_id)
-                            startActivity(intent)
+                            if(isLogin!!) {
+                                var goods_id = shoplistDatas!!.get(shoplistRecycler!!.getChildLayoutPosition(v)).goods_id
+                                Log.e("aaaaaa", goods_id.toString())
+                                var intent = Intent(activity, ShopDetailActivity::class.java)
+                                intent.putExtra("Goods_Id", goods_id)
+                                startActivity(intent)
+                            }
+                            else{
+                                //로그인 팝업
+                            }
                         })
 
-                        columnBannerAdapter = ColumnBannerAdapter(columnBannerDatas,requestManager!!)
+                        columnBannerAdapter = ColumnBannerAdapter(columnBannerDatas, requestManager!!)
                         columnBannerAdapter!!.SetOnItemClickListener(View.OnClickListener { v: View? ->
+
                             var column_id =
                                     columnBannerDatas!!.get((columnBannerScroll!!.currentItem % columnBannerDatas!!.size)).column_id
 
 
                             var bundle = Bundle()
-                            bundle.putInt("column_id",column_id)
+                            bundle.putInt("column_id", column_id)
 
                             var fragment = ColumnFragment()
                             fragment.arguments = bundle
 
                             var fm = fragmentManager.beginTransaction()
-                            fm.replace(R.id.home_fragment_container,fragment)
+                            fm.replace(R.id.home_fragment_container, fragment)
                             fm.addToBackStack(null)
                             fm.commit()
 
@@ -165,16 +182,21 @@ class HomeFragment : Fragment(),View.OnClickListener {
                         peektimeGridView!!.adapter = peektimeGridAdapter
 
                         peektimeGridView!!.setOnItemClickListener { parent, view, position, id ->
-                            var board_id = peektimeDatas!!.get(position).board_id
-                            var bundle = Bundle()
-                            bundle.putInt("index",board_id)
-                            var fragment = CommunityDetailFragment()
-                            fragment.arguments = bundle
+                            if(isLogin!!) {
+                                var board_id = peektimeDatas!!.get(position).board_id
+                                var bundle = Bundle()
+                                bundle.putInt("index", board_id)
+                                var fragment = CommunityDetailFragment()
+                                fragment.arguments = bundle
 
-                            var fm = fragmentManager.beginTransaction()
-                            fm.replace(R.id.home_fragment_container,fragment)
-                            fm.addToBackStack(null)
-                            fm.commit()
+                                var fm = fragmentManager.beginTransaction()
+                                fm.replace(R.id.home_fragment_container, fragment)
+                                fm.addToBackStack(null)
+                                fm.commit()
+                            }
+                            else{
+                                //로그인 팝업
+                            }
                         }
                         peektimeGridView!!.setExpanded(true)
 
@@ -195,43 +217,52 @@ class HomeFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        when(v!!.id){
-            R.id.shoplist_btn->{
-                var intent = Intent(activity, ShopToMainActivity::class.java)
-                intent.putExtra("bestFlag", CommonData.CALL_AT_HOME_TO_SHOP)
-                startActivity(intent)
+        when (v!!.id) {
+            R.id.shoplist_btn -> {
+                if (isLogin!!) {
+                    var intent = Intent(activity, ShopToMainActivity::class.java)
+                    intent.putExtra("bestFlag", CommonData.CALL_AT_HOME_TO_SHOP)
+                    startActivity(intent)
+                } else {
+                    //로그인 팝업
+                }
             }
-            R.id.column_btn->{
+            R.id.column_btn -> {
                 var childFm = fragmentManager.beginTransaction()
-                var fragment : ColumnListFragment = ColumnListFragment()
-                childFm!!.replace(R.id.home_fragment_container,fragment)
+                var fragment: ColumnListFragment = ColumnListFragment()
+                childFm!!.replace(R.id.home_fragment_container, fragment)
                 childFm!!.addToBackStack(null)
                 childFm!!.commit()
             }
-            R.id.peektime_btn->{
-                var childFm = fragmentManager.beginTransaction()
-                PeektimeObject.peektimeDatas = peektimeDatas
-                val fragment = PeektimeFragment()
-                if(!fragment.isAdded) {
-                    childFm!!.replace(R.id.home_fragment_container, fragment)
-                    childFm!!.addToBackStack(null)
-                    childFm!!.commit()
+            R.id.peektime_btn -> {
+                if (isLogin!!) {
+                    var childFm = fragmentManager.beginTransaction()
+                    PeektimeObject.peektimeDatas = peektimeDatas
+                    val fragment = PeektimeFragment()
+                    if (!fragment.isAdded) {
+                        childFm!!.replace(R.id.home_fragment_container, fragment)
+                        childFm!!.addToBackStack(null)
+                        childFm!!.commit()
+                    } else {
+                        //로그인 팝업
+                    }
                 }
             }
         }
     }
-    class RecyclerViewDecoration(var div : Int?,var side : String) : RecyclerView.ItemDecoration(){
+
+    class RecyclerViewDecoration(var div: Int?, var side: String) : RecyclerView.ItemDecoration() {
 
         override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
             super.getItemOffsets(outRect, view, parent, state)
-            when(side){
-                "bottom"->{
+            when (side) {
+                "bottom" -> {
                     outRect!!.bottom = div!!
                 }
-                "left"->{
+                "left" -> {
                     outRect!!.left = div!!
                 }
-                "right"->{
+                "right" -> {
                     outRect!!.right = div!!
                 }
             }

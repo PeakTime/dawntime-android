@@ -12,17 +12,36 @@ import java.util.*
 /**
  * Created by minhyoung on 2018. 1. 1..
  */
-class ShoplistAdapter(var dataList : ArrayList<ShoplistData>?,var requestManager: RequestManager,var user_blind : Int) : RecyclerView.Adapter<ShoplistViewHolder>() {
+class ShoplistAdapter(var dataList : ArrayList<ShoplistData>?,var requestManager: RequestManager,var user_blind : Boolean) : RecyclerView.Adapter<ShoplistViewHolder>() {
 
-    private val blindImg = listOf(R.drawable.view_blind_green,R.drawable.view_blind_orange,R.drawable.view_blind_pink, R.drawable.view_blind_purple)
+    private val blindImg = listOf(R.drawable.view_blind_green,R.drawable.view_blind_orange,R.drawable.view_blind_pink, R.drawable.view_blind_purple,R.drawable.view_blind_blue)
     private var onItemClick : View.OnClickListener? = null
 
     override fun onBindViewHolder(holder: ShoplistViewHolder?, position: Int) {
-        if(user_blind == 1) {
+        if(!user_blind) {
             requestManager.load(dataList!!.get(position).goods_image).into(holder!!.shoplistImg)
         }
         else{
-            holder!!.shoplistImg.setImageResource(blindImg.get(Random().nextInt(4)))
+            var resId : Int? = null
+            when(dataList!!.get(position).goods_category){
+                "딜도"->{
+                    holder!!.shoplistImg.setImageResource(blindImg.get(0))
+
+                }
+                "우머나이저"->{
+                    holder!!.shoplistImg.setImageResource(blindImg.get(1))
+                }
+                "애널케겔"->{
+                    holder!!.shoplistImg.setImageResource(blindImg.get(2))
+                }
+                "바이브레이터"->{
+                    holder!!.shoplistImg.setImageResource(blindImg.get(3))
+                }
+                else->{
+                    holder!!.shoplistImg.setImageResource(blindImg.get(4))
+                }
+            }
+
         }
         holder!!.shoplistImg.clipToOutline = true
         holder!!.shoplistText.text = cutString(dataList!!.get(position).goods_name)
