@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_my))
 
         if(savedInstanceState == null){
-            AddFragment(HomeFragment(),"home")
+            ReplaceFragment(HomeFragment(),"home")
         }
 
 
@@ -71,12 +71,8 @@ class MainActivity : AppCompatActivity() {
                         val bundle = Bundle()
      //                   bundle.putString("title",firstText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
-                        if(isLogin!!) {
                             ReplaceFragment(HomeFragment(), "home")
-                        }
-                        else{
-                            //로그인 팝업
-                        }
+
                     }
                     1->{
                         val bundle = Bundle()

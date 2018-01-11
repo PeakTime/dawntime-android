@@ -29,12 +29,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginDialog"
+            android:theme="@android:style/Theme.Dialog">
+
+        </activity>
         <activity android:name=".MyPage.LoginActivity" />
         <activity android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity" />
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
             android:label="OAuth2.0 In-app" />
-
         <activity android:name=".Shop.ShopActivity" />
         <activity android:name=".Shop.ShopCategoryActivity" />
         <activity android:name=".Shop.ShopBrandActivity" />
