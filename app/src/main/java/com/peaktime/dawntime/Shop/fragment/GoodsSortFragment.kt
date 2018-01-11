@@ -42,6 +42,10 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
     var callAt : Int? = null
     var tabFlag : String? = null
 
+    var lowPrice : Int = 0
+    var highPrice : Int = 0
+    var keyword : String? = null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_shop_goods_sort, container, false)
@@ -76,10 +80,15 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
             }
             CommonData.CALL_AT_SEARCH->{
 
+                Log.d("넘오옴","넘어옴넘어옴넘어옴넘어옴넘어옴넘어옴넘어옴넘어옴")
+
+                lowPrice = arguments.getInt("lowPrice")
+                highPrice = arguments.getInt("highPrice")
+                keyword = arguments.getString("keyword")
+                getShopSearch(order!!)
+
             }
         }
-
-
 
 //        if(ShopToMainActivity.bestFlagFun.bestFlag == 1) {
 //            Toast.makeText(activity, "bset들어옴", Toast.LENGTH_SHORT).show()
@@ -123,6 +132,29 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                     shopAdapter = ShopAdapter(shopBestDatas,requestManager)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
+                }
+            }
+
+            override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+
+        })
+    }
+
+
+    fun getShopSearch(order : Int){
+        val getContentList = networkService!!.shopSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, order, ShopSearchRequest(lowPrice, highPrice, keyword!!))
+        getContentList!!.enqueue(object : Callback<ShopBestResponse>{
+            override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
+                if(response!!.body().message.equals("successful get search result")){
+
+                    shopBestDatas = response.body().result
+                    shopAdapter = ShopAdapter(shopBestDatas,requestManager)
+                    shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
+                    shopList!!.adapter = shopAdapter
+
                 }
             }
 
@@ -191,7 +223,10 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                 getShopBrand(tabFlag!!,order!!)
             }
             CommonData.CALL_AT_SEARCH->{
-
+                lowPrice = arguments.getInt("lowPrice")
+                highPrice = arguments.getInt("highPrice")
+                keyword = arguments.getString("keyword")
+                getShopSearch(order!!)
             }
         }
 

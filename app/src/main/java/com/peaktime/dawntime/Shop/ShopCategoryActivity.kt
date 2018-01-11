@@ -58,7 +58,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
         shop_category_list.addTab(shop_category_list.newTab().setText("콘돔"))
         setCustomFont(shop_category_list)
 
-
         shop_category_list.setSelectedTabIndicatorHeight(0)
 
         shopBackBtn!!.setOnClickListener(clickListener)
@@ -135,7 +134,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
             }
         }
 
-
     }
 
     override fun onClick(v : View?) {
@@ -188,9 +186,6 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
         transaction.replace(R.id.shop_category_viewpager,fragment)
         transaction.commit()
     }
-
-
-
 
 //    fun AddFragment(fragment : Fragment, bundle : Bundle, tag : String){
 //        val fm = supportFragmentManager

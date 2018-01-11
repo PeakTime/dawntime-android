@@ -4,22 +4,23 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageButton
-import android.widget.PopupMenu
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.Shop.fragment.GoodsSortFragment
 import kotlinx.android.synthetic.main.activity_shop_search_result.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class ShopSearchResultActivity : AppCompatActivity() ,View.OnClickListener{
+
+class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
 
     var networkService: NetworkService? = null
     var requestManager: RequestManager? = null
@@ -40,13 +41,19 @@ class ShopSearchResultActivity : AppCompatActivity() ,View.OnClickListener{
 
 //        if(keyword==""){
 //            keyword="null"
-//            Toast.makeText(applicationContext, "뭐가뜨냐"+keyword+"뭐가뜨냐", Toast.LENGTH_SHORT).show()
 //        }
-
-
         //값넘길떄 쓸가격정보들 -> Int 로 보내야해서 형변환
         var lowPrice : Int = Integer.parseInt(lowPriceSt)
         var highPrice : Int = Integer.parseInt(highPriceSt)
+
+        var bundle = Bundle()
+        savedInstanceState!!.putInt("callAt", 2)
+        savedInstanceState.putInt("lowPrice", lowPrice)
+        savedInstanceState.putInt("highPrice", highPrice)
+        savedInstanceState.putString("keyword", keyword)
+        GoodsSortFragment().arguments = savedInstanceState
+        Log.d("은미","나와라나와라나와라나와라나와라나와라나와라")
+
 
         /*
         * 낮은가격만 들어오면 낮은가격 이상
@@ -106,6 +113,7 @@ class ShopSearchResultActivity : AppCompatActivity() ,View.OnClickListener{
 
     }
 
+
     override fun onClick(v : View?) {
 
         when (v!!.id) {
@@ -114,35 +122,6 @@ class ShopSearchResultActivity : AppCompatActivity() ,View.OnClickListener{
             }
         }
     }//end onClick
-
-
-    fun shopSearch(lowPrice:Int, highPrice:Int, keyword : String){
-        val shopSearchResponse = networkService!!.shopSearch("", 1, ShopSearchRequest(
-                lowPrice, highPrice, keyword
-        ))
-
-        shopSearchResponse.enqueue(object : Callback<ShopSearchResponse> {
-
-            override fun onResponse(call: Call<ShopSearchResponse>?, response: Response<ShopSearchResponse>?) {
-                if(response!!.isSuccessful){
-
-                    if(response!!.body().status.equals("success")){
-
-                        ApplicationController.instance!!.makeToast("등록 완료.")
-
-
-                    }else{
-                        ApplicationController.instance!!.makeToast("등록 실패.")
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<ShopSearchResponse>?, t: Throwable?) {
-                ApplicationController.instance!!.makeToast("통신 오류")
-            }
-        })
-    }
-
 
 
 }

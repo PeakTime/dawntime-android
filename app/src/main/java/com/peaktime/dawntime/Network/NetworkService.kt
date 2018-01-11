@@ -136,7 +136,21 @@ interface NetworkService {
             @Header("user_token") user_token: String,
             @Path("order") order: Int,
             @Body shopSearchRequest : ShopSearchRequest
-    ) : Call<ShopSearchResponse>
+    ) : Call<ShopBestResponse>
+
+//    //쇼핑몰 브랜드 조회
+//   @POST("shop/brand/:goods_brand/:order")
+//    fun getShopBrand(
+//            @Header("user_token") user_token:String,
+//            @Path("goods_brand") goods_brand: String,
+//            @Path("order") order: Int)
+//            : Call<ShopBestResponse>
+
+//    //쇼핑몰 new 리스트 조회
+//    @GET("/shop/new")
+//    fun getShopNewList(
+//            @Path("user_token") user_token: String)
+//            : Call<ShopBestResponse>
 
     //쇼핑몰 detail 상품 상세 조회
     @GET("shop/detail/{goods_id}")
