@@ -1,22 +1,20 @@
 package com.peaktime.dawntime
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
 import com.peaktime.dawntime.Community.CommunityFragment
 import com.peaktime.dawntime.Home.HomeFragment
 import com.peaktime.dawntime.MyPage.MyPageFragment
 import com.peaktime.dawntime.Shop.ShopActivity
-import com.peaktime.dawntime.Shop.ShopToMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.android.synthetic.main.fragment_shop.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +23,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_home)
+        }
 
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_home))
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_comu))

@@ -1,10 +1,11 @@
 package com.peaktime.dawntime
 
+import android.widget.ImageView
 import com.peaktime.dawntime.Community.CommunityList
 import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
 import com.peaktime.dawntime.Shop.ShopBestData
-import com.peaktime.dawntime.Shop.ShopKeywordData
 import com.peaktime.dawntime.Shop.ShopDetailData
+import com.peaktime.dawntime.Shop.ShopKeywordData
 
 /**
  * Created by HYEON on 2018-01-03.
@@ -15,6 +16,7 @@ object CommonData {
     var shopBestList :  ArrayList<ShopBestData> = ArrayList()
     var shopKeywordList : ArrayList<ShopKeywordData> = ArrayList()
     var shopDetailList :  ArrayList<ShopDetailData> = ArrayList()
+    var shopLikeSend : ImageView? = null
     val CALL_AT_CATEGORY = 0
     val CALL_AT_BRAND = 1
     val CALL_AT_SEARCH = 2

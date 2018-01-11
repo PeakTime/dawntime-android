@@ -1,7 +1,6 @@
 package com.peaktime.dawntime.Shop.fragment
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -10,8 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.CommonData
@@ -75,12 +72,15 @@ class GoodsFragment : Fragment() , View.OnClickListener {
         var intent = Intent(activity, ShopDetailActivity::class.java)
 
 
-        val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오기
+        val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오
+       // var view : View = shopList!!.getChildAt(position)// 기
         /*val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
         val price : String = shopDatas!!.get(idx).shopPrice*/
         intent.putExtra("bestFlag", bestFlag)
         intent.putExtra("position", position)
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id)
+        CommonData.shopLikeSend = v!!.findViewById(R.id.shopLikeBtn)
+//        intent.putExtra("select_view",view as Serializable)
 //        val name = v!!.goods_name.text
 //        val price = v!!.goods_price.text
 //        intent.putExtra("name", name)
@@ -170,7 +170,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 
                         //ApplicationController.instance!!.makeToast("북마크 변경.")
 //                            if(){
-                        shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_view_zzim_heart_solid)
+                        shopLikeDetailBtn!!.setBackgroundResource(R.drawable.view_heart_solid)
 //                                Log.i("status", "바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜바뀜")
 //                                shopLike = 1
 //                            }else if(shopLike == 1){
@@ -186,7 +186,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
                         Log.i("qwe","ㅁ니아ㅓㅁ니ㅏ)")
                         //좋아요 취소했을때
 
-                        shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_view_zzim_heart_line)
+                        shopLikeDetailBtn!!.setBackgroundResource(R.drawable.view_heart_line)
                         // shopLikeDetailBtn.invalidate()
 
                     }

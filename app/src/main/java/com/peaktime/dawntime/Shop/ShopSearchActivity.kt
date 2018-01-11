@@ -2,28 +2,25 @@ package com.peaktime.dawntime.Shop
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.support.design.R.id.container
-import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.peaktime.dawntime.R
-import kotlinx.android.synthetic.main.activity_shop_search.*
-import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
+import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
-import com.peaktime.dawntime.Shop.fragment.GoodsSortFragment
+import com.xiaofeng.flowlayoutmanager.FlowLayoutManager
+import kotlinx.android.synthetic.main.activity_shop_search.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,6 +45,11 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shop_search)
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_shop)
+        }
         resetBtn.setOnClickListener(this)
 
         //인기키워드 리사이클러뷰
@@ -68,16 +70,15 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         //enter누르면 검색창으로 이동
         shopSearchEditText.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent): Boolean {
+
                 when (actionId) {
                     EditorInfo.IME_ACTION_SEARCH -> {
 
                         shopSearchEditText.text = null
 
-
                     }
                     else ->
                     {
-
                         search_content = shopSearchEditText!!.text.toString()//검색키워드 받아오기
 //                        highPrice = highPriceEditText!!.text.toString()
 
@@ -98,19 +99,29 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                         var lowPriceInt : Int = Integer.parseInt(lowPrice)
                         var highPriceInt : Int = Integer.parseInt(highPrice)
 
-
                         //입력된 값이 하나라도 없으면 예외처리
                         if(lowPrice.equals("-1")&&highPrice.equals("-1")&&search_content.equals("")){
                             Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
-                        }else if(lowPriceInt!=-1&&highPriceInt!=-1){
+                        }
+                        else if(lowPriceInt!=-1&&highPriceInt!=-1){
 
                             if(lowPriceInt>highPriceInt) {
                                 Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
                             }
+                            else{
+                                Log.d("엔터검색","검색ㅅ검색")
+                                var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
+                                intent.putExtra("keyword",search_content)
+                                intent.putExtra("lowPrice", lowPrice)
+                                intent.putExtra("highPrice", highPrice)
 
-                        }else{
+                                startActivity(intent)
 
+                            }
 
+                        }
+                        else{
+                            Log.d("엔터검색","검색ㅅ검색")
                             var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
                             intent.putExtra("keyword",search_content)
                             intent.putExtra("lowPrice", lowPrice)
