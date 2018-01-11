@@ -2,6 +2,7 @@ package com.peaktime.dawntime.Shop
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.peaktime.dawntime.R
@@ -13,7 +14,6 @@ class ShopViewHolder(itemView : View?) : RecyclerView.ViewHolder(itemView){
     var shopName : TextView = itemView!!.findViewById<TextView>(R.id.goods_name)
     var shopPrice : TextView = itemView!!.findViewById<TextView>(R.id.goods_price)
     var rankImage : ImageView = itemView!!.findViewById<ImageView>(R.id.goods_rangetag)
-//    var shopBrand : TextView = itemView!!.findViewById<TextView>(R.id.shopDetailBrandTextView)
-//    var shopInfo : TextView = itemView!!.findViewById<TextView>(R.id.shopDetailContentTextView)
+    var shopLikeBtn : ImageButton = itemView!!.findViewById<ImageButton>(R.id.shopLikeBtn)
 
 }

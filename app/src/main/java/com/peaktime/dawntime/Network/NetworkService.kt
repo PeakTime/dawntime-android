@@ -11,6 +11,9 @@ import com.peaktime.dawntime.MyPage.SignInResponse
 import com.peaktime.dawntime.Shop.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import com.peaktime.dawntime.Shop.ShopBestResponse
+import com.peaktime.dawntime.Shop.ShopDetailResponse
+import com.peaktime.dawntime.Shop.ShopLikeResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -158,6 +161,14 @@ interface NetworkService {
             @Header("user_token") user_token:String,
             @Path("goods_id") goods_id: Int)
             : Call<ShopDetailResponse>
+
+    //상품 찜,찜 해제
+    @PUT("shop/like/{goods_id}")
+    fun putShopLike(
+            @Header("user_token") user_token:String,
+            @Path("goods_id") goods_id: Int
+    ) : Call<ShopLikeResponse>
+
 
 
     //홈 화면
