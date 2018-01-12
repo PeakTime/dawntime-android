@@ -105,16 +105,16 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                         if(lowPrice.equals("-1")&&highPrice.equals("-1")){
                             if(search_content.equals("")){
                                 Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
-                            }else if(search_content.equals(" ")){
+                            }else if(search_content.equals(" ")&&search_content.equals("  ")){
                                 Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
                             }
                         }
                         else if(lowPriceInt!=-1&&highPriceInt!=-1){
 
-                            if(lowPriceInt>highPriceInt) {
-                                Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
-                            }
-                            else{
+                            if(lowPriceInt>highPriceInt) {Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
+                            }else if(search_content.equals(" ")&&search_content.equals("  ")){
+                                Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                            }else{
                                 var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
                                 intent.putExtra("keyword",search_content)
                                 intent.putExtra("lowPrice", lowPrice)
@@ -212,7 +212,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         if(lowPrice.equals("-1")&&highPrice.equals("-1")){
             if(search_content.equals("")){
                 Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
-            }else if(search_content.equals(" ")){
+            }else if(search_content.equals(" ")&&search_content.equals("  ")){
                 Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
             }else{
                 var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
@@ -227,9 +227,9 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
             if(lowPriceInt>highPriceInt) {
                 Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                Log.d("엔터검색","검색ㅅ검색")
+            }else if(search_content.equals(" ")&&search_content.equals("  ")){
+                Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }else{
                 var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
                 intent.putExtra("keyword",search_content)
                 intent.putExtra("lowPrice", lowPrice)
