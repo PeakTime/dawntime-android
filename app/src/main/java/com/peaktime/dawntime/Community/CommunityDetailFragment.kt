@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.peaktime.dawntime.Home.PeektimeObject
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
@@ -67,6 +68,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
 
         if(arguments != null){
             index = arguments.getInt("index")
+
         }
         v!!.community_backbtn!!.setOnClickListener {
             fragmentManager.popBackStack()

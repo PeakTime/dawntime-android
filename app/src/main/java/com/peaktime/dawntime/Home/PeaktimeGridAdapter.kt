@@ -29,7 +29,20 @@ class PeaktimeGridAdapter(var dataList : ArrayList<PeektimeData>?) : BaseAdapter
         mainView!!.like_cnt_text.text = dataList!!.get(position).board_like.toString()
         mainView!!.comment_cnt_text.text = dataList!!.get(position).com_count.toString()
         mainView!!.scrap_cnt_text.text = dataList!!.get(position).scrap_count.toString()
-        //mainView!!.setOnClickListener(onItemClick)
+
+        if(dataList!!.get(position).user_like){
+            mainView!!.like_image.setBackgroundResource(R.drawable.view_fire_red)
+        }
+        else{
+            mainView!!.like_image.setBackgroundResource(R.drawable.view_fire_white)
+        }
+
+        if(dataList!!.get(position).user_scrap){
+            mainView!!.scrap_image.setBackgroundResource(R.drawable.view_scrap_yellow)
+        }
+        else{
+            mainView!!.scrap_image.setBackgroundResource(R.drawable.view_scrap_white)
+        }
 
         return mainView
     }

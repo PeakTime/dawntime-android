@@ -167,7 +167,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
                     {
                         Log.i("qwe","ㅁ니아ㅓㅁ니ㅏ")
                         //좋아요 취소했을때
-                        CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_line)
+                        //CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_line)
 
                         shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_line)
                        // shopLikeDetailBtn.invalidate()

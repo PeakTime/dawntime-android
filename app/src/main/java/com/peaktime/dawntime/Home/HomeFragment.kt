@@ -104,6 +104,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         getHomeData(user_blind!!)
 
+        val fm = fragmentManager
+        fm.addOnBackStackChangedListener {
+            try{
+                getHomeData(user_blind!!)
+            }catch(e : Exception){}
+        }
+
         val handler = Handler()
         val Update = Runnable {
             /*            if (currentPage == NUM_PAGES - 1) {
@@ -126,6 +133,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
+        Log.e("aaaaaaa","detaildetail")
         if(PeektimeObject.flag == 1) {
             var ft = fragmentManager.beginTransaction()
             ft.detach(this).attach(this).commit()
@@ -201,7 +209,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                                 fragment.arguments = bundle
 
                                 var fm = fragmentManager.beginTransaction()
-                                fm.replace(R.id.home_fragment_container, fragment)
+                                fm.add(R.id.home_fragment_container, fragment)
                                 fm.addToBackStack(null)
                                 fm.commit()
                             }

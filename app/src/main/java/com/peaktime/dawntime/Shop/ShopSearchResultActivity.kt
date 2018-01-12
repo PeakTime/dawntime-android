@@ -45,7 +45,12 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
         var lowPrice : Int = Integer.parseInt(lowPriceSt)
         var highPrice : Int = Integer.parseInt(highPriceSt)
 
-        AddFragment(GoodsSortFragment(),lowPrice,highPrice,keyword )
+        if(keyword.equals("")){
+            keyword = "null"
+//            Toast.makeText(applicationContext, keyword, Toast.LENGTH_SHORT).show()
+        }
+
+        AddFragment(GoodsSortFragment(),lowPrice,highPrice,keyword)
 
         /*
         * 낮은가격만 들어오면 낮은가격 이상
@@ -53,7 +58,7 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
         * 둘다 -1이면 검색어만
         * 둘다 들어오면 낮은가격 ~ 높은가격
         * */
-        if(keyword != "") {
+        if(keyword != "null") {
 
             if (lowPrice == -1 && highPrice == -1) {
 
