@@ -43,21 +43,42 @@ class MainActivity : AppCompatActivity() {
         var tabAdapter = TabAdapter(supportFragmentManager,main_tab.tabCount)
 
         var tabStrip = main_tab.getChildAt(0) as LinearLayout
+
         tabStrip.getChildAt(2).setOnTouchListener(fun(v : View, event: MotionEvent) : Boolean{
-            if(event.action == MotionEvent.ACTION_UP){
+            if(event.action == MotionEvent.ACTION_UP ){
 //                ShopToMainActivity.bestFlagFun.bestFlag = 0
-
-                var intent = Intent(applicationContext, ShopActivity::class.java)
-                intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
-                startActivity(intent)
-
+                if(SharedPreferInstance.getInstance(this@MainActivity).getPreferBoolean("LOGIN") == true) {
+                    var intent = Intent(applicationContext, ShopActivity::class.java)
+                    intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
+                    startActivity(intent)
+                }
+                else{
+                    startActivity(Intent(this,LoginDialog::class.java))
+                }
             }
             return true
         })
 
+
         main_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
-
+                when(tab!!.position){
+                    0->{
+                        ReplaceFragment(HomeFragment(), "home")
+                    }
+                    1->{
+                        if(SharedPreferInstance.getInstance(this@MainActivity).getPreferBoolean("LOGIN") == true) {
+                            ReplaceFragment(CommunityFragment(), "community")
+                        }
+                        else{
+                            //로그인 팝업
+                            startActivity(Intent(this@MainActivity,LoginDialog::class.java))
+                        }
+                    }
+                    3->{
+                        ReplaceFragment(MyPageFragment(), "myPage")
+                    }
+                }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -83,6 +104,7 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             //로그인 팝업
+                            startActivity(Intent(this@MainActivity,LoginDialog::class.java))
                         }
                     }
                     2->{

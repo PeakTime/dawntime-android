@@ -5,4 +5,5 @@ package com.peaktime.dawntime.Home
  */
 object PeektimeObject {
     var peektimeDatas : ArrayList<PeektimeData>? = null
+    var flag = 0
 }

@@ -9,16 +9,16 @@
         android:layout_height="wrap_content">
         <ImageView
             android:scaleType="fitXY"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
             android:layout_gravity="center"
             android:background="@drawable/shoplist_image_background"
             android:id="@+id/shoplist_img" />
         <ImageView
             android:scaleType="fitXY"
             android:layout_gravity="center"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="63dp"
+            android:layout_height="63dp"
             android:background="@drawable/shoplist_image_real_background"
             android:id="@+id/shoplist_real_img"/>
     </FrameLayout>
@@ -28,6 +28,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/shoplist_text"
         android:text="goods"
+        android:textSize="11dp"
+
         android:textAlignment="center"
         android:fontFamily="@font/noto_sans_cjk_kr_light"
         android:ellipsize="marquee"

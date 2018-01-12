@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.ImageButton
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton
@@ -30,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
     var signData: SignInData? = null
     var mLoginButton: OAuthLoginButton? = null
     var mAuthLoginModule: OAuthLogin? = null
+    var mFakeLoginButton : ImageButton? = null
     var mContext: Context? = null
 
     var email: String? = null
@@ -70,6 +72,12 @@ class LoginActivity : AppCompatActivity() {
                 OAUTH_CLIENT_NAME
         )
         networkService = ApplicationController.instance!!.networkService
+
+        mFakeLoginButton = findViewById(R.id.loginFakeBtn)
+        mFakeLoginButton!!.setOnClickListener {
+            mLoginButton!!.performClick()
+        }
+
         mLoginButton = findViewById(R.id.loginBtn)
         mLoginButton!!.setOAuthLoginHandler(object : OAuthLoginHandler() {
             override fun run(b: Boolean) {

@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.TextView
+import com.peaktime.dawntime.Home.PeektimeObject
 import com.peaktime.dawntime.MyPage.LoginActivity
 
 /**
@@ -42,7 +43,7 @@ class LoginDialog : Activity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.login_dialog_logBtn->{
-                finish()
+                PeektimeObject.flag = 1
                 startActivity(Intent(this,LoginActivity::class.java))
             }
             R.id.login_dialog_cancelbtn->{

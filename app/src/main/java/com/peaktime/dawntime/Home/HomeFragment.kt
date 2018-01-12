@@ -89,7 +89,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
 
         shoplistRecycler = v.findViewById(R.id.shop_recycler_list)
         shoplistRecycler!!.layoutManager = mLayoutManager
-        shoplistRecycler!!.addItemDecoration(RecyclerViewDecoration(16, "left"))
+        shoplistRecycler!!.addItemDecoration(RecyclerViewDecoration(20, "left"))
 
         columnBannerScroll = v.findViewById(R.id.column_viewpage)
 
@@ -127,7 +127,15 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
 
     override fun onPause() {
         super.onPause()
-        Log.e("aaaaaaa","pause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(PeektimeObject.flag == 1) {
+            var ft = fragmentManager.beginTransaction()
+            ft.detach(this).attach(this).commit()
+            PeektimeObject.flag = 0
+        }
     }
 
 
@@ -156,6 +164,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                             }
                             else{
                                 //로그인 팝업
+                                startActivity(Intent(activity,LoginDialog::class.java))
                             }
                         })
 
@@ -203,6 +212,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                             }
                             else{
                                 //로그인 팝업
+                                startActivity(Intent(activity,LoginDialog::class.java))
                             }
                         }
                         peektimeGridView!!.setExpanded(true)
@@ -252,9 +262,10 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                         childFm!!.replace(R.id.home_fragment_container, fragment)
                         childFm!!.addToBackStack(null)
                         childFm!!.commit()
-                    } else {
-                        //로그인 팝업
                     }
+                }else {
+                    //로그인 팝업
+                    startActivity(Intent(activity,LoginDialog::class.java))
                 }
             }
         }

@@ -21,14 +21,13 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_cjk_kr_demilight"/>
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"/>
 
         <TextView
             android:id="@+id/peektime_item_text"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="77.63dp"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="text"
             android:textSize="14dp"
             android:maxLines="3"
@@ -40,7 +39,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="12dp"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp">
 
             <LinearLayout
                 android:id="@+id/like_linear"
@@ -51,7 +51,7 @@
 
                 <ImageView
                     android:background="@drawable/view_fire_white"
-                    android:layout_width="7.12dp"
+                    android:layout_width="8dp"
                     android:layout_height="9.67dp"
                     android:layout_gravity="center"/>
                 <TextView
@@ -59,6 +59,7 @@
                     android:text="1000"
                     android:textSize="7.91dp"
                     android:textColor="#FFFFFF"
+                    android:layout_marginLeft="2dp"
                     android:includeFontPadding="false"
                     android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:layout_width="wrap_content"
@@ -82,6 +83,7 @@
                     android:id="@+id/comment_cnt_text"
                     android:text="354"
                     android:textSize="7.91dp"
+                    android:layout_marginLeft="2dp"
                     android:textColor="#FFFFFF"
                     android:includeFontPadding="false"
                     android:fontFamily="@font/noto_sans_cjk_kr_light"
@@ -106,6 +108,7 @@
                     android:id="@+id/scrap_cnt_text"
                     android:text="517"
                     android:textSize="7.91dp"
+                    android:layout_marginLeft="2dp"
                     android:textColor="#FFFFFF"
                     android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:includeFontPadding="false"
