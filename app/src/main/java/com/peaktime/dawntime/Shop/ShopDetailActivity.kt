@@ -112,16 +112,16 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
 
                         shopDetailList = response.body().result
 
-                        shopDetailName!!.setText(shopDetailList!!.goods_name)
-                        shopDetailPrice!!.setText(shopDetailList!!.goods_price.toString())
-                        shopDetailBrand!!.setText(shopDetailList!!.goods_brand)
-                        shopDetailInfo!!.setText(shopDetailList!!.goods_info)
+                        shopDetailName!!.text = shopDetailList!!.goods_name
+                        shopDetailPrice!!.text = shopDetailList!!.goods_price.toString()
+                        shopDetailBrand!!.text = shopDetailList!!.goods_brand
+                        shopDetailInfo!!.text = shopDetailList!!.goods_info
                         shopDetailUrl = shopDetailList!!.goods_url
                         Log.v("ygLog", shopDetailList!!.goods_images[0])
 
                         shopPagerAdapter = ShopViewPagerAdapter(supportFragmentManager, shopDetailList!!.goods_images)
-                        vp!!.setAdapter(shopPagerAdapter)
-                        vp!!.setCurrentItem(0)
+                        vp!!.adapter = shopPagerAdapter
+                        vp!!.currentItem = 0
 
                         tabLayout!!.setupWithViewPager(vp!!, true)
 
@@ -161,7 +161,6 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
 
                         CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_solid)
                         shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_solid)
-
 
                     }
                     else if(response.body().message.equals("successful delete basket"))

@@ -53,7 +53,7 @@ class MypageMsgFragment : Fragment() {
 
         v.messagebox_detail_btn!!.setOnClickListener {
 
-            if (contentEdit!!.text.toString() != null) {
+            if (!contentEdit!!.text.toString().equals("")) {
                 sendMessageDetail()
             }
         }

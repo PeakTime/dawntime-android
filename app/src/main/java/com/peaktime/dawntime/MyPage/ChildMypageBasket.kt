@@ -52,6 +52,11 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
         v.basket_back_btn.setOnClickListener{
             fragmentManager.popBackStack()
         }
+        val fm = fragmentManager
+        fm.addOnBackStackChangedListener {
+            getBasketList()
+        }
+
         getBasketList()
         return v
     }
