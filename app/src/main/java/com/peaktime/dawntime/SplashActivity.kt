@@ -38,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
 
-        SharedPreferInstance.getInstance(this).putPreferString("TOKEN", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX2VtYWlsIjoi64-F6rOg7KeA7JykIiwidXNlcl91aWQiOiIxMjM0MTIzNCIsImlhdCI6MTUxNTU3MjIyNiwiZXhwIjoxNTI0MjEyMjI2fQ.qQsI6a5sHgRvY3d46Z5hfP2cyDI8QeCCc4u7Sf1WvjWHj4FdvNJcu9fPUyRAP-EwM9Irp2WujEt1nyeLdRYZNA")
+        SharedPreferInstance.getInstance(this).putPreferString("TOKEN", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0MywidXNlcl9lbWFpbCI6IuuPheqzoO2YhOyYgSIsInVzZXJfdWlkIjoiMjE2NTIxNDg0MjEiLCJpYXQiOjE1MTU1OTYzMjEsImV4cCI6MTUyNDIzNjMyMX0.mDxW-BRxqdl3UUiVtrYjBts2AaFATetMCoOW1xnDj6sKUy3Amqc-ushKnHV4b45WpdtzdULvwya0mglh7vCYyw")
 
         val handler = Handler()
         handler.postDelayed({

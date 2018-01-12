@@ -77,6 +77,7 @@ class LockActivity : AppCompatActivity() {
     }
 
     fun addNum(inputNum: String) {
+
         this.inputNum += inputNum
         order++
         if (order == 5) {
@@ -159,7 +160,7 @@ class LockActivity : AppCompatActivity() {
             }
             R.id.delete_btn -> {
                 if (order != 0) {
-                    if (list.size > 1) {
+                    if (list.size >= 1) {
                         order--
                         list.removeAt(order)
                         var temp = order - 1
@@ -167,8 +168,10 @@ class LockActivity : AppCompatActivity() {
                     }
                 }
             }
+
         }
-        //    changeEvent(order)
+        changeEvent(order)
+
 //        var j = 0
 //        for (j in 0..list.size - 1) {
 //            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))
