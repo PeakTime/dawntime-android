@@ -74,7 +74,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
 
 
         var position: Int = intent.getIntExtra("position",0)
-        var bestFlag: Int = intent.getIntExtra("bestFlag",0)
+        var bestFlag: Int = intent.getIntExtra("bestFlag",1)
 
         if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP) {
             if (position == 0 || position == 1 || position == 2) {
@@ -187,9 +187,6 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
         })
 
     }
-
-
-
     override fun onClick(v : View?) {
 
         when (v!!.id) {

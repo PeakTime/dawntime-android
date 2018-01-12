@@ -16,6 +16,7 @@ import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
+import com.peaktime.dawntime.Shop.ShopAdapter
 import com.peaktime.dawntime.Shop.ShopBestData
 import com.peaktime.dawntime.Shop.ShopBestResponse
 import com.peaktime.dawntime.Shop.ShopDetailActivity
@@ -29,7 +30,8 @@ import retrofit2.Response
  */
 class ChildMypageBasket : Fragment(), View.OnClickListener {
     private var basketList: RecyclerView? = null
-    private var adapter: ChildMypageBasketAdapter? = null
+    //private var adapter: ChildMypageBasketAdapter? = null
+    private var adapter: ShopAdapter? = null
     private var basketData: ArrayList<ShopBestData>? = null
 
     var networkService: NetworkService? = null
@@ -65,7 +67,7 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
 
                         basketData = response.body().result
                         CommonData.shopBestList = basketData!!
-                        adapter = ChildMypageBasketAdapter(basketData, requestManager)
+                        adapter = ShopAdapter(basketData, requestManager,CommonData.CALL_AT_TAB_TO_SHOP)
                         adapter!!.setOnItemClickListener(this@ChildMypageBasket)
                         basketList!!.adapter = adapter
                     }
@@ -84,6 +86,7 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         var intent = Intent(activity, ShopDetailActivity::class.java)
         intent.putExtra("Goods_Id", basketData!!.get(basketList!!.getChildAdapterPosition(v)).goods_id)
+        intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
         startActivity(intent)
     }
 
