@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:id="@+id/peektime_item_layout"
-        android:layout_width="156dp"
+        android:layout_width="160dp"
         android:layout_height="191.91dp">
 
         <TextView
@@ -14,27 +14,27 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="9dp"
-            android:text="title"
-            android:textSize="17dp"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"
             android:maxLength="7"
             android:singleLine="true"
+            android:text="title"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"/>
+            android:textSize="17dp" />
 
         <TextView
             android:id="@+id/peektime_item_text"
             android:layout_width="122dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="text"
-            android:textSize="14dp"
-            android:maxLines="3"
             android:ellipsize="end"
-            android:textColor="#FFFFFF"
+            android:fontFamily="@font/noto_sans_cjk_kr_light"
             android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_cjk_kr_light"/>
+            android:maxLines="3"
+            android:text="text"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp" />
         
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,25 +46,25 @@
                 android:id="@+id/like_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/comment_linear"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/comment_linear">
 
                 <ImageView
                     android:id="@+id/like_image"
-                    android:background="@drawable/view_fire_white"
                     android:layout_width="8dp"
                     android:layout_height="9.67dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/view_fire_white" />
                 <TextView
                     android:id="@+id/like_cnt_text"
-                    android:text="1000"
-                    android:textSize="7.91dp"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginLeft="2dp"
-                    android:includeFontPadding="false"
-                    android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_light"
+                    android:includeFontPadding="false"
+                    android:text="1000"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.91dp" />
 
             </LinearLayout>
 
@@ -72,25 +72,25 @@
                 android:id="@+id/comment_linear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/scrap_linear"
-                android:layout_marginRight="7dp">
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/scrap_linear">
 
                 <ImageView
                     android:id="@+id/comment_image"
-                    android:background="@drawable/view_comment_white"
                     android:layout_width="8.8dp"
                     android:layout_height="7.6dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/view_comment_white" />
                 <TextView
                     android:id="@+id/comment_cnt_text"
-                    android:text="354"
-                    android:textSize="7.91dp"
-                    android:layout_marginLeft="2dp"
-                    android:textColor="#FFFFFF"
-                    android:includeFontPadding="false"
-                    android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:fontFamily="@font/noto_sans_cjk_kr_light"
+                    android:includeFontPadding="false"
+                    android:text="354"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.91dp" />
 
             </LinearLayout>
 
@@ -103,20 +103,20 @@
 
                 <ImageView
                     android:id="@+id/scrap_image"
-                    android:background="@drawable/view_scrap_white"
                     android:layout_width="7.9dp"
                     android:layout_height="7.9dp"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:background="@drawable/view_scrap_white" />
                 <TextView
                     android:id="@+id/scrap_cnt_text"
-                    android:text="517"
-                    android:textSize="7.91dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:textColor="#FFFFFF"
                     android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:includeFontPadding="false"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:text="517"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.91dp" />
 
             </LinearLayout>
 
