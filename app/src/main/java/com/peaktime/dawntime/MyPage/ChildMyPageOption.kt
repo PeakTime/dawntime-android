@@ -5,14 +5,20 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.data.OAuthLoginState
+import com.peaktime.dawntime.Network.ApplicationController
+import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 /**
@@ -23,18 +29,23 @@ class ChildMyPageOption : Fragment() {
     val MODE_SETTING = "setting"
 
     var mAuthLoginModule: OAuthLogin? = null
-    var logoutBtn: TextView? = null
+    var logoutBtn: RelativeLayout? = null
+    var signoutBtn: RelativeLayout? = null
     var noticeSwitch: Switch? = null
     var lockSwitch: Switch? = null
     var blindSwitch: Switch? = null
 
     var backBtn: Button? = null
 
+    var loginBoolean: Boolean? = false
+    var networkService: NetworkService? = null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         var v = inflater!!.inflate(R.layout.child_mypage_option, container, false)
-
+        networkService = ApplicationController.instance!!.networkService
         logoutBtn = v!!.findViewById(R.id.logout_btn)
+        signoutBtn = v.findViewById(R.id.sign_out_btn)
         noticeSwitch = v.findViewById(R.id.notice_switch)
         lockSwitch = v.findViewById(R.id.lock_switch)
         blindSwitch = v.findViewById(R.id.blind_switch)
@@ -99,8 +110,7 @@ class ChildMyPageOption : Fragment() {
             if (lockSwitch!!.isChecked) {
                 SharedPreferInstance.getInstance(activity).putPreferBoolean("LOCK", true)
                 lockSwitch!!.setThumbResource(R.drawable.switch_thumb_on)
-//                var intent = Intent(activity,LockActivity::class.java)
-//                intent.putExtra("MODE",MODE_SETTING)
+
             } else {
                 SharedPreferInstance.getInstance(activity).putPreferBoolean("LOCK", false)
                 lockSwitch!!.setThumbResource(R.drawable.switch_thumb)
@@ -117,6 +127,10 @@ class ChildMyPageOption : Fragment() {
                 blindSwitch!!.setThumbResource(R.drawable.switch_thumb)
             }
         }
+        signoutBtn!!.setOnClickListener {
+            //            singOut()
+
+        }
         return v
     }
 
@@ -127,9 +141,38 @@ class ChildMyPageOption : Fragment() {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(activity, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
             } else {
-                lockSwitch!!.isChecked = false
-                //비밀번호 설정 취소하면 다시 lock false로
+                try {
+                    loginBoolean = data!!.getBooleanExtra("LOGIN_BOOLEAN", false)
+                    if (loginBoolean == true) {
+                        Toast.makeText(activity, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    lockSwitch!!.isChecked = false
+//                    //비밀번호 설정 취소하면 다시 lock false로
+                }
             }
         }
+    }
+
+    fun singOut() {
+        var getContentList = networkService!!.signOut(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
+
+        getContentList.enqueue(object : Callback<MyPageSignOutResponse> {
+            override fun onResponse(call: Call<MyPageSignOutResponse>?, response: Response<MyPageSignOutResponse>?) {
+
+                if (response!!.isSuccessful) {
+                    if (response.body().msg.equals("successful delete user")) {
+                        ApplicationController.instance!!.makeToast("회원탈퇴 되었습니다")
+                    }
+                } else {
+                    Log.i("status", "fail")
+                }
+            }
+
+            override fun onFailure(call: Call<MyPageSignOutResponse>?, t: Throwable?) {
+                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+                Log.i("status", "check")
+            }
+        })
     }
 }

@@ -48,9 +48,7 @@ class MypageMsgFragment : Fragment() {
         networkService = ApplicationController.instance!!.networkService
 
         v.messagebox_detail_back!!.setOnClickListener {
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            fragmentManager.popBackStack()
         }
 
         v.messagebox_detail_btn!!.setOnClickListener {

@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#990e1949"
-    tools:context="com.peaktime.dawntime.Community.CommunitySearchActivity">
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
 
 
     <RelativeLayout
         android:id="@+id/communitySearchTabLayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_centerVertical="true"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
@@ -23,19 +22,19 @@
                 android:id="@+id/communitySearchEditText"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginLeft="17dp"
                 android:layout_centerVertical="true"
-                android:drawablePadding="8dp"
-                android:paddingLeft="10dp"
-                android:inputType="text"
-                android:drawableLeft="@drawable/navi_search_gray"
-                android:hint="검색"
-                android:textSize="14dp"
-                android:textColorHint="#B5B5B5"
+                android:layout_marginLeft="17dp"
                 android:layout_toLeftOf="@+id/communitySearchCancelBtn"
                 android:background="@drawable/community_search"
+                android:drawableLeft="@drawable/navi_search_gray"
+                android:drawablePadding="8dp"
                 android:fontFamily="@font/noto_sans_cjk_kr_light"
+                android:hint="검색"
                 android:includeFontPadding="false"
+                android:inputType="text"
+                android:paddingLeft="10dp"
+                android:textColorHint="#B5B5B5"
+                android:textSize="14dp"
                 />
 
             <ImageButton
@@ -48,7 +47,11 @@
                 android:paddingTop="10dp"
                 android:src="@drawable/navi_cancel_navy" />
         </RelativeLayout>
-
     </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

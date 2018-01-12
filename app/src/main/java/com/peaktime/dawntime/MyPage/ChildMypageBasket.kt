@@ -48,9 +48,7 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
 
         //뒤로가기
         v.basket_back_btn.setOnClickListener{
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            fragmentManager.popBackStack()
         }
         getBasketList()
         return v

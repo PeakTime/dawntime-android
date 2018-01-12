@@ -47,7 +47,9 @@ class PasswordCheckActivity : AppCompatActivity() {
         if (password == inputNum) {
 
             SharedPreferInstance.getInstance(this).putPreferString("PASSWORD", password as String)
-            setResult(Activity.RESULT_OK, null)
+            var intent = Intent()
+            intent.putExtra("LOGIN_BOOLEAN", true)
+            setResult(Activity.RESULT_OK, intent)
             finish()
         } else {
             order = 1
@@ -158,5 +160,13 @@ class PasswordCheckActivity : AppCompatActivity() {
             }
         }
         changeEvent(order)
+
+        var j = 0
+        for (j in 0..list.size - 1) {
+            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))
+        }
+        Log.i("inputNum", inputNum)
+        Log.i("order", order.toString())
+        Log.i("size", list.size.toString())
     }
 }

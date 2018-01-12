@@ -100,35 +100,9 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             startActivityForResult(intent, 0)
         }
 
-//        val listener = object : OnMenuItemClickListener() {
-
-//            fun onMenuItemClick(item: MenuItem): Boolean {
-//
-
-//                when (item.getItemId()) {
-//                //눌러진 MenuItem의 Item Id를 얻어와 식별
-//
-//                    R.id.save ->
-//                        Toast.makeText(this@MainActivity, "SAVE", Toast.LENGTH_SHORT).show()
-//                    R.id.search ->
-//                        Toast.makeText(this@MainActivity, "SEARCH", Toast.LENGTH_SHORT).show()
-//                    R.id.setting ->
-//                        Toast.makeText(this@MainActivity, "SETTING", Toast.LENGTH_SHORT).show()
-//                }
-//                return false
-//            }
-//       }
         //글 검색
         v.community_search.setOnClickListener {
-//            val fm = activity.fragmentManager
-//            val transacton = fm.beginTransaction()
-//            val fragment = CommunitySearchFragment()
-//            //val bundle = Bundle()
-//            //bundle.putInt("index", communityList!!.getChildAdapterPosition(p0!!))
-//            //fragment.arguments = bundle
-//            transacton.add(R.id.community_container, fragment, "detial")
-//            transacton.addToBackStack(null)
-//            transacton.commit()
+
             val fm = fragmentManager.beginTransaction()
             fm.add(R.id.community_container,CommunitySearchFragment(),"detail")
             fm.addToBackStack(null)
@@ -216,9 +190,21 @@ class CommunityFragment : Fragment(), View.OnClickListener {
                 tagList!!.remove(v.horsehead_9.text.toString())
             }
         }
+        val fm = fragmentManager
+//        fm.addOnBackStackChangedListener {
+//            try{
+//                getList()
+//            }
+//            catch(e : Exception){}
+//            Log.i("되나용2","sjdflksdjk")
+//        }
 
+        fm.removeOnBackStackChangedListener {
+            Log.i("되나용", "sjdflksdjk")
+        }
         return v
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == AppCompatActivity.RESULT_OK) {
@@ -275,7 +261,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             }
 
             override fun onFailure(call: Call<CommunityResponse>?, t: Throwable?) {
-                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
+//                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
                 Log.i("status", "check")
             }
         })

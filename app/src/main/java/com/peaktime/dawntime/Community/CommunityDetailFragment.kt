@@ -69,10 +69,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
             index = arguments.getInt("index")
         }
         v!!.community_backbtn!!.setOnClickListener {
-
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            fragmentManager.popBackStack()
         }
 
         likeCount = v!!.findViewById(R.id.unfireContents)
@@ -397,9 +394,8 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
                 if (response!!.isSuccessful) {
                     if (response.body().msg.equals("success")) {
                         ApplicationController.instance!!.makeToast("게시물이 삭제되었습니다.")
-                        val fm = fragmentManager.beginTransaction()
-                        fm.remove(this@CommunityDetailFragment)
-                        fm.commit()
+
+                        fragmentManager.popBackStack()
                     }
                 } else {
                     Log.i("status", "fail")
@@ -414,7 +410,7 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
     }
 
     fun replyDelete() {
-//        Log.i("qwerqwer",communityDetailReplyDatas!!.get(replyIndex).com_id.toString())
+
         var getContentList = networkService!!.replyDelete(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, CommunityReplyDeleteInstance(replyIndex))
 
         getContentList.enqueue(object : Callback<CommunityDeleteResponse2> {

@@ -4,17 +4,10 @@ import com.peaktime.dawntime.Column.ColumnListResponse
 import com.peaktime.dawntime.Column.ColumnResponse
 import com.peaktime.dawntime.Community.*
 import com.peaktime.dawntime.Home.HomeResponse
-import com.peaktime.dawntime.MyPage.MessageBoxResponse
-import com.peaktime.dawntime.MyPage.MyPageMycommentResponse
-import com.peaktime.dawntime.MyPage.MyPageMypostResponse
-import com.peaktime.dawntime.MyPage.MypageMessageDetailResponse
-import com.peaktime.dawntime.MyPage.SignInResponse
+import com.peaktime.dawntime.MyPage.*
 import com.peaktime.dawntime.Shop.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import com.peaktime.dawntime.Shop.ShopBestResponse
-import com.peaktime.dawntime.Shop.ShopDetailResponse
-import com.peaktime.dawntime.Shop.ShopLikeResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -261,5 +254,19 @@ interface NetworkService {
             @Header("user_token") user_token: String,
             @Body instance: CommunityReplyDeleteInstance)
             : Call<CommunityDeleteResponse2>
+
+    //게시물 검색
+    @FormUrlEncoded
+    @POST("board/search")
+    fun communitySearch(
+            @Header("user_token") user_token: String,
+            @Field("search_word") search_word: ArrayList<String>
+    ): Call<CommunitySearchResponse>
+
+    //회원탈퇴
+    @HTTP(method = "DELETE", path = "mypage/signout", hasBody = true)
+    fun signOut(
+            @Header("user_token") user_token: String)
+            : Call<MyPageSignOutResponse>//response 재사용
 
 }

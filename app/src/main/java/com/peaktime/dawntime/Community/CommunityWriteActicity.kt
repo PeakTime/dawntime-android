@@ -89,13 +89,16 @@ class CommunityWriteActicity : AppCompatActivity() {
             getDetail()
         }
         write_complete!!.setOnClickListener {
-            if (mode == "modify") {
-                modifyDetail()
-            } else {
-                boardWrite()
-            }
-            setResult(Activity.RESULT_OK)
-            finish()
+
+            if (!horsehead_button.text.toString().equals("머릿말 선택")) {
+                if (mode == "modify") {
+                    modifyDetail()
+                } else {
+                    boardWrite()
+                }
+            } else
+                Toast.makeText(this, "머릿말을 선택해주세요", Toast.LENGTH_SHORT).show()
+
         }
 
         horsehead_button!!.setOnClickListener {
@@ -297,6 +300,8 @@ class CommunityWriteActicity : AppCompatActivity() {
                 if (response!!.isSuccessful) {
                     if (response.body().msg.equals("successful")) {
                         ApplicationController.instance!!.makeToast("게시글이 등록되었습니다.")
+                        setResult(Activity.RESULT_OK)
+                        finish()
                     }
                 } else {
                     Log.i("status", "fail")
@@ -324,6 +329,8 @@ class CommunityWriteActicity : AppCompatActivity() {
                 if (response!!.isSuccessful) {
                     if (response.body().msg.equals("success")) {
                         ApplicationController.instance!!.makeToast("게시글이 수정되었습니다.")
+                        setResult(Activity.RESULT_OK)
+                        finish()
                     }
                 } else {
                     Log.i("status", "fail")

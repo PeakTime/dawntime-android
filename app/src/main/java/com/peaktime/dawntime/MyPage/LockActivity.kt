@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Vibrator
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -160,7 +161,7 @@ class LockActivity : AppCompatActivity() {
             }
             R.id.delete_btn -> {
                 if (order != 0) {
-                    if (list.size >= 1) {
+                    if (list.size > 1) {
                         order--
                         list.removeAt(order)
                         var temp = order - 1
@@ -168,17 +169,16 @@ class LockActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
         changeEvent(order)
 
-//        var j = 0
-//        for (j in 0..list.size - 1) {
-//            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))
-//        }
-//        Log.i("inputNum", inputNum)
-//        Log.i("order", order.toString())
-//        Log.i("size", list.size.toString())
+        var j = 0
+        for (j in 0..list.size - 1) {
+            Log.i("ㄴ어ㅣㄴ렁", j.toString() + " : " + list.get(j))
+        }
+        Log.i("inputNum", inputNum)
+        Log.i("order", order.toString())
+        Log.i("size", list.size.toString())
     }
 
     override fun onDestroy() {

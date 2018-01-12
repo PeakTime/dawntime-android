@@ -6,7 +6,6 @@ package com.peaktime.dawntime.MyPage
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -17,6 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.CommonData.communityDatas
+import com.peaktime.dawntime.CommonData.mycommentData
 import com.peaktime.dawntime.Community.CommunityAdapter
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.Community.CommunityList
@@ -29,8 +29,6 @@ import kotlinx.android.synthetic.main.mypage_my_written.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.content.Intent
-import com.peaktime.dawntime.CommonData.mycommentData
 
 
 /**
@@ -62,9 +60,7 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
 
         //뒤로가기
         v.my_written_btn.setOnClickListener{
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            fragmentManager.popBackStack()
         }
 
         getMycommentList()
@@ -82,6 +78,9 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
             changeTextcolor()
 
             getMypostList()
+        }
+        val fm = fragmentManager
+        fm.addOnBackStackChangedListener {
         }
 
         return v

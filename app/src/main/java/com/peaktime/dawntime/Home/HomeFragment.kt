@@ -1,23 +1,17 @@
 package com.peaktime.dawntime.Home
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Rect
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ScrollView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -27,17 +21,13 @@ import com.peaktime.dawntime.Column.ColumnListFragment
 import com.peaktime.dawntime.Community.CommunityDetailFragment
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
-import com.peaktime.dawntime.Shop.*
+import com.peaktime.dawntime.Shop.ShopDetailActivity
 import com.peaktime.dawntime.Shop.ShopToMainActivity
-import com.peaktime.dawntime.Shop.ShopActivity
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.Serializable
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment(), View.OnClickListener,Serializable {
 
@@ -85,7 +75,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
         requestManager = Glide.with(this)
 
         var mLayoutManager: LinearLayoutManager = LinearLayoutManager(activity)
-        mLayoutManager!!.orientation = LinearLayoutManager.HORIZONTAL
+        mLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         shoplistRecycler = v.findViewById(R.id.shop_recycler_list)
         shoplistRecycler!!.layoutManager = mLayoutManager
@@ -126,10 +116,6 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
 
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
     override fun onResume() {
         super.onResume()
         if(PeektimeObject.flag == 1) {
@@ -142,6 +128,8 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
 
 
     fun getHomeData(user_blind: Boolean) {
+
+
         val getContentList = networkService!!.getHome(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
         getContentList.enqueue(object : Callback<HomeResponse> {
 
@@ -152,7 +140,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                         columnBannerDatas = response.body().main_column
                         peektimeDatas = response.body().main_peaktime
 
-                        PeektimeObject!!.peektimeDatas = peektimeDatas
+                        PeektimeObject.peektimeDatas = peektimeDatas
 
                         shoplistAdapter = ShoplistAdapter(shoplistDatas, requestManager!!, user_blind)
                         shoplistAdapter!!.setOnClickListener(View.OnClickListener { v: View? ->
@@ -194,7 +182,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                         shoplistRecycler!!.adapter = shoplistAdapter
 
                         columnBannerScroll!!.adapter = columnBannerAdapter
-                        columnBannerScroll!!.setCurrentItem(shoplistDatas!!.size * 1000)
+                        columnBannerScroll!!.currentItem = shoplistDatas!!.size * 1000
 
                         peektimeGridView!!.adapter = peektimeGridAdapter
 
@@ -251,8 +239,8 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                 var childFm = fragmentManager.beginTransaction()
                 var fragment: ColumnListFragment = ColumnListFragment()
                 childFm!!.replace(R.id.home_fragment_container, fragment)
-                childFm!!.addToBackStack(null)
-                childFm!!.commit()
+                childFm.addToBackStack(null)
+                childFm.commit()
             }
             R.id.peektime_btn -> {
                 if (SharedPreferInstance.getInstance(activity).getPreferBoolean("LOGIN")!!) {
@@ -261,8 +249,8 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
                     val fragment = PeektimeFragment()
                     if (!fragment.isAdded) {
                         childFm!!.replace(R.id.home_fragment_container, fragment)
-                        childFm!!.addToBackStack(null)
-                        childFm!!.commit()
+                        childFm.addToBackStack(null)
+                        childFm.commit()
                     }
                 }else {
                     //로그인 팝업

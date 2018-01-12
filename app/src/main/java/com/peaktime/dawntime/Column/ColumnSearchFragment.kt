@@ -72,8 +72,6 @@ class ColumnSearchFragment : Fragment() {
                 }
                 else ->
                 {
-
-
                     return@setOnEditorActionListener false
                 }// 기본 엔터키 동작
 
@@ -98,9 +96,9 @@ class ColumnSearchFragment : Fragment() {
         getContentList.enqueue(object : Callback<ColumnListResponse>{
             override fun onResponse(call: Call<ColumnListResponse>?, response: Response<ColumnListResponse>?) {
                 if(response!!.isSuccessful){
-                    if(response!!.body().status.equals("success")){
-                        if(!response!!.body().msg.equals("successful search the column list but no data")) {
-                            columnSearchDatas = response!!.body().result
+                    if (response.body().status.equals("success")) {
+                        if (!response.body().msg.equals("successful search the column list but no data")) {
+                            columnSearchDatas = response.body().result
                             Log.e("aaaaa", columnSearchDatas!!.get(0).column_title)
                             columnSearchAdapter = ColumnListAdapter(columnSearchDatas, requestManager!!)
                             columnSearchAdapter!!.setOnItemClickListener(View.OnClickListener { v: View? ->

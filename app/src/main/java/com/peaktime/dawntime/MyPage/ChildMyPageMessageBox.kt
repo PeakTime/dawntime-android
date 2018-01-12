@@ -46,9 +46,7 @@ class ChildMyPageMessageBox : Fragment(), View.OnClickListener {
         getList()
 
         v.back_btn.setOnClickListener {
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            fragmentManager.popBackStack()
         }
 
         return v

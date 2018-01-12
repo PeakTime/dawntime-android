@@ -41,7 +41,6 @@ class CommunityAdapter(var dataList: ArrayList<CommunityList>?, var requestManag
             holder.scrap_image.setImageResource(R.drawable.view_scrap_yellow)
         else
             holder.scrap_image.setImageResource(R.drawable.view_unscrap_navy)
-
     }
 
     override fun getItemCount(): Int = dataList!!.size
