@@ -21,7 +21,6 @@ import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
 import kotlinx.android.synthetic.main.child_mypage_scrap.view.*
-import kotlinx.android.synthetic.main.mypage_my_written.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,10 +48,16 @@ class ChildMypageScrap: Fragment(), View.OnClickListener {
 
         //뒤로가기
         v.scrap_back_btn.setOnClickListener{
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            fragmentManager.popBackStack()
         }
+        val fm = fragmentManager
+        fm.addOnBackStackChangedListener {
+            try {
+                getScrapList()
+            } catch (e: Exception) {
+            }
+        }
+
         getScrapList()
         return v
     }
@@ -77,7 +82,6 @@ class ChildMypageScrap: Fragment(), View.OnClickListener {
                     Log.i("status", "fail")
                 }
             }
-
             override fun onFailure(call: Call<CommunityResponse>?, t: Throwable?) {
                 ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
                 Log.i("status", "check")

@@ -191,17 +191,13 @@ class CommunityFragment : Fragment(), View.OnClickListener {
             }
         }
         val fm = fragmentManager
-//        fm.addOnBackStackChangedListener {
-//            try{
-//                getList()
-//            }
-//            catch(e : Exception){}
-//            Log.i("되나용2","sjdflksdjk")
-//        }
-
-        fm.removeOnBackStackChangedListener {
-            Log.i("되나용", "sjdflksdjk")
+        fm.addOnBackStackChangedListener {
+            try {
+                getList()
+            } catch (e: Exception) {
+            }
         }
+
         return v
     }
 

@@ -76,6 +76,16 @@ class CommunitySearchFragment : Fragment(), View.OnClickListener {
 
     fun communitySearch() {
         contentsList = searchEdit!!.text.toString().split(" ") as ArrayList<String>
+
+        try {
+            if (contentsList!!.size == 1) {
+                contentsList!!.add("defaultabcabcabc")
+            }
+        } catch (e: Exception) {
+            Log.i("errror : ", "문자열 파싱 에러")
+        }
+        Log.i("넘길 문자열 ", contentsList!!.size.toString() + communityList!!.toString())
+
         var getContentList = networkService!!.communitySearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, contentsList!!)
         getContentList.enqueue(object : Callback<CommunitySearchResponse> {
             override fun onResponse(call: Call<CommunitySearchResponse>?, response: Response<CommunitySearchResponse>?) {

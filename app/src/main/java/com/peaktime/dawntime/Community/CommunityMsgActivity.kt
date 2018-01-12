@@ -40,6 +40,7 @@ class CommunityMsgActivity : AppCompatActivity() {
 
                 if (response!!.isSuccessful) {
                     ApplicationController.instance!!.makeToast("쪽지가 보내졌습니다.")
+                    finish()
 
                 } else {
                     Log.i("status", "fail")

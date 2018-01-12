@@ -131,9 +131,14 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
             reReplyParentNum = 0
             replyEdit!!.setText("")
         }
-
-
-
+//        val fm = fragmentManager
+//        fm.addOnBackStackChangedListener {
+//            try{
+////                getDetail()
+//            }
+//            catch(e : Exception){}
+//            Log.i("되나나나","sjdflksdjk")
+//        }
         return v!!
     }
 
@@ -218,7 +223,6 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
 
         getContentList.enqueue(object : Callback<CommunityDetailResponse> {
             override fun onResponse(call: Call<CommunityDetailResponse>?, response: Response<CommunityDetailResponse>?) {
-
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("success")) {
                         communityDetailDatas = response.body().boardResult
@@ -381,7 +385,8 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == AppCompatActivity.RESULT_OK) {
-
+            var ft = fragmentManager.beginTransaction()//새로고침
+            ft.detach(this@CommunityDetailFragment).attach(this@CommunityDetailFragment).commit()
         }
     }
 
