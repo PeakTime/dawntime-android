@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:textColor="#001960"
             android:text="내가 쓴글"
             android:textSize="20dp" />
 
@@ -38,14 +39,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FCFCFC">
 
         <LinearLayout
             android:id="@+id/mypost_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
             android:gravity="center">
@@ -76,13 +77,13 @@
             android:layout_width="0.25dp"
             android:layout_height="match_parent"
             android:background="#001960"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"/>
 
         <LinearLayout
             android:id="@+id/mycomment_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1"
             android:gravity="center">
@@ -92,6 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
+
                 android:textSize="14dp"
                 android:textColor="#000000"
                 android:layout_centerInParent="true"

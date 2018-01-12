@@ -9,7 +9,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="56dp"
+        android:elevation="2dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -17,7 +18,7 @@
             android:layout_centerInParent="true"
             android:text="설정"
             android:textColor="#001960"
-            android:textSize="25sp" />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/back_btn"
@@ -27,10 +28,12 @@
             android:background="@drawable/navi_back_navy" />
     </RelativeLayout>
 
+<!--
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#B3BACE" />
+-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +57,7 @@
                 android:fontFamily="@font/notosansmonocjkkr_regular"
                 android:text="알림"
                 android:textColor="#4f4f4f"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <Switch
                 android:id="@+id/notice_switch"
@@ -68,8 +71,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#B3BACE" />
+            android:layout_height="0.25dp"
+            android:background="#001960" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -83,7 +86,7 @@
                 android:fontFamily="@font/notosansmonocjkkr_regular"
                 android:text="잠금"
                 android:textColor="#4f4f4f"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <Switch
                 android:id="@+id/lock_switch"
@@ -98,8 +101,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#B3BACE" />
+            android:layout_height="0.25dp"
+            android:background="#001960" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -114,7 +117,7 @@
                 android:fontFamily="@font/notosansmonocjkkr_regular"
                 android:text="블라인드"
                 android:textColor="#4f4f4f"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,7 +128,7 @@
                 android:fontFamily="@font/notosansmonocjkkr_regular"
                 android:text="홈 화면의 베스트 상품 사진을 필터링합니다."
                 android:textColor="#a8a8a8"
-                android:textSize="8sp" />
+                android:textSize="10dp" />
 
 
             <Switch
@@ -141,8 +144,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#B3BACE" />
+            android:layout_height="0.25dp"
+            android:background="#001960" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -157,14 +160,14 @@
                 android:fontFamily="@font/notosansmonocjkkr_regular"
                 android:text="로그아웃"
                 android:textColor="#4f4f4f"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#B3BACE" />
+            android:layout_height="0.25dp"
+            android:background="#001960" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -178,21 +181,21 @@
                 android:fontFamily="@font/notosansmonocjkkr_regular"
                 android:text="회원탈퇴"
                 android:textColor="#4f4f4f"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#B3BACE" />
+            android:layout_height="0.25dp"
+            android:background="#001960" />
 
     </LinearLayout>
 
-    <View
+<!--    <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_gravity="bottom"
-        android:background="#B3BACE" />
+        android:background="#B3BACE" />-->
 
 </LinearLayout>

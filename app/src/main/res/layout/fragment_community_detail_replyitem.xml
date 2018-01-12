@@ -14,9 +14,10 @@
             android:id="@+id/reply_writer_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
             android:includeFontPadding="false"
             android:text="익명"
+            android:textSize="13dp"
             android:textColor="#0E1949" />
 
         <TextView
@@ -24,10 +25,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_alignBaseline="@+id/reply_writer_text"
             android:layout_toRightOf="@id/reply_writer_text"
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"
             android:text="날짜"
+            android:textSize="9dp"
             android:textColor="#0E1949" />
 
 
@@ -40,6 +43,7 @@
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"
             android:text="내용"
+            android:textSize="13dp"
             android:textColor="#0E1949" />
 
         <Button
@@ -47,7 +51,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/view_comment_cacel_navy" />
+            android:background="@drawable/view_comment_cacel_navy"/>
 
     </RelativeLayout>
 </LinearLayout>

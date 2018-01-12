@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -58,6 +59,12 @@ class CommunityWriteActicity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community_write_acticity)
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_home)
+        }
+
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
         mode = intent.getStringExtra("MODE")
@@ -98,6 +105,14 @@ class CommunityWriteActicity : AppCompatActivity() {
             val dialogView = inflater.inflate(R.layout.fragment_community_write_horseheaddialog, null)
             horseheadDialog.setView(dialogView)
             val alertDialog = horseheadDialog.create()
+/*
+
+//            WindowManager.LayoutParams wm = WindowManager.LayoutParams();
+                wm.copyFrom(dialog.getWindow().getAttributes());
+                wm.width=200;
+                wm.height=200;
+*/
+
             alertDialog.show()
 
             var btn_horsehead0 = dialogView.findViewById<Button>(R.id.horsehead0)

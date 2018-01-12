@@ -41,6 +41,7 @@
                     android:id="@+id/shopSearchEditText"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
+                    android:maxLength="15"
                     android:hint="입력하기"
                     android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:includeFontPadding="false"
@@ -87,6 +88,7 @@
             android:layout_margin="3dp"
             android:textColor="#ED508E"
             android:text="가격대"
+            android:textSize="15dp"
             android:fontFamily="@font/noto_sans_cjk_kr_medium"
             android:includeFontPadding="false"/>
 

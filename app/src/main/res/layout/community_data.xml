@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:background="@drawable/datadrawable"
-    android:orientation="horizontal"
-    >
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/layout1"
@@ -21,7 +20,7 @@
             android:background="@drawable/navydrawable"
             android:paddingLeft="13dp"
             android:paddingRight="13dp"
-            android:paddingTop="3dp"
+            android:gravity="center"
             android:text="리뷰"
             android:textColor="#FFFFFF"
             android:textSize="11dp" />
@@ -56,6 +55,8 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_cjk_kr_medium"
+                android:includeFontPadding="false"
                 android:text="title"
                 android:textSize="15dp" />
 
@@ -63,8 +64,10 @@
                 android:id="@+id/contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                android:includeFontPadding="false"
                 android:text="contents"
-                android:textSize="17dp" />
+                android:textSize="12dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,6 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/view_unfire_navy" />
+
             <TextView
                 android:id="@+id/unfireContents"
                 android:layout_width="wrap_content"
@@ -92,7 +96,8 @@
                 android:id="@+id/reply_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/view_reply_navy"/>
+                android:src="@drawable/view_reply_navy" />
+
             <TextView
                 android:id="@+id/unreplyContents"
                 android:layout_width="wrap_content"
@@ -108,7 +113,8 @@
                 android:id="@+id/scrap_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/view_unscrap_navy"/>
+                android:src="@drawable/view_unscrap_navy" />
+
             <TextView
                 android:id="@+id/unstarContents"
                 android:layout_width="wrap_content"
@@ -121,4 +127,11 @@
         </LinearLayout>
     </RelativeLayout>
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#001960" />
 </RelativeLayout>

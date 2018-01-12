@@ -11,7 +11,9 @@
         android:id="@+id/community_tab"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:elevation="2dp"
+        >
 
         <ImageButton
             android:id="@+id/messagebox_detail_back"
@@ -62,7 +64,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/view_textbox_white"
                 android:hint="쪽지를 입력하세요"
-                android:paddingLeft="10dp" />
+                android:paddingLeft="10dp"
+                android:textSize="13dp"/>
 
             <Button
                 android:id="@+id/messagebox_detail_btn"

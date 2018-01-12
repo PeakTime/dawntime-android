@@ -6,6 +6,7 @@
     <TextView
         android:id="@+id/brand_tab_text"
         android:text="BRAND"
+        android:textSize="15dp"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

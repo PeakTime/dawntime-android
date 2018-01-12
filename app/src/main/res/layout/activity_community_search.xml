@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
             <EditText
                 android:id="@+id/communitySearchEditText"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:layout_marginLeft="17dp"
                 android:layout_centerVertical="true"
@@ -32,6 +32,7 @@
                 android:hint="검색"
                 android:textSize="14dp"
                 android:textColorHint="#B5B5B5"
+                android:layout_toLeftOf="@+id/communitySearchCancelBtn"
                 android:background="@drawable/community_search"
                 android:fontFamily="@font/noto_sans_cjk_kr_light"
                 android:includeFontPadding="false"
@@ -39,10 +40,10 @@
 
             <ImageButton
                 android:id="@+id/communitySearchCancelBtn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
+                android:layout_alignParentTop="true"
                 android:background="@android:color/transparent"
                 android:paddingTop="10dp"
                 android:src="@drawable/navi_cancel_navy" />

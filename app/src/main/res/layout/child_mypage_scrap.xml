@@ -8,15 +8,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp">
-ㅡ
+        android:layout_height="56dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="스크랩"
             android:textColor="#001960"
-            android:textSize="25sp" />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/scrap_back_btn"
@@ -26,10 +26,10 @@
             android:background="@drawable/navi_back_navy" />
     </RelativeLayout>
 
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#B3BACE" />
+        android:background="#B3BACE" />-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/scrap_list"
@@ -42,8 +42,8 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <View
+   <!-- <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#B3BACE" />
+        android:background="#B3BACE" />-->
 </LinearLayout>

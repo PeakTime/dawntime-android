@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_centerHorizontal="true"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:elevation="2dp">
 
         <ImageButton
             android:id="@+id/community_backbtn1"
@@ -34,41 +35,46 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="15dp"
+        android:layout_margin="16dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <EditText
             android:id="@+id/b_title"
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="33dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/graylinedrawable"
             android:hint="제목"
+            android:textSize="12dp"
             android:padding="5dp" />
 
         <EditText
             android:id="@+id/contents"
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="240dp"
             android:background="@drawable/graylinedrawable"
             android:gravity="top"
-            android:hint="해당 게시물이 악의적인 내용이나..."
+            android:textSize="12dp"
+            android:hint="해당 게시물이 악의적인 내용이나 정치적글\n편향된 글을 작성시 신고 대상이 되어\n삭제되어 질 수 있습니다."
             android:padding="10dp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_height="32dp"
+        android:gravity="center"
         android:layout_gravity="center">
 
         <Button
             android:id="@+id/horsehead_button"
             android:layout_width="136dp"
-            android:layout_height="32dp"
+            android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:background="@drawable/graylinedrawable"
             android:text="머릿말 선택"
@@ -77,7 +83,7 @@
         <Button
             android:id="@+id/picture_button"
             android:layout_width="136dp"
-            android:layout_height="32dp"
+            android:layout_height="match_parent"
             android:background="@drawable/graylinedrawable"
             android:text="사진 추가"
             android:textSize="14dp" />
@@ -148,10 +154,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="328dp"
+        android:layout_width="match_parent"
         android:layout_height="33dp"
         android:layout_gravity="center"
-        android:layout_marginTop="14dp"
+        android:layout_margin="15dp"
         android:orientation="vertical">
 
         <Button

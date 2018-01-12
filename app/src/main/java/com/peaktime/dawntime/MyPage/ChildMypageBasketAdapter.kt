@@ -1,21 +1,14 @@
 package com.peaktime.dawntime.MyPage
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.R
-import com.peaktime.dawntime.SharedPreferInstance
 import com.peaktime.dawntime.Shop.ShopBestData
-import com.peaktime.dawntime.Shop.ShopLikeResponse
-import com.peaktime.dawntime.Shop.ShopToMainActivity
 import com.peaktime.dawntime.Shop.ShopViewHolder
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * Created by 예은 on 2018-01-11.

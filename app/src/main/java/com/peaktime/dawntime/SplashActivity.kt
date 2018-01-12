@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
         var splashGIF = findViewById<ImageView>(R.id.splash_image)
         var gifImage = GlideDrawableImageViewTarget(splashGIF)
-        Glide.with(this).load(R.drawable.dawntime_splash).into(gifImage)
+        Glide.with(this).load(R.drawable.splash_android).into(gifImage)
 
         var mNetworkState = getNetworkInfo()//인터넷 연결 검사
         if (mNetworkState != null && mNetworkState.isConnected) {
@@ -38,7 +38,8 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
 
-        SharedPreferInstance.getInstance(this).putPreferString("TOKEN", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0MywidXNlcl9lbWFpbCI6IuuPheqzoO2YhOyYgSIsInVzZXJfdWlkIjoiMjE2NTIxNDg0MjEiLCJpYXQiOjE1MTU1OTYzMjEsImV4cCI6MTUyNDIzNjMyMX0.mDxW-BRxqdl3UUiVtrYjBts2AaFATetMCoOW1xnDj6sKUy3Amqc-ushKnHV4b45WpdtzdULvwya0mglh7vCYyw")
+        SharedPreferInstance.getInstance(this).putPreferString("TOKEN", "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2VtYWlsIjoi7JiB66-866-86rK9IiwidXNlcl91aWQiOiIxMzIxMjEzMTMxIiwiaWF0IjoxNTE1NzQzODQ5LCJleHAiOjE1MTU4" +
+                "MzAyNDl9.J_0Ns7_TKsjFE29upzHhL3F8udL7ZMR6bwREAVG4vY_4h4A3kBjtkXOxkWI54PhAWzcEVN9roqUb1e2kp_AJdg")
 
         val handler = Handler()
         handler.postDelayed({

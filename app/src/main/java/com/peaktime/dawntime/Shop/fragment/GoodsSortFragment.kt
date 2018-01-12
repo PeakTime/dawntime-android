@@ -11,10 +11,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-
 import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
@@ -172,6 +170,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                     Log.e("통신", "데이터 없음")
                     ApplicationController.instance!!.makeToast("검색 결과가 없습니다.")
                 }
+
             }
 
             override fun onFailure(call: Call<ShopBestResponse>?, t: Throwable?) {
@@ -190,6 +189,8 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
         intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
 
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id) //받는 데이터의 상품아이디
+        CommonData.shopLikeSend = v!!.findViewById(R.id.shopLikeBtn)
+
         startActivity(intent)
     }
 

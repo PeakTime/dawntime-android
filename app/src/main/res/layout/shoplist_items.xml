@@ -29,7 +29,6 @@
         android:id="@+id/shoplist_text"
         android:text="goods"
         android:textSize="11dp"
-
         android:textAlignment="center"
         android:fontFamily="@font/noto_sans_cjk_kr_light"
         android:ellipsize="marquee"

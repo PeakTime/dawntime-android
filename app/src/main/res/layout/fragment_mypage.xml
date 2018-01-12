@@ -13,7 +13,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="56dp"
+            android:elevation="2dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -22,14 +23,14 @@
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:text="마이페이지"
                 android:textColor="#001960"
-                android:textSize="25sp" />
+                android:textSize="20dp" />
 
         </RelativeLayout>
 
-        <View
+ <!--       <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#B3BACE" />
+            android:background="#B3BACE" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,7 +108,7 @@
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#4D001960" />
+                android:background="#001960" />
 
             <Button
                 android:id="@+id/my_written_btn"
@@ -120,13 +121,13 @@
                 android:includeFontPadding="false"
                 android:text="내가 쓴글"
                 android:textColor="#0E1949"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#4D001960" />
+                android:background="#001960" />
 
             <Button
                 android:id="@+id/scrap_btn"
@@ -139,13 +140,13 @@
                 android:includeFontPadding="false"
                 android:text="스크랩"
                 android:textColor="#0E1949"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#4D001960" />
+                android:background="#001960" />
 
             <Button
                 android:id="@+id/message_btn"
@@ -158,13 +159,13 @@
                 android:includeFontPadding="false"
                 android:text="쪽지함"
                 android:textColor="#0E1949"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <View
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#4D001960" />
+                android:background="#001960" />
 
             <Button
                 android:id="@+id/basket_btn"
@@ -177,7 +178,7 @@
                 android:includeFontPadding="false"
                 android:text="찜 목록"
                 android:textColor="#ED508E"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <View
                 android:id="@+id/view5"
@@ -196,21 +197,21 @@
                 android:includeFontPadding="false"
                 android:text="설정"
                 android:textColor="#4F4F4F"
-                android:textSize="20sp" />
+                android:textSize="14dp" />
 
             <View
                 android:id="@+id/view6"
                 android:layout_width="match_parent"
                 android:layout_height="0.25dp"
-                android:background="#4D4F4F4F" />
+                android:background="#001960" />
 
         </LinearLayout>
 
-        <View
+ <!--       <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_gravity="bottom"
-            android:background="#B3BACE" />
+            android:background="#B3BACE" />-->
     </LinearLayout>
 
 </FrameLayout>

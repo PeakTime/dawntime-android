@@ -16,12 +16,12 @@
             android:layout_marginTop="9dp"
             android:text="title"
             android:textSize="17dp"
-            android:ellipsize="end"
+            android:maxLength="7"
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:includeFontPadding="false"
-            android:fontFamily="@font/noto_sans_cjk_kr_medium"/>
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"/>
 
         <TextView
             android:id="@+id/peektime_item_text"
