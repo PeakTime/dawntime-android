@@ -108,6 +108,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                     shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
+                    Log.v("ygGoodsSort", "ygGoodsSort")
                 }
             }
 
@@ -131,6 +132,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                     shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                     shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                     shopList!!.adapter = shopAdapter
+                    Log.v("goodsSoft2", "goodsSofrt2")
                 }
             }
 
@@ -154,6 +156,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                         shopAdapter = ShopAdapter(shopBestDatas, requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                         shopList!!.adapter = shopAdapter
+                        Log.v("goodsSoft23", "goodsSofrt23")
                     }
                     else if (response!!.body().message.equals("successful get search result : no data")) {
 

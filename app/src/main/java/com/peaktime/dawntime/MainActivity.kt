@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var isLogin: Boolean? = null
+    private var prePosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = this.resources.getColor(R.color.status_home)
         }
 
+        //shared isLogin
+        main_tab.removeAllTabs()
+        //if(isLogin)
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_home))
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_comu))
         main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_shop))
@@ -43,7 +47,6 @@ class MainActivity : AppCompatActivity() {
         var tabAdapter = TabAdapter(supportFragmentManager,main_tab.tabCount)
 
         var tabStrip = main_tab.getChildAt(0) as LinearLayout
-
         tabStrip.getChildAt(2).setOnTouchListener(fun(v : View, event: MotionEvent) : Boolean{
             if(event.action == MotionEvent.ACTION_UP ){
 //                ShopToMainActivity.bestFlagFun.bestFlag = 0
@@ -58,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             }
             return true
         })
-
 
         main_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -93,7 +95,7 @@ class MainActivity : AppCompatActivity() {
      //                   bundle.putString("title",firstText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))
                             ReplaceFragment(HomeFragment(), "home")
-
+                        prePosition = 0
                     }
                     1->{
                         val bundle = Bundle()
@@ -104,7 +106,19 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             //로그인 팝업
-                            startActivity(Intent(this@MainActivity,LoginDialog::class.java))
+                            //이전 포지션으로 돌아가기
+                            startActivity(Intent(applicationContext, LoginDialog::class.java))
+                            //tab!!.position. = prePosition
+                            // = prePosition
+                            //R.id.
+
+                            var tab2 = main_tab.getTabAt(prePosition)
+                            //main_tab.getTabAt(0)
+                            tab2!!.select()
+
+                                //main_tab.removeTabAt(1)
+                                ////main_tab.addTab(main_tab.newTab().setCustomView(R.layout.customtab_comu), 1)
+
                         }
                     }
                     2->{
@@ -118,6 +132,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     3->{
+                        prePosition = 3
                         val bundle = Bundle()
     //                    bundle.putString("title",fourthText.text.toString())
                         //AddFragment(FirstFragment(),bundle,"first",supportFragmentManager.findFragmentById(R.id.main_container))

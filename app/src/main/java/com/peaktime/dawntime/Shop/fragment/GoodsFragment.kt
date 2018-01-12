@@ -108,6 +108,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
                         shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_HOME_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
                         shopList!!.adapter = shopAdapter
+                        Log.v("godds1", "goods1")
                     }
                 } else {
                     Log.i("status", "fail")
@@ -139,6 +140,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
                         shopBestDatas = response.body().result
                         shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsFragment)
+                        Log.v("godds2", "goods1")
                         shopList!!.adapter = shopAdapter
                     }
                 } else {

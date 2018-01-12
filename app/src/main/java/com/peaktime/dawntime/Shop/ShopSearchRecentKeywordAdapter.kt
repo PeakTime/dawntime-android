@@ -1,5 +1,7 @@
 package com.peaktime.dawntime.Shop
 
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +13,10 @@ import com.bumptech.glide.RequestManager
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
+import com.peaktime.dawntime.R.id.famous_keword_list
+import com.peaktime.dawntime.R.id.recent_keword_list
 import com.peaktime.dawntime.SharedPreferInstance
+import kotlinx.android.synthetic.main.activity_shop_search.*
 import kotlinx.android.synthetic.main.recent_keword_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +30,16 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
     private var mainView : View?=null
     private var onItemClick : View.OnClickListener? = null
     var networkService: NetworkService? = null
+    var requestManager: RequestManager? = null
+
+
+
+    private  var famousKeywordData : ArrayList<String>? = null
+    private  var recentKeywordData : ArrayList<String>? = null
+    private  var famousAdapter : ShopSearchFamousKeywordAdapter? = null
+    private  var recentAdapter : ShopSearchRecentKeywordAdapter? = null
+
+
 
 
     fun setOnItemClickListener(l: View.OnClickListener){
@@ -34,6 +49,7 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ShopSearchRecentKeywordViewHolder {
         mainView = LayoutInflater.from(parent!!.context).inflate(R.layout.recent_keword_item, parent, false)
         mainView!!.setOnClickListener(onItemClick)
+        requestManager = Glide.with(mainView!!.context)
         return ShopSearchRecentKeywordViewHolder(mainView)
     }
 
@@ -42,18 +58,22 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
         holder!!.recentKeywordName.setText(dataList!!.get(position))
 
         networkService = ApplicationController.instance!!.networkService
-
-        mainView!!.delete_btn.setOnClickListener{
-
-//            Toast.makeText(mainView!!.context, dataList!!.get(position), Toast.LENGTH_SHORT).show()
-
+        holder!!.deleteKeywordBtn.setOnClickListener {
+            Log.e("position", position.toString())
             deleteKeyword(position)
-            deleteItem(holder, position)
-//            mainView!!.kind_name_textview.setText("바뀜")
         }
+//        mainView!!.delete_btn.setOnClickListener{
+//
+////            Toast.makeText(mainView!!.context, dataList!!.get(position), Toast.LENGTH_SHORT).show()
+//            Log.e("position", position.toString())
+//            deleteKeyword(position)
+////            deleteItem(holder, position)
+////            mainView!!.kind_name_textview.setText("바뀜")
+//        }
 
 
     }
+
 
     fun deleteKeyword(position: Int){
         var deleteKeyword = networkService!!.deleteKeyword(SharedPreferInstance.getInstance(mainView!!.context).getPreferString("TOKEN")!!, dataList!!.get(position))
@@ -63,9 +83,11 @@ class ShopSearchRecentKeywordAdapter(var dataList : ArrayList<String>?, var requ
                     //pokemonList!!.layoutManager = LinearLayoutManager(this)
                     if (response.body().message.equals("successful delete keyword")) {
 
-
                         dataList!!.removeAt(position)
-                        notifyItemRemoved(position)
+                        Log.v("posotion", position.toString())
+                        Log.v("size", dataList!!.size.toString())
+                        //notifyItemRemoved(position)
+                        notifyDataSetChanged()
                         Toast.makeText(mainView!!.context, "삭제되었습니다", Toast.LENGTH_SHORT).show()
 
                     }

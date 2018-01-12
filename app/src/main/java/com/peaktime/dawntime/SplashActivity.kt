@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
         var splashGIF = findViewById<ImageView>(R.id.splash_image)
         var gifImage = GlideDrawableImageViewTarget(splashGIF)
-        Glide.with(this).load(R.drawable.splash_android).into(gifImage)
+        Glide.with(this).load(R.drawable.dawntime_splash).into(gifImage)
 
         var mNetworkState = getNetworkInfo()//인터넷 연결 검사
         if (mNetworkState != null && mNetworkState.isConnected) {

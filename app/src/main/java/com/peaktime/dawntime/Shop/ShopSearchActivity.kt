@@ -243,23 +243,33 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
     } //버튼이벤트 end
 
     private var famousClickListener = View.OnClickListener { v ->
-        val famous_idx : Int = famous_keword_list!!.getChildAdapterPosition(v) //position 받아오기
-        val famous_name : String = famousKeywordData!!.get(famous_idx) //포지션에 위치하는 이름받아오기
+    val famous_idx : Int = famous_keword_list!!.getChildAdapterPosition(v) //position 받아오기
+    val famous_name : String = famousKeywordData!!.get(famous_idx) //포지션에 위치하는 이름받아오기
 
-        var intent = Intent(this, ShopSearchResultActivity::class.java)
-        intent.putExtra("keyword", famous_name)
-        intent.putExtra("lowPrice", "-1")
-        intent.putExtra("highPrice", "-1")
+        if(famous_name==""){
+            Toast.makeText(this, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
+        }else{
+            var intent = Intent(this, ShopSearchResultActivity::class.java)
+            intent.putExtra("keyword", famous_name)
+            intent.putExtra("lowPrice", "-1")
+            intent.putExtra("highPrice", "-1")
 
-        startActivity(intent)
+            startActivity(intent)
 
-        } //famousClickListener end
+        }
 
-    private var recentClickListener = View.OnClickListener { v ->
 
-        val recent_idx : Int = recent_keword_list!!.getChildAdapterPosition(v) //position 받아오기
-        val recent_name : String = recentKeywordData!!.get(recent_idx) //포지션에 위치하는 이름받아오기
 
+} //famousClickListener end
+
+private var recentClickListener = View.OnClickListener { v ->
+
+    val recent_idx : Int = recent_keword_list!!.getChildAdapterPosition(v) //position 받아오기
+    val recent_name : String = recentKeywordData!!.get(recent_idx) //포지션에 위치하는 이름받아오기
+
+    if(recent_name==""){
+        Toast.makeText(this, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
+    }else{
         var intent = Intent(this, ShopSearchResultActivity::class.java)
         intent.putExtra("keyword", recent_name)
         intent.putExtra("lowPrice", "-1")
@@ -268,8 +278,12 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
         startActivity(intent)
 
+    }
 
-    } //recentClickListener end
+
+
+
+} //recentClickListener end
 
 
     fun getKeywordList(){
@@ -304,6 +318,9 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
             }
         })
     }
+
+
+
 
 
 }//final end

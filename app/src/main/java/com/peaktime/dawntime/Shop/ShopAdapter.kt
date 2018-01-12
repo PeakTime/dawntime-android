@@ -48,21 +48,41 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
         holder!!.shopName.setText(dataList!!.get(position).goods_name)
         holder!!.shopPrice.setText(dataList!!.get(position).goods_price)
 
+//        holder!!.shopImage.setOnClickListener {
+//            Log.v("ygClick", position.toString())
+//            Log.v("ygClick", bestFlag.toString())
+//
+//        }
+//
+//        holder!!.rankImage.setOnClickListener {
+//            Log.v("aaaaa", "Aaaaaaaaa")
+//        }
+
         if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP){
 
             if (position == 0) {
+                holder!!.rankImage.visibility = View.VISIBLE
                 holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no1)
 //                mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no1)
+                Log.v("ygClick1", position.toString())
 
             }
             if (position == 1) {
+                holder!!.rankImage.visibility = View.VISIBLE
                 holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no2)
                 //mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no2)
+                Log.v("ygClick2", position.toString())
 
             }
             if (position == 2) {
+                holder!!.rankImage.visibility = View.VISIBLE
                 holder!!.rankImage.setBackgroundResource(R.drawable.shop_view_best_no3)
                 //mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
+                Log.v("ygClick3", position.toString())
+            }
+            if(position > 2){
+                holder!!.rankImage.visibility = View.GONE
+
             }
         }
 

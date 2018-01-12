@@ -77,7 +77,7 @@ class ShopSearchResultActivity : FragmentActivity() ,View.OnClickListener{
 
                 //검색어만 보이게
 //                search = "#" + keyword
-                Toast.makeText(applicationContext, "이게나오면잘못된로직", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "이게나오면잘못된로직", Toast.LENGTH_SHORT).show()
 
             } else if (lowPrice == -1) {
 
