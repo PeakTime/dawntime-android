@@ -119,7 +119,7 @@
                 android:fontFamily="@font/notosanscjkkr_regular"
                 android:gravity="left|center_vertical"
                 android:includeFontPadding="false"
-                android:text="내가 쓴글"
+                android:text="내가 쓴 글"
                 android:textColor="#0E1949"
                 android:textSize="14dp" />
 

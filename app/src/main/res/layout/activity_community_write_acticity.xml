@@ -45,7 +45,7 @@
         <EditText
             android:id="@+id/b_title"
             android:layout_width="match_parent"
-            android:layout_height="33dp"
+            android:layout_height="35dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/graylinedrawable"
             android:hint="제목"
@@ -59,7 +59,7 @@
             android:background="@drawable/graylinedrawable"
             android:gravity="top"
             android:textSize="12dp"
-            android:hint="해당 게시물이 악의적인 내용이나 정치적글\n편향된 글을 작성시 신고 대상이 되어\n삭제되어 질 수 있습니다."
+            android:hint="해당 게시물이 악의적인 내용이나 정치적글 편향된 글을 작성시 신고 대상이 되어 삭제되어 질 수 있습니다."
             android:padding="10dp" />
     </LinearLayout>
 
@@ -67,13 +67,13 @@
         android:layout_width="match_parent"
         android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_height="32dp"
+        android:layout_height="35dp"
         android:gravity="center"
         android:layout_gravity="center">
 
         <Button
             android:id="@+id/horsehead_button"
-            android:layout_width="136dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:background="@drawable/graylinedrawable"
@@ -82,7 +82,7 @@
 
         <Button
             android:id="@+id/picture_button"
-            android:layout_width="136dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
             android:background="@drawable/graylinedrawable"
             android:text="사진 추가"

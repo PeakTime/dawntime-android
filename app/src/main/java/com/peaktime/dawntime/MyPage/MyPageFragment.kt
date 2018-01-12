@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -203,21 +202,6 @@ class MyPageFragment : Fragment() {
             view5!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
             view6!!.setBackgroundColor(Color.parseColor("#CCCCCC"))
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i("qwerty", "onCreate")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i("qwerty", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i("qwerty", "onResume")
     }
 
 }
