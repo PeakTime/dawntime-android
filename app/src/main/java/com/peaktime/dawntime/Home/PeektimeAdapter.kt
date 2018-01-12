@@ -29,6 +29,19 @@ class PeektimeAdapter(var dataList : ArrayList<CommunityList>? ) : RecyclerView.
         holder!!.peektimeLikeCnt.text = dataList!!.get(position).board_like.toString()
         holder!!.peektimeCommentCnt.text = dataList!!.get(position).com_count.toString()
         holder!!.peektimeScrapCnt.text = dataList!!.get(position).scrap_count.toString()
+        if(dataList!!.get(position).user_like){
+            holder!!.peektimeLikeImage.setBackgroundResource(R.drawable.view_fire_red)
+        }
+        else{
+            holder!!.peektimeLikeImage.setBackgroundResource(R.drawable.view_fire_white)
+        }
+
+        if(dataList!!.get(position).user_scrap){
+            holder!!.peektimeScrapImage.setBackgroundResource(R.drawable.view_scrap_yellow)
+        }
+        else{
+            holder!!.peektimeScrapImage.setBackgroundResource(R.drawable.view_scrap_white)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PeektimeViewHolder {

@@ -2,6 +2,7 @@ package com.peaktime.dawntime.Home
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.peaktime.dawntime.R
@@ -17,4 +18,6 @@ class PeektimeViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     var peektimeLikeCnt : TextView = itemView!!.findViewById(R.id.like_cnt_text)
     var peektimeCommentCnt : TextView = itemView!!.findViewById(R.id.comment_cnt_text)
     var peektimeScrapCnt : TextView = itemView!!.findViewById(R.id.scrap_cnt_text)
+    var peektimeLikeImage : ImageView = itemView!!.findViewById(R.id.like_image)
+    var peektimeScrapImage : ImageView = itemView!!.findViewById(R.id.scrap_image)
 }

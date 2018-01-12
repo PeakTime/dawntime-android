@@ -65,6 +65,7 @@ class PeektimeFragment : Fragment(),View.OnClickListener {
                                     peektimeDatas!!.get(peektimeRecycler!!.getChildLayoutPosition(v)).board_id
                             var bundle = Bundle()
                             bundle.putInt("index",board_id)
+                            bundle.putString("FlagCheck","flagOn")
                             var fragment = CommunityDetailFragment()
                             fragment.arguments = bundle
 
