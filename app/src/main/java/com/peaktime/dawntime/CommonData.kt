@@ -13,7 +13,7 @@ import com.peaktime.dawntime.Shop.ShopKeywordData
  * Created by HYEON on 2018-01-03.
  */
 object CommonData {
-    var communityDatas: ArrayList<CommunityList> = ArrayList()
+    var communityDatas: ArrayList<CommunityList>? = null
     var messageBoxData: ArrayList<ChildMyPageMessageBoxData> = ArrayList()
     var mycommentData : ArrayList<MypageMycommentData>? = null
     var shopBestList :  ArrayList<ShopBestData> = ArrayList()

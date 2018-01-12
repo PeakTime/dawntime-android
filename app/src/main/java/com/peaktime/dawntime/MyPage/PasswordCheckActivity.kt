@@ -148,8 +148,8 @@ class PasswordCheckActivity : AppCompatActivity() {
             R.id.delete_btn -> {
                 if (order != 0) {
                     if (list.size > 1) {
-                        list.removeAt(order)
                         Log.i("remove","order")
+                        list.removeAt(order)
                         order--
                         var temp = order - 1
                         inputNum = list.get(temp)

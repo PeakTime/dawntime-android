@@ -7,8 +7,6 @@ import com.peaktime.dawntime.Community.CommunityList
  */
 data class MyPageMypostResponse (
         var status : String,
-        var message : String,
-        var myPost_count : Int,
-        var myCom_count : Int,
+        var msg : String,
         var result : ArrayList<CommunityList>
 )

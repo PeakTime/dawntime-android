@@ -30,7 +30,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.content.Intent
-
+import com.peaktime.dawntime.CommonData.mycommentData
 
 
 /**
@@ -111,22 +111,37 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
         var getContentList = networkService!!.getMypostList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
         getContentList.enqueue(object : Callback<MyPageMypostResponse> {
             override fun onResponse(call: Call<MyPageMypostResponse>?, response: Response<MyPageMypostResponse>?) {
-
                 if (response!!.isSuccessful) {
-                    if (response.body().message.equals("success")) {
+                    if (response.body().status.equals("success")) {
+                        /*if(response.body().msg.equals("successful get my post but no data"))
+                        {
+                            CommonData.communityDatas = null
+                            adapter = CommunityAdapter(mypostData, requestManager!!)
+                            adapter!!.setOnItemClickListener(this@ChildMypageMypost)
+                            mywrittenList!!.adapter = adapter
+                        }
+                        else{
 
+                            Log.d("postcount","1")
+                            mypostData = response.body().result
+                            CommonData.communityDatas = mypostData
+
+                            adapter = CommunityAdapter(mypostData, requestManager!!)
+                            adapter!!.setOnItemClickListener(this@ChildMypageMypost)
+                            mywrittenList!!.adapter = adapter
+                        }*/
                         mypostData = response.body().result
-                        CommonData.communityDatas = mypostData!!
+                        CommonData.communityDatas = mypostData
 
                         adapter = CommunityAdapter(mypostData, requestManager!!)
                         adapter!!.setOnItemClickListener(this@ChildMypageMypost)
                         mywrittenList!!.adapter = adapter
+
                     }
                 } else {
                     Log.i("status", "fail")
                 }
             }
-
             override fun onFailure(call: Call<MyPageMypostResponse>?, t: Throwable?) {
                 ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
                 Log.i("status", "check")
@@ -143,11 +158,20 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
                         my_written_cnt.text = response.body().myPost_count.toString()
                         my_reply_cnt.text = response.body().myCom_count.toString()
                         mycommentDatas = response.body().result
-                        CommonData.mycommentData = mycommentDatas!!
+                        CommonData.mycommentData = mycommentDatas
 
                         commentadapter = ChildMypageMycommentAdapter(mycommentDatas, requestManager!!)
-                        commentadapter!!.setOnItemClickListener(this@ChildMypageMypost)
                         mywrittenList!!.adapter = commentadapter
+                        commentadapter!!.setOnItemClickListener(View.OnClickListener { view: View? ->
+                            val fm = fragmentManager.beginTransaction()
+                            val fragment = CommunityDetailFragment()
+                            val bundle = Bundle()
+                            bundle.putInt("index", mycommentData!!.get(mywrittenList!!.getChildAdapterPosition(view!!)).board_id)
+                            fragment.arguments = bundle
+                            fm.add(R.id.mypage_mywritten_container,fragment,"detail")
+                            fm.addToBackStack(null)
+                            fm.commit()
+                        })
                     }
                 } else {
                     Log.i("status", "fail")
@@ -162,10 +186,10 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-       val fm = fragmentManager.beginTransaction()
+        val fm = fragmentManager.beginTransaction()
         val fragment = CommunityDetailFragment()
         val bundle = Bundle()
-        bundle.putInt("index", communityDatas.get(mywrittenList!!.getChildAdapterPosition(p0!!)).board_id)
+        bundle.putInt("index", communityDatas!!.get(mywrittenList!!.getChildAdapterPosition(p0!!)).board_id)
         fragment.arguments = bundle
         fm.add(R.id.mypage_mywritten_container,fragment,"detail")
         fm.addToBackStack(null)
