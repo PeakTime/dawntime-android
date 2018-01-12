@@ -17,7 +17,7 @@
         >
 
         <RelativeLayout
-            android:layout_toLeftOf="@+id/shopExitBtn"
+            android:layout_toLeftOf="@+id/shop_search_btn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="17dp"
@@ -41,25 +41,32 @@
                     android:id="@+id/shopSearchEditText"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
-                    android:hint="검색"
+                    android:hint="입력하기"
                     android:fontFamily="@font/noto_sans_cjk_kr_light"
                     android:includeFontPadding="false"
                     android:background="@null"
                     android:layout_toRightOf="@+id/search_img"
                     android:layout_marginTop="2dp"
-                    android:imeOptions="actionSearch"
+                    android:textSize="14dp"
                     />
             </RelativeLayout>
+            <!--android:imeOptions="actionSearch"-->
 
         </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/shopExitBtn"
+        <Button
+            android:id="@+id/shop_search_btn"
             android:layout_alignParentRight="true"
-            android:background="@drawable/shop_navi_cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7.9dp" />
+            android:layout_marginTop="5dp"
+            android:textColor="#FFF"
+            android:text="검색"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
+            android:background="@color/trans"
+            android:padding="0dp"
+            android:includeFontPadding="false"
+            android:textSize="14dp"/>
 
     </RelativeLayout>
 

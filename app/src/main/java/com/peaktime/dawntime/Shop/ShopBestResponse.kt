@@ -6,5 +6,5 @@ package com.peaktime.dawntime.Shop
 data class ShopBestResponse(
         var status: Boolean,
         var message : String,
-        var result : ArrayList<ShopBestData>
+        var result : ArrayList<ShopBestData>?
 )

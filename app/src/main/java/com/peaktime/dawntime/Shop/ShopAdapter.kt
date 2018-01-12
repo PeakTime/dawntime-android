@@ -46,17 +46,7 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
 
         requestManager!!.load(dataList!!.get(position).goods_image).into(holder!!.shopImage)
         holder!!.shopName.setText(dataList!!.get(position).goods_name)
-        holder!!.shopPrice.setText(dataList!!.get(position).goods_price.toString())
-
-        if (dataList!!.get(position).goods_like == 1) {
-            holder!!.shopLikeBtn.setBackgroundResource(R.drawable.view_heart_solid)
-        } else {
-            holder!!.shopLikeBtn.setBackgroundResource(R.drawable.view_heart_line)
-    }
-
-//        holder!!.shopBrand.setText(dataList!!.get(position).goods_brand)
-//        holder!!.shopInfo.setText(dataDetailList!!.get(position).goods_info)
-
+        holder!!.shopPrice.setText(dataList!!.get(position).goods_price)
 
         if(bestFlag == CommonData.CALL_AT_HOME_TO_SHOP){
 
@@ -75,6 +65,19 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
                 //mainView!!.goods_rangetag.setBackgroundResource(R.drawable.shop_view_best_no3)
             }
         }
+
+
+        if (dataList!!.get(position).goods_like == 1) {
+            holder!!.shopLikeBtn.setBackgroundResource(R.drawable.view_heart_solid)
+        } else {
+            holder!!.shopLikeBtn.setBackgroundResource(R.drawable.view_heart_line)
+    }
+
+//        holder!!.shopBrand.setText(dataList!!.get(position).goods_brand)
+//        holder!!.shopInfo.setText(dataDetailList!!.get(position).goods_info)
+
+
+
         holder!!.shopLikeBtn!!.setOnClickListener {
 
             putShopLike(holder, dataList!!.get(position).goods_id)
@@ -92,12 +95,10 @@ class ShopAdapter(var dataList : ArrayList<ShopBestData>?,
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("successful regist basket")) {
                         //좋아요했을때
-                        Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
 
                         holder!!.shopLikeBtn.setBackgroundResource(R.drawable.view_heart_solid)
 
                     } else if (response.body().message.equals("successful delete basket")) {
-                        Log.i("qwe", "ㅁ니아ㅓㅁ니ㅏ)")
                         //좋아요 취소했을때
 
                         holder!!.shopLikeBtn.setBackgroundResource(R.drawable.view_heart_line)

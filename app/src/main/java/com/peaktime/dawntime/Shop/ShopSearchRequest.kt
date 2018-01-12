@@ -6,5 +6,5 @@ package com.peaktime.dawntime.Shop
 data class ShopSearchRequest(
         var min_price : Int,
         var max_price : Int,
-        var goods_keyword : String
+        var goods_keyword : String?
 )

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Vibrator
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -147,8 +148,9 @@ class PasswordCheckActivity : AppCompatActivity() {
             R.id.delete_btn -> {
                 if (order != 0) {
                     if (list.size > 1) {
-                        order--
                         list.removeAt(order)
+                        Log.i("remove","order")
+                        order--
                         var temp = order - 1
                         inputNum = list.get(temp)
                     }

@@ -7,7 +7,7 @@ class ShopDetailData (
         var goods_id : Int,
         var goods_name : String,
         var goods_brand : String,
-        var goods_price : Int,
+        var goods_price : String,
         var goods_info : String,
         var goods_images : ArrayList<String>,
         var goods_url : String,

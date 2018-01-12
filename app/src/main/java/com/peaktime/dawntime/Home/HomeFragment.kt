@@ -121,6 +121,7 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
             }
         }, DELAY_MS, PERIOD_MS)
 
+
         return v
 
     }

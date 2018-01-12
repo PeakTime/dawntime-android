@@ -157,7 +157,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("successful regist basket")) {
                         //좋아요했을때
-                        // Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
+//                         Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
 
                         CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_solid)
                         shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_solid)
