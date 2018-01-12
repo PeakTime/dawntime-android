@@ -25,6 +25,7 @@
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"
             android:text="익명"
+            android:textSize="11dp"
             android:textColor="#0E1949" />
 
         <TextView
@@ -35,6 +36,7 @@
             android:layout_toRightOf="@id/reply2_writer_text"
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"
+            android:textSize="9dp"
             android:text="날짜"
             android:textColor="#0E1949" />
 
@@ -47,6 +49,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/noto_sans_cjk_kr_regular"
             android:includeFontPadding="false"
+            android:textSize="11dp"
             android:text="내용"
             android:textColor="#0E1949" />
 

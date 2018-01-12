@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_centerHorizontal="true"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            android:elevation="2dp">
 
             <ImageButton
                 android:id="@+id/my_written_btn"

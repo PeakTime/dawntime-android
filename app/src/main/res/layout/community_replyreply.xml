@@ -22,24 +22,30 @@
                 android:id="@+id/replytitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                android:includeFontPadding="false"
                 android:text="title"
-                android:textSize="17dp" />
+                android:textSize="11dp" />
 
             <TextView
                 android:id="@+id/replydate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/noto_sans_cjk_kr_regular"
+                android:includeFontPadding="false"
                 android:text="date"
-                android:textSize="15dp" />
+                android:textSize="9dp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/replycontents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_cjk_kr_regular"
+            android:includeFontPadding="false"
             android:text="contents"
-            android:textSize="17dp" />
+            android:textSize="11dp" />
     </LinearLayout>
 
 

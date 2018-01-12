@@ -29,9 +29,10 @@
             android:layout_height="match_parent">
             <EditText
                 android:id="@+id/column_search_edittext"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:layout_marginLeft="17dp"
+                android:layout_toLeftOf="@+id/column_search_cancel_btn"
                 android:layout_centerVertical="true"
                 android:drawablePadding="8dp"
                 android:paddingLeft="10dp"
@@ -46,8 +47,8 @@
 
             <ImageButton
                 android:id="@+id/column_search_cancel_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"

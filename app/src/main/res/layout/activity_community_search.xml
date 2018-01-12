@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/communitySearchTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="71dp"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
@@ -42,9 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
                 android:background="@android:color/transparent"
-                android:paddingTop="10dp"
+                android:paddingTop="15dp"
                 android:src="@drawable/navi_cancel_navy" />
         </RelativeLayout>
     </RelativeLayout>
