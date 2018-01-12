@@ -20,6 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 /**
  * Created by HYEON on 2018-01-04.
  */
@@ -58,6 +59,21 @@ class MypageMsgFragment : Fragment() {
             }
         }
 
+
+
+        /////// 키보드 엔터시 내리기
+       /* v.messagebox_detail_btn!!.setOnClickListener {
+            fun onKey(v: View, keyCode: Int, event: KeyEvent): Boolean {
+                //Enter key Action
+                if (event.getAction() === KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0)    //hide keyboard
+                    return true
+                }
+                return false
+            }
+        }
+*/
         getMessageDetailList()
 
         return v
