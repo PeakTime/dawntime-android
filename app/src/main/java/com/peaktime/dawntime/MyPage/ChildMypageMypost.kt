@@ -113,23 +113,7 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
             override fun onResponse(call: Call<MyPageMypostResponse>?, response: Response<MyPageMypostResponse>?) {
                 if (response!!.isSuccessful) {
                     if (response.body().status.equals("success")) {
-                        /*if(response.body().msg.equals("successful get my post but no data"))
-                        {
-                            CommonData.communityDatas = null
-                            adapter = CommunityAdapter(mypostData, requestManager!!)
-                            adapter!!.setOnItemClickListener(this@ChildMypageMypost)
-                            mywrittenList!!.adapter = adapter
-                        }
-                        else{
 
-                            Log.d("postcount","1")
-                            mypostData = response.body().result
-                            CommonData.communityDatas = mypostData
-
-                            adapter = CommunityAdapter(mypostData, requestManager!!)
-                            adapter!!.setOnItemClickListener(this@ChildMypageMypost)
-                            mywrittenList!!.adapter = adapter
-                        }*/
                         mypostData = response.body().result
                         CommonData.communityDatas = mypostData
 
