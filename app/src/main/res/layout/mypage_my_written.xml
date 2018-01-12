@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#001960"
-            android:text="내가 쓴글"
+            android:text="내가 쓴 글"
             android:textSize="20dp" />
 
     </RelativeLayout>
