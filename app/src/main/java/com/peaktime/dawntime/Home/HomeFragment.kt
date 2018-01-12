@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,10 +27,16 @@ import com.peaktime.dawntime.Shop.ShopToMainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.Serializable
 import java.util.*
+import com.peaktime.dawntime.MainActivity
+import android.view.KeyEvent.KEYCODE_BACK
+import android.widget.Toast
 
-class HomeFragment : Fragment(), View.OnClickListener,Serializable {
+
+
+
+
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private var shoplistRecycler: RecyclerView? = null
     private var shoplistDatas: ArrayList<ShoplistData>? = null
@@ -58,8 +65,10 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
 
     private var homeScroll : ScrollView? = null
 
+    private val FINISH_INTERVAL_TIME : Long = 2000
+    private var backPressedTime : Long = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) : View?{
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
 
         val peektimeBtn: View = v.findViewById(R.id.peektime_btn)
@@ -111,7 +120,6 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
             }
         }, DELAY_MS, PERIOD_MS)
 
-
         return v
 
     }
@@ -124,8 +132,6 @@ class HomeFragment : Fragment(), View.OnClickListener,Serializable {
             PeektimeObject.flag = 0
         }
     }
-
-
 
     fun getHomeData(user_blind: Boolean) {
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#0E1949"
+    tools:context="com.peaktime.dawntime.SignOutDialog">
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="223dp"
+        android:layout_height="117dp"
+        android:background="@drawable/custom_login_dialog_background"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원탈퇴 하시겠습니까"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="#0E1949"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
+            android:includeFontPadding="false"
+            />
+
+        <FrameLayout
+            android:id="@+id/signOut_dialog_outBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:fontFamily="@font/noto_sans_cjk_kr_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/custom_login_dialog_logbtn"
+                    />
+                <TextView
+                    android:text="회원탈퇴"
+                    android:textColor="#FFFFFF"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/signOut_dialog_cancelBtn"
+            android:text="취소"
+            android:textSize="12dp"
+            android:textColor="#B2B2B3"
+            android:fontFamily="@font/noto_sans_cjk_kr_medium"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/signOut_dialog_outBtn"
+            android:includeFontPadding="false"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
