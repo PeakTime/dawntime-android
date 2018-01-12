@@ -49,8 +49,12 @@
         <activity android:name=".MyPage.PasswordCheckActivity" />
         <activity android:name=".Shop.ShopToMainActivity" />
         <activity android:name=".Shop.ShopSearchResultActivity" />
-        <activity android:name=".Community.CommunityWriteActicity" />
-        <activity android:name=".Community.CommunityMsgActivity"></activity>
+        <activity
+            android:name=".Community.CommunityWriteActicity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Community.CommunityMsgActivity"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

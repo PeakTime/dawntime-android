@@ -32,7 +32,9 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
     override fun onRestart() {
         Log.i("qwerty","onRestart()")
 
+
         super.onRestart()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,7 +87,7 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
             }
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 shop_main_viewpager.currentItem = tab!!.position
-                when(tab!!.position){
+                when (tab.position) {
                     0->{
                         //tab!!.customView!!.brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
                         new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
@@ -94,7 +96,6 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
                         brand_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_light)
 
 //                        GoodsSortFragment().arguments = bundle
-
                     }
                     1->{
                         //tab!!.customView!!.category_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)

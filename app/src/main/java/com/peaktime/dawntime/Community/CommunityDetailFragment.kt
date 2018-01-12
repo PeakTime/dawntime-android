@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.widget.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.peaktime.dawntime.Home.PeektimeObject
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
@@ -338,9 +337,12 @@ class CommunityDetailFragment : Fragment(),PopupMenu.OnMenuItemClickListener,Vie
         replyDialog.setView(dialogView2)
         val alertDialog2 = replyDialog.create()
 
-        if (communityDetailReplyDatas!!.get(p0!!.id).com_parent == 0 && communityDetailReplyDatas!!.get(p0.id).writer_check == false) {
+        if (communityDetailReplyDatas!!.get(p0!!.id).com_parent == 0) {
+            //댓글일때
             alertDialog.show()
-        } else if (communityDetailReplyDatas!!.get(p0.id).com_parent != 0 && communityDetailReplyDatas!!.get(p0.id).writer_check == false) {
+            //&& communityDetailReplyDatas!!.get(p0.id).writer_check == false
+        } else if (communityDetailReplyDatas!!.get(p0.id).com_parent != 0) {
+            //대댓글일때
             alertDialog2.show()
         }
 

@@ -47,7 +47,7 @@ class CommunityFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val v = inflater!!.inflate(R.layout.fragment_community, container, false)
-
+        Log.i("토큰", SharedPreferInstance.getInstance(activity).getPreferString("TOKEN"))
         communityList = v.findViewById(R.id.main_list)
         community_write = v.findViewById(R.id.community_write)
         community_search = v.findViewById(R.id.community_search)

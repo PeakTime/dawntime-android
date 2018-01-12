@@ -1,5 +1,6 @@
 package com.peaktime.dawntime.Shop
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -149,6 +150,11 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
         })
     }
 
+    override fun onPause() {
+        setResult(Activity.RESULT_OK)
+        super.onPause()
+    }
+
     fun putShopLike(){
         var getContentList = networkService!!.putShopLike(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!,index!!)
 
@@ -157,15 +163,16 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("successful regist basket")) {
                         //좋아요했을때
-//                         Log.i("status", "성공성공성공성공성공성공성공성공성공성공성공")
+                        Log.i("좋아요", "성공성공성공성공성공성공성공성공성공성공성공")
 
-                        CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_solid)
+//                            CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_solid)
+//                            shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_solid)
+
                         shopLikeDetailBtn!!.setBackgroundResource(R.drawable.shop_tab_heart_solid)
-
                     }
                     else if(response.body().message.equals("successful delete basket"))
                     {
-                        Log.i("qwe","ㅁ니아ㅓㅁ니ㅏ")
+                        Log.i("좋아요", "취소취소")
                         //좋아요 취소했을때
                         //CommonData.shopLikeSend!!.setBackgroundResource(R.drawable.view_heart_line)
 
@@ -191,6 +198,7 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
         when (v!!.id) {
 
             R.id.shopBackBtn -> {
+                setResult(Activity.RESULT_OK)
                 this.finish()
                 /*FragmentTransaction ft = getFragmentManager()!!.beginTransaction()
                 ft.detach(this).attach(this)commit()*/

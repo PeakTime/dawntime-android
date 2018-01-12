@@ -3,6 +3,7 @@ package com.peaktime.dawntime.MyPage
 import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -65,7 +66,7 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
 
                 if (response!!.isSuccessful) {
                     if (response.body().message.equals("successful get my goods list")) {
-
+                        Log.i("통신성공?", "sdjfklsd")
                         basketData = response.body().result
                         CommonData.shopBestList = basketData!!
                         adapter = ShopAdapter(basketData, requestManager,CommonData.CALL_AT_TAB_TO_SHOP)
@@ -73,7 +74,7 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
                         basketList!!.adapter = adapter
                     }
                 } else {
-                    Log.i("status", "fail")
+                    Log.i("status", "Listfail")
                 }
             }
 
@@ -88,7 +89,14 @@ class ChildMypageBasket : Fragment(), View.OnClickListener {
         var intent = Intent(activity, ShopDetailActivity::class.java)
         intent.putExtra("Goods_Id", basketData!!.get(basketList!!.getChildAdapterPosition(v)).goods_id)
         intent.putExtra("bestFlag", CommonData.CALL_AT_TAB_TO_SHOP)
-        startActivity(intent)
+        startActivityForResult(intent, 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+            Log.i("되나용?", "sjdkflsjdkfk")
+            getBasketList()
+        }
     }
 
 }

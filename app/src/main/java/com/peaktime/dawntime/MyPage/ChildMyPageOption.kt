@@ -5,12 +5,14 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.data.OAuthLoginState
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
@@ -138,18 +140,29 @@ class ChildMyPageOption : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
+//            if (resultCode == RESULT_OK) {
+//                Toast.makeText(activity, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
+//                Log.i("lock 성공1","123123")
+//            } else {
+//                try {
+//                    loginBoolean = data!!.getBooleanExtra("LOGIN_BOOLEAN", false)
+//                    if (loginBoolean == true) {
+//                        Log.i("lock 성공2","123123")
+//                        Toast.makeText(activity, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
+//                    }
+//                } catch (e: Exception) {
+//                    Log.i("lock 실패","123123")
+//                    lockSwitch!!.isChecked = false
+////                    //비밀번호 설정 취소하면 다시 lock false로
+//                }
+//            }
+            if (CommonData.lockFlag == 2) {
                 Toast.makeText(activity, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
-            } else {
-                try {
-                    loginBoolean = data!!.getBooleanExtra("LOGIN_BOOLEAN", false)
-                    if (loginBoolean == true) {
-                        Toast.makeText(activity, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
-                    }
-                } catch (e: Exception) {
-                    lockSwitch!!.isChecked = false
-//                    //비밀번호 설정 취소하면 다시 lock false로
-                }
+                Log.i("lock 성공1", "123123")
+                CommonData.lockFlag == 1
+            } else if (CommonData.lockFlag == 1) {
+                Log.i("lock 실패", "123123")
+                lockSwitch!!.isChecked = false
             }
         }
 

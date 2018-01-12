@@ -3,7 +3,6 @@ package com.peaktime.dawntime
 import android.widget.ImageView
 import com.peaktime.dawntime.Community.CommunityList
 import com.peaktime.dawntime.MyPage.ChildMyPageMessageBoxData
-import com.peaktime.dawntime.MyPage.MyPageMycommentResponse
 import com.peaktime.dawntime.MyPage.MypageMycommentData
 import com.peaktime.dawntime.Shop.ShopBestData
 import com.peaktime.dawntime.Shop.ShopDetailData
@@ -25,4 +24,6 @@ object CommonData {
     val CALL_AT_SEARCH = 2
     val CALL_AT_HOME_TO_SHOP = 0
     val CALL_AT_TAB_TO_SHOP = 1
+
+    var lockFlag = 1
 }

@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import com.peaktime.dawntime.CommonData
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
 
@@ -40,6 +41,8 @@ class PasswordCheckActivity : AppCompatActivity() {
         password = intent.getStringExtra("PASSWORD")
 
         vibrate = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+
+        list.add("")
     }
 
 
@@ -47,10 +50,12 @@ class PasswordCheckActivity : AppCompatActivity() {
         if (password == inputNum) {
 
             SharedPreferInstance.getInstance(this).putPreferString("PASSWORD", password as String)
+            CommonData.lockFlag = 2
             var intent = Intent()
             intent.putExtra("LOGIN_BOOLEAN", true)
             setResult(Activity.RESULT_OK, intent)
             finish()
+
         } else {
             order = 1
             list.clear()
@@ -148,14 +153,16 @@ class PasswordCheckActivity : AppCompatActivity() {
                 finish()
             }
             R.id.delete_btn -> {
-                if (order != 0) {
-                    if (list.size > 1) {
-                        Log.i("remove","order")
-                        list.removeAt(order)
-                        order--
-                        var temp = order - 1
-                        inputNum = list.get(temp)
+                try {
+                    if (order != 0) {
+                        if (list.size > 1) {
+                            order--
+                            list.removeAt(order)
+                            var temp = order - 1
+                            inputNum = list.get(temp)
+                        }
                     }
+                } catch (e: Exception) {
                 }
             }
         }

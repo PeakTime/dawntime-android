@@ -113,6 +113,7 @@ class MypageMsgFragment : Fragment() {
                                 basicLayout!!.addView(itemLayout)
                             }
                         }
+                        scroll!!.fullScroll(View.FOCUS_DOWN)
                     }
                 } else {
                     Log.i("status", "fail")

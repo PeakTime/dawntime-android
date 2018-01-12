@@ -1,5 +1,6 @@
 package com.peaktime.dawntime.Shop.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -85,7 +86,7 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 //        intent.putExtra("name", name)
 //        intent.putExtra("price", price)
 
-        startActivity(intent)
+        startActivityForResult(intent, 0)
     }
 
     fun getShopBest() {
@@ -134,7 +135,6 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 //                        Log.i("size: ", response.body().result.toString())
 //                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_name)
 //                        Log.i("sajldlkasjdkl",shopBestList!!.get(0).goods_price.toString())
-
 
                         shopBestDatas = response.body().result
                         shopAdapter = ShopAdapter(shopBestDatas,requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
@@ -216,10 +216,19 @@ class GoodsFragment : Fragment() , View.OnClickListener {
             R.id.shopLikeBtn -> {
                 putShopLike(index!!)
                 Log.i("누룸", "눌ㄹ림눌림")
-
             }
-
         } //버튼이벤트 end
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (bestFlag == CommonData.CALL_AT_HOME_TO_SHOP) {
+                getShopBest()
+
+            } else if (bestFlag == CommonData.CALL_AT_TAB_TO_SHOP) {
+                getShopNew()
+            }
+        }
     }
 }
