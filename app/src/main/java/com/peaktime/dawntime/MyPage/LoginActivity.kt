@@ -92,6 +92,16 @@ class LoginActivity : AppCompatActivity() {
                             gender = json.getJSONObject("response").getString("gender")
                             naver_uid = json.getJSONObject("response").getString("id")
                             age = json.getJSONObject("response").getString("age")
+//                            Log.i("나이",age + gender)
+//                            if(gender.equals("M"))
+//                            {
+//                                mAuthLoginModule!!.logout(this@LoginActivity)
+//                                if (mAuthLoginModule!!.getState(this@LoginActivity) == OAuthLoginState.NEED_LOGIN) {
+////                                    ApplicationController.instance!!.makeToast("남성은 가입할 수 없습니다.")
+//                                    Log.i("나이2",age + gender)
+//                                }
+//                                finish()
+//                            }
 
                             signIn()
                         } catch (e: JSONException) {
@@ -118,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
                         SharedPreferInstance.getInstance(applicationContext).putPreferString("AGE", age!!)
                         SharedPreferInstance.getInstance(applicationContext).putPreferString("NAVER_UID", naver_uid!!)
                         SharedPreferInstance.getInstance(applicationContext).putPreferBoolean("LOGIN", true)
-//                        SharedPreferInstance.getInstance(applicationContext).putPreferString("TOKEN", signData!!.user_token)
+                        SharedPreferInstance.getInstance(applicationContext).putPreferString("TOKEN", signData!!.user_token)
                         SharedPreferInstance.getInstance(applicationContext).putPreferInt("UID", signData!!.user_id)
                         Log.i("LoginCheck : ", "로그인 되었습니다.")
                         Log.i("Token : ", signData!!.user_token)

@@ -180,6 +180,11 @@ interface NetworkService {
     fun getHome(@Header("user_token") user_token: String)
             : Call<HomeResponse>
 
+    //홈 화면 파라미터 없는 버전
+    @GET("home")
+    fun getHome()
+            : Call<HomeResponse>
+
     //칼럼 리스트
     @GET("column/list")
     fun getColumnList() : Call<ColumnListResponse>

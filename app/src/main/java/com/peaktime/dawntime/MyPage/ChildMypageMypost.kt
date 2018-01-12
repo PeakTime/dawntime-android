@@ -81,6 +81,15 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
         }
         val fm = fragmentManager
         fm.addOnBackStackChangedListener {
+            try {
+                if (commentclick == 0 && postclick == 1) {
+                    //내글일때
+                    getMypostList()
+                } else {
+                    getMycommentList()
+                }
+            } catch (e: Exception) {
+            }
         }
 
         return v

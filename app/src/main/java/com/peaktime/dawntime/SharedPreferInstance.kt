@@ -15,7 +15,6 @@ class SharedPreferInstance {
     fun putPreferString(key: String, value: String) {
         editor!!.putString(key, value)
         editor!!.commit()
-
     }
 
     fun putPreferInt(key: String, value: Int) {

@@ -9,7 +9,6 @@ import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,12 +27,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import com.peaktime.dawntime.MainActivity
-import android.view.KeyEvent.KEYCODE_BACK
-import android.widget.Toast
-
-
-
 
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -143,8 +136,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     fun getHomeData(user_blind: Boolean) {
 
+        val getContentList = networkService!!.getHome()
+        //SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!
 
-        val getContentList = networkService!!.getHome(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
         getContentList.enqueue(object : Callback<HomeResponse> {
 
             override fun onResponse(call: Call<HomeResponse>?, response: Response<HomeResponse>?) {

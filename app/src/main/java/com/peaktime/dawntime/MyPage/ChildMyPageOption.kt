@@ -5,7 +5,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,9 +15,6 @@ import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
 import com.peaktime.dawntime.SharedPreferInstance
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 /**
@@ -57,9 +53,10 @@ class ChildMyPageOption : Fragment() {
 
         backBtn!!.setOnClickListener {
 
-            val fm = fragmentManager.beginTransaction()
-            fm.remove(this)
-            fm.commit()
+            //            val fm = fragmentManager.beginTransaction()
+//            fm.remove(this)
+//            fm.commit()
+            fragmentManager.popBackStack()
         }
 
         logoutBtn!!.setOnClickListener {
@@ -71,7 +68,10 @@ class ChildMyPageOption : Fragment() {
                 SharedPreferInstance.getInstance(activity).putPreferString("ID", "로그인 정보 없음")
                 SharedPreferInstance.getInstance(activity).putPreferString("GENDER", "로그인 정보 없음")
                 SharedPreferInstance.getInstance(activity).putPreferString("EMAIL", "로그인 정보 없음")
-
+                SharedPreferInstance.getInstance(activity).putPreferString("TOKEN", "")
+                SharedPreferInstance.getInstance(activity).putPreferString("AGE", "로그인 정보 없음")
+                SharedPreferInstance.getInstance(activity).putPreferBoolean("LOCK", false)
+                SharedPreferInstance.getInstance(activity).putPreferBoolean("NOTICE", false)
                 Toast.makeText(activity, "로그아웃 되었습니다.", Toast.LENGTH_LONG).show()
             }
 
@@ -128,8 +128,8 @@ class ChildMyPageOption : Fragment() {
             }
         }
         signoutBtn!!.setOnClickListener {
-            //            singOut()
-
+            var intent = Intent(activity, SignOutDialog::class.java)
+            startActivityForResult(intent, 1)
         }
         return v
     }
@@ -152,27 +152,18 @@ class ChildMyPageOption : Fragment() {
                 }
             }
         }
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                val fm = fragmentManager.beginTransaction()
+                fm.add(R.id.child_container, MyPageFragment(), "mypage")
+                fm.commit()
+
+                var fragment = fragmentManager
+                fragment!!.popBackStack()
+            }
+        }
     }
 
-    fun singOut() {
-        var getContentList = networkService!!.signOut(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
 
-        getContentList.enqueue(object : Callback<MyPageSignOutResponse> {
-            override fun onResponse(call: Call<MyPageSignOutResponse>?, response: Response<MyPageSignOutResponse>?) {
-
-                if (response!!.isSuccessful) {
-                    if (response.body().msg.equals("successful delete user")) {
-                        ApplicationController.instance!!.makeToast("회원탈퇴 되었습니다")
-                    }
-                } else {
-                    Log.i("status", "fail")
-                }
-            }
-
-            override fun onFailure(call: Call<MyPageSignOutResponse>?, t: Throwable?) {
-                ApplicationController.instance!!.makeToast("통신 상태를 확인해주세요")
-                Log.i("status", "check")
-            }
-        })
-    }
 }
