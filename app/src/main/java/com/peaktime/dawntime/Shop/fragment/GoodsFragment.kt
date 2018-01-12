@@ -71,7 +71,6 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 
         var intent = Intent(activity, ShopDetailActivity::class.java)
 
-
         val position : Int = shopList!!.getChildAdapterPosition(v) //position 받아오
        // var view : View = shopList!!.getChildAt(position)// 기
         /*val name : String = shopDatas!!.get(idx).shopName //포지션에 위치하는 이름받아오기
@@ -206,7 +205,6 @@ class GoodsFragment : Fragment() , View.OnClickListener {
 
     }
 
-
     private var clickListener = View.OnClickListener { v ->
         //버튼이벤트
         when (v!!.id) {
@@ -220,7 +218,6 @@ class GoodsFragment : Fragment() , View.OnClickListener {
                 Log.i("누룸", "눌ㄹ림눌림")
 
             }
-
 
         } //버튼이벤트 end
 
