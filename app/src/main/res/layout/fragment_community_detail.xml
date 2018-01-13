@@ -21,6 +21,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/navi_back_navy" />
 
         <TextView

@@ -59,7 +59,7 @@
             android:background="@drawable/graylinedrawable"
             android:gravity="top"
             android:textSize="12dp"
-            android:hint="해당 게시물이 악의적인 내용이나 정치적글 편향된 글을 작성시 신고 \n대상이 되어 삭제되어 질 수 있습니다."
+            android:hint="해당 게시물이 악의적인 내용이나 정치적글 편향된 글을 작성시 신고 대상이 되어 삭제되어 질 수 있습니다."
             android:padding="10dp" />
     </LinearLayout>
 

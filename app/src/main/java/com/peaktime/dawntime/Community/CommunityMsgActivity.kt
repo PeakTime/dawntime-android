@@ -1,8 +1,10 @@
 package com.peaktime.dawntime.Community
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.WindowManager
 import com.peaktime.dawntime.Network.ApplicationController
 import com.peaktime.dawntime.Network.NetworkService
 import com.peaktime.dawntime.R
@@ -20,6 +22,13 @@ class CommunityMsgActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_community_msg)
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            val window = this.window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor = this.resources.getColor(R.color.status_home)
+        }
+
 
         board_id = intent.getIntExtra("BOARD_ID", 0)
         networkService = ApplicationController.instance!!.networkService
