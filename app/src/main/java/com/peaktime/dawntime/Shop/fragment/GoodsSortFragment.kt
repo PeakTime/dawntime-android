@@ -1,5 +1,6 @@
 package com.peaktime.dawntime.Shop.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -71,11 +72,11 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
             CommonData.CALL_AT_CATEGORY->{
                 tabFlag = arguments.getString("categoryName")
                 Log.i("tab bbb",tabFlag)
-                getShopCategory(tabFlag!!,order!!)
+                getShopCategory(tabFlag!!, order)
             }
             CommonData.CALL_AT_BRAND->{
                 tabFlag = arguments.getString("brandName")
-                getShopBrand(tabFlag!!,order!!)
+                getShopBrand(tabFlag!!, order)
             }
             CommonData.CALL_AT_SEARCH->{
 
@@ -84,7 +85,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
                 lowPrice = arguments.getInt("lowPrice")
                 highPrice = arguments.getInt("highPrice")
                 keyword = arguments.getString("keyword")
-                getShopSearch(lowPrice, highPrice, keyword!!, order!!)
+                getShopSearch(lowPrice, highPrice, keyword!!, order)
 
             }
         }
@@ -100,7 +101,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
 
     fun getShopCategory(categoryName : String,order : Int){
         val getContentList = networkService!!.getShopCategoryList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, categoryName, order)
-        getContentList!!.enqueue(object : Callback<ShopBestResponse>{
+        getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get category list")){
 
@@ -122,7 +123,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
 
     fun getShopBrand(brandName : String,order : Int){
         val getContentList = networkService!!.getShopBrandList(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!,brandName,order)
-        getContentList!!.enqueue(object : Callback<ShopBestResponse>{
+        getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
                 if(response!!.body().message.equals("successful get brand list")){
 
@@ -146,19 +147,18 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
 
 
     fun getShopSearch(lowPrice : Int, highPrice : Int, keyword : String, order : Int){
-        val getContentList = networkService!!.shopSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, order, ShopSearchRequest(lowPrice, highPrice, keyword!!))
-        getContentList!!.enqueue(object : Callback<ShopBestResponse>{
+        val getContentList = networkService!!.shopSearch(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!, order, ShopSearchRequest(lowPrice, highPrice, keyword))
+        getContentList.enqueue(object : Callback<ShopBestResponse> {
             override fun onResponse(call: Call<ShopBestResponse>?, response: Response<ShopBestResponse>?) {
 
                 if (response!!.isSuccessful) {
-                    if (response!!.body().message.equals("successful get search result")) {
+                    if (response.body().message.equals("successful get search result")) {
                         shopBestDatas = response.body().result
                         shopAdapter = ShopAdapter(shopBestDatas, requestManager, CommonData.CALL_AT_TAB_TO_SHOP)
                         shopAdapter!!.setOnItemClickListener(this@GoodsSortFragment)
                         shopList!!.adapter = shopAdapter
                         Log.v("goodsSoft23", "goodsSofrt23")
-                    }
-                    else if (response!!.body().message.equals("successful get search result : no data")) {
+                    } else if (response.body().message.equals("successful get search result : no data")) {
 
 //                        Log.e("은미2", "lowPrice"+lowPrice)
 //                        Log.e("은미2", "highPrice"+highPrice)
@@ -194,10 +194,29 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
         intent.putExtra("Goods_Id",shopBestDatas!!.get(shopList!!.getChildAdapterPosition(v)).goods_id) //받는 데이터의 상품아이디
         CommonData.shopLikeSend = v!!.findViewById(R.id.shopLikeBtn)
 
-        startActivity(intent)
+        startActivityForResult(intent, 0)
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            when (callAt) {
+                CommonData.CALL_AT_CATEGORY -> {
+                    tabFlag = arguments.getString("categoryName")
+                    getShopCategory(tabFlag!!, order)
+                }
+                CommonData.CALL_AT_BRAND -> {
+                    tabFlag = arguments.getString("brandName")
+                    getShopBrand(tabFlag!!, order)
+                }
+                CommonData.CALL_AT_SEARCH -> {
+                    lowPrice = arguments.getInt("lowPrice")
+                    highPrice = arguments.getInt("highPrice")
+                    keyword = arguments.getString("keyword")
+                    getShopSearch(lowPrice, highPrice, keyword!!, order)
+                }
+            }
+        }
+    }
     private var clickListener = View.OnClickListener { v ->
         //버튼이벤트
         when (v!!.id) {
@@ -212,7 +231,7 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
 
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
-        when (item!!.getItemId()) {
+        when (item!!.itemId) {
         //눌러진 MenuItem의 Item Id를 얻어와 식별
 
             R.id.latest_sort ->{
@@ -240,17 +259,17 @@ class GoodsSortFragment : Fragment() , View.OnClickListener , PopupMenu.OnMenuIt
         when(callAt){
             CommonData.CALL_AT_CATEGORY->{
                 tabFlag = arguments.getString("categoryName")
-                getShopCategory(tabFlag!!,order!!)
+                getShopCategory(tabFlag!!, order)
             }
             CommonData.CALL_AT_BRAND->{
                 tabFlag = arguments.getString("brandName")
-                getShopBrand(tabFlag!!,order!!)
+                getShopBrand(tabFlag!!, order)
             }
             CommonData.CALL_AT_SEARCH->{
                 lowPrice = arguments.getInt("lowPrice")
                 highPrice = arguments.getInt("highPrice")
                 keyword = arguments.getString("keyword")
-                getShopSearch(lowPrice, highPrice, keyword!!, order!!)
+                getShopSearch(lowPrice, highPrice, keyword!!, order)
             }
         }
 

@@ -120,7 +120,7 @@ class ChildMypageMypost : Fragment(), View.OnClickListener {
         getContentList.enqueue(object : Callback<MyPageMypostResponse> {
             override fun onResponse(call: Call<MyPageMypostResponse>?, response: Response<MyPageMypostResponse>?) {
                 if (response!!.isSuccessful) {
-                    if (response.body().status.equals("success")) {
+                    if (response.body().message.equals("success")) {
 
                         mypostData = response.body().result
                         CommonData.communityDatas = mypostData
