@@ -1,6 +1,7 @@
 package com.peaktime.dawntime.Home
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,7 @@ class PeektimeAdapter(var dataList : ArrayList<CommunityList>? ) : RecyclerView.
         holder!!.peektimeLikeCnt.text = dataList!!.get(position).board_like.toString()
         holder!!.peektimeCommentCnt.text = dataList!!.get(position).com_count.toString()
         holder!!.peektimeScrapCnt.text = dataList!!.get(position).scrap_count.toString()
+        Log.e("bbbbbb",dataList!!.get(position).user_like.toString())
         if(dataList!!.get(position).user_like){
             holder!!.peektimeLikeImage.setBackgroundResource(R.drawable.view_fire_red)
         }

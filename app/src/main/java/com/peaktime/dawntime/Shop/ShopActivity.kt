@@ -52,6 +52,8 @@ class ShopActivity : AppCompatActivity() , View.OnClickListener{
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_category))
         shop_tab.addTab(shop_tab.newTab().setCustomView(R.layout.shop_customtab_brand))
 
+        new_tab_text.typeface = ResourcesCompat.getFont(baseContext,R.font.noto_sans_cjk_kr_medium)
+
         if (Build.VERSION.SDK_INT >= 21) {
             val window = this.window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)

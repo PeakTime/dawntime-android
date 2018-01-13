@@ -27,7 +27,7 @@
             android:id="@+id/detail_tab_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="9dp"
             android:layout_marginLeft="40dp"
             android:fontFamily="@font/noto_sans_cjk_kr_demilight"
             android:includeFontPadding="false"

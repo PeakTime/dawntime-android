@@ -1,5 +1,6 @@
 package com.peaktime.dawntime.Home
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
@@ -58,8 +59,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     private var homeScroll : ScrollView? = null
 
-    private val FINISH_INTERVAL_TIME : Long = 2000
-    private var backPressedTime : Long = 0
+    private var getContentList : Call<HomeResponse>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?) : View?{
         val v = inflater!!.inflate(R.layout.fragment_home, container, false)
@@ -136,10 +136,15 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
     fun getHomeData(user_blind: Boolean) {
 
-        val getContentList = networkService!!.getHome()
-        //SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!
+        if(SharedPreferInstance.getInstance(activity).getPreferBoolean("LOGIN")!!){
+            getContentList = networkService!!.getHome(SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!)
+        }
+        else {
+            getContentList = networkService!!.getHome()
+        }
 
-        getContentList.enqueue(object : Callback<HomeResponse> {
+        //SharedPreferInstance.getInstance(activity).getPreferString("TOKEN")!!
+        getContentList!!.enqueue(object : Callback<HomeResponse> {
 
             override fun onResponse(call: Call<HomeResponse>?, response: Response<HomeResponse>?) {
                 if (response!!.isSuccessful) {
@@ -267,6 +272,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
 
     class RecyclerViewDecoration(var div: Int?, var side: String) : RecyclerView.ItemDecoration() {
 

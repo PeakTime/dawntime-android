@@ -30,6 +30,8 @@ class PeektimeFragment : Fragment(),View.OnClickListener {
 
     private var networkService: NetworkService? = null
     private var requestManager: RequestManager? = null
+
+    private var getContentList : Call<CommunityResponse>? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater!!.inflate(R.layout.fragment_peektime,container,false)
 

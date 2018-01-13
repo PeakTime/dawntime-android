@@ -69,14 +69,15 @@ class ShopCategoryActivity : AppCompatActivity(), View.OnClickListener{
         var categoryKindNum: Int = intent.getIntExtra("categoryKindNum",0)
 
 
-        if(savedInstanceState == null){
+  //      if(savedInstanceState == null){
 
 //            Toast.makeText(this, categoryKindNum.toString(), Toast.LENGTH_LONG).show()
             AddFragment(GoodsSortFragment(), shop_category_list.getTabAt(categoryKindNum)!!.text.toString()) //받은값으로 태그설정
             Handler().postDelayed(
-                    Runnable { shop_category_list.getTabAt(categoryKindNum)!!.select() }, 100)
+                    Runnable { setCustomFont(shop_category_list,categoryKindNum )
+                        shop_category_list.getTabAt(categoryKindNum)!!.select() }, 100)
 
-        }
+ //       }
 
         var tabAdapter = ShopCategoryTabAdapter(supportFragmentManager,shop_category_list.tabCount)
 

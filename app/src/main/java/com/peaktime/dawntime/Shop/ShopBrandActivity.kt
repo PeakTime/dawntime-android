@@ -53,7 +53,8 @@ class ShopBrandActivity : AppCompatActivity() , View.OnClickListener{
 //            Toast.makeText(this, brandKindNum.toString(), Toast.LENGTH_LONG).show()
             //AddFragment(GoodsSortFragment(), shop_brand_list.getTabAt(brandKindNum)!!.text.toString()) //받은값으로 태그설정
             Handler().postDelayed(
-                    Runnable { shop_brand_list.getTabAt(brandKindNum)!!.select() }, 100)
+                    Runnable { setCustomFont(shop_brand_list,brandKindNum )
+                        shop_brand_list.getTabAt(brandKindNum)!!.select() }, 100)
 
         }
 
