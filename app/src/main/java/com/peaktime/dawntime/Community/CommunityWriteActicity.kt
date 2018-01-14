@@ -259,24 +259,26 @@ class CommunityWriteActicity : AppCompatActivity() {
                         else if (i == 4)
                             Glide.with(this).load(uri).centerCrop().into(image5)
 
-                        val options = BitmapFactory.Options()
+                        if (data.clipData.itemCount < 6) {
+                            val options = BitmapFactory.Options()
 
-                        var input: InputStream? = null
-                        try {
-                            input = contentResolver.openInputStream(uri)
-                        } catch (e: FileNotFoundException) {
-                            e.printStackTrace()
+                            var input: InputStream? = null
+                            try {
+                                input = contentResolver.openInputStream(uri)
+                            } catch (e: FileNotFoundException) {
+                                e.printStackTrace()
+                            }
+
+                            val bitmap = BitmapFactory.decodeStream(input, null, options)
+                            val baos = ByteArrayOutputStream()
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+                            val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
+                            val photo = File(this.data.toString())
+
+                            image = MultipartBody.Part.createFormData("image", photo.name, photoBody)
+
+                            imageArray!!.add(image!!)
                         }
-
-                        val bitmap = BitmapFactory.decodeStream(input, null, options)
-                        val baos = ByteArrayOutputStream()
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
-                        val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
-                        val photo = File(this.data.toString())
-
-                        image = MultipartBody.Part.createFormData("image", photo.name, photoBody)
-
-                        imageArray!!.add(image!!)
                     }
                     Log.v("이미지", this.data.toString())
 

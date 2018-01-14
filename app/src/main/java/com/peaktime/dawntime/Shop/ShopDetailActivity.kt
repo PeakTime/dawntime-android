@@ -100,6 +100,10 @@ class ShopDetailActivity : AppCompatActivity() , View.OnClickListener{
 
     }
 
+    override fun onBackPressed() {
+        setResult(Activity.RESULT_OK)
+        super.onBackPressed()
+    }
 
     fun getShopDetailList(){
         var getContentList = networkService!!.getShopDetailList(SharedPreferInstance.getInstance(this).getPreferString("TOKEN")!!,index!!)

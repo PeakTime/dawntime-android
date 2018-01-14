@@ -55,12 +55,12 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         //인기키워드 리사이클러뷰
         val flowLayoutManager = FlowLayoutManager()
         flowLayoutManager.isAutoMeasureEnabled = true
-        famous_keword_list.setLayoutManager(flowLayoutManager)
+        famous_keword_list.layoutManager = flowLayoutManager
 
         //최근검색어 리사이클러뷰
         val flowLayoutManager2 = FlowLayoutManager()
         flowLayoutManager2.isAutoMeasureEnabled = true
-        recent_keword_list.setLayoutManager(flowLayoutManager2)
+        recent_keword_list.layoutManager = flowLayoutManager2
 
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
@@ -105,14 +105,14 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
                         if(lowPrice.equals("-1")&&highPrice.equals("-1")){
                             if(search_content.equals("")){
                                 Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
-                            }else if(search_content.equals(" ")&&search_content.equals("  ")){
+                            } else if (search_content.equals(" ") || search_content.equals("  ")) {
                                 Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
                             }
                         }
                         else if(lowPriceInt!=-1&&highPriceInt!=-1){
 
                             if(lowPriceInt>highPriceInt) {Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
-                            }else if(search_content.equals(" ")&&search_content.equals("  ")){
+                            } else if (search_content.equals(" ") || search_content.equals("  ")) {
                                 Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
                             }else{
                                 var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
@@ -154,7 +154,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         super.onResume()
         getKeywordList()
         shopSearchEditText.text = null
-        shopSearchEditText.setHint("검색")
+        shopSearchEditText.hint = "검색"
     }
 
 
@@ -212,7 +212,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
         if(lowPrice.equals("-1")&&highPrice.equals("-1")){
             if(search_content.equals("")){
                 Toast.makeText(applicationContext, "입력된 값이 없습니다", Toast.LENGTH_SHORT).show()
-            }else if(search_content.equals(" ")&&search_content.equals("  ")){
+            } else if (search_content.equals(" ") || search_content.equals("  ")) {
                 Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
             }else{
                 var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)
@@ -227,7 +227,7 @@ class ShopSearchActivity : AppCompatActivity() , View.OnClickListener{
 
             if(lowPriceInt>highPriceInt) {
                 Toast.makeText(applicationContext, "최저가격 값이 최고가격 값보다 큽니다. 다시 입력해주세요", Toast.LENGTH_SHORT).show()
-            }else if(search_content.equals(" ")&&search_content.equals("  ")){
+            } else if (search_content.equals(" ") || search_content.equals("  ")) {
                 Toast.makeText(applicationContext, "공백은 검색할 수 없습니다.", Toast.LENGTH_SHORT).show()
             }else{
                 var intent = Intent(applicationContext, ShopSearchResultActivity::class.java)

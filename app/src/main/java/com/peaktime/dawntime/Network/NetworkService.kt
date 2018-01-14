@@ -205,7 +205,7 @@ interface NetworkService {
     @FormUrlEncoded
     @POST("board/tagList")
     fun tagSearch(
-            @Header("user_peektimeDatastoken") user_token: String,
+            @Header("user_token") user_token: String,
             @Field("tag") tag: ArrayList<String>)
             : Call<TagSearchResponse>
 
